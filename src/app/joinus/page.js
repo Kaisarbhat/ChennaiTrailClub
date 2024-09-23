@@ -4,8 +4,8 @@ const JoinUs = () => {
   return (
     // form height--pending
     <div className="flex items-center  justify-center h-screen text-[#070802]">
-      <div className="w-3/5 h-3/4 flex border border-solid border-black rounded-2xl space-x-5 p-6 pr-1">
-        <div className="md:hidden lg:flex bg-[url('/join-us-img.png')] h-5/6 bg-cover flex flex-col justify-end items-center px-10 py-10">
+      <div className="w-3/5 h-[600px] flex border border-solid border-black rounded-2xl space-x-5 p-6 pr-1">
+        <div className="md:hidden lg:flex bg-[url('/join-us-img.png')] h-full bg-cover flex flex-col justify-end items-center px-10 py-10">
           <div className="bg-slate-300 rounded-xl w-full p-2 ">
             <h2 className="text-lg font-bold">Join Us</h2>
             <p className="text-sm text-[#50514C]">
@@ -36,7 +36,7 @@ const JoinUs = () => {
             <br />
             <input type="text" />
             <div className="flex items-center align-middle">
-              <input type="checkbox" />
+              <input type="checkbox" className="w-5 h-5 mb-0 p-0 mr-2" />
               <p className="">Accept Terms and Conditions</p>
             </div>
             <div className="flex space-x-4 px-5 text-lg font-bold mt-4">

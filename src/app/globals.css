@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 input{
     border: 2px solid #50514c;
     border-radius:6px;
@@ -14,13 +14,13 @@ input{
     height: 2.5rem;
 
 }
-input[type = 'checkbox']{
+/* input[type = 'checkbox']{
     width: 25px;
     margin-right: 1rem;
     margin-bottom: 0;
     cursor: pointer;
-}
-input[type='submit'], input[type='reset']{ 
+} */
+/* input[type='submit'], input[type='reset']{ 
     margin: 0;
     border-radius: 24px;
     -webkit-border-radius: 24px;
@@ -28,4 +28,4 @@ input[type='submit'], input[type='reset']{
     -ms-border-radius: 24px;
     -o-border-radius: 24px;
     cursor: pointer;
-}
+} */
