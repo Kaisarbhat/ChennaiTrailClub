@@ -1,8 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-
+import useInView, { slideVariants } from "@/utils/motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 const RecentActivities = () => {
+  const ref = useRef();
+  const isInView = useInView(ref);
+
   const [startIndex, setStartIndex] = useState(0);
 
   const data = [
@@ -155,16 +159,27 @@ const RecentActivities = () => {
   }, [startIndex]);
 
   return (
-    <div className="w-full  lg:px-64 lg:py-10 lg:mt-32 flex flex-col justify-center bg-[#F6FFC7]">
+    <div className="w-full h-screen lg:px-64 lg:py-10 lg:mt-32 flex flex-col justify-center bg-[#F6FFC7] md:px-4">
       <div className="flex justify-between">
-        <div className="w-3/5 mt-8 py-8">
-          <h1 className="text-[56px] font-bold mb-2">Recent Activities</h1>
-          <p className="text-[#50514C] text-lg">
+        <div className="w-1/2 mt-8 py-8 ">
+          <motion.h1 
+          ref={ref}
+          initial = {{opacity:0 , y:-150}}
+          animate = {{opacity : isInView ? 1 : 0 , y : isInView ? 0 : -150}}
+          transition={{duration : 0.5}}
+          className="text-[56px] font-bold mb-2">Recent Activities
+          </motion.h1>
+          <motion.p 
+          ref={ref}
+          initial={{opacity : 0 , x : '-100%'}}
+          animate={{opacity : isInView ? 1 : 0 , x : isInView ? 0 : '-100%'}}
+          transition={{duration : 0.5}}
+          className="text-[#50514C] text-lg">
             We’re thrilled to present a recap of the fantastic array of recent
             activities that we’ve had the pleasure of organizing and
             participating in. We’re excited to share our accomplishments and
             experiences with you.
-          </p>
+          </motion.p>
         </div>
         <div className="flex  items-center space-x-6">
           <button

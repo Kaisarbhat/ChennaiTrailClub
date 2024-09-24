@@ -1,15 +1,29 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import useInView from "@/utils/motion";
 
 function Features() {
+  const ref =useRef();
+  const isInView = useInView(ref);
   return (
     <div className="w-full flex justify-center">
       <div className="lg:w-4/5 md:w-full flex justify-center items-center lg:m-4">
         <div className="lg:w-4/5 md:w-full bg-black rounded-2xl md:mx-3 p-5 text-white">
-          <h1 className="text-5xl m-4 font-bold"> Our Features</h1>
+          <motion.h1 
+          ref={ref}
+          initial={{opacity : 0 , x : 150}}
+          animate={{opacity : isInView ? 1 : 0 , x : isInView ? 0 : 150}}
+          transition={{duration : 0.5}}
+          className="text-5xl m-4 font-bold"> Our Features</motion.h1>
           <hr className="ml-4" />
-          <div className="flex flex-col mt-8 px-4">
+          <motion.div 
+          ref={ref}
+          initial = {{opacity :0.6}}
+          animate = {{opacity : isInView ? 1 : 0.6}}
+          transition={{duration : 0.5}}
+          className="flex flex-col mt-8 px-4">
             <div className="flex lg:flex-row  space-x-5">
               <div className="lg:w-3/6 md:4/5 bg-[#1B1C16] my-6 p-3 flex flex-col justify-start border border-solid rounded-xl hover:bg-purple-950 grayscale hover:grayscale-0">
                 <Image
@@ -86,7 +100,7 @@ function Features() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

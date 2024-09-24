@@ -1,34 +1,52 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import EventInfo from "@/components/eventInfo";
 import { Button } from "@/components";
-
+import { motion } from "framer-motion";
+import useInView from "@/utils/motion";
 const EventDetails = () => {
+  const ref = useRef();
+  const isInView = useInView(ref);
   return (
     <div className="py-16 text-[#50514C]">
       <div className="bg-[#070802] w-full px-4 py-4  pt-20 flex items-center  justify-center space-x-28">
         <div className=" w-1/3 text-lg space-y-4">
-          <h1 className="text-[38px] text-white font-bold leading-snug">
+          <motion.h1 
+          ref={ref}
+          initial={{y : '-100%'}}
+          animate={{y : 0 }}
+          transition={{duration : 0.5 }}
+          className="text-[38px] text-white font-bold leading-snug">
             Jawadhu Hills Ultra (JHU-24)
-          </h1>
-          <p className="text-[#FFFFFFBF]">
+          </motion.h1>
+          <motion.p 
+          ref={ref}
+          initial={{x : '-100%'}}
+          animate={{x : 0 }}
+          transition={{duration : 0.5 }}
+          className="text-[#FFFFFFBF]">
             Jawadhu Hills Ultra is back! Experience the most scenic trails in
             the Eastern Ghats, weaving through the pristine hills of Jawadhu
             range. Challenge yourself on diverse terrains, enjoy breathtaking
             vistas, and immerse in the natural beauty
-          </p>
+          </motion.p>
           <div>Trail Day</div>
           <div className="text-2xl text-[#d0f700] font-bold">
             <i class="bi bi-calendar3 mr-2"></i>November 09, 2024 (Saturday)
           </div>
-          <div className="text-[#FFFFFFA6] underline">
+          <motion.div 
+          ref={ref}
+          initial={{y : '100%'}}
+          animate={{y : 0  }}
+          transition={{duration : 0.5 }}
+          className="text-[#FFFFFFA6] underline">
             <span className="text-[#d0f700] mr-2">
               <i class="bi bi-geo-alt-fill"></i>
             </span>
             St.Joseph Higher Secondary School, Jamunamarathur{" "}
             <i class="bi bi-arrow-up-right"></i>
-          </div>
+          </motion.div>
         </div>
         <div>
           <Image
@@ -44,19 +62,31 @@ const EventDetails = () => {
         <div className="lg:px-64">
           <EventInfo />
         </div>
-        <div className="flex items-center justify-center py-8">
+        <motion.div 
+        ref={ref}
+        initial={{opacity : 0, y : '100%'}}
+        animate={{opacity :  1 ,y: 0 }}
+        transition={{duration : 0.5 }}
+        className="flex items-center justify-center py-8">
           <Button
             title={"Register for Jawadhu Hill Ultra (JHU-24)"}
             link={"/register"}
           />
-        </div>
+        </motion.div>
         <div className="bg-[#F6FFC7] my-10">
           <div className=" lg:px-64 py-4">
             <h1 className="text-5xl text-[#070802] font-bold text-center mb-6">
               About Race Location
             </h1>
             <div className="flex justify-between items-center space-x-20 p-3">
-              <img src="/trails-img.png" width={520} height={510} />
+
+                 <motion.img 
+                 initial={{opacity : 0, scale: 0}}
+                 animate={{opacity : 1  , scale : 1}}
+                 transition={{duration : 0.5 }}
+                 src="/trails-img.png" width={520} height={510} />
+              
+              
               <div className="text-[#50514C] text-[16px] space-y-6 flex flex-col">
                 <p>
                   Jawadhu Hill Ultra is an Ultra Trail Marathon is organized by
@@ -90,8 +120,18 @@ const EventDetails = () => {
         </div>
         <div className="lg:px-64 py-20 flex items-center justify-center space-x-20">
           <div className="text-[#070802] text-[16px] w-1/2 ">
-            <h1 className="text-5xl font-bold mb-4">Maintaining Cleanliness</h1>
-            <p className="mb-4 w-4/5 leading-6">
+            <motion.h1 
+            ref={ref}
+            initial={{opacity : 0, y : '-100%'}}
+            animate={{opacity : 1  , y : 0 }}
+            transition={{duration : 0.5 }}
+            className="text-5xl font-bold mb-4">Maintaining Cleanliness</motion.h1>
+            <motion.p 
+            ref={ref}
+            initial={{opacity : 0, x : '-100%'}}
+            animate={{opacity :1  , x : 0 }}
+            transition={{duration : 0.5 }}
+            className="mb-4 w-4/5 leading-6">
               Runners are advised not to throw any cups, wrappers
               (chocolate/gels), other waste either on the trail or inside water
               bodies. Use the waste bins kept near the refreshment points.
@@ -99,14 +139,17 @@ const EventDetails = () => {
               supplier of drinking water to the people of Chennai city.
               Therefore, requesting the cooperation from the runners to maintain
               the cleanliness of the tank and the trail.
-            </p>
+            </motion.p>
             <div className="bg-[#FFF1F1] my-4 w-2/3 text-center p-2 rounded-lg">
               <i class="bi bi-exclamation-triangle-fill text-[#f86b6b] mr-2"></i>{" "}
               Please note that barefoot running is not recommended.
             </div>
           </div>
           <div className="flex">
-            <img
+            <motion.img
+              initial={{opacity : 0, scale: 0}}
+              animate={{opacity : 1  , scale : 1}}
+              transition={{duration : 0.5 }}
               src="/clean-place-img.png"
               alt="clean-place-img"
               height={350}
