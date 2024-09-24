@@ -13,12 +13,12 @@ function Navbar() {
   };
   return (
     <header className="w-full h-20 flex items-center   bg-black text-[#fcfdf899] fixed lg:px-64 md:px-10 z-10">
-      <a href="#" className="flex left">
+      <a href="/home" className="flex left">
         <Image
           src="/logo.png"
           alt="logo"
-          width={50}
-          height={50}
+          width={60}
+          height={60}
           className="rounded-full"
         />
       </a>
@@ -64,15 +64,15 @@ function Navbar() {
         </button>
         {/* Mobile menu */}
         <ul
-          className={`list-none space-y-6 ${
+          className={`list-none space-y-10 ${
             isOpen ? "flex" : "hidden"
-          } flex-col items-start h-screen bg-black text-white w-screen z-10 fixed top-16 left-0 p-6 text-2xl`}
+          } flex-col items-start h-screen bg-black text-white w-screen z-10 fixed top-16 left-0 p-6 text-[20px]`}
         >
-          <li className=" hover:text-purple-900 cursor-pointer"><Link  href='/'> Home            </Link> </li>
-          <li className=" hover:text-purple-900 cursor-pointer"><Link  href='/aboutus'> About Us        </Link> </li>
-          <li className=" hover:text-purple-900 cursor-pointer"><Link  href='/upcomingevents'> Upcoming Events </Link> </li>
-          <li className=" hover:text-purple-900 cursor-pointer"><Link  href='/pastevents'> Past Events     </Link> </li>
-          <li className=" hover:text-purple-900 cursor-pointer"><Link  href='/joinus'> Join Us         </Link> </li>
+          <li className=" hover:text-purple-900 cursor-pointer"><Link onClick={toggleMenu}  href='/'> Home            </Link> </li>
+          <li className=" hover:text-purple-900 cursor-pointer"><Link onClick={toggleMenu} href='/aboutus'> About Us        </Link> </li>
+          <li className=" hover:text-purple-900 cursor-pointer"><Link onClick={toggleMenu} href='/upcomingevents'> Upcoming Events </Link> </li>
+          <li className=" hover:text-purple-900 cursor-pointer"><Link onClick={toggleMenu} href='/pastevents'> Past Events     </Link> </li>
+          <li className=" hover:text-purple-900 cursor-pointer"><Link onClick={toggleMenu} href='/joinus'> Join Us         </Link> </li>
         </ul>
       </nav>
     </header>

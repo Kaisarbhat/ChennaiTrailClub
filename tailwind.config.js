@@ -17,7 +17,8 @@ module.exports = {
         'decimal-leading-zero': 'decimal-leading-zero',
       },
       fontFamily:{
-        serif : ['Urbanist','sans-serif']
+        serif : ['Urbanist','sans-serif'],
+        man : ['Manrope','sans-serif']
       },
       boxShadow:{
         mine:'10px 10px 0 0 rgba(115, 40, 246, 1)',

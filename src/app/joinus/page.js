@@ -3,8 +3,8 @@ import "../globals.css";
 const JoinUs = () => {
   return (
     // form height--pending
-    <div className="flex items-center  justify-center h-screen text-[#070802]">
-      <div className="w-3/5 h-[600px] flex border border-solid border-black rounded-2xl space-x-5 p-6 pr-1">
+    <div className="py-32 lg:px-64 md:px-4 flex items-center  justify-center text-[#070802]">
+      <div className="w-full h-[600px] flex border border-solid border-black rounded-2xl space-x-5 p-6 pr-1">
         <div className="md:hidden lg:flex bg-[url('/join-us-img.png')] h-full bg-cover flex flex-col justify-end items-center px-10 py-10">
           <div className="bg-slate-300 rounded-xl w-full p-2 ">
             <h2 className="text-lg font-bold">Join Us</h2>
@@ -39,14 +39,14 @@ const JoinUs = () => {
               <input type="checkbox" className="w-5 h-5 mb-0 p-0 mr-2" />
               <p className="">Accept Terms and Conditions</p>
             </div>
-            <div className="flex space-x-4 px-5 text-lg font-bold mt-4">
+            <div className="flex space-x-4 px-5 justify-end text-lg font-bold mt-4">
               <input
-                className="text-[#50514C] h-12"
+                className="text-[#50514C] h-12 w-[150px] rounded-3xl cursor-pointer"
                 type="reset"
                 value="Cancel"
               />
               <input
-                className="text-[#D0F700] bg-[#070802] h-12"
+                className="text-[#D0F700] bg-[#070802] h-12 w-[150px] rounded-3xl cursor-pointer"
                 type="submit"
                 value="Submit"
               />
