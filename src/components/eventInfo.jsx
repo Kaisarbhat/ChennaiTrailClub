@@ -7,16 +7,16 @@ const EventInfo = () => {
     {
       key: "General Info",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 xs:mb-8 mb-4 xs:font-medium text-[#070802] xs:text-center xs:text-lg">
             General Information
           </h1>
-          <h3 className="text-[20px] mb-2 font-semibold">
+          <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
             {" "}
             Following are general information that you have to know before
             registering,
-          </h3>
-          <ul className="list-disc space-y-2 px-8">
+          </h5>
+          <ul className="list-disc space-y-3 px-8 xs:text-sm md:text-[16px]">
             <li>
               Registration charges for <b>30KM (INR.1800)</b> and{" "}
               <b>60KM (INR.2200)</b> including payment gateway charges.
@@ -63,18 +63,18 @@ const EventInfo = () => {
     {
       key: "Categories",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 xs:mb-8   mb-4 text-[#070802] xs:text-lg xs:text-center">
             Categories
           </h1>
-          <p>
+          <p className="xs:text-sm md:text-lg">
             Jawadhu Hill Ultra (JHU-24) offers two categories in the 2024
             edition
           </p>
-          <h3 className="text-[20px] font-semibold">
+          <h3 className="text-[20px] xs:text-[16px] font-semibold mb-2">
             30K with approximately 900m of elevation gain.
           </h3>
-          <ul className="list-disc space-y-2 px-16">
+          <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
             <li>
               primarily for those who wants to run their first trail race. Trail
               route takes runners through farms, slush & single path trails.
@@ -92,12 +92,12 @@ const EventInfo = () => {
               reach the finish line by 02:00 PM.
             </li>
           </ul>
-          <h3 className="text-[20px] font-semibold">
+          <h3 className="md:text-[20px] xs:text-[16px] font-semibold mb-2">
             60K with approximately 1600m of elevation gain.
           </h3>
-          <ul className="list-disc space-y-2 px-16">
+          <ul className="list-disc space-y-2 px-16 xs:px-8  xs:text-sm md:text-[16px] ">
             <li>
-              It’s also a point-to-point course taking runners through the most
+              It's also a point-to-point course taking runners through the most
               beautiful locales in Jawadhu while still posing enough challenges
               for a regular marathon runner. The course takes runners through
               different terrains.
@@ -122,9 +122,11 @@ const EventInfo = () => {
               any body pains.
             </li>
           </ul>
-          <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6">
-            <h2 className="text-[20px] font-semibold"><i class="bi bi-exclamation-circle-fill text-[#ffb24d]"></i> Note</h2>
-            <ul className="list-disc space-y-2 px-16 flex flex-col justify-between">
+          <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-[#50514c] p-4 space-y-4 mt-6">
+            <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
+              <i class="bi bi-exclamation-circle-fill text-[#ffb24d]"></i> Note
+            </h2>
+            <ul className="list-disc space-y-2 px-16 xs:px-8 flex flex-col justify-between xs:text-sm">
               <li>
                 All time and distance mentioned here are tentative and subject
                 to very minor changes, which will be confirmed a week before the
@@ -145,20 +147,20 @@ const EventInfo = () => {
     {
       key: "Rules & Criteria",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
             Rules & Criteria
           </h1>
-          <p>
+          <p className="xs:text-[13px] md:text-[16px]">
             {" "}
             Considering all challenges through the course and other
             considerations, the participants must meet the following criteria:
           </p>
-          <ul className="list-disc space-y-2 px-16">
+          <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
             <li>
               {" "}
               For registering for 60K, Registrants must have completed
-              <ul className="list-disc space-y-2 px-16">
+              <ul className="list-disc space-y-3 md:px-16 xs:px-8">
                 <li>
                   a Full Marathon in 06:00Hrs,<b> OR </b>
                 </li>
@@ -201,7 +203,7 @@ const EventInfo = () => {
             <li>
               Runners (in 30K & 60K categories) must submit the hyperlinkany of
               the following during the registration,
-              <ul className="list-disc space-y-2 px-16">
+              <ul className="list-disc space-y-3 md:px-16 xs:px-8">
                 <li>
                   shareable result link of a qualifier race <br />
                   <b>or</b>
@@ -225,15 +227,17 @@ const EventInfo = () => {
     {
       key: "Food",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">Food</h1>
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
+            Food
+          </h1>
           <div className="flex flex-col space-y-4">
             <div>
-              <h2 className="text-[20px] font-bold mb-2">
+              <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
                 <i class="bi bi-calendar2-event mr-3"></i>
                 Pre-Race Dinner (November 08, 2024)
               </h2>
-              <p className="p-3">
+              <p className="md:p-3 xs:px-8 md:text-[16px] xs:text-[13px] xs:leading-loose">
                 For runners, accompanying friends and relatives, planning to
                 stay overnight at the venue (Dinner will be served between 7:00
                 - 9:00 pm). Food coupons must be purchased for all who opt for
@@ -241,22 +245,22 @@ const EventInfo = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-[20px] font-bold mb-2">
+              <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
                 <i class="bi bi-calendar2-event mr-3"></i>
                 Pre-Race Breakfast (November 09, 2024)
               </h2>
-              <p className="p-3">
+              <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
                 Some snacks will be provided for quick bite at the start point
                 prior to the commencement of the race. (Note: This won’t be a
                 regular breakfast. Its only Bread-Butter-Jam, tea/coffee & etc.)
               </p>
             </div>
             <div>
-              <h2 className="text-[20px] font-bold mb-2">
+              <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
                 <i class="bi bi-calendar2-event mr-3"></i>Post-Race Meal
                 (November 09, 2024)
               </h2>
-              <p className="p-3">
+              <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
                 Lunch will be served for 30KM runners. 60KM runners will get
                 light lunch at one of the aid stations, around noon time.
               </p>
@@ -268,12 +272,14 @@ const EventInfo = () => {
     {
       key: "Medical / Baggage",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center  xs:font-medium font-bold  mb-4 text-[#070802]">
             Medical Assistance and Baggage Counter
           </h1>
-          <h2 className="text-[20px] font-bold mb-2">Medical assistance</h2>
-          <ul className="list-disc space-y-2 px-8">
+          <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+            Medical assistance
+          </h2>
+          <ul className="list-disc space-y-2 px-8 md:text-[16px] xs:text-sm">
             <li>
               There will be a dedicated medical team at the start/finish points.
             </li>
@@ -290,8 +296,10 @@ const EventInfo = () => {
               volunteers.
             </li>
           </ul>
-          <h2 className="text-[20px] font-bold mb-2">Baggage Counter</h2>
-          <ul className="list-disc space-y-2 px-8">
+          <h2 className="md:text-[20px] xs:text-[16px]  font-bold mb-2">
+            Baggage Counter
+          </h2>
+          <ul className="list-disc space-y-3 md:text-[16px]  px-8 xs:text-sm">
             <li>
               Baggage counter will be available at the start-line of all
               categories
@@ -308,11 +316,11 @@ const EventInfo = () => {
     {
       key: "Aid Station / Hydration",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold   mb-4 text-[#070802]">
             Aid Station and Hydration
           </h1>
-          <ul className="list-disc space-y-2 px-8">
+          <ul className="list-disc space-y-3 px-8 md:text-[16px] xs:text-sm">
             <li>
               Aid stations will be well-stocked with water, energy drinks,
               fruits etc. during the race.
@@ -343,13 +351,15 @@ const EventInfo = () => {
     {
       key: "Accommodation / Transport",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
             Accommodation and Transport
           </h1>
           <div>
-            <h2 className="text-[20px] font-bold mb-2">Accommodation</h2>
-            <ul className="list-disc space-y-2 px-8">
+            <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+              Accommodation
+            </h2>
+            <ul className="list-disc space-y-3  px-8  md:text-[16px] xs:text-sm">
               <li>
                 Camping / staying in the school (
                 <span className="text-blue-600">
@@ -359,14 +369,16 @@ const EventInfo = () => {
               </li>
             </ul>
           </div>
-          <div>
-            <h2 className="text-[20px] font-bold mb-2">Transport</h2>
-            <p>
+          <div className="md:text-[16px] xs:text-sm space-y-3">
+            <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+              Transport
+            </h2>
+            <p className="">
               Start/Finish point is St.Joseph Higher Secondary School,
               Jamunamarathur, on Polur-Alangayam Road.
             </p>
             <p>Approximate distances to Jamunamaruthur</p>
-            <ul className="list-disc space-y-2 px-8">
+            <ul className="list-disc space-y-3 px-8">
               <li> Polur - 40km </li>
               <li> Alangayam - 25km </li>
               <li> Tirupattur - 50km (via Alangayam) </li>
@@ -388,13 +400,16 @@ const EventInfo = () => {
     {
       key: "Medals, Certificates & Results",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
             Medals, Certificates & Results
           </h1>
           <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6 mb-4">
-            <h2 className="text-[20px] font-semibold"><i class="bi bi-exclamation-circle-fill text-[#f1a847]"></i> Important</h2>
-            <ul className="list-disc space-y-2 px-16">
+            <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
+              <i class="bi bi-exclamation-circle-fill text-[#f1a847]"></i>{" "}
+              Important
+            </h2>
+            <ul className="list-disc space-y-3 md:px-16 xs:px-8 md:text-[16px] xs:text-sm">
               <li>
                 {" "}
                 Medals will be awarded to all runners who finish within the
@@ -419,7 +434,7 @@ const EventInfo = () => {
             </ul>
           </div>
           <div>
-            <ul className="list-disc space-y-2 px-16">
+            <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px] ">
               <li>
                 {" "}
                 All participants must accept complete responsibility for any
@@ -514,76 +529,82 @@ const EventInfo = () => {
     {
       key: "Running Tips",
       component: () => (
-        <div>
-          <h1 className="text-[32px] font-bold  mb-4 text-[#070802]">
+        <div className="leading-loose">
+          <h1 className="md:text-[32px] md:font-bold  xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium   mb-4 text-[#070802] ">
             Tips to be followed
           </h1>
-          <div className="w-full  space-y-2 flex flex-wrap">
-            <div className="w-1/3  p-2">
+          <div className="w-full  space-y-2 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
+            <div className="md:w-1/3 xs:w-full p-2">
               <div>
                 <i class="bi bi-flag text-[56px]  text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">
+              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
                 The terrain is not same:
               </h2>
-              <p>
+              <p className="xs:text-[13px]">
                 We call it a multi-terrain marvel. Therefore, running in the
                 trail has its own unique challenges and being watchful and alert
                 while running on the trail.
               </p>
             </div>
-            <div className="w-1/3 p-2">
+            <div className="md:w-1/3 p-2 xs:w-full">
               <div>
                 <i class="bi bi-search text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">Find your rhythm:</h2>
-              <p>
+              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+                Find your rhythm:
+              </h2>
+              <p className="xs-text-[13]">
                 exhausting, focus on finding the rhythm until you sense being
                 one with the terrain{" "}
               </p>
             </div>
-            <div className="w-1/3  p-2">
+            <div className="md:w-1/3  p-2 xs:w-full">
               <div>
                 <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
                 <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">Run with a buddy:</h2>
-              <p>
+              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+                Run with a buddy:
+              </h2>
+              <p className="xs-text-[13]">
                 If you are not aiming at a podium finish or personal best, run
                 with a buddy so that you can be safe inside the trails.
               </p>
             </div>
-            <div className="w-1/3 p-2">
+            <div className="md:w-1/3 p-2 xs:w-full">
               <div>
                 <i class="bi bi-emoji-heart-eyes text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">
+              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
                 Keep your eyes on the trail:
               </h2>
-              <p>
+              <p className="xs-text-[13]">
                 It can be tempting to look at the nature around you, but doing
                 so can quickly lead to tripping and falling. It is advisable to
                 keep your eyes on the trail.
               </p>
             </div>
-            <div className="w-1/3 p-2">
+            <div className="md:w-1/3 p-2 xs:w-full">
               <div>
                 <i class="bi bi-shop text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">
+              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
                 Sport with your Trail shoes:
               </h2>
-              <p>
+              <p className="xs-text-[13]">
                 If you have a pair of trail running shoes, sport with them. They
                 reduce the chance of ankle rolls with a high heel.
               </p>
             </div>
-            <div className="w-1/3  p-2">
+            <div className="md:w-1/3  p-2 xs:w-full">
               <div>
                 <i class="bi bi-eyeglasses text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] font-semibold">Accessorise:</h2>
-              <p>
+              <h2 className="text-[20px] xs-text-[16] font-semibold text-[#070802]">
+                Accessorise:
+              </h2>
+              <p className="xs-text-[13]">
                 It is advisable to apply sunscreen, wear your sunglasses,
                 cap/hat or carry a piece of white cotton cloth to cover yourself
                 when the sun is pretty hard after 8 a.m.
@@ -605,19 +626,38 @@ const EventInfo = () => {
     content.find((item) => item.key === selectedKey)?.component || (() => null);
 
   return (
-    <div className=" w-full flex space-x-20 text-[#50514C] text-[16px]">
-      <aside className=" text-black p-6 flex flex-col border items-start  border-gray-200 rounded-lg space-y-2 max-h-[618px]">
-        {content.map((item) => (
-          <button
-            key={item.key}
-            onClick={() => handleButtonClick(item.key)}
-            className="text-start rounded-lg w-full hover:bg-[#070802] hover:text-[#D0F700] p-3 focus:text-[#D0F700] focus:bg-[#070802]"
-          >
-            {item.key}
-          </button>
-        ))}
-      </aside>
-      <div className="w-full py-4 px-6 rounded-lg  shadow-xl">
+    <div className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 text-[#50514C] text-[16px]">
+      <div className="xs:hidden md:flex">
+        <aside className=" text-black p-6 flex flex-col border items-start  border-gray-200 rounded-lg space-y-2 max-h-[618px]">
+          {content.map((item) => (
+            <button
+              key={item.key}
+              onClick={() => handleButtonClick(item.key)}
+              className="text-start rounded-lg w-full hover:bg-[#070802] hover:text-[#D0F700] p-3 focus:text-[#D0F700] focus:bg-[#070802]"
+            >
+              {item.key}
+            </button>
+          ))}
+        </aside>
+      </div>
+      <div className="md:hidden xs:flex w-full xs:px-4">
+        <select
+          value={selectedKey}
+          onChange={(e) => setSelectedKey(e.target.value)}
+          className="bg-[#070802] p-3 w-full rounded-md text-[#D0F700]"
+        >
+          {content.map((item) => (
+            <option
+              key={item.key}
+              onChange={() => handleButtonClick(item.key)}
+              className="text-start text-lg text-bold"
+            >
+              {item.key}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="md:w-full lg:w-full py-4 lg:px-6 xs:px-4 rounded-lg  shadow-xl">
         {selectedComponent()}
       </div>
     </div>

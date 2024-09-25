@@ -1,19 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-input{
-    border: 2px solid #50514c;
-    border-radius:6px;
-    width: 100%;
-    -webkit-border-radius:6px;
-    -moz-border-radius:6px;
-    -ms-border-radius:6px;
-    -o-border-radius:6px;
-    margin-bottom: 1.5rem;
-    height: 2.5rem;
-
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+input {
+  border: 2px solid #50514c;
+  border-radius: 6px;
+  width: 100%;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  margin-bottom: 1.5rem;
+  height: 2.5rem;
 }
 /* input[type = 'checkbox']{
     width: 25px;

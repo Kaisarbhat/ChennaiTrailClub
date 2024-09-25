@@ -3,7 +3,7 @@
 import RegisterCard from "@/components/registerCard";
 import Image from "next/image";
 import React, { useState } from "react";
-import content from '../../components/registerContent'
+import content from "../../components/registerContent";
 
 const EventRegistration = () => {
   const [selectedItem, setSelectedItem] = useState(content[0].key);
@@ -11,10 +11,6 @@ const EventRegistration = () => {
     content.find((item) => item.key === selectedItem)?.component ||
     (() => null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted");
-  };
   const handleClick = (k) => {
     setSelectedItem(k);
   };
@@ -31,20 +27,16 @@ const EventRegistration = () => {
       </div>
       <div className="flex flex-col mt-10 p-6">
         <div className="flex justify-evenly mb-10">
-          {content.map((item)=> (
-            <button key={item.key}
-            onClick={() => handleClick(item.key)}
-            >
+          {content.map((item) => (
+            <button key={item.key} onClick={() => handleClick(item.key)}>
               {item.key}
             </button>
           ))}
         </div>
         <div className="text-[#50514C] text-[16px] flex justify-between p-4">
-          <div className="w-1/2 px-4">
-          {selectedComponent()}
-          </div>
+          <div className="w-1/2 px-4">{selectedComponent()}</div>
 
-          <RegisterCard/>
+          <RegisterCard />
         </div>
       </div>
     </div>

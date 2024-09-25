@@ -1,11 +1,9 @@
 "use client";
-
-import useInView, { slideVariants } from "@/utils/motion";
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion ,useInView} from "framer-motion";
 const RecentActivities = () => {
-  const ref = useRef();
-  const isInView = useInView(ref);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const [startIndex, setStartIndex] = useState(0);
 
@@ -165,14 +163,14 @@ const RecentActivities = () => {
           <motion.h1 
           ref={ref}
           initial = {{opacity:0 , y:-150}}
-          animate = {{opacity : isInView ? 1 : 0 , y : isInView ? 0 : -150}}
+          animate = {isInView ? {opacity : 1 , y : 0} : {opacity:0 , y:-150}}
           transition={{duration : 0.5}}
           className="text-[56px] font-bold mb-2">Recent Activities
           </motion.h1>
           <motion.p 
           ref={ref}
           initial={{opacity : 0 , x : '-100%'}}
-          animate={{opacity : isInView ? 1 : 0 , x : isInView ? 0 : '-100%'}}
+          animate = {isInView ? {opacity : 1 , x : 0} : {opacity : 0 , x : '-100%'}}
           transition={{duration : 0.5}}
           className="text-[#50514C] text-lg">
             We’re thrilled to present a recap of the fantastic array of recent

@@ -8,11 +8,11 @@ import JoinUs from "./joinUs";
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
-  // const openJoinUs = () => setIsJoinUsOpen(true);
-  // const closeJoinUs = () => setIsJoinUsOpen(false);
+
   const toggleJoinUs = () => {
-    setIsJoinUsOpen(!isJoinUsOpen)
-  }
+    setIsJoinUsOpen(!isJoinUsOpen);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,7 +29,7 @@ function Navbar() {
         />
       </a>
       <nav className="w-full  flex flex-row justify-end items-center font-sans text-[16px]">
-        <ul className="lg:flex  list-none space-x-10  nav-links md:hidden sm:hidden ">
+        <ul className="lg:flex  list-none space-x-10  nav-links md:hidden xs:hidden ">
           <li className=" hover:text-purple-900 cursor-pointer">
             <Link href="/home"> Home </Link>{" "}
           </li>
@@ -58,10 +58,11 @@ function Navbar() {
               </ul>
             )}
           </li>
-          <li className=" hover:text-purple-900 cursor-pointer"
-          onClick={toggleJoinUs}
-          > Join Us
-              
+          <li
+            className=" hover:text-purple-900 cursor-pointer"
+            onClick={toggleJoinUs}
+          >
+            Join Us
           </li>
         </ul>
         <button
@@ -72,7 +73,9 @@ function Navbar() {
         </button>
         {/* Mobile menu */}
 
-        {isJoinUsOpen && <JoinUs isOpen={isJoinUsOpen} onClose={toggleJoinUs} />}
+        {isJoinUsOpen && (
+          <JoinUs isOpen={isJoinUsOpen} onClose={toggleJoinUs} />
+        )}
         <ul
           className={`list-none space-y-10 ${
             isOpen ? "flex" : "hidden"
@@ -102,10 +105,12 @@ function Navbar() {
               Past Events{" "}
             </Link>{" "}
           </li>
-          <li onClick={toggleJoinUs} className=" hover:text-purple-900 cursor-pointer">
-              {" "}
-              Join Us{" "}
-          {" "}
+          <li
+            onClick={toggleJoinUs}
+            className=" hover:text-purple-900 cursor-pointer"
+          >
+            {" "}
+            Join Us{" "}
           </li>
         </ul>
       </nav>

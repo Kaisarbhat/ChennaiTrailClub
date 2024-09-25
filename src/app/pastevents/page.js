@@ -22,7 +22,7 @@ const PastEvents = () => {
           <Button1 title={"2023"} />
           <Button1 title={"2024"} />
         </div>
-        <div className="flex justify-between mt-4 space-x-8">
+        <div className="flex md:flex-row xs:flex-col justify-between mt-4 md:space-x-8 xs:space-x-0">
           <EventCard/>
           <EventCard/>
         </div>

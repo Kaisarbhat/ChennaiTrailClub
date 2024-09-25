@@ -37,7 +37,7 @@ const Carousel = () => {
     );
   };
   return (
-    <div className="relative w-full  p-20">
+    <div className="relative w-full  md:p-20 xs:p-0">
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"
@@ -56,13 +56,13 @@ const Carousel = () => {
       </div>
       <button
         onClick={prevImage}
-        className="absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden md:flex absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
         <i class="bi bi-arrow-left-circle-fill"></i>
       </button>
       <button
         onClick={nextImage}
-        className="absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden md:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
        <i class="bi bi-arrow-right-circle-fill"></i>
       </button>

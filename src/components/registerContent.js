@@ -56,7 +56,7 @@ const content = [
             <div>
               <label>Date of Birth</label>
               <input
-                className="mt-2 text-center"
+                className="mt-2"
                 type="date"
                 placeholder="dd//m/yy"
               />
@@ -79,7 +79,7 @@ const content = [
                 <option> 4XL(54) </option>
               </select>
             </div>
-            <h1 className="text-2xl text-[#070802] font-bold my-10">Address</h1>
+            <h1 className="text-2xl text-[#070802] font-bold" style={{margin:'40px 0'}}>Address</h1>
             <div>
               <label>City</label>
               <input className="mt-2" type="text" required />
