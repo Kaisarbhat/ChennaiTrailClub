@@ -2,16 +2,18 @@ import React from "react";
 
 const RefundAndCancellation = () => {
   return (
-    <div className="flex justify-center md:px-4">
-      <div className="lg:px-72 w-full flex justify-center">
+    <div className="flex justify-center px-4">
+      <div className="2xl:max-w-[1340px] w-full flex justify-center">
         <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
           <div className="w-full bg-[#DDF94A] rounded-lg p-10 flex flex-col justify-center items-center max-h-40">
-            <h2 className="text-[32px] text-[#070802] font-bold">
+            <h2 className="md:text-[32px] xs:text-xl text-[#070802] font-bold">
               Refund and Cancellation Policy
             </h2>
-            <p className="text-[16px] mt-3">Effective Mar 18, 2023</p>
+            <p className="md:text-[16px] xs:text-sm mt-3">
+              Effective Mar 18, 2023
+            </p>
           </div>
-          <div className="space-y-4 mt-8 tracking-tighter leading-loose font-man">
+          <div className="space-y-4 mt-8 sm:tracking-normal xs:tracking-tighter leading-loose font-man">
             <p>
               Per the marathon running industry policy, all entry fees are
               non-refundable and non-transferable to a different year or

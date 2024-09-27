@@ -3,12 +3,12 @@ import Image from 'next/image'
 import { Button1 } from '.'
 const EventCard = () => {
   return (
-    <div className="border border-solid hover:shadow-mine rounded-xl   p-3 md:space-x-2 xs:space-x-0 my-6 min-h-52 justify-between hover:border-[#7328f6] flex md:flex-row xs:flex-col">
+    <div className="border border-solid hover:shadow-mine rounded-xl   p-3 2xl:space-x-4 md:space-x-2 xs:space-x-0 my-6 min-h-52 justify-cenetr hover:border-[#7328f6] flex md:flex-row xs:flex-col">
             <Image
               src="/past-event.jpg"
               width={300}
               height={400}
-              className="md:w-2/5 xs:w-full h-full rounded-lg"
+              className="md:w-2/5 xs:w-full lg:w-1/3 h-full rounded-lg"
             />
 
             <div className="flex flex-col space-y-3 justify-between ml-1 xs:mt-3 md:mt-0">

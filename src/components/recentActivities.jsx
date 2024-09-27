@@ -156,30 +156,35 @@ const RecentActivities = () => {
     return () => clearInterval(interval);
   }, [startIndex]);
 
+  const showImg = () =>{
+    document.querySelector('.last_img').style.display = 'flex';
+    document.querySelector('.show_btn').style.display = 'none'
+  }
   return (
-    <div className="w-full h-screen lg:px-64 lg:py-10 lg:mt-32 flex flex-col justify-center bg-[#F6FFC7] md:px-4">
-      <div className="flex justify-between">
-        <div className="w-1/2 mt-8 py-8 ">
+    <div className="w-full xl:h-screen md:h-auto xs:h-auto md:px-4  xs:px-4 lg:py-10   xs:py-8 md:mt-32 xs:mt-24 flex flex-col xs:justify-start md:justify-center lg:items-center bg-[#F6FFC7] ">
+      <div className="xl:max-w-[1340px] lg:w-full md:w-full xs:w-full">
+      <div className="flex  justify-between ">
+        <div className="lg:w-1/2 md:w-full xs:w-full xs:py-10  lg:py-0 ">
           <motion.h1 
           ref={ref}
           initial = {{opacity:0 , y:-150}}
           animate = {isInView ? {opacity : 1 , y : 0} : {opacity:0 , y:-150}}
           transition={{duration : 0.5}}
-          className="text-[56px] font-bold mb-2">Recent Activities
+          className="md:text-[56px] xs:text-[26px] font-bold mb-2 xs:text-center md:text-start">Recent Activities
           </motion.h1>
           <motion.p 
           ref={ref}
           initial={{opacity : 0 , x : '-100%'}}
           animate = {isInView ? {opacity : 1 , x : 0} : {opacity : 0 , x : '-100%'}}
           transition={{duration : 0.5}}
-          className="text-[#50514C] text-lg">
+          className="text-[#50514C] md:text-lg xs:text-[16px] md:text-start xs:text-center">
             We’re thrilled to present a recap of the fantastic array of recent
             activities that we’ve had the pleasure of organizing and
             participating in. We’re excited to share our accomplishments and
             experiences with you.
           </motion.p>
         </div>
-        <div className="flex  items-center space-x-6">
+        <div className="lg:flex  md:hidden xs:hidden items-end mb-6 space-x-6">
           <button
             className="px-3 py-2 text-gray-500 hover:text-black text-5xl "
             onClick={moveBackward}
@@ -194,11 +199,25 @@ const RecentActivities = () => {
           </button>
         </div>
       </div>
-      <div className="w-full h-2/3 flex flex-nowrap">
-        <div className="w-full h-[500px] flex flex-row space-x-4 ">
+      <div className="w-full md:h-2/3 flex md:flex-nowrap mt-4">
+        <div className="w-full xl:h-[500px] md:flex xs:hidden flex-row space-x-4 ">
           {visibleComponents.map((item) => (
             <div key={item.key}>{item.component()}</div>
           ))}
+        </div>
+        </div>
+
+        {/* Display images on mobile phones */}
+        <div className="xs:flex md:hidden flex-col items-center space-y-3 w-full">
+            <img src="/running-activities-768x512.png" alt="running-activities-768x512" className="rounded-lg  xs:h-[180px] sm:h-full w-full"/>
+            <img src="/recent-activities-new-3.png" alt="recent-activities-new-3" className="rounded-lg xs:h-[180px] sm:h-full w-full"/>
+            <img src="recent-activities-new-1.png" alt="recent-activities-new-1" className="rounded-lg xs:h-[180px] sm:h-full w-full"/>
+              <button className="border border-[#070802] border-solid rounded-3xl py-2 px-4 text-sm text-[#070802] font-bold show_btn" onClick={showImg}>Show more</button>
+            <motion.img 
+            initial={{opacity:0 , y : -100 }}
+            animate = {{opacity : 1 , y : 0}}
+            transition={{duration : 2}}
+            src="new-recent-activities-5.png" alt="new-recent-activities-5" className=" hidden rounded-lg xs:h-[180px] sm:h-full w-full last_img"/>
         </div>
       </div>
     </div>

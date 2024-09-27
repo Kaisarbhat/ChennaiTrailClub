@@ -37,7 +37,7 @@ const Carousel = () => {
     );
   };
   return (
-    <div className="relative w-full  md:p-20 xs:p-0">
+    <div className="relative w-full  lg:p-20 xs:p-0">
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"
@@ -56,13 +56,13 @@ const Carousel = () => {
       </div>
       <button
         onClick={prevImage}
-        className="xs:hidden md:flex absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden lg:flex absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
         <i class="bi bi-arrow-left-circle-fill"></i>
       </button>
       <button
         onClick={nextImage}
-        className="xs:hidden md:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden lg:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
        <i class="bi bi-arrow-right-circle-fill"></i>
       </button>
@@ -70,7 +70,7 @@ const Carousel = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`dot w-3 h-3 rounded-full focus:outline-none ${
+            className={`dot md:w-3 md:h-3 xs:w-2 xs:h-2 rounded-full focus:outline-none ${
               currentIndex === index ? "bg-[#BCD700]" : "bg-gray-400"
             }`}
             onClick={() => updateCarousel(index)}

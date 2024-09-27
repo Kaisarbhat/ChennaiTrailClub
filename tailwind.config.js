@@ -11,9 +11,11 @@ module.exports = {
   theme: {
     extend: {
       screens:{
-        xs : '450px',
+        xs : '350px',
         sm : '600px',
         md : '820px',
+        lg : '1024px',
+        xl : '1340px',
       },
       listStyleType: {
         alpha: 'lower-alpha',

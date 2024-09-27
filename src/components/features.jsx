@@ -9,8 +9,8 @@ function Features() {
   const isInView = useInView(ref, {once:true});
   return (
     <div className="w-full flex justify-center">
-      <div className="md:w-4/5 xs:w-full flex justify-center items-center lg:m-4 xs:m-0">
-        <div className="md:w-4/5 xs:w-full bg-black rounded-2xl md:mx-3 p-5 text-white">
+      <div className="xl:max-w-[1340px] lg:w-full md:w-full xs:w-full flex justify-center items-center lg:m-4 xs:m-0">
+        <div className="md:w-full xs:w-full bg-black md:rounded-2xl xs:rounded-none md:mx-3 p-5 text-white">
           <motion.h1 
           ref={ref}
           initial={{opacity : 0 , x : 150}}

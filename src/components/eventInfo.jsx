@@ -8,7 +8,7 @@ const EventInfo = () => {
       key: "General Info",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 xs:mb-8 mb-4 xs:font-medium text-[#070802] xs:text-center xs:text-lg">
+          <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 md:mt-0 xs:mb-8 mb-4 xs:font-medium text-[#070802] xs:text-center md:text-start xs:text-lg">
             General Information
           </h1>
           <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
@@ -64,7 +64,7 @@ const EventInfo = () => {
       key: "Categories",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 xs:mb-8   mb-4 text-[#070802] xs:text-lg xs:text-center">
+          <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 md:mt-0  xs:mb-8   mb-4 text-[#070802] xs:text-lg xs:text-center md:text-start ">
             Categories
           </h1>
           <p className="xs:text-sm md:text-lg">
@@ -148,7 +148,7 @@ const EventInfo = () => {
       key: "Rules & Criteria",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold  mb-4 text-[#070802]">
             Rules & Criteria
           </h1>
           <p className="xs:text-[13px] md:text-[16px]">
@@ -228,7 +228,7 @@ const EventInfo = () => {
       key: "Food",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start xs:font-medium font-bold  mb-4 text-[#070802]">
             Food
           </h1>
           <div className="flex flex-col space-y-4">
@@ -273,7 +273,7 @@ const EventInfo = () => {
       key: "Medical / Baggage",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center  xs:font-medium font-bold  mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  xs:font-medium md:text-start  font-bold  mb-4 text-[#070802]">
             Medical Assistance and Baggage Counter
           </h1>
           <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
@@ -317,7 +317,7 @@ const EventInfo = () => {
       key: "Aid Station / Hydration",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold   mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold   mb-4 text-[#070802]">
             Aid Station and Hydration
           </h1>
           <ul className="list-disc space-y-3 px-8 md:text-[16px] xs:text-sm">
@@ -352,7 +352,7 @@ const EventInfo = () => {
       key: "Accommodation / Transport",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start xs:font-medium font-bold  mb-4 text-[#070802]">
             Accommodation and Transport
           </h1>
           <div>
@@ -401,7 +401,7 @@ const EventInfo = () => {
       key: "Medals, Certificates & Results",
       component: () => (
         <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium font-bold  mb-4 text-[#070802]">
+          <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium font-bold  mb-4 text-[#070802]">
             Medals, Certificates & Results
           </h1>
           <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6 mb-4">
@@ -529,8 +529,8 @@ const EventInfo = () => {
     {
       key: "Running Tips",
       component: () => (
-        <div className="leading-loose">
-          <h1 className="md:text-[32px] md:font-bold  xs:mt-4 xs:mb-8 xs:text-lg xs:text-center xs:font-medium   mb-4 text-[#070802] ">
+        <div className="leading-normal">
+          <h1 className="md:text-[32px] md:font-bold  xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium   mb-4 text-[#070802] ">
             Tips to be followed
           </h1>
           <div className="w-full  space-y-2 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
@@ -538,10 +538,10 @@ const EventInfo = () => {
               <div>
                 <i class="bi bi-flag text-[56px]  text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+              <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
                 The terrain is not same:
               </h2>
-              <p className="xs:text-[13px]">
+              <p className="xs:text-[13px] md:text-[16px]">
                 We call it a multi-terrain marvel. Therefore, running in the
                 trail has its own unique challenges and being watchful and alert
                 while running on the trail.
@@ -551,10 +551,10 @@ const EventInfo = () => {
               <div>
                 <i class="bi bi-search text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+              <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
                 Find your rhythm:
               </h2>
-              <p className="xs-text-[13]">
+              <p className="xs-text-[13] md:text-[16px]">
                 exhausting, focus on finding the rhythm until you sense being
                 one with the terrain{" "}
               </p>
@@ -564,10 +564,10 @@ const EventInfo = () => {
                 <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
                 <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+              <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
                 Run with a buddy:
               </h2>
-              <p className="xs-text-[13]">
+              <p className="xs-text-[13] md:text-[16px]">
                 If you are not aiming at a podium finish or personal best, run
                 with a buddy so that you can be safe inside the trails.
               </p>
@@ -576,10 +576,10 @@ const EventInfo = () => {
               <div>
                 <i class="bi bi-emoji-heart-eyes text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+              <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
                 Keep your eyes on the trail:
               </h2>
-              <p className="xs-text-[13]">
+              <p className="xs-text-[13] md:text-[16px]">
                 It can be tempting to look at the nature around you, but doing
                 so can quickly lead to tripping and falling. It is advisable to
                 keep your eyes on the trail.
@@ -589,10 +589,10 @@ const EventInfo = () => {
               <div>
                 <i class="bi bi-shop text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] text-[#070802] font-semibold">
+              <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
                 Sport with your Trail shoes:
               </h2>
-              <p className="xs-text-[13]">
+              <p className="xs-text-[13] md:text-[16px]">
                 If you have a pair of trail running shoes, sport with them. They
                 reduce the chance of ankle rolls with a high heel.
               </p>
@@ -601,10 +601,10 @@ const EventInfo = () => {
               <div>
                 <i class="bi bi-eyeglasses text-[56px] text-[#D0F700]"></i>
               </div>
-              <h2 className="text-[20px] xs-text-[16] font-semibold text-[#070802]">
+              <h2 className="md:text-[20px] xs-text-[16] lg:font-semibold  md:font-medium leading-5 text-[#070802]">
                 Accessorise:
               </h2>
-              <p className="xs-text-[13]">
+              <p className="xs-text-[13] md:text-[16px]">
                 It is advisable to apply sunscreen, wear your sunglasses,
                 cap/hat or carry a piece of white cotton cloth to cover yourself
                 when the sun is pretty hard after 8 a.m.
@@ -626,7 +626,7 @@ const EventInfo = () => {
     content.find((item) => item.key === selectedKey)?.component || (() => null);
 
   return (
-    <div className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 text-[#50514C] text-[16px]">
+    <div className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-[#50514C] text-[16px]">
       <div className="xs:hidden md:flex">
         <aside className=" text-black p-6 flex flex-col border items-start  border-gray-200 rounded-lg space-y-2 max-h-[618px]">
           {content.map((item) => (
@@ -640,24 +640,25 @@ const EventInfo = () => {
           ))}
         </aside>
       </div>
-      <div className="md:hidden xs:flex w-full xs:px-4">
+      {/* "Only on small devices" */}
+      <div className="md:hidden xs:flex w-full xs:px-4 ">
         <select
           value={selectedKey}
           onChange={(e) => setSelectedKey(e.target.value)}
-          className="bg-[#070802] p-3 w-full rounded-md text-[#D0F700]"
+          className="bg-[#070802] p-3  w-full rounded-md text-[#D0F700] sticky"
         >
           {content.map((item) => (
             <option
               key={item.key}
               onChange={() => handleButtonClick(item.key)}
-              className="text-start text-lg text-bold"
+              className="text-start md:text-lg xs:text-sm text-bold "
             >
               {item.key}
             </option>
           ))}
         </select>
       </div>
-      <div className="md:w-full lg:w-full py-4 lg:px-6 xs:px-4 rounded-lg  shadow-xl">
+      <div className="md:w-full lg:w-full lg:px-6 xs:px-4 rounded-lg   shadow-xl">
         {selectedComponent()}
       </div>
     </div>

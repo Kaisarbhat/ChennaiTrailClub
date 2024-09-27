@@ -5,13 +5,14 @@ const handleSubmit = (e) => {
   
 const content = [
     {
-      key: "Personal Details",
+      key : "1",
+      title: "Personal Details",
       component: () => (
         <>
           <h1 className="text-2xl text-[#070802] font-bold mb-6">
             Basic Details
           </h1>
-          <form onSubmit={handleSubmit} className="space-y-2">
+          <form onSubmit={handleSubmit} className="space-y-2 text-sm">
             <div>
               <label>Select your Running Category</label>
               <br />
@@ -136,13 +137,15 @@ const content = [
       ),
     },
     {
-      key: "Other Details",
+
+      key : "2",
+      title: "Other Details",
       component: () => (
         <>
           <h1 className="text-2xl text-[#070802] font-bold mb-6">
             Other Details
           </h1>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
             <div>
               <label>Blood Group</label>
               <br />
@@ -207,14 +210,15 @@ const content = [
         </>
       ),
     },
-    {
-      key: "Medical Questions",
+    { 
+      key : "3",
+      title: "Medical Questions",
       component: () => (
         <>
           <h1 className="text-2xl text-[#070802] font-bold mb-6">
             Medical Questions
           </h1>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
             <div className="flex flex-col">
               <h3>Do you suffer from cardiovascular disease?</h3>
               <div className="flex items-center space-x-4 text-[#070802]">
@@ -329,13 +333,14 @@ const content = [
       ),
     },
     {
-      key: "Qualification & Waiver Form",
+      key : "4",
+      title: "Qualification & Waiver Form",
       component: () => (
         <div className="text-[#50514C]">
           <h1 className="text-2xl text-[#070802] font-bold mb-6">
             Qualification & Waiver Form
           </h1>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
             <p>
               Link to timing certificates/runner profile to demonstrate your
               qualification to Jawadhu Hills Ultra (races run after 01-Feb-2023)

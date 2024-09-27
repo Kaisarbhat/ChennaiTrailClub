@@ -18,7 +18,8 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <header className="w-full h-20 flex items-center   bg-black text-[#fcfdf899] fixed lg:px-64 md:px-4 z-10">
+    <div className="flex justify-center bg-black text-[#fcfdf899]">
+      <header className="w-full h-20 flex items-center    fixed xl:max-w-[1340px] sm:px-4 xs:px-0 z-10">
       <a href="/home" className="flex left">
         <Image
           src="/logo.png"
@@ -29,7 +30,7 @@ function Navbar() {
         />
       </a>
       <nav className="w-full  flex flex-row justify-end items-center font-sans text-[16px]">
-        <ul className="lg:flex  list-none space-x-10  nav-links md:hidden xs:hidden ">
+        <ul className="xl:flex  list-none space-x-10   nav-links md:hidden xs:hidden ">
           <li className=" hover:text-purple-900 cursor-pointer">
             <Link href="/home"> Home </Link>{" "}
           </li>
@@ -66,10 +67,10 @@ function Navbar() {
           </li>
         </ul>
         <button
-          className="lg:hidden md:flex text-4xl cursor-pointer z-10 "
+          className="xl:hidden  xs:flex text-4xl cursor-pointer z-10 "
           onClick={toggleMenu}
         >
-          {isOpen ? <X size={30} /> : <Menu size={30} />}
+          {isOpen ? <X size={40} /> : <Menu size={40} />}
         </button>
         {/* Mobile menu */}
 
@@ -115,6 +116,7 @@ function Navbar() {
         </ul>
       </nav>
     </header>
+    </div>
   );
 }
 
