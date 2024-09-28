@@ -1,5 +1,5 @@
 import React from 'react'
-import { Features, Hero, RecentActivities } from '../../components'
+import { Features, Hero, RecentActivities } from '../../components/index'
 
 const Home = () => {
   return (

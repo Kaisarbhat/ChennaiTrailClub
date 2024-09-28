@@ -95,7 +95,7 @@ const FooterLarge = () => {
                 <motion.div 
                 ref={ref}
                 initial={{opacity : 0,scale: 0}}
-                animate={ {opacity : 1,scale : 1}}
+                animate={ !isInView ? {opacity : 1,scale : 1}:{opacity : 0,scale: 0}}
                 transition={{duration : 0.5 }}
                 className="flex justify-center mt-6">
                   <Link href="https://www.calibraint.com/">

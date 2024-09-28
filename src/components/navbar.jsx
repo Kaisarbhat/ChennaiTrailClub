@@ -18,8 +18,8 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="flex justify-center bg-black text-[#fcfdf899]">
-      <header className="w-full h-20 flex items-center    fixed xl:max-w-[1340px] sm:px-4 xs:px-0 z-10">
+      <header className="w-full h-20 flex items-center justify-center sm:px-4  fixed   xs:px-0 z-10  bg-[#070802] text-[#fcfdf899]">
+      <div className="w-full flex xs:justify-between  items-center 2xl:w-[1340px] ">
       <a href="/home" className="flex left">
         <Image
           src="/logo.png"
@@ -45,7 +45,7 @@ function Navbar() {
             {" "}
             Events
             {isHovered && (
-              <ul className="absolute right-80  bg-white text-black rounded shadow-lg py-2">
+              <ul className="absolute right-24 2xl:right-[370px] bg-white text-black rounded shadow-lg py-2">
                 <li className="hover:bg-gray-300">
                   <Link href="/upcomingevents" className="block px-4 py-2">
                     Upcoming Events
@@ -115,8 +115,9 @@ function Navbar() {
           </li>
         </ul>
       </nav>
+      </div>
     </header>
-    </div>
+
   );
 }
 

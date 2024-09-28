@@ -4,7 +4,7 @@ import {
   Hero,
   Features,
   RecentActivities,
-} from "../components/index.js";
+} from "@/components";
 
 
 export default function Home() {

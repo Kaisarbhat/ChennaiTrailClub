@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Button1 } from '.'
+import { Button } from '.'
 const EventCard = () => {
   return (
     <div className="border border-solid hover:shadow-mine rounded-xl   p-3 2xl:space-x-4 md:space-x-2 xs:space-x-0 my-6 min-h-52 justify-cenetr hover:border-[#7328f6] flex md:flex-row xs:flex-col">
@@ -8,7 +8,7 @@ const EventCard = () => {
               src="/past-event.jpg"
               width={300}
               height={400}
-              className="md:w-2/5 xs:w-full lg:w-1/3 h-full rounded-lg"
+              className="md:w-1/2 md:h-1/2 lg:h-full xs:w-full h-full lg:w-1/3 rounded-lg"
             />
 
             <div className="flex flex-col space-y-3 justify-between ml-1 xs:mt-3 md:mt-0">
@@ -21,12 +21,17 @@ const EventCard = () => {
               </div>
               
               <div  className="lg:flex justify-evenly " >
-              <Button1 title={"View Details"} link={"/jhu"} />
-              <Button1 title={"Results"} link='/https://myraceindia.com/overall/2024/Chennai%20Trail%20Ultra%202024'/>
+              <Button title={"View Details"} link={"/jhu"}
+              classname={'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'}
+              />
+              <Button title={"Results"} 
+              link='/https://myraceindia.com/overall/2024/Chennai%20Trail%20Ultra%202024'
+              classname={'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'}
+              />
               </div>
             </div>
           </div>
   )
 }
 
-export default EventCard
+export default EventCard;

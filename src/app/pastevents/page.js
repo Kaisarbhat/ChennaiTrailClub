@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import EventCard from "@/components/eventCard";
-import Button1 from "../../components/button1";
+import Button from "../../components/button";
 const PastEvents = () => {
   return (
     <div className="pt-[100px] w-full overflow-clip flex flex-col items-center px-4">
@@ -16,15 +16,24 @@ const PastEvents = () => {
         </div>
       </div>
 
-      {/* {container} */}
       <div className="px-5 2xl:w-[1340px]">
         <div className="flex  space-x-4">
-          <Button1 title={"2023"} />
-          <Button1 title={"2024"} />
+          <Button
+            title={"2023"}
+            classname={
+              "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+            }
+          />
+          <Button
+            title={"2024"}
+            classname={
+              "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+            }
+          />
         </div>
-        <div className="flex md:flex-row xs:flex-col md:justify-between mt-4 md:space-x-8 xs:space-x-0 w-full">
-          <EventCard/>
-          <EventCard/>
+        <div className="flex md:flex-row xs:flex-col justify-between mt-4 md:space-x-8 xs:space-x-0 w-full">
+          <EventCard />
+          <EventCard />
         </div>
       </div>
     </div>
