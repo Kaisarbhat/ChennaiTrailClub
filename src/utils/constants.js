@@ -1,4 +1,89 @@
+export   const eventData = {
+  imageUrl : '/banner.png',
+  banner: '/JHU-2024-Banner.jpg',
+  eventName : 'Jawadhu Hills Ultra 2024',
+  eventAbbr : '(JHU-24)',
+  eventText :`Jawadhu Hills Ultra is back! Experience the most scenic trails in
+            the Eastern Ghats, weaving through the pristine hills of Jawadhu
+            range. Challenge yourself on diverse terrains, enjoy breathtaking
+            vistas, and immerse in the natural beauty.`,
+  
+  eventDate : '09 November 2024, (Saturday)',
+  eventLocation : ' St.Joseph Higher Secondary School, Jamunamarathur',
+  eventTitle : 'JNU 2024'
+}
+export const featuresData = [
+  {
+    imageUrl : '/new-events-1.png',
+    eventName : 'Urapakkam Trail Marathon Bliss',
+    eventText : `Exploring lakes and trails around Urapakkam that goes through
+                bush forests and sleepy villages. The trails run through rural
+                areas around suburbs of south Chennai that are aimed to
+                promote trail running in spirit`,
+    
 
+  },
+  {
+    imageUrl : '/new-events-3.png',
+    eventName : 'Adyar River Bank Trail',
+    eventText : `Nestled in the heart of the Chennai city, Adyar river bank is
+                a 3km trail that runs alongside Adyar river. It is a go-to
+                place for trail runners for Chennai who seek to run in a
+                peaceful and serene environment`,
+    
+
+  },
+  {
+    imageUrl : '/new-events-3.png',
+    eventName : 'Weekend events',
+    eventText : `Weekends are for outdoors and we head out to the nearby
+                hills/places around chennai for running and cycling. You would
+                be meeting like minded people and sleeping under the stars in
+                such events`,
+    
+
+  },
+  {
+    imageUrl : '/new-events-4.png',
+    eventName : 'Anjur Hill Runs',
+    eventText : `Anjur hill near Chengalpet is a hill trail for 1km with an
+                elevation of 150m, where runners can do hill repeats. Doing
+                hill repeats strengthens your endurance and prepares you for
+                long ultra runs organized by Chennai Trail Club.`,
+    
+
+  }
+]
+export const raceDate = [
+  `Jawadhu Hill Ultra is an Ultra Trail Marathon is organized by
+   Chennai Trail Club in the hills of Jawadhu Hills (Eastern ghats).
+   Chennai Trail club is a group of fitness enthusiasts who are
+   passionate about long distance running. Through this Ultra
+   running, we are providing an opportunity and experience to run
+   through the trails, streams, farms and by the hamlet of Jawadhu
+   hills.`,
+  `The Jawadhu Hills is an extension of the Eastern Ghats spread
+   across parts of Vellore, Tirupattur and Tiruvannamalai districts
+   in the northern part of the state of Tamil Nadu in south-eastern
+   India.`,
+  `Jamanamarathur is one of the larger villages in these hills,
+   populated with around 10,000. With an altitude of 857m, it is the
+   second village in height in Jawadhu hills in Tiruvannamali
+   district.`,
+  `One can reach Jamanamarathur from`,
+  `West - Tirupattur or Vaniyambadi`,
+  `East - Polur`,
+  `Northeast - Vellore`,
+  `South - Chengam`
+
+];
+export const pastEvents = {
+  imageUrl : '/past-event.jpg',
+  eventName : 'Chennai Trail Ultra 2024 (CTU-24)',
+  eventLocation : `Gojan School of Business and Technology`,
+  eventDate : '01 September 2024 (Sunday)',
+  resultUrl : 'https://myraceindia.com/overall/2024/Chennai%20Trail%20Ultra%202024',
+}
 const termsAndConditions = () => (
   <>
     <div className="overflow-auto max-h-[550px] text-xs p-7 space-y-4  border border-solid rounded-lg">
@@ -571,6 +656,12 @@ export const registerContent = [
     ],
   },
 ];
+export const registerCardData = {
+  imageurl : '/JHU-2024-Banner.jpg',
+  eventName : 'Jawadhu Hills Ultra (JHU-24)',
+  eventDate : '09 November 2024',
+  eventLocation : 'St.Joseph Higher Secondary School, Jamunamarathur',
+}
 export const eventContent = [
   {
     key: "General Info",

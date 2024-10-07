@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from ".";
-
+import { eventData } from "@/utils/constants";
 function UpcomingEventsHero() {
   return (
     <div className="bg-[#070802] xs:h-[100vh] sm:h-[71vh] md:h-[100vh] text-white box-border  flex flex-col  pt-24  md:px-4 font-serif items-center justify-center">
@@ -13,8 +13,8 @@ function UpcomingEventsHero() {
             transition={{ duration: 0.5 }}
             className="md:text-[38px] xs:text-[20px] leading-tight"
           >
-            Jawadhu Hills Ultra
-            <br className="xs:hidden md:block lg:hidden" /> (JHU-24)
+            {eventData.eventName}
+            <br className="xs:hidden md:block lg:hidden" /> {eventData.eventAbbr}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, x: "-100%" }}
@@ -22,16 +22,12 @@ function UpcomingEventsHero() {
             transition={{ duration: 0.5 }}
             className="md:text-lg xs:text-[16px] text-[#ffffffbf] leading-normal mt-4 font-man"
           >
-            Jawadhu Hills Ultra is back! Experience the most scenic trails in
-            the Eastern Ghats, weaving through the pristine hills of Jawadhu
-            range. Challenge yourself on diverse terrains, enjoy breathtaking
-            vistas, and immerse in the natural beauty.
+          {eventData.eventText}
           </motion.p>
         </div>
         <div className="flex flex-col xs:items-center md:items-start mb-10  md:mt-0 xs:mt-8 md:space-y-3 xs:space-y-0">
           <div className="md:text-[18px] xs:text-[14px]  text-[#ffffffbf]">
-            <i class="bi bi-calendar3 text-[#D0F700] mr-1"></i> 09 November 2024
-            (Saturday)
+            <i class="bi bi-calendar3 text-[#D0F700] mr-1"></i> {eventData.eventDate}
           </div>
           <motion.div
             initial={{ opacity: 0, y: "100%" }}
@@ -42,8 +38,7 @@ function UpcomingEventsHero() {
               className="md:text-[18px] xs:text-[16px]  text-[#ffffffa6] underline mt-8"
               href=""
             >
-              <i class="bi bi-geo-alt-fill text-[#D0F700] mr-1 "></i> St.Joseph
-              Higher Secondary School, Jamunamarathur{" "}
+              <i class="bi bi-geo-alt-fill text-[#D0F700] mr-1 "></i>{eventData.eventLocation}{" "}
               <i class="bi bi-arrow-up-right"></i>
             </a>
           </motion.div>
@@ -63,11 +58,10 @@ function UpcomingEventsHero() {
         className="w-full rounded-lg xs:px-2 md:px-0 md:mt-8 xs:mt-0 max-w-[1340px]"
       >
         <Image
-          src="/JHU-2024-Banner.jpg"
+          src={eventData.banner}
           width={1288}
           height={440}
           className="w-full rounded-lg "
-          layout="responsive"
         />
       </motion.div>
     </div>

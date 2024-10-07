@@ -33,7 +33,7 @@ const PastEvents = () => {
         </div>
         <div className="flex md:flex-row xs:flex-col justify-between mt-4 md:space-x-8 xs:space-x-0 w-full">
           <EventCard />
-          <EventCard />
+          {/* <EventCard /> */}
         </div>
       </div>
     </div>

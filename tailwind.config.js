@@ -29,7 +29,10 @@ module.exports = {
       },
       boxShadow:{
         mine:'10px 10px 0 0 rgba(115, 40, 246, 1)',
-      }
+      },
+      width: {
+        '45': '48%',
+      },
     },
   },
   plugins: [],

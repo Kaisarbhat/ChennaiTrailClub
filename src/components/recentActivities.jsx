@@ -131,6 +131,20 @@ const RecentActivities = () => {
       ),
     },
   ];
+  const mobileImages = [
+    {
+      imageUrl : '/running-activities-768x512.png',
+      alt : 'running-activities-768x512',
+    },
+    {
+      imageUrl : '/recent-activities-new-3.png',
+      alt : 'recent-activities-new-3',
+    },
+    {
+      imageUrl : '/recent-activities-new-1.png',
+      alt : 'recent-activities-new-1',
+    },
+  ]
   const moveForward = () => {
     setStartIndex((prevIndex) => (prevIndex + 1) % data.length);
   };
@@ -216,21 +230,15 @@ const RecentActivities = () => {
 
         {/* Display images on mobile phones */}
         <div className="xs:flex md:hidden flex-col items-center space-y-3 w-full">
-          <img
-            src="/running-activities-768x512.png"
-            alt="running-activities-768x512"
+          {mobileImages.map((item ,index) => (  
+            <img
+            key={index}
+            src={item.imageUrl}
+            alt={item.alt}
             className="rounded-lg  xs:h-[180px] sm:h-full w-full"
           />
-          <img
-            src="/recent-activities-new-3.png"
-            alt="recent-activities-new-3"
-            className="rounded-lg xs:h-[180px] sm:h-full w-full"
-          />
-          <img
-            src="recent-activities-new-1.png"
-            alt="recent-activities-new-1"
-            className="rounded-lg xs:h-[180px] sm:h-full w-full"
-          />
+          ))}
+
           <button
             className="border border-[#070802] border-solid rounded-3xl py-2 px-4 text-sm text-[#070802] font-bold show_btn"
             onClick={showImg}
