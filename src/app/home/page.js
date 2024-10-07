@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Features, Hero, RecentActivities } from '../../components/index'
 

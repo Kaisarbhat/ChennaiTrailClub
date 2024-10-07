@@ -1,11 +1,15 @@
 import React from "react";
 import Link from "next/link";
-const RegisterCard = () => {
+
+const RegisterCard = ({ price, category }) => {
   return (
-    <div className=" sticky border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4 md:mt-4 lg:mt-0 lg:ml-2 xs:ml-0">
+    <div className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4  lg:mt-0 lg:ml-2 xs:ml-0">
       <div className="w-full h-1/2 ">
-        <img src="/JHU-2024-Banner.jpg" className="rounded-md md:h-32 lg:h-full w-full xs:h-full" />
-        <h1 className="z-10 relative top-[-30px] text-white font-bold px-2">
+        <img
+          src="/JHU-2024-Banner.jpg"
+          className="rounded-md md:h-32 lg:h-full w-full xs:h-full"
+        />
+        <h1 className="relative top-[-30px] text-white font-bold px-2">
           Jawadhu Hills Ultra (JHU-24)
         </h1>
       </div>
@@ -27,13 +31,12 @@ const RegisterCard = () => {
         </div>
         <div className="flex justify-between">
           <div>Running Category</div>
-          <div className="text-[#070802]">30 KM (INR 1800)</div>
+          <div className="text-[#070802]">{category || "Select KM"}</div>
         </div>
         <div className="flex justify-between ">
           <div className="text-[#070802] font-semibold">Registration Fee</div>
           <div className="text-[#070802] font-semibold text-[22px]">
-            {" "}
-            ₹ 1800
+            {price ? `₹${price}` : "Select KM"}
           </div>
         </div>
       </div>

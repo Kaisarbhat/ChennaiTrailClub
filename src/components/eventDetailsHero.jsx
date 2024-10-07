@@ -1,9 +1,7 @@
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 function EventDetailsHero() {
-    
   return (
     <div className="bg-[#070802] w-full 2xl:px-64 md:px-4 md:py-14 xs:py-4 xs:px-4  xs:pt-16 flex md:flex-row-reverse  xs:flex-col items-center  xs:justify-center md:justify-between overflow-hidden">
       <div className="2xl:w-1/3 md:w-1/2 xs:w-full xs:px-10 md:px-0">

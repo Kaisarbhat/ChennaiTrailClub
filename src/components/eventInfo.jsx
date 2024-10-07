@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { eventContent } from "@/utils/constants";
 const EventInfo = () => {
- 
   const [selectedKey, setSelectedKey] = useState(eventContent[0].key);
 
   const handleButtonClick = (key) => {
@@ -11,7 +10,8 @@ const EventInfo = () => {
   };
 
   const selectedComponent =
-   eventContent.find((item) => item.key === selectedKey)?.component || (() => null);
+    eventContent.find((item) => item.key === selectedKey)?.component ||
+    (() => null);
 
   return (
     <div className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-[#50514C] text-[16px]">

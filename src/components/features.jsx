@@ -1,29 +1,33 @@
 "use client";
 import Image from "next/image";
 import React, { useRef } from "react";
-import { motion,useInView } from "framer-motion";
-
+import { motion, useInView } from "framer-motion";
 
 function Features() {
-  const ref =useRef();
-  const isInView = useInView(ref, {once:true});
+  const ref = useRef();
+  const isInView = useInView(ref, { once: true });
   return (
     <div className="w-full flex justify-center">
       <div className="xl:max-w-[1340px] lg:w-full md:w-full xs:w-full flex justify-center items-center lg:m-4 xs:m-0">
         <div className="md:w-full xs:w-full bg-black md:rounded-2xl xs:rounded-none md:mx-3 p-5 text-white">
-          <motion.h1 
-          ref={ref}
-          initial={{opacity : 0 , x : 150}}
-          animate={isInView ? {opacity :  1 , x : 0 } : {opacity : 0 , x : 150}}
-          transition={{duration : 0.5}}
-          className="md:text-5xl xs:text-[22px] m-4 font-bold"> Our Features</motion.h1>
+          <motion.h1
+            ref={ref}
+            initial={{ opacity: 0, x: 150 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 150 }}
+            transition={{ duration: 0.5 }}
+            className="md:text-5xl xs:text-[22px] m-4 font-bold"
+          >
+            {" "}
+            Our Features
+          </motion.h1>
           <hr className="ml-4" />
-          <motion.div 
-          ref={ref} 
-          initial = {{opacity :0.5}}
-          animate = {isInView ? {opacity : 1} : {opacity : 0.5}}
-          transition={{duration : 0.5}}
-          className="flex flex-col mt-8 md:px-4 xs:px-1">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0.5 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0.5 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col mt-8 md:px-4 xs:px-1"
+          >
             <div className="flex md:flex-row xs:flex-col md:space-x-5 xs:space-x-0">
               <div className="md:w-3/6 xs:w-full bg-[#1B1C16] my-6 p-4 flex flex-col justify-start border border-solid rounded-xl hover:bg-purple-950 grayscale hover:grayscale-0">
                 <Image
@@ -74,7 +78,9 @@ function Features() {
                   layout="responsive"
                   className="w-full rounded-lg "
                 />
-                <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">Weekend events</h1>
+                <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
+                  Weekend events
+                </h1>
                 <p className="md:text-[16px] xs:text-sm">
                   Weekends are for outdoors and we head out to the nearby
                   hills/places around chennai for running and cycling. You would
@@ -91,7 +97,9 @@ function Features() {
                   layout="responsive"
                   className="w-full rounded-lg "
                 />
-                <h1 className="md:text-xl xs:text-lgfont-bold mt-4 mb-4">Anjur Hill Runs</h1>
+                <h1 className="md:text-xl xs:text-lgfont-bold mt-4 mb-4">
+                  Anjur Hill Runs
+                </h1>
                 <p className="md:text-[16px] xs:text-sm">
                   Anjur hill near Chengalpet is a hill trail for 1km with an
                   elevation of 150m, where runners can do hill repeats. Doing

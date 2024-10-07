@@ -15,7 +15,8 @@ import HeroText from "./heroText";
 import JoinUs from "./joinUs";
 import MaintainigCleaniless from "./maintainigCleaniless";
 import Timeline from "./timeline";
-
+import RegisterCard from "./registerCard";
+import RazorpayPaymentUI from "./razorPay";
 export {
     Button,
     Features,
@@ -34,4 +35,6 @@ export {
     JoinUs,
     MaintainigCleaniless,
     Timeline,
+    RegisterCard,
+    RazorpayPaymentUI,
 }

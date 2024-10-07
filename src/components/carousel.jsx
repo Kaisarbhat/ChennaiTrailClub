@@ -1,16 +1,15 @@
 "use client";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       updateCarousel(currentIndex + 1);
-    }, 3000); 
+    }, 3000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [currentIndex]);
 
   const images = [
@@ -64,7 +63,7 @@ const Carousel = () => {
         onClick={nextImage}
         className="xs:hidden lg:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
-       <i class="bi bi-arrow-right-circle-fill"></i>
+        <i class="bi bi-arrow-right-circle-fill"></i>
       </button>
       <div className="flex justify-center mt-4 space-x-2">
         {images.map((_, index) => (

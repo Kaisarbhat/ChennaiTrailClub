@@ -1,7 +1,6 @@
 import React from "react";
 import { privacyData } from "@/utils/constants";
 const PrivacyPolicy = () => {
- 
   return (
     <div className="flex justify-center px-4 ">
       <div className="2xl:max-w-[1340px] w-full flex justify-center">
@@ -10,7 +9,9 @@ const PrivacyPolicy = () => {
             <h2 className="md:text-[32px] xs:text-xl text-[#070802] font-bold">
               Privacy Policy
             </h2>
-            <p className="md:text-[16px] xs:text-sm mt-3">Effective Mar 18, 2023</p>
+            <p className="md:text-[16px] xs:text-sm mt-3">
+              Effective Mar 18, 2023
+            </p>
           </div>
           <div className="space-y-4 mt-8 sm:tracking-normal  xs:tracking-tighter leading-loose  font-man">
             {privacyData.map((item) => (
@@ -19,8 +20,10 @@ const PrivacyPolicy = () => {
                   {" "}
                   {item.heading}
                 </h3>
-                {item.text.map((para) => (
-                  <p className="mt-[10px] text-sm font-man">{para}</p>
+                {item.text.map((para, index) => (
+                  <p key={index} className="mt-[10px] text-sm font-man">
+                    {para}
+                  </p>
                 ))}
               </di>
             ))}

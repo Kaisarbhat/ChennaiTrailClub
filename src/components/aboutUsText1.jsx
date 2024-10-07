@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 const AboutUsText1 = () => {
@@ -9,7 +9,7 @@ const AboutUsText1 = () => {
       ref={ref}
       initial={{ opacity: 0, x: "-100%" }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
       className="flex xs:flex-col md:flex-row justify-between items-center  md:py-[100px]  xs:px-4  xs:py-12 2xl:max-w-[1340px] xs:text-center md:text-start"
     >
       <h1 className="md:text-[56px]   xs:text[22px] font-bold lg:leading-tight text-wrap xs:leading-loose md:leading-none">

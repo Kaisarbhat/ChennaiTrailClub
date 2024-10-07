@@ -1,7 +1,8 @@
 'use client'
 import React from "react";
 import { motion } from "framer-motion";
-import {Carousel , AboutUsText1 ,AboutUsText2} from '@/components'
+import {Carousel , AboutUsText1 ,AboutUsText2} from '../../components/index'
+
 const AboutUs = () => {
   return (
     <>
