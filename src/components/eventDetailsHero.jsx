@@ -10,7 +10,6 @@ function EventDetailsHero() {
           width={450}
           height={300}
           className="w-full  rounded-xl"
-          layout="responsive"
         />
       </div>
       <div className=" md:w-1/2 xs:w-full xs:mt-12 md:mt-0 flex flex-col xs:items-center md:items-start justify-between text-lg space-y-4 xs:text-center md:text-start">

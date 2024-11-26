@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import EventCard from "@/components/eventCard";
 import Button from "../../components/button";
@@ -21,13 +20,13 @@ const PastEvents = () => {
           <Button
             title={"2023"}
             classname={
-              "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+              "text-[14px] border  bg-white border-solid  text-black rounded-3xl p-2 w-32 focus:text-[#D0F700] focus:bg-black font-bold hover:text-black"
             }
           />
           <Button
             title={"2024"}
             classname={
-              "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+              "text-[14px] border  bg-white text-black border-solid rounded-3xl p-2 w-32 focus:text-[#D0F700] focus:bg-black font-bold hover:text-black"
             }
           />
         </div>

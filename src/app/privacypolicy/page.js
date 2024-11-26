@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
           </div>
           <div className="space-y-4 mt-8 sm:tracking-normal  xs:tracking-tighter leading-loose  font-man">
             {privacyData.map((item) => (
-              <di key={item.key}>
+              <div key={item.key}>
                 <h3 className="md:text-[32px] xs:text-[18px] text-[#070802] font-bold font-serif mb-4 mt-8">
                   {" "}
                   {item.heading}
@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
                     {para}
                   </p>
                 ))}
-              </di>
+              </div>
             ))}
           </div>
         </div>

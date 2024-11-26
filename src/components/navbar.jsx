@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import JoinUs from "./joinUs";
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   const toggleJoinUs = () => {
     setIsJoinUsOpen(!isJoinUsOpen);
@@ -17,8 +18,21 @@ function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(()=>{
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      if (scrollTop > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+    window.addEventListener('scroll',handleScroll);
+    return () => window.removeEventListener('scroll' , handleScroll)
+  },[])
   return (
-    <header className="w-full h-20 flex items-center justify-center sm:px-4  fixed   xs:px-0 z-10  bg-[#070802] text-[#fcfdf899]">
+    <header className={`w-full h-20 flex items-center justify-center sm:px-4  fixed   xs:px-0 z-10 ${hasScrolled ? 'bg-[#070802]' : 'bg-transparent'} backdrop-blur-sm text-[#fcfdf899]`}>
       <div className="w-full flex xs:justify-between  items-center 2xl:w-[1340px] ">
         <a href="/home" className="flex left">
           <Image

@@ -3,18 +3,15 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
-import {
-  Timeline,
-  RegisterCard,
-} from "../../components/index";
+import { Timeline, RegisterCard } from "../../components/index";
 import { registerContent } from "@/utils/constants";
 
 const EventRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [price, setPrice] = useState(0);
-  const [isPayOpen, setIsPayOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [value, setValue] = useState([]);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -96,29 +93,38 @@ const EventRegistration = () => {
     joinClub: false,
   };
 
+  console.log("value", value);
+
   const renderField = (field) => {
+    // console.log("field", field);
+
     switch (field.type) {
       case "select":
         return (
           <Field
-          as="select"
-          name={field.name}
-          className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
-          onChange={(e) => {
-            if (field.name === "runningCategory") {
-              setSelectedCategory(e.target.value);
-              const selectedPrice = e.target.value.split("(")[1].split(")")[0].split(" ")[1];
-              setPrice(selectedPrice);
-            }
-          }}
-        >
-          <option value="">---please choose an option---</option>
-          {field.options.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </Field>
+            as="select"
+            name={field.name}
+            value={value.name}
+            className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
+            onChange={(e) => {
+              if (field.name === "runningCategory") {
+                setSelectedCategory(e.target.value);
+                const selectedPrice = e.target.value
+                  .split("(")[1]
+                  .split(")")[0]
+                  .split(" ")[1];
+                setPrice(selectedPrice);
+              }
+              setValue((pre) => ({ ...pre, [field.name]: e.target.value }));
+            }}
+          >
+            <option value="">---please choose an option---</option>
+            {field.options.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </Field>
         );
       case "radio":
         return (
@@ -150,9 +156,6 @@ const EventRegistration = () => {
             <label htmlFor={field.name}>{field.label}</label>
           </div>
         );
-      case "address":
-        return <div className="text-lg font-bold">{field.label}</div>;
-        
       case "termsandconditions":
         return <div>{field.content}</div>;
       case "p":

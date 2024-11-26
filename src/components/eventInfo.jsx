@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { eventContent } from "@/utils/constants";
 const EventInfo = () => {
   const [selectedKey, setSelectedKey] = useState(eventContent[0].key);
-
+  const [selectedButton, setSelectedButton] = useState(eventContent[0].key)
   const handleButtonClick = (key) => {
     setSelectedKey(key);
+    setSelectedButton(key);
   };
 
   const selectedComponent =
@@ -20,6 +21,7 @@ const EventInfo = () => {
           {eventContent.map((item) => (
             <button
               key={item.key}
+              value={selectedButton}
               onClick={() => handleButtonClick(item.key)}
               className="text-start rounded-lg w-full hover:bg-[#070802] hover:text-[#D0F700] p-3 focus:text-[#D0F700] focus:bg-[#070802]"
             >

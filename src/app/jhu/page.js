@@ -1,6 +1,5 @@
 "use client"
 
-//import {EventInfo,EventDetailsHero,AboutRaceLocation,RegisterButton,MaintainigCleaniless} from '../../components/index'
 import EventInfo from "@/components/eventInfo";
 import EventDetailsHero from "@/components/eventDetailsHero";
 import AboutRaceLocation from "@/components/aboutRaceLocation";

@@ -5,11 +5,10 @@ import { motion } from "framer-motion";
 import HeroText from "./heroText";
 import { eventData } from "@/utils/constants";
 function Hero() {
-
   return (
     <>
       <div className="h-screen w-full flex md:flex-row sm:flex-col xs:flex-col  items-center justify-center  bg-black text-white  bg-[url('https://c0.wallpaperflare.com/preview/894/641/116/asphalt-dark-dawn-environment.jpg')] bg-cover bg-fixed xs:text-center sm:text-start overflow-hidden ">
-        <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-32 sm:pt-24 md:pt-0 items-center justify-center  space-x-4">
+        <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-20 sm:pt-24 md:pt-0 items-center justify-center  space-x-4">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -40,7 +39,7 @@ function Hero() {
               transition={{ duration: 0.5 }}
               className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-man 2xl:font-extralight tracking-wide  2xl:w-4/5"
             >
-             {eventData.eventText}
+              {eventData.eventText}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
@@ -49,9 +48,7 @@ function Hero() {
               className="font-bold md:mb-6 xs:mb-0 "
             >
               Event date:{" "}
-              <span className="font-light text-lg">
-                {eventData.eventDate}
-              </span>
+              <span className="font-light text-lg">{eventData.eventDate}</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 100 }}
