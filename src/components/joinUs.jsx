@@ -8,29 +8,23 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Name must be at least 3 characters")
     .required("Name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
   number: Yup.string()
     .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
     .required("Phone number is required"),
   blood: Yup.string()
     .matches(/^(A|B|AB|O)[+-]$/, "Invalid blood group format")
     .required("Blood group is required"),
-  terms: Yup.boolean().oneOf([true], "You must accept the terms and conditions"),
+  terms: Yup.boolean().oneOf(
+    [true],
+    "You must accept the terms and conditions"
+  ),
 });
 
 const JoinUs = ({ isOpen, onClose }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
+  
   if (!isOpen) return null;
 
   return (
@@ -67,7 +61,7 @@ const JoinUs = ({ isOpen, onClose }) => {
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              // Handle form submission
+              // submission
               console.log("Form values: ", values);
               setSubmitting(false);
               onClose();

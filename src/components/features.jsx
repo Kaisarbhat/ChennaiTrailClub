@@ -1,13 +1,25 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { featuresData } from "@/utils/constants";
+import { API_URL, featuresData } from "@/utils/constants";
 function Features() {
-  
-
   const ref = useRef();
   const isInView = useInView(ref, { once: true });
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`${API_URL}/adminservices/ourfeatures`);
+        if (!res.ok) throw new Error("Failed to fetch data");
+        const data = await res.json();
+        setData(data);
+      } catch (error) {
+        throw error;
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <div className="w-full flex justify-center">
       <div className="xl:max-w-[1340px] lg:w-full md:w-full xs:w-full flex justify-center items-center lg:m-4 xs:m-0">
@@ -31,25 +43,28 @@ function Features() {
             className="w-full flex flex-col mt-8 md:px-4 xs:px-1"
           >
             <div className="w-full flex md:flex-row flex-wrap xs:flex-col  xs:space-x-0 justify-evenly ">
-              {featuresData.map((item , index) => ( 
-                <div
-                key={index} 
-                className="md:w-45 xs:w-full bg-[#1B1C16] p-5 md:my-5 xs:my-1 flex flex-col justify-start border border-solid rounded-xl hover:bg-[#7328F6] grayscale hover:grayscale-0">
-                <Image
-                  src={item.imageUrl}
-                  alt="event image"
-                  width={500}
-                  height={400}
-                  className="w-full rounded-lg "
-                />
-                <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
-                  {item.eventName}
-                </h1>
-                <p className="md:text-[16px] xs:text-sm">
-                  {item.eventText}
-                </p>
-              </div>
-            ))}
+              {data &&
+                data.length > 0 &&
+                data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="md:w-45 xs:w-full bg-[#1B1C16] p-5 md:my-5 xs:my-1 flex flex-col justify-start border border-solid rounded-xl hover:bg-[#7328F6] grayscale hover:grayscale-0"
+                  >
+                    <Image
+                      src={item.imageUrl}
+                      alt="event image"
+                      width={500}
+                      height={400}
+                      className="w-full rounded-lg "
+                    />
+                    <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
+                      {item.title}
+                    </h1>
+                    <p className="md:text-[16px] xs:text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
             </div>
           </motion.div>
         </div>

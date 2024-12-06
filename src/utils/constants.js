@@ -1,59 +1,51 @@
-export   const eventData = {
-  imageUrl : '/banner.png',
-  banner: '/JHU-2024-Banner.jpg',
-  eventName : 'Jawadhu Hills Ultra 2024',
-  eventAbbr : '(JHU-24)',
-  eventText :`Jawadhu Hills Ultra is back! Experience the most scenic trails in
+export const eventData = {
+  imageUrl: "/banner.png",
+  banner: "/JHU-2024-Banner.jpg",
+  eventName: "Jawadhu Hills Ultra 2024",
+  eventAbbr: "(JHU-24)",
+  eventText: `Jawadhu Hills Ultra is back! Experience the most scenic trails in
             the Eastern Ghats, weaving through the pristine hills of Jawadhu
             range. Challenge yourself on diverse terrains, enjoy breathtaking
             vistas, and immerse in the natural beauty.`,
-  
-  eventDate : '09 November 2024, (Saturday)',
-  eventLocation : ' St.Joseph Higher Secondary School, Jamunamarathur',
-  eventTitle : 'JNU 2024'
-}
+
+  eventDate: "09 November 2024, (Saturday)",
+  eventLocation: " St.Joseph Higher Secondary School, Jamunamarathur",
+  eventTitle: "JNU 2024",
+};
 export const featuresData = [
   {
-    imageUrl : '/new-events-1.png',
-    eventName : 'Urapakkam Trail Marathon Bliss',
-    eventText : `Exploring lakes and trails around Urapakkam that goes through
+    imageUrl: "/new-events-1.png",
+    eventName: "Urapakkam Trail Marathon Bliss",
+    eventText: `Exploring lakes and trails around Urapakkam that goes through
                 bush forests and sleepy villages. The trails run through rural
                 areas around suburbs of south Chennai that are aimed to
                 promote trail running in spirit`,
-    
-
   },
   {
-    imageUrl : '/new-events-3.png',
-    eventName : 'Adyar River Bank Trail',
-    eventText : `Nestled in the heart of the Chennai city, Adyar river bank is
+    imageUrl: "/new-events-3.png",
+    eventName: "Adyar River Bank Trail",
+    eventText: `Nestled in the heart of the Chennai city, Adyar river bank is
                 a 3km trail that runs alongside Adyar river. It is a go-to
                 place for trail runners for Chennai who seek to run in a
                 peaceful and serene environment`,
-    
-
   },
   {
-    imageUrl : '/new-events-3.png',
-    eventName : 'Weekend events',
-    eventText : `Weekends are for outdoors and we head out to the nearby
+    imageUrl: "/new-events-3.png",
+    eventName: "Weekend events",
+    eventText: `Weekends are for outdoors and we head out to the nearby
                 hills/places around chennai for running and cycling. You would
                 be meeting like minded people and sleeping under the stars in
                 such events`,
-    
-
   },
   {
-    imageUrl : '/new-events-4.png',
-    eventName : 'Anjur Hill Runs',
-    eventText : `Anjur hill near Chengalpet is a hill trail for 1km with an
+    imageUrl: "/new-events-4.png",
+    eventName: "Anjur Hill Runs",
+    eventText: `Anjur hill near Chengalpet is a hill trail for 1km with an
                 elevation of 150m, where runners can do hill repeats. Doing
                 hill repeats strengthens your endurance and prepares you for
                 long ultra runs organized by Chennai Trail Club.`,
-    
-
-  }
-]
+  },
+];
 export const raceDate = [
   `Jawadhu Hill Ultra is an Ultra Trail Marathon is organized by
    Chennai Trail Club in the hills of Jawadhu Hills (Eastern ghats).
@@ -74,16 +66,16 @@ export const raceDate = [
   `West - Tirupattur or Vaniyambadi`,
   `East - Polur`,
   `Northeast - Vellore`,
-  `South - Chengam`
-
+  `South - Chengam`,
 ];
 export const pastEvents = {
-  imageUrl : '/past-event.jpg',
-  eventName : 'Chennai Trail Ultra 2024 (CTU-24)',
-  eventLocation : `Gojan School of Business and Technology`,
-  eventDate : '01 September 2024 (Sunday)',
-  resultUrl : 'https://myraceindia.com/overall/2024/Chennai%20Trail%20Ultra%202024',
-}
+  imageUrl: "/past-event.jpg",
+  eventName: "Chennai Trail Ultra 2024 (CTU-24)",
+  eventLocation: `Gojan School of Business and Technology`,
+  eventDate: "01 September 2024 (Sunday)",
+  resultUrl:
+    "https://myraceindia.com/overall/2024/Chennai%20Trail%20Ultra%202024",
+};
 const termsAndConditions = () => (
   <>
     <div className="overflow-auto max-h-[550px] text-xs p-7 space-y-4  border border-solid rounded-lg">
@@ -455,7 +447,7 @@ export const registerContent = [
         label: "Select your Running Category",
         type: "select",
         options: ["30KM (INR 1800)", "60KM (INR 2200)"],
-        id:'runningCategory'
+        id: "runningCategory",
       },
       { name: "firstName", label: "First Name", type: "text" },
       { name: "lastName", label: "Last Name", type: "text" },
@@ -467,7 +459,13 @@ export const registerContent = [
         type: "select",
         options: ["Male", "Female", "Prefer Not To Say"],
       },
-      { name: "dateOfBirth", label: "Date of Birth", type: "date" , min:"1960-01-01", max:"2006-12-31"},
+      {
+        name: "dateOfBirth",
+        label: "Date of Birth",
+        type: "date",
+        min: "1960-01-01",
+        max: "2006-12-31",
+      },
       {
         name: "tShirtSize",
         label: "Select Your T-shirt Size",
@@ -483,8 +481,8 @@ export const registerContent = [
           "4XL(54)",
         ],
       },
-      { name : 'address' , label : 'Address' , type : 'address'},
-      { name: "city", label: "City", type: "text" },
+
+      { name: "city", label: "City", text: "Address", type: "text" },
       {
         name: "state",
         label: "State/Province/Region",
@@ -657,11 +655,11 @@ export const registerContent = [
   },
 ];
 export const registerCardData = {
-  imageurl : '/JHU-2024-Banner.jpg',
-  eventName : 'Jawadhu Hills Ultra (JHU-24)',
-  eventDate : '09 November 2024',
-  eventLocation : 'St.Joseph Higher Secondary School, Jamunamarathur',
-}
+  imageurl: "/JHU-2024-Banner.jpg",
+  eventName: "Jawadhu Hills Ultra (JHU-24)",
+  eventDate: "09 November 2024",
+  eventLocation: "St.Joseph Higher Secondary School, Jamunamarathur",
+};
 export const eventContent = [
   {
     key: "General Info",
@@ -1592,17 +1590,19 @@ export const termsData = [
   },
 ];
 
-export   const refundData = [
+export const refundData = [
   `Per the marathon running industry policy, all entry fees are
    non-refundable and non-transferable to a different year or
    different runner. This policy applies to all entrants and is in
    effect whether you are injured, have an unexpected family/business
    emergency, have a medical emergency, etc.`,
-   `If the course has to be changed or the race cancelled due to an
+  `If the course has to be changed or the race cancelled due to an
    act of nature, or the event time changed due to circumstances
    beyond our control, there are no refunds or rollovers. You may not
    sell or give your bib to another person without going through the
    transfer process. There are NO exceptions.`,
-   `Your entry fee IS NOT TRANSFERABLE to a future year. You do not
+  `Your entry fee IS NOT TRANSFERABLE to a future year. You do not
    need to inform us of your cancellation.`,
-]
+];
+
+export const API_URL = "http://localhost:3001";

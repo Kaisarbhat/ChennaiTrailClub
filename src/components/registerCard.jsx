@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { registerCardData } from "@/utils/constants";
 const RegisterCard = ({ price, category }) => {
-  
   return (
     <div className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4  lg:mt-0 lg:ml-2 xs:ml-0">
       <div className="w-full h-1/2 ">
@@ -12,7 +11,7 @@ const RegisterCard = ({ price, category }) => {
           alt={registerCardData.imageurl}
         />
         <h1 className="relative top-[-30px] text-white font-bold px-2">
-         {registerCardData.eventName}
+          {registerCardData.eventName}
         </h1>
       </div>
       <div className="flex flex-col lg:space-y-4 md:space-y-2 xs:space-y-2">

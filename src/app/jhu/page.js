@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import EventInfo from "@/components/eventInfo";
 import EventDetailsHero from "@/components/eventDetailsHero";
@@ -6,11 +6,9 @@ import AboutRaceLocation from "@/components/aboutRaceLocation";
 import RegisterButton from "@/components/registerButton";
 import MaintainigCleaniless from "@/components/maintainigCleaniless";
 
-const JhuEventDetails = () => {
- 
+const Event = () => {
   return (
     <div className="py-16 text-[#50514C]">
-
       <EventDetailsHero />
 
       <div className="flex  flex-col justify-center items-center md:py-8 md:px-4  w-full">
@@ -20,13 +18,13 @@ const JhuEventDetails = () => {
           </h2>
           <EventInfo />
         </div>
-        
-        <RegisterButton/>
-        <AboutRaceLocation/>
-        <MaintainigCleaniless/>
+
+        <RegisterButton />
+        <AboutRaceLocation />
+        <MaintainigCleaniless />
       </div>
     </div>
   );
 };
 
-export default JhuEventDetails;
+export default Event;

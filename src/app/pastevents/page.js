@@ -1,7 +1,24 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import EventCard from "@/components/eventCard";
 import Button from "../../components/button";
+import { API_URL } from "@/utils/constants";
 const PastEvents = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${API_URL}/events/pastevents`);
+        if (!res.ok) console.log("failed to fetch data");
+        const data = await res.json();
+        setData(data);
+      } catch (error) {
+        console.log("Error : ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="pt-[100px] w-full overflow-clip flex flex-col items-center px-4">
       <div className="text-[#070802] h-36 bg-[#DDF94A] p-6 m-6 rounded-xl flex flex-col items-center justify-center 2xl:w-[1340px] xs:w-full ">
@@ -31,8 +48,13 @@ const PastEvents = () => {
           />
         </div>
         <div className="flex md:flex-row xs:flex-col justify-between mt-4 md:space-x-8 xs:space-x-0 w-full">
+          {/* {data.length > 0 &&
+            data.map((dataItem) => {
+              <ul key={dataItem.id}>
+                <li>{dataItem.name}</li>
+              </ul>;
+            })} */}
           <EventCard />
-          {/* <EventCard /> */}
         </div>
       </div>
     </div>

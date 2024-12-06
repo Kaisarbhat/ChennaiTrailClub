@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Button } from ".";
 import { pastEvents } from "@/utils/constants";
 const EventCard = () => {
-  
   return (
     <div className="border border-solid hover:shadow-mine rounded-xl  md:w-1/2 xs:w-full   p-3 2xl:space-x-4 md:space-x-2 xs:space-x-0 my-6 min-h-52 justify-cenetr hover:border-[#7328f6] flex md:flex-row xs:flex-col">
       <Image
@@ -16,10 +15,12 @@ const EventCard = () => {
       <div className="flex flex-col space-y-3 justify-between ml-1 xs:mt-3 md:mt-0">
         <h1 className="text-2xl">{pastEvents.eventName}</h1>
         <div className="text-[16px] text-[#50514c]" href="">
-          <i class="bi bi-geo-alt-fill text-[#50514c]mr-2 "></i> {pastEvents.eventLocation}
+          <i class="bi bi-geo-alt-fill text-[#50514c]mr-2 "></i>{" "}
+          {pastEvents.eventLocation}
         </div>
         <div className="text-[16px]  text-[#50514c]">
-          <i class="bi bi-calendar3 text-[#50514c] mr-2"></i>{pastEvents.eventDate}
+          <i class="bi bi-calendar3 text-[#50514c] mr-2"></i>
+          {pastEvents.eventDate}
         </div>
 
         <div className="lg:flex justify-evenly ">

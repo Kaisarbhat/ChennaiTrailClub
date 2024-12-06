@@ -1,73 +1,97 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "./index";
 import { motion } from "framer-motion";
 import HeroText from "./heroText";
-import { eventData } from "@/utils/constants";
+import { API_URL, eventData } from "@/utils/constants";
 function Hero() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`${API_URL}/events/allEvents`);
+        if (!res.ok) throw new Error("Failed to fetch data");
+        const data = await res.json();
+        setData(data);
+      } catch (error) {
+        throw error;
+      }
+    }
+    fetchData();
+  }, []);
+  const eventData = data[0];
+  const date = new Date(eventData?.date);
+  const formattedDate = date.toLocaleDateString("en-Us", {
+    weekday: "long",
+    month: "long",
+    year: "numeric",
+    day: "2-digit",
+  });
   return (
     <>
-      <div className="h-screen w-full flex md:flex-row sm:flex-col xs:flex-col  items-center justify-center  bg-black text-white  bg-[url('https://c0.wallpaperflare.com/preview/894/641/116/asphalt-dark-dawn-environment.jpg')] bg-cover bg-fixed xs:text-center sm:text-start overflow-hidden ">
-        <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-20 sm:pt-24 md:pt-0 items-center justify-center  space-x-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="md:w-1/2 xs:w-4/5 mx-4 flex  justify-center 2xl:w-2/5"
-          >
-            <Image
-              src={eventData.imageUrl}
-              alt="event logo"
-              width={480}
-              height={220}
-            />
-          </motion.div>
-          <div className="flex flex-col flex-1  xs:px-6 md:px-0 md:w-1/2 xs:w-full xs:text-center  md:text-start">
-            <motion.h1
-              initial={{ opacity: 0, x: "-100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="sm:text-5xl xs:text-[26px] font-bold sm:mb-8 xs:mb-1 xs:mt-8 md:mt-12 xs:px-10 sm:px-0"
-            >
-              {eventData.eventName}{" "}
-              <br className="md:block lg:hidden 2xl:block" />
-              {eventData.eventAbbr}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-man 2xl:font-extralight tracking-wide  2xl:w-4/5"
-            >
-              {eventData.eventText}
-            </motion.p>
+      {eventData && (
+        <div className="h-screen w-full flex md:flex-row sm:flex-col xs:flex-col  items-center justify-center  bg-black text-white  bg-[url('https://c0.wallpaperflare.com/preview/894/641/116/asphalt-dark-dawn-environment.jpg')] bg-cover bg-fixed xs:text-center sm:text-start overflow-hidden ">
+          <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-20 sm:pt-24 md:pt-0 items-center justify-center  space-x-4">
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="font-bold md:mb-6 xs:mb-0 "
+              className="md:w-1/2 xs:w-4/5 mx-4 flex  justify-center 2xl:w-2/5"
             >
-              Event date:{" "}
-              <span className="font-light text-lg">{eventData.eventDate}</span>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="md:w-2/3  xs:w-full flex md:justify-start xs:justify-center sm:mt-10 xs:mt-0 md:mt-0"
-            >
-              <Button
-                title={eventData.eventTitle}
-                link="/jhu"
-                classname={
-                  "bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
-                }
-                icon={true}
+              <Image
+                src={eventData.eventBannerOne}
+                alt="event logo"
+                width={480}
+                height={220}
               />
             </motion.div>
+            <div className="flex flex-col flex-1  xs:px-6 md:px-0 md:w-1/2 xs:w-full xs:text-center  md:text-start">
+              <motion.h1
+                initial={{ opacity: 0, x: "-100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="sm:text-5xl xs:text-[26px] font-bold sm:mb-8 xs:mb-1 xs:mt-8 md:mt-12 xs:px-10 sm:px-0"
+              >
+                {eventData.name} <br className="md:block lg:hidden 2xl:block" />
+                {eventData.shortName}
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-man 2xl:font-extralight tracking-wide  2xl:w-4/5"
+              >
+                {eventData.description}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="font-bold md:mb-6 xs:mb-0 "
+              >
+                Event date:{" "}
+                <span className="font-light text-lg">{formattedDate}</span>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="md:w-2/3  xs:w-full flex md:justify-start xs:justify-center sm:mt-10 xs:mt-0 md:mt-0"
+              >
+                <Button
+                  title={eventData.shortName}
+                  link="/jhu"
+                  classname={
+                    "bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
+                  }
+                  icon={true}
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="flex justify-center 2xl:m-w-[1340px]">
         <HeroText />
       </div>

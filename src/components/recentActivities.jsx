@@ -6,7 +6,7 @@ const RecentActivities = () => {
   const isInView = useInView(ref, { once: true });
 
   const [startIndex, setStartIndex] = useState(0);
-
+  const [images, setImages] = useState([]);
   const data = [
     {
       key: "1",
@@ -133,18 +133,18 @@ const RecentActivities = () => {
   ];
   const mobileImages = [
     {
-      imageUrl : '/running-activities-768x512.png',
-      alt : 'running-activities-768x512',
+      imageUrl: "/running-activities-768x512.png",
+      alt: "running-activities-768x512",
     },
     {
-      imageUrl : '/recent-activities-new-3.png',
-      alt : 'recent-activities-new-3',
+      imageUrl: "/recent-activities-new-3.png",
+      alt: "recent-activities-new-3",
     },
     {
-      imageUrl : '/recent-activities-new-1.png',
-      alt : 'recent-activities-new-1',
+      imageUrl: "/recent-activities-new-1.png",
+      alt: "recent-activities-new-1",
     },
-  ]
+  ];
   const moveForward = () => {
     setStartIndex((prevIndex) => (prevIndex + 1) % data.length);
   };
@@ -230,13 +230,13 @@ const RecentActivities = () => {
 
         {/* Display images on mobile phones */}
         <div className="xs:flex md:hidden flex-col items-center space-y-3 w-full">
-          {mobileImages.map((item ,index) => (  
+          {mobileImages.map((item, index) => (
             <img
-            key={index}
-            src={item.imageUrl}
-            alt={item.alt}
-            className="rounded-lg  xs:h-[180px] sm:h-full w-full"
-          />
+              key={index}
+              src={item.imageUrl}
+              alt={item.alt}
+              className="rounded-lg  xs:h-[180px] sm:h-full w-full"
+            />
           ))}
 
           <button

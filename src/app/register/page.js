@@ -3,27 +3,27 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
-import { Timeline, RegisterCard } from "../../components/index";
+import { Timeline, RegisterCard } from "@/components";
 import { registerContent } from "@/utils/constants";
 
 const EventRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [price, setPrice] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [value, setValue] = useState([]);
-
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
   const totalSteps = 4;
 
   const validationSchemas = [
     Yup.object({
       runningCategory: Yup.string().required("This field is required"),
-      firstName: Yup.string().required("This field is required"),
-      lastName: Yup.string().required("This field is required"),
-      mobile: Yup.string().required("This field is required"),
+      firstName: Yup.string()
+        .required("This field is required")
+        .min(3, "Name should not be less than 3 characters"),
+      lastName: Yup.string()
+        .required("This field is required")
+        .min(2, "Name should not be less than 2 characters"),
+      mobile: Yup.string()
+        .required("This field is required")
+        .matches(/^[6-9]\d{9}$/, "Please provide a Valid mobile number"),
       email: Yup.string()
         .email("Invalid email")
         .required("This field is required"),
@@ -39,7 +39,9 @@ const EventRegistration = () => {
       runningClub: Yup.string().required("This field is required"),
       emergencyContactName: Yup.string().required("This field is required"),
       emergencyContactRelation: Yup.string().required("This field is required"),
-      emergencyContactNumber: Yup.string().required("This field is required"),
+      emergencyContactNumber: Yup.string()
+        .required("This field is required")
+        .matches(/^[6-9]\d{9}$/, "Please provide a Valid mobile number"),
     }),
     Yup.object({
       cardiovascularDisease: Yup.string().required("This field is required"),
@@ -62,7 +64,6 @@ const EventRegistration = () => {
       joinClub: Yup.boolean(),
     }),
   ];
-
   const initialValues = {
     runningCategory: "",
     firstName: "",
@@ -93,54 +94,59 @@ const EventRegistration = () => {
     joinClub: false,
   };
 
-  console.log("value", value);
+  const renderField = ({
+    field,
+    form: { setFieldValue, values, touched, errors },
+  }) => {
+    const fieldConfig = registerContent[currentStep - 1].fields.find(
+      (f) => f.name === field.name
+    );
 
-  const renderField = (field) => {
-    // console.log("field", field);
+    if (!fieldConfig) return null;
 
-    switch (field.type) {
+    switch (fieldConfig.type) {
       case "select":
         return (
-          <Field
-            as="select"
-            name={field.name}
-            value={value.name}
+          <select
+            {...field}
             className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
             onChange={(e) => {
+              setFieldValue(field.name, e.target.value);
               if (field.name === "runningCategory") {
                 setSelectedCategory(e.target.value);
-                const selectedPrice = e.target.value
-                  .split("(")[1]
-                  .split(")")[0]
-                  .split(" ")[1];
+                const selectedPrice =
+                  e.target.value.split("(")[1]?.split(")")[0]?.split(" ")[1] ||
+                  "0";
                 setPrice(selectedPrice);
               }
-              setValue((pre) => ({ ...pre, [field.name]: e.target.value }));
             }}
           >
             <option value="">---please choose an option---</option>
-            {field.options.map((option, index) => (
+            {fieldConfig.options.map((option, index) => (
               <option key={index} value={option}>
                 {option}
               </option>
             ))}
-          </Field>
+          </select>
         );
       case "radio":
         return (
           <div className="flex items-center space-x-4 text-[#070802]">
-            {field.options.map((option, index) => (
+            {fieldConfig.options.map((option, index) => (
               <div
                 key={index}
                 className="flex items-center justify-center space-x-2"
               >
-                <Field
+                <input
                   type="radio"
-                  name={field.name}
+                  {...field}
+                  id={`${field.name}-${index}`}
                   value={option}
+                  checked={values[field.name] === option}
+                  onChange={() => setFieldValue(field.name, option)}
                   className="mb-0"
                 />
-                <label>{option}</label>
+                <label htmlFor={`${field.name}-${index}`}>{option}</label>
               </div>
             ))}
           </div>
@@ -148,32 +154,31 @@ const EventRegistration = () => {
       case "checkbox":
         return (
           <div className="flex items-center">
-            <Field
+            <input
               type="checkbox"
-              name={field.name}
+              {...field}
+              checked={values[field.name]}
+              onChange={(e) => setFieldValue(field.name, e.target.checked)}
               className="w-[12px] h-[12px] p-0 mb-0 mr-2"
             />
-            <label htmlFor={field.name}>{field.label}</label>
+            <label htmlFor={field.name}>{fieldConfig.label}</label>
           </div>
         );
-      case "termsandconditions":
-        return <div>{field.content}</div>;
-      case "p":
-        return <div></div>;
       case "date":
         return (
-          <Field
-            type={field.type}
-            name={field.name}
-            min={field.min}
-            max={field.max}
+          <input
+            type="date"
+            {...field}
+            min={fieldConfig.min}
+            max={fieldConfig.max}
+            className="mt-2 w-full border border-solid p-2 rounded-md"
           />
         );
       default:
         return (
-          <Field
-            type={field.type}
-            name={field.name}
+          <input
+            type={fieldConfig.type}
+            {...field}
             className="mt-2 w-full border border-solid p-2 rounded-md"
           />
         );
@@ -186,7 +191,7 @@ const EventRegistration = () => {
         <div>
           <Image
             src="/JHU-2024-Banner.jpg"
-            alt="JHU-2024-Banner(1)"
+            alt="JHU-2024-Banner"
             width={1300}
             height={500}
           />
@@ -198,32 +203,44 @@ const EventRegistration = () => {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchemas[currentStep - 1]}
-                validateOnChange={false}
-                validateOnBlur={false}
-                onSubmit={(values, { setSubmitting }) => {
-                  if (currentStep < totalSteps) {
-                    setCurrentStep(currentStep + 1);
-                  } else {
-                    console.log("Form submitted:", values);
+                validateOnMount={false}
+                validateOnChange={true}
+                validateOnBlur={true}
+                onSubmit={async (values, { setSubmitting, setTouched }) => {
+                  try {
+                    if (currentStep < totalSteps) {
+                      // Reset touched states when moving to next step
+                      setTouched({});
+                      setCurrentStep(currentStep + 1);
+                    } else {
+                      console.log("Form submitted:", values);
+                      // Handle final submission here
+                    }
+                  } catch (error) {
+                    console.error("Form submission error:", error);
+                  } finally {
+                    setSubmitting(false);
                   }
-                  setSubmitting(false);
                 }}
               >
-                {({ isSubmitting, validateForm, setTouched, errors }) => (
+                {({ isSubmitting, touched, errors, setTouched }) => (
                   <Form className="space-y-4 text-sm">
                     <h1 className="text-2xl text-[#070802] font-bold mb-6">
                       {registerContent[currentStep - 1].title}
                     </h1>
                     {registerContent[currentStep - 1].fields.map(
-                      (field, index) => (
+                      (fieldConfig, index) => (
                         <div key={index}>
-                          <label className="block mb-1">{field.label}</label>
-                          {renderField(field)}
-                          <ErrorMessage
-                            name={field.name}
-                            component="div"
-                            className="text-red-500 text-sm"
-                          />
+                          <label className="block mb-1">
+                            {fieldConfig.label}
+                          </label>
+                          <Field name={fieldConfig.name}>{renderField}</Field>
+                          {touched[fieldConfig.name] &&
+                            errors[fieldConfig.name] && (
+                              <div className="text-red-500 text-sm mt-1">
+                                {errors[fieldConfig.name]}
+                              </div>
+                            )}
                         </div>
                       )
                     )}
@@ -231,7 +248,10 @@ const EventRegistration = () => {
                       {currentStep > 1 && (
                         <button
                           type="button"
-                          onClick={() => setCurrentStep(currentStep - 1)}
+                          onClick={() => {
+                            setTouched({}); // Reset touched states when going back
+                            setCurrentStep(currentStep - 1);
+                          }}
                           className="text-sm border border-solid border-[#121212] text-[#121212] rounded-3xl p-2 w-24 font-bold"
                         >
                           Previous
@@ -240,8 +260,9 @@ const EventRegistration = () => {
                       <button
                         type="button"
                         disabled={isSubmitting}
-                        className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl p-2 w-24 font-bold"
+                        className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
                         onClick={async () => {
+                          // Mark all fields as touched when clicking Next
                           const touchedFields = {};
                           registerContent[currentStep - 1].fields.forEach(
                             (field) => {
@@ -249,26 +270,19 @@ const EventRegistration = () => {
                             }
                           );
                           setTouched(touchedFields);
-                          const errors = await validateForm();
-                          if (Object.keys(errors).length === 0) {
-                            if (currentStep < totalSteps) {
-                              setCurrentStep(currentStep + 1);
-                            } else {
-                              // Submit the form
-                              await new Promise((resolve) =>
-                                setTimeout(resolve, 0)
-                              );
-                              document.forms[0].dispatchEvent(
-                                new Event("submit", {
-                                  cancelable: true,
-                                  bubbles: true,
-                                })
-                              );
-                            }
-                          }
+
+                          // Submit the form - this will trigger validation
+                          document.forms[0].dispatchEvent(
+                            new Event("submit", {
+                              cancelable: true,
+                              bubbles: true,
+                            })
+                          );
                         }}
                       >
-                        {currentStep === totalSteps ? "Submit" : "Next"}
+                        {currentStep === totalSteps
+                          ? "Proceed for Payment"
+                          : "Next"}
                       </button>
                     </div>
                   </Form>
