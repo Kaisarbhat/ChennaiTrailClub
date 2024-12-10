@@ -1,12 +1,21 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { API_URL } from "@/utils/constants";
 const RecentActivities = () => {
+  useEffect(()=>{
+    async function fetchRecentImages(){
+        try {
+          const res = await fetch(`${API_URL}/`)
+        } catch (error) {
+          
+        }
+    }
+  },[])
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const [startIndex, setStartIndex] = useState(0);
-  const [images, setImages] = useState([]);
   const data = [
     {
       key: "1",

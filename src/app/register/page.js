@@ -1,16 +1,175 @@
 "use client";
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useEffect, useState } from "react";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
-import { Timeline, RegisterCard } from "@/components";
-import { registerContent } from "@/utils/constants";
-
+import { Timeline, RegisterCard, Button } from "@/components";
+import { API_URL, registerContent } from "@/utils/constants";
+import axios from "axios";
+import { Bounce, toast } from "react-toastify";
+import TermsAndConditions from "@/components/T&C";
 const EventRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [price, setPrice] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [key, setKey] = useState("");
+  const [data, setData] = useState();
   const totalSteps = 4;
+  useEffect(() => {
+    //fetching the payment key from backend
+    async function fetchKey() {
+      try {
+        const { data } = await axios.get(`${API_URL}/payment`);
+        setKey(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchKey();
+  }, []);
+
+  //function to load razorpay sdk
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+  //displaying razorpay gateway
+  async function displayRazorpay() {
+    try {
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+        return;
+      }
+
+      const result = await axios.post(`${API_URL}/payment/checkout`, {
+        amount: Number(price),
+        currency: "INR",
+      });
+      console.log("Result : ", result);
+      //options for payment
+      const options = {
+        key: key,
+        amount: result.data.amount,
+        currency: result.data.currency,
+        name: "Chennai Trail Club",
+        description: "Test Transaction",
+        order_id: result.data.id,
+        handler: async function (response) {
+          try {
+            console.log("Payment success:", response);
+            const data = {
+              orderCreationId: result.data.id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpayOrderId: response.razorpay_order_id,
+              razorpaySignature: response.razorpay_signature,
+            };
+            const verify = await axios.post(
+              `${API_URL}/payment/success`,
+              {
+                data,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            if (verify.data.msg === "Payment verified successfully") {
+              alert("Payment successFull");
+            } else {
+              alert("Payment verification failed");
+            }
+          } catch (error) {
+            throw error;
+          }
+        },
+        prefill: {
+          name: "kaisar",
+          email: "kaisar@example.com",
+          contact: "8082508099",
+        },
+        theme: {
+          color: "#61dafb",
+        },
+      };
+
+      console.log("Razorpay options:", options);
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.on("payment.failed", function (response) {
+        console.error("Payment failed:", response.error);
+        alert(`Payment failed: ${response.error.description}`);
+      });
+
+      paymentObject.open();
+    } catch (error) {
+      console.error("Error details:", error);
+      if (error.response) {
+        alert(
+          `Server error: ${error.response.data.message || "Unknown error"}`
+        );
+      } else if (error.request) {
+        alert("Network error. Please check your connection.");
+      } else {
+        alert(`Error: ${error.message}`);
+      }
+    }
+  }
+
+  async function handleFormSubmission(values) {
+    try {
+      const eventId = "675280569af9b71b3d0f4faa";
+      const response = await fetch(`${API_URL}/users/register/${eventId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (!response.ok) {
+        toast(response.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+      const data = await response.json();
+      console.log(data);
+      toast.success("Registration successful!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+
+      // displayRazorpay();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   const validationSchemas = [
     Yup.object({
@@ -94,16 +253,12 @@ const EventRegistration = () => {
     joinClub: false,
   };
 
-  const renderField = ({
-    field,
-    form: { setFieldValue, values, touched, errors },
-  }) => {
+  const renderField = ({ field, form: { setFieldValue, values } }) => {
     const fieldConfig = registerContent[currentStep - 1].fields.find(
       (f) => f.name === field.name
     );
 
     if (!fieldConfig) return null;
-
     switch (fieldConfig.type) {
       case "select":
         return (
@@ -174,6 +329,10 @@ const EventRegistration = () => {
             className="mt-2 w-full border border-solid p-2 rounded-md"
           />
         );
+      case "termsandconditions":
+        return <TermsAndConditions values={values} />;
+      case "para":
+        return <div></div>;
       default:
         return (
           <input
@@ -184,7 +343,6 @@ const EventRegistration = () => {
         );
     }
   };
-
   return (
     <div className="w-full flex flex-col items-center overflow-clip">
       <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
@@ -207,14 +365,17 @@ const EventRegistration = () => {
                 validateOnChange={true}
                 validateOnBlur={true}
                 onSubmit={async (values, { setSubmitting, setTouched }) => {
+                  setData(values);
                   try {
+                    console.log(data);
+
                     if (currentStep < totalSteps) {
                       // Reset touched states when moving to next step
                       setTouched({});
-                      setCurrentStep(currentStep + 1);
+                      setCurrentStep((preState) => preState + 1);
                     } else {
-                      console.log("Form submitted:", values);
-                      // Handle final submission here
+                      console.log("Hello  from here: ");
+                      await handleFormSubmission(values);
                     }
                   } catch (error) {
                     console.error("Form submission error:", error);
@@ -250,7 +411,7 @@ const EventRegistration = () => {
                           type="button"
                           onClick={() => {
                             setTouched({}); // Reset touched states when going back
-                            setCurrentStep(currentStep - 1);
+                            setCurrentStep((prevState) => prevState - 1);
                           }}
                           className="text-sm border border-solid border-[#121212] text-[#121212] rounded-3xl p-2 w-24 font-bold"
                         >
@@ -258,31 +419,38 @@ const EventRegistration = () => {
                         </button>
                       )}
                       <button
-                        type="button"
+                        type={currentStep < totalSteps ? "button" : "submit"}
                         disabled={isSubmitting}
                         className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
-                        onClick={async () => {
-                          // Mark all fields as touched when clicking Next
-                          const touchedFields = {};
-                          registerContent[currentStep - 1].fields.forEach(
-                            (field) => {
-                              touchedFields[field.name] = true;
-                            }
-                          );
-                          setTouched(touchedFields);
+                        onClick={
+                          currentStep < totalSteps
+                            ? async () => {
+                                // Mark all fields as touched when clicking Next
+                                const touchedFields = {};
+                                registerContent[currentStep - 1].fields.forEach(
+                                  (field) => {
+                                    touchedFields[field.name] = true;
+                                  }
+                                );
+                                setTouched(touchedFields);
 
-                          // Submit the form - this will trigger validation
-                          document.forms[0].dispatchEvent(
-                            new Event("submit", {
-                              cancelable: true,
-                              bubbles: true,
-                            })
-                          );
-                        }}
+                                // this will trigger validation
+                                document.forms[0].dispatchEvent(
+                                  new Event("submit", {
+                                    cancelable: true,
+                                    bubbles: true,
+                                  })
+                                );
+                              }
+                            : async () => {
+                                console.log("Proceed to payment");
+                                console.log(data);
+                              }
+                        }
                       >
-                        {currentStep === totalSteps
-                          ? "Proceed for Payment"
-                          : "Next"}
+                        {currentStep < totalSteps
+                          ? "Next"
+                          : "Proceed for Payment"}
                       </button>
                     </div>
                   </Form>
