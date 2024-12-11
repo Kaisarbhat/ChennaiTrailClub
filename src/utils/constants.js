@@ -288,14 +288,12 @@ export const registerContent = [
       },
       {
         name: "termsandconditions",
-        content: [
-          { name: "joinClub", type: "checkbox" },
-          {
-            name: "waiverAcknowledgement",
-            type: "checkbox",
-          },
-        ],
         type: "termsandconditions",
+      },
+      { name: "joinClub", type: "hidden" },
+      {
+        name: "waiverAcknowledgement",
+        type: "hidden",
       },
     ],
   },

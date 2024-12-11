@@ -1,8 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { X } from "lucide-react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { API_URL } from "@/utils/constants";
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -11,20 +13,42 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  number: Yup.string()
+  phoneNumber: Yup.string()
     .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
     .required("Phone number is required"),
-  blood: Yup.string()
-    .matches(/^(A|B|AB|O)[+-]$/, "Invalid blood group format")
+  bloodGroup: Yup.string()
+    .matches(/^(A|B|AB||O)[+-]$/, "Invalid blood group format")
     .required("Blood group is required"),
-  terms: Yup.boolean().oneOf(
-    [true],
-    "You must accept the terms and conditions"
-  ),
+  terms: Yup.boolean()
+    .oneOf([true], "You must accept the terms and conditions")
+    .required("Terms acceptance is required"),
 });
 
 const JoinUs = ({ isOpen, onClose }) => {
-  
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  async function handleFormSubmission(values) {
+    try {
+      const response = await axios.post(`${API_URL}/users/joinus`, values);
+
+      if (response.status === 200 || response.status === 201) {
+        setSubmitSuccess(true);
+        setTimeout(() => {
+          onClose();
+          setSubmitSuccess(false);
+        }, 2000);
+      }
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        "Failed to submit form. Please try again.";
+      setSubmitError(
+        Array.isArray(errorMessage) ? errorMessage[0] : errorMessage
+      );
+    }
+  }
+
   if (!isOpen) return null;
 
   return (
@@ -37,7 +61,7 @@ const JoinUs = ({ isOpen, onClose }) => {
           <X size={20} />
         </button>
         <div className="xs:hidden md:hidden xs:w-0 lg:w-1/2 lg:flex bg-[url('/join-us-img.png')] min-h-[600px] bg-cover flex-col justify-end items-center lg:px-10 xs:px-3 py-10">
-          <div className="bg-slate-300 rounded-xl w-full p-2 ">
+          <div className="bg-slate-300 rounded-xl w-full p-2">
             <h2 className="text-lg font-bold">Join Us</h2>
             <p className="text-sm text-[#50514C]">
               Embrace our community and become part of an exciting community of
@@ -50,24 +74,37 @@ const JoinUs = ({ isOpen, onClose }) => {
           <p className="text-[#50514C] md:text-[16px] xs:text-[13px]">
             For any queries mail us at <br /> info@chennaitrailclub.in
           </p>
+          {submitSuccess && (
+            <div className="bg-green-100 text-green-700 p-3 rounded">
+              Form submitted successfully!
+            </div>
+          )}
+          {submitError && (
+            <div className="bg-red-100 text-red-700 p-3 rounded">
+              {submitError}
+            </div>
+          )}
           <Formik
             initialValues={{
               name: "",
               email: "",
-              number: "",
-              blood: "",
+              phoneNumber: "",
+              bloodGroup: "",
               terms: false,
             }}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
-              // submission
-              console.log("Form values: ", values);
-              setSubmitting(false);
-              onClose();
+            onSubmit={async (values, { setSubmitting }) => {
+              setSubmitError("");
+              try {
+                await handleFormSubmission(values);
+              } catch (error) {
+                console.error("Form submission error:", error);
+              } finally {
+                setSubmitting(false);
+              }
             }}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, isValid, dirty }) => (
               <Form className="lg:space-y-4 xs:space-y-2">
                 <div>
                   <label htmlFor="name" className="block mb-1">
@@ -102,33 +139,33 @@ const JoinUs = ({ isOpen, onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="number" className="block mb-1">
+                  <label htmlFor="phoneNumber" className="block mb-1">
                     Phone Number
                   </label>
                   <Field
                     type="tel"
-                    id="number"
-                    name="number"
+                    id="phoneNumber"
+                    name="phoneNumber"
                     className="w-full px-3 py-2 border rounded"
                   />
                   <ErrorMessage
-                    name="number"
+                    name="phoneNumber"
                     component="div"
                     className="text-red-600 text-sm"
                   />
                 </div>
                 <div>
-                  <label htmlFor="blood" className="block mb-1">
+                  <label htmlFor="bloodGroup" className="block mb-1">
                     Blood Group
                   </label>
                   <Field
                     type="text"
-                    id="blood"
-                    name="blood"
+                    id="bloodGroup"
+                    name="bloodGroup"
                     className="w-full px-3 py-2 border rounded"
                   />
                   <ErrorMessage
-                    name="blood"
+                    name="bloodGroup"
                     component="div"
                     className="text-red-600 text-sm"
                   />
@@ -144,10 +181,10 @@ const JoinUs = ({ isOpen, onClose }) => {
                   <ErrorMessage
                     name="terms"
                     component="div"
-                    className="text-red-600 text-sm"
+                    className="text-red-600 text-sm ml-2"
                   />
                 </div>
-                <div className="flex space-x-6 justify-end text-lg font-bold ">
+                <div className="flex space-x-6 justify-end text-lg font-bold">
                   <button
                     type="button"
                     onClick={onClose}
@@ -157,10 +194,10 @@ const JoinUs = ({ isOpen, onClose }) => {
                   </button>
                   <button
                     type="submit"
-                    className="text-[#D0F700] bg-[#070802] h-12 w-[150px] rounded-3xl"
-                    disabled={isSubmitting}
+                    className="text-[#D0F700] bg-[#070802] h-12 w-[150px] rounded-3xl disabled:opacity-50"
+                    disabled={isSubmitting || !isValid || !dirty}
                   >
-                    Submit
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </Form>

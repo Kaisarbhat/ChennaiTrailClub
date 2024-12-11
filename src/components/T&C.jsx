@@ -259,9 +259,7 @@ const TermsAndConditions = ({ values }) => {
             checked={values.waiverAcknowledgement}
             className="w-[12px] h-[12px] p-0 mb-0 mr-2"
             onChange={(e) => {
-              const newValue = e.target.checked;
-              console.log("Setting waiver to:", newValue);
-              setFieldValue("waiverAcknowledgement", newValue);
+              setFieldValue("waiverAcknowledgement", e.target.checked);
             }}
           />
           <label htmlFor="acknowledgement">I acknowledge the waiver form</label>
@@ -280,9 +278,7 @@ const TermsAndConditions = ({ values }) => {
             checked={values.joinClub}
             className="w-[10px] h-[10px] p-0 mb-0 mr-1"
             onChange={(e) => {
-              const newValue = e.target.checked;
-              console.log("Setting club to:", newValue);
-              setFieldValue("joinClub", newValue);
+              setFieldValue("joinClub", e.target.checked);
             }}
           />
           <label htmlFor="joinClub" className="text-[12px]">

@@ -3,15 +3,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { API_URL } from "@/utils/constants";
 const RecentActivities = () => {
-  useEffect(()=>{
-    async function fetchRecentImages(){
-        try {
-          const res = await fetch(`${API_URL}/`)
-        } catch (error) {
-          
-        }
+  const [images, setImages] = useState();
+  useEffect(() => {
+    async function fetchRecentImages() {
+      try {
+        const res = await fetch(`${API_URL}/adminservices/recentactivities`);
+        if (!res.ok) console.log("Failed to fetch images");
+        const images = await res.json();
+        console.log(images);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-  },[])
+    fetchRecentImages();
+  }, []);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -174,7 +179,7 @@ const RecentActivities = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       updateCarousel(startIndex + 1);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [startIndex]);

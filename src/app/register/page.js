@@ -6,8 +6,9 @@ import Image from "next/image";
 import { Timeline, RegisterCard, Button } from "@/components";
 import { API_URL, registerContent } from "@/utils/constants";
 import axios from "axios";
-import { Bounce, toast } from "react-toastify";
 import TermsAndConditions from "@/components/T&C";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const EventRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [price, setPrice] = useState(0);
@@ -28,6 +29,17 @@ const EventRegistration = () => {
     fetchKey();
   }, []);
 
+  const toastStyle = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  };
   //function to load razorpay sdk
   function loadScript(src) {
     return new Promise((resolve) => {
@@ -66,46 +78,38 @@ const EventRegistration = () => {
         name: "Chennai Trail Club",
         description: "Test Transaction",
         order_id: result.data.id,
+        // callbackUrl: `${API_URL}/payment/success`,
         handler: async function (response) {
           try {
-            console.log("Payment success:", response);
+            // console.log("Payment success:", response);
             const data = {
               orderCreationId: result.data.id,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpayOrderId: response.razorpay_order_id,
               razorpaySignature: response.razorpay_signature,
             };
-            const verify = await axios.post(
-              `${API_URL}/payment/success`,
-              {
-                data,
-              },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
+            const verify = await axios.post(`${API_URL}/payment/success`, data);
+
             if (verify.data.msg === "Payment verified successfully") {
-              alert("Payment successFull");
+              toast.success("Payment Successful", toastStyle);
             } else {
-              alert("Payment verification failed");
+              toast.error("Payment Unsuccessful", toastStyle);
             }
           } catch (error) {
             throw error;
           }
         },
         prefill: {
-          name: "kaisar",
-          email: "kaisar@example.com",
-          contact: "8082508099",
+          name: data.name,
+          email: data.email,
+          contact: data.mobile,
         },
         theme: {
           color: "#61dafb",
         },
       };
 
-      console.log("Razorpay options:", options);
+      // console.log("Razorpay options:", options);
 
       const paymentObject = new window.Razorpay(options);
       paymentObject.on("payment.failed", function (response) {
@@ -138,34 +142,20 @@ const EventRegistration = () => {
         },
         body: JSON.stringify(values),
       });
-      if (!response.ok) {
-        toast(response.message, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      }
-      const data = await response.json();
-      console.log(data);
-      toast.success("Registration successful!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
 
-      // displayRazorpay();
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(data.message, toastStyle);
+      } else {
+        toast.success("Registration successful!", toastStyle);
+        await displayRazorpay();
+      }
+      if (data.joinClub) {
+        toast.success(
+          "Thank You for becoming a memeber of our club",
+          toastStyle
+        );
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -347,6 +337,8 @@ const EventRegistration = () => {
     <div className="w-full flex flex-col items-center overflow-clip">
       <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
         <div>
+          <ToastContainer />
+          <ToastContainer />
           <Image
             src="/JHU-2024-Banner.jpg"
             alt="JHU-2024-Banner"
@@ -367,14 +359,13 @@ const EventRegistration = () => {
                 onSubmit={async (values, { setSubmitting, setTouched }) => {
                   setData(values);
                   try {
-                    console.log(data);
-
                     if (currentStep < totalSteps) {
                       // Reset touched states when moving to next step
                       setTouched({});
                       setCurrentStep((preState) => preState + 1);
                     } else {
-                      console.log("Hello  from here: ");
+                      setTouched({});
+
                       await handleFormSubmission(values);
                     }
                   } catch (error) {
@@ -422,31 +413,24 @@ const EventRegistration = () => {
                         type={currentStep < totalSteps ? "button" : "submit"}
                         disabled={isSubmitting}
                         className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
-                        onClick={
-                          currentStep < totalSteps
-                            ? async () => {
-                                // Mark all fields as touched when clicking Next
-                                const touchedFields = {};
-                                registerContent[currentStep - 1].fields.forEach(
-                                  (field) => {
-                                    touchedFields[field.name] = true;
-                                  }
-                                );
-                                setTouched(touchedFields);
+                        onClick={() => {
+                          // Mark all fields as touched when clicking Next
+                          const touchedFields = {};
+                          registerContent[currentStep - 1].fields.forEach(
+                            (field) => {
+                              touchedFields[field.name] = true;
+                            }
+                          );
+                          setTouched(touchedFields);
 
-                                // this will trigger validation
-                                document.forms[0].dispatchEvent(
-                                  new Event("submit", {
-                                    cancelable: true,
-                                    bubbles: true,
-                                  })
-                                );
-                              }
-                            : async () => {
-                                console.log("Proceed to payment");
-                                console.log(data);
-                              }
-                        }
+                          // this will trigger validation
+                          document.forms[0].dispatchEvent(
+                            new Event("submit", {
+                              cancelable: true,
+                              bubbles: true,
+                            })
+                          );
+                        }}
                       >
                         {currentStep < totalSteps
                           ? "Next"
