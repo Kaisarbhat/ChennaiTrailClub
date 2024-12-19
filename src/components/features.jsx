@@ -50,13 +50,12 @@ function Features() {
                     key={index}
                     className="md:w-45 xs:w-full bg-[#1B1C16] p-5 md:my-5 xs:my-1 flex flex-col justify-start border border-solid rounded-xl hover:bg-[#7328F6] grayscale hover:grayscale-0"
                   >
-                    <Image
+                    <img
                       src={item.imageUrl}
                       alt="event image"
-                      width={500}
-                      height={400}
+                      width="500px"
+                      height="400px"
                       className="w-full rounded-lg "
-                      priority
                     />
                     <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
                       {item.title}

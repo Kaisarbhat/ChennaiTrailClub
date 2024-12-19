@@ -8,7 +8,7 @@ import Carousel from "./carousel";
 import AboutRaceLocation from "./aboutRaceLocation";
 import AboutUsText1 from "./aboutUsText1";
 import AboutUsText2 from "./aboutUsText2";
-import EventCard from "./eventCard";
+import PastEventsCard from "./pastEventsCard";
 import EventDetailsHero from "./eventDetailsHero";
 import EventInfo from "./eventInfo";
 import HeroText from "./heroText";
@@ -27,7 +27,7 @@ export {
   AboutRaceLocation,
   AboutUsText1,
   AboutUsText2,
-  EventCard,
+  PastEventsCard,
   EventDetailsHero,
   EventInfo,
   HeroText,

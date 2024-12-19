@@ -57,10 +57,13 @@ const FooterLarge = () => {
                       <Link href="/aboutus"> About Us </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
-                      <Link href="/upcomingevents"> Upcoming Events </Link>
+                      <Link href="/events/upcomingevents">
+                        {" "}
+                        Upcoming Events{" "}
+                      </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
-                      <Link href="/pastevents"> Past Events </Link>
+                      <Link href="/events/pastevents"> Past Events </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
                       <Link href="/joinus"> Join Us </Link>
@@ -160,10 +163,13 @@ const FooterLarge = () => {
                       <Link href="/aboutus"> About Us </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
-                      <Link href="/upcomingevents"> Upcoming Events </Link>
+                      <Link href="/events/upcomingevents">
+                        {" "}
+                        Upcoming Events{" "}
+                      </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
-                      <Link href="/pastevents"> Past Events </Link>
+                      <Link href="/events/pastevents"> Past Events </Link>
                     </li>
                     <li className=" hover:text-purple-900 cursor-pointer">
                       <Link href="/joinus"> Join Us </Link>

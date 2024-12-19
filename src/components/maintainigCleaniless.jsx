@@ -2,7 +2,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-function MaintainigCleaniless() {
+function MaintainigCleaniless({
+  bottomHeading,
+  bottomImageUrl,
+  bottomText,
+  warning,
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
@@ -15,7 +20,7 @@ function MaintainigCleaniless() {
           transition={{ duration: 0.5 }}
           className="md:text-5xl  xs:w-full xs:text-center md:text-start xs:text-[22px] font-bold mb-4 "
         >
-          Maintaining Cleanliness
+          {bottomHeading}
         </motion.h1>
         <motion.p
           ref={ref}
@@ -24,16 +29,11 @@ function MaintainigCleaniless() {
           transition={{ duration: 0.5 }}
           className="mb-4 xs:w-full leading-6 xs:text-center md:text-start md:text-[16px] xs:text-sm"
         >
-          Runners are advised not to throw any cups, wrappers (chocolate/gels),
-          other waste either on the trail or inside water bodies. Use the waste
-          bins kept near the refreshment points. Sholavaram tank is one of the
-          well maintained tank and major supplier of drinking water to the
-          people of Chennai city. Therefore, requesting the cooperation from the
-          runners to maintain the cleanliness of the tank and the trail.
+          {bottomText}
         </motion.p>
         <div className="bg-[#FFF1F1] my-4 xs:w-full md:w-auto xs:text-center md:text-start p-2 rounded-lg md:text-[16px] xs:text-sm">
           <i class="bi bi-exclamation-triangle-fill text-[#f86b6b] mr-2"></i>{" "}
-          Please note that barefoot running is not recommended.
+          {warning}
         </div>
       </div>
       <div className="flex">
@@ -44,7 +44,7 @@ function MaintainigCleaniless() {
             isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
           }
           transition={{ duration: 0.5 }}
-          src="/clean-place-img.png"
+          src={bottomImageUrl}
           alt="clean-place-img"
           className="md:w-full xs:w-full"
           height={350}

@@ -54,13 +54,12 @@ function Hero() {
               transition={{ duration: 0.5 }}
               className="md:w-1/2 xs:w-full xs:px-4 md:px-0 mx-4 flex  justify-center 2xl:w-2/5"
             >
-              <Image
+              <img
                 src={recentEvent.eventBannerOne}
                 alt="event logo"
-                width={480}
-                height={220}
+                width="480px"
+                height="220px"
                 className="xs:pt-14 ms:pt-0 xs:mb-14 md:mb-0"
-                priority
               />
             </motion.div>
             <div className="flex flex-col flex-1 space-y-10 md:w-1/2 xs:w-full xs:text-center  md:text-start">

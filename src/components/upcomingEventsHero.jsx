@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from ".";
 function UpcomingEventsHero({ data }) {
   //destructuring only the first event
-  const eventData = data[0];
+  const [eventData] = data;
   const date = new Date(eventData.date);
   let options = {
     day: "2-digit",
@@ -15,7 +15,6 @@ function UpcomingEventsHero({ data }) {
 
   // Format the date to the given format
   const formattedDate = date.toLocaleDateString("en-US", options);
-
   return (
     <div className="overflow-clip bg-[#070802] xs:h-[100vh] sm:h-[71vh] md:h-[100vh] text-white box-border  flex flex-col  pt-24  md:px-4 font-serif items-center justify-center">
       <div className="flex md:flex-row xs:flex-col  md:space-x-8 xs:space-x-0 xs:text-center md:text-start max-w-[1340px] ">
@@ -58,7 +57,7 @@ function UpcomingEventsHero({ data }) {
           </motion.div>
           <Button
             title={"View Details"}
-            link={"/jhu"}
+            link={`/events/${eventData?.id}`}
             classname={
               "md:text-xl xs:text-sm border border-solid mt-3  text-[#ffffffbf] rounded-3xl p-2  w-[150px]  font-bold hover:text-white"
             }
@@ -71,15 +70,10 @@ function UpcomingEventsHero({ data }) {
         transition={{ duration: 0.5 }}
         className="w-full rounded-lg xs:px-2 md:px-0 md:mt-8 xs:mt-0 max-w-[1340px]"
       >
-        {/* //need to fix this image showing up in full*/}
-        <div className="w-1/3 h-1/4">
-          <Image
-            src={eventData.eventBannerTwo}
-            width={1288}
-            height={440}
-            className="w-full rounded-lg "
-          />
-        </div>
+        <img
+          src={eventData.eventBannerThree}
+          className="w-full h-[448px] rounded-lg "
+        />
       </motion.div>
     </div>
   );

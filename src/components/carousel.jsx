@@ -1,5 +1,4 @@
 "use client";
-import { API_URL } from "@/utils/constants";
 import { useState, useEffect } from "react";
 
 const Carousel = ({ carouselImages }) => {
@@ -7,20 +6,11 @@ const Carousel = ({ carouselImages }) => {
   useEffect(() => {
     //automatically change the images after 5 seconds
     const interval = setInterval(() => {
-      updateCarousel(currentIndex + 1);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  // const images = [
-  //   "/about-us-img-1.png",
-  //   "/about-us-img-2.png",
-  //   "/about-us-img-3.png",
-  //   "/about-us-img-4.png",
-  //   "/about-us-img-5.png",
-  //   "/about-us-img-4.png",
-  // ];
+  }, [carouselImages.length]);
 
   const totalSlides = carouselImages.length;
 
@@ -28,12 +18,12 @@ const Carousel = ({ carouselImages }) => {
     setCurrentIndex((index + totalSlides) % totalSlides);
   };
   const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
   const prevImage = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
     );
   };
   return (
