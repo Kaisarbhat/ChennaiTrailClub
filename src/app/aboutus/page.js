@@ -1,14 +1,57 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Carousel, AboutUsText1, AboutUsText2 } from "../../components/index";
+import axios from "axios";
+import { API_URL } from "@/utils/constants";
 
 const AboutUs = () => {
+  const [images, setImages] = useState({
+    abousUsHeroImg: null,
+    carouselImages: [],
+  });
+
+  useEffect(() => {
+    async function fetchImage() {
+      try {
+        const [abousUsHeroImgResponse, carouselImagesResponse] =
+          await Promise.all([
+            axios.get(`${API_URL}/adminservices/aboutusheroimage`),
+            axios.get(`${API_URL}/adminservices/aboutus`),
+          ]);
+
+        // Check if the data is valid
+        if (!abousUsHeroImgResponse.data || !carouselImagesResponse.data) {
+          console.log("Failed to fetch image");
+        } else {
+          // Set the state with the fetched data
+          setImages({
+            abousUsHeroImg: abousUsHeroImgResponse.data,
+            carouselImages: carouselImagesResponse.data,
+          });
+        }
+      } catch (error) {
+        console.log("Error fetching images:", error);
+      }
+    }
+
+    fetchImage();
+  }, []);
+
   return (
     <>
       <div className="w-screen px-4 pt-20 flex  flex-col items-center ">
+        {/* bg-[url('https://c1.wallpaperflare.com/preview/23/342/352/run-jog-sport-leisure.jpg')] */}
         <div className="mt-10 ">
-          <div className=" w-full flex bg-[url('https://c1.wallpaperflare.com/preview/23/342/352/run-jog-sport-leisure.jpg')] rounded-lg bg-cover  xs:h-[350px] xl:h-[60vh] lg:h-[50vh] 2xl:h-[45vh] sm:h-[70vh] md:h-[75vh] 2xl:w-[1340px] lg:w-[1024px] overflow-clip">
+          <div
+            style={{
+              background: `url(${
+                images.abousUsHeroImg?.imageUrl ||
+                "https://c1.wallpaperflare.com/preview/23/342/352/run-jog-sport-leisure.jpg"
+              })`,
+            }}
+            className=" w-full flex rounded-lg  bg-cover bg-no-repeat  xs:h-[350px] xl:h-[60vh] lg:h-[50vh] 2xl:h-[45vh] sm:h-[70vh] md:h-[75vh] 2xl:w-[1340px] lg:w-[1024px] overflow-clip"
+          >
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ opacity: 1, x: 0 }}
@@ -30,7 +73,7 @@ const AboutUs = () => {
         </div>
         <AboutUsText1 />
         <div className="flex items-center justify-center xs:px-4 2xl:max-w-[1840px]">
-          <Carousel />
+          <Carousel carouselImages={images.carouselImages} />
         </div>
         <AboutUsText2 />
       </div>

@@ -1329,5 +1329,44 @@ export const riskFactors = [
           several of the risk conditions discussed below or from other aspects
           of participation in the`,
 ];
-
+export const recentActivitiesData = [
+  {
+    key: "1",
+    layout: "single",
+    content: ["/new-recent-activities-4.png"],
+  },
+  {
+    key: "2",
+    layout: "complex",
+    content: [
+      "/recent-activities-new-1.png",
+      "/new-recent-activities-2-1.png",
+      "/recent-activities-new-2.png",
+    ],
+  },
+  {
+    key: "3",
+    layout: "stacked",
+    content: ["/new-recent-activities-11.png", "/new-recent-activities-12.png"],
+  },
+  {
+    key: "4",
+    layout: "single",
+    content: ["/recent-activities-new-4.png"],
+  },
+  {
+    key: "5",
+    layout: "complex",
+    content: [
+      "/new-recent-activities-7.png",
+      "/recent-activities-new-5.png",
+      "/new-recent-activities-9.png",
+    ],
+  },
+  {
+    key: "6",
+    layout: "stacked",
+    content: ["/new-recent-activities-5.png", "/recent-activities-new-3.png"],
+  },
+];
 export const API_URL = "http://localhost:3001";

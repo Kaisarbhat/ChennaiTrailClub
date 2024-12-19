@@ -2,179 +2,145 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { API_URL } from "@/utils/constants";
+import { recentActivitiesData } from "@/utils/constants";
+import axios from "axios";
 const RecentActivities = () => {
-  const [images, setImages] = useState();
+  const [images, setImages] = useState([]);
+  const [screenSize, setScreenSize] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  //conditional fetching of images based on screen size
   useEffect(() => {
     async function fetchRecentImages() {
       try {
-        const res = await fetch(`${API_URL}/adminservices/recentactivities`);
-        if (!res.ok) console.log("Failed to fetch images");
-        const images = await res.json();
-        console.log(images);
+        const res = await axios.get(
+          `${API_URL}/adminservices/recentactivities`
+        );
+        if (res.status === 200) {
+          setImages(res.data);
+        } else {
+          console.log("failed to Fetch data");
+        }
       } catch (error) {
         console.log(error.message);
       }
     }
-    fetchRecentImages();
-  }, []);
+    async function fetchRecentImagesMobile() {
+      try {
+        const res = await axios.get(
+          `${API_URL}/adminservices/recentactivitiesmobile`
+        );
+        if (res.status === 200) {
+          setImages(res.data);
+        } else {
+          console.log("Failed to fetch data");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (screenSize < 1024) {
+      fetchRecentImagesMobile();
+    } else {
+      fetchRecentImages();
+    }
+  }, [screenSize]);
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const [startIndex, setStartIndex] = useState(0);
-  const data = [
-    {
-      key: "1",
-      component: () => (
-        <img
-          src="/new-recent-activities-4.png"
-          alt="new-recent-activities-4"
-          className="rounded-lg"
-        />
-      ),
-    },
-    {
-      key: "2",
-      component: () => (
-        <div className="space-y-4">
-          <div className="w-full rounded-lg">
+
+  // Render function for different layout types
+  const renderLayoutContent = (item) => {
+    switch (item.layout) {
+      case "single":
+        return (
+          <div className="grid-item single-image">
             <img
-              src="/recent-activities-new-1.png"
-              alt="recent-activities-new-1"
-              className="w-full rounded-lg"
+              src={item.content[0]}
+              alt={`single-image-${item.key}`}
+              className="w-full h-full object-cover rounded-lg"
             />
           </div>
-          <div className="w-full flex space-x-4 ">
-            <div className="w-2/4 rounded-lg">
+        );
+
+      case "complex":
+        return (
+          <div className="grid-item complex-layout grid grid-cols-2 gap-4">
+            <div className="col-span-2">
               <img
-                src="/new-recent-activities-2-1.png"
-                alt="new-recent-activities-2-1"
-                className="rounded-lg"
+                src={item.content[0]}
+                alt={`main-image-${item.key}`}
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
-            <div className="w-2/4 rounded-lg">
+            <div>
               <img
-                src="/recent-activities-new-2.png"
-                alt="recent-activities-new-2"
-                className="rounded-lg"
+                src={item.content[1]}
+                alt={`sub-image-1-${item.key}`}
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      key: "3",
-      component: () => (
-        <div className="space-y-4">
-          <div className="w-full rounded-lg overflow-hidden">
-            <img
-              src="/new-recent-activities-11.png"
-              alt="new-recent-activities-11"
-              className="w-full rounded-lg"
-            />
-          </div>
-          <div className="w-full rounded-lg overflow-hidden">
-            <img
-              src="/new-recent-activities-12.png"
-              alt="new-recent-activities-12"
-              className="w-full rounded-lg"
-            />
-          </div>
-        </div>
-      ),
-    },
-    {
-      key: "4",
-      component: () => (
-        <img
-          src="/recent-activities-new-4.png"
-          alt="recent-activities-new-4"
-          className="rounded-lg"
-        />
-      ),
-    },
-    {
-      key: "5",
-      component: () => (
-        <div className="space-y-4">
-          <div className="w-full rounded-lg">
-            <img
-              src="/new-recent-activities-7.png"
-              alt="new-recent-activities-7"
-              className="w-full rounded-lg"
-            />
-          </div>
-          <div className="w-full flex space-x-4 ">
-            <div className="w-2/4 rounded-lg">
+            <div>
               <img
-                src="/recent-activities-new-5.png"
-                alt="recent-activities-new-5"
-                className="rounded-lg"
-              />
-            </div>
-            <div className="w-2/4 rounded-lg">
-              <img
-                src="/new-recent-activities-9.png"
-                alt="new-recent-activities-9"
-                className="rounded-lg"
+                src={item.content[2]}
+                alt={`sub-image-2-${item.key}`}
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>
-        </div>
-      ),
-    },
-    {
-      key: "6",
-      component: () => (
-        <div className="space-y-4">
-          <div className="w-full rounded-lg overflow-hidden">
-            <img
-              src="/new-recent-activities-5.png"
-              alt="new-recent-activities-5"
-              className="w-full rounded-lg"
-            />
+        );
+
+      case "stacked":
+        return (
+          <div className="grid-item stacked-layout grid grid-cols-1 gap-4">
+            {item.content.map((imgSrc, index) => (
+              <img
+                key={index}
+                src={imgSrc}
+                alt={`stacked-image-${item.key}-${index}`}
+                className="w-full object-cover rounded-lg"
+              />
+            ))}
           </div>
-          <div className="w-full rounded-lg overflow-hidden">
-            <img
-              src="/recent-activities-new-3.png"
-              alt="recent-activities-new-3"
-              className="w-full rounded-lg"
-            />
-          </div>
-        </div>
-      ),
-    },
-  ];
-  const mobileImages = [
-    {
-      imageUrl: "/running-activities-768x512.png",
-      alt: "running-activities-768x512",
-    },
-    {
-      imageUrl: "/recent-activities-new-3.png",
-      alt: "recent-activities-new-3",
-    },
-    {
-      imageUrl: "/recent-activities-new-1.png",
-      alt: "recent-activities-new-1",
-    },
-  ];
+        );
+
+      default:
+        return null;
+    }
+  };
   const moveForward = () => {
-    setStartIndex((prevIndex) => (prevIndex + 1) % data.length);
+    setStartIndex((prevIndex) => (prevIndex + 1) % recentActivitiesData.length);
   };
 
   const moveBackward = () => {
-    setStartIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
+    setStartIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + recentActivitiesData.length) %
+        recentActivitiesData.length
+    );
   };
 
   const visibleComponents = [
-    data[startIndex % data.length],
-    data[(startIndex + 1) % data.length],
-    data[(startIndex + 2) % data.length],
+    recentActivitiesData[startIndex % recentActivitiesData.length],
+    recentActivitiesData[(startIndex + 1) % recentActivitiesData.length],
+    recentActivitiesData[(startIndex + 2) % recentActivitiesData.length],
   ];
 
   const updateCarousel = (index) => {
-    setStartIndex((index + data.length) % data.length);
+    setStartIndex(
+      (index + recentActivitiesData.length) % recentActivitiesData.length
+    );
   };
   useEffect(() => {
     const interval = setInterval(() => {
@@ -237,14 +203,14 @@ const RecentActivities = () => {
         <div className="w-full md:h-2/3 flex md:flex-nowrap mt-4">
           <div className="w-full xl:h-[500px] md:flex xs:hidden flex-row space-x-4 ">
             {visibleComponents.map((item) => (
-              <div key={item.key}>{item.component()}</div>
+              <div key={item.key}>{renderLayoutContent(item)}</div>
             ))}
           </div>
         </div>
 
         {/* Display images on mobile phones */}
         <div className="xs:flex md:hidden flex-col items-center space-y-3 w-full">
-          {mobileImages.map((item, index) => (
+          {images.slice(0, 3).map((item, index) => (
             <img
               key={index}
               src={item.imageUrl}
@@ -263,8 +229,8 @@ const RecentActivities = () => {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 2 }}
-            src="new-recent-activities-5.png"
-            alt="new-recent-activities-5"
+            src={images[3]?.imageUrl}
+            alt={images[3]?.alt}
             className=" hidden rounded-lg xs:h-[180px] sm:h-full w-full last_img"
           />
         </div>

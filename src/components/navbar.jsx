@@ -79,7 +79,7 @@ function Navbar() {
             className="rounded-full"
           />
         </a>
-        <nav className="w-full  flex flex-row justify-end items-center font-sans text-[16px]">
+        <nav className="w-full  flex flex-row justify-end items-center font-sans text-[18px] ">
           <ul className="xl:flex  list-none space-x-10   nav-links md:hidden xs:hidden ">
             <li className=" hover:text-purple-900 cursor-pointer">
               <Link href="/home"> Home </Link>{" "}
@@ -95,7 +95,7 @@ function Navbar() {
               {" "}
               Events
               {isHovered && (
-                <ul className="absolute right-24 2xl:right-[270px] bg-white text-black rounded shadow-lg py-2 z-10">
+                <ul className="absolute right-24 2xl:right-[360px] bg-white text-black rounded shadow-lg py-2 z-10">
                   <li className="hover:bg-gray-300">
                     <Link href="/upcomingevents" className="block px-4 py-2">
                       Upcoming Events

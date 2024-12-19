@@ -1,38 +1,39 @@
 "use client";
+import { API_URL } from "@/utils/constants";
 import { useState, useEffect } from "react";
 
-const Carousel = () => {
+const Carousel = ({ carouselImages }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
+    //automatically change the images after 5 seconds
     const interval = setInterval(() => {
       updateCarousel(currentIndex + 1);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
 
-  const images = [
-    "/about-us-img-1.png",
-    "/about-us-img-2.png",
-    "/about-us-img-3.png",
-    "/about-us-img-4.png",
-    "/about-us-img-5.png",
-    "/about-us-img-4.png",
-  ];
+  // const images = [
+  //   "/about-us-img-1.png",
+  //   "/about-us-img-2.png",
+  //   "/about-us-img-3.png",
+  //   "/about-us-img-4.png",
+  //   "/about-us-img-5.png",
+  //   "/about-us-img-4.png",
+  // ];
 
-  const totalSlides = images.length;
+  const totalSlides = carouselImages.length;
 
   const updateCarousel = (index) => {
     setCurrentIndex((index + totalSlides) % totalSlides);
   };
   const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
   };
 
   const prevImage = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
     );
   };
   return (
@@ -42,10 +43,10 @@ const Carousel = () => {
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((src, index) => (
+          {carouselImages?.map((item, index) => (
             <div key={index} className="min-w-full min-h-full">
               <img
-                src={src}
+                src={item.imageUrl}
                 alt={`Image ${index + 1}`}
                 className="w-full h-full"
               />
@@ -66,7 +67,7 @@ const Carousel = () => {
         <i class="bi bi-arrow-right-circle-fill"></i>
       </button>
       <div className="flex justify-center mt-4 space-x-2">
-        {images.map((_, index) => (
+        {carouselImages.map((_, index) => (
           <button
             key={index}
             className={`dot md:w-3 md:h-3 xs:w-2 xs:h-2 rounded-full focus:outline-none ${

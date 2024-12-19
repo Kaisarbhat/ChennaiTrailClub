@@ -56,6 +56,7 @@ function Features() {
                       width={500}
                       height={400}
                       className="w-full rounded-lg "
+                      priority
                     />
                     <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
                       {item.title}
