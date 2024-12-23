@@ -1,55 +1,33 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
-import * as Yup from "yup";
-import Image from "next/image";
-import { Timeline, RegisterCard, Button } from "@/components";
-import { API_URL, registerContent } from "@/utils/constants";
+import React, { useEffect, useState, useCallback } from "react";
+import { Formik, Form, Field } from "formik";
+import { validationSchemas, initialValues } from "@/schema/registrationSchema";
+import { Timeline, RegisterCard } from "@/components";
+import { API_URL, dateOptions, registerContent } from "@/utils/constants";
 import axios from "axios";
 import TermsAndConditions from "@/components/T&C";
-import { ToastContainer, toast, Bounce } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "next/navigation";
-const EventRegistration = () => {
-  //form states
-  const [currentStep, setCurrentStep] = useState(1);
-  const [price, setPrice] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [key, setKey] = useState("");
-  const [data, setData] = useState();
-  const totalSteps = 4;
-  //event states
-  const param = useParams();
-  const eventId = param.eventId;
-  const [eventData, setEventData] = useState();
-  useEffect(() => {
-    //fetching the payment key from backend
-    async function fetchKey() {
-      try {
-        const { data } = await axios.get(`${API_URL}/payment`);
-        setKey(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-    fetchKey();
-  }, []);
+import Loading from "@/components/loading";
+import ErrorPage from "@/app/error/page";
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get(`${API_URL}/events/event/${eventId}`);
-        if (res.status === 200) {
-          setEventData(res.data);
-        } else {
-          console.log("Failed to fetch data");
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-    fetchData();
-  }, [eventId]);
+const EventRegistration = () => {
+  const [formState, setFormState] = useState({
+    currentStep: 1,
+    price: 0,
+    selectedCategory: "",
+    key: "",
+    data: null,
+    error: "",
+    isLoading: false,
+  });
+
+  const [eventData, setEventData] = useState(null);
+  const { eventId } = useParams();
+  const totalSteps = 4;
+
+  // Memoized toast configuration
   const toastStyle = {
     position: "top-center",
     autoClose: 5000,
@@ -59,351 +37,302 @@ const EventRegistration = () => {
     draggable: true,
     progress: undefined,
     theme: "dark",
-    transition: Bounce,
+    transition: "Bounce",
   };
-  //function to load razorpay sdk
-  function loadScript(src) {
+
+  // Load Razorpay script
+  const loadScript = useCallback(async (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
       script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
       document.body.appendChild(script);
     });
-  }
-  //displaying razorpay gateway
-  async function displayRazorpay() {
+  }, []);
+
+  // Fetch payment key
+  useEffect(() => {
+    const fetchKey = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/payment`);
+        setFormState((prev) => ({ ...prev, key: data }));
+      } catch (error) {
+        console.error("Error fetching payment key:", error);
+      }
+    };
+    fetchKey();
+  }, []);
+
+  // Fetch event data
+  useEffect(() => {
+    const fetchEventData = async () => {
+      setFormState((prev) => ({ ...prev, isLoading: true }));
+      try {
+        const { data } = await axios.get(`${API_URL}/events/event/${eventId}`);
+        setEventData(data);
+      } catch (error) {
+        setFormState((prev) => ({
+          ...prev,
+          error: error.message,
+          isLoading: false,
+        }));
+      } finally {
+        setFormState((prev) => ({ ...prev, isLoading: false }));
+      }
+    };
+    fetchEventData();
+  }, [eventId]);
+
+  const handleRazorpayDisplay = useCallback(async () => {
     try {
-      const res = await loadScript(
+      const scriptLoaded = await loadScript(
         "https://checkout.razorpay.com/v1/checkout.js"
       );
-      if (!res) {
-        alert("Razorpay SDK failed to load. Are you online?");
-        return;
+      if (!scriptLoaded) {
+        throw new Error("Razorpay SDK failed to load");
       }
 
-      const result = await axios.post(`${API_URL}/payment/checkout`, {
-        amount: Number(price),
+      const { data: result } = await axios.post(`${API_URL}/payment/checkout`, {
+        amount: Number(formState.price),
         currency: "INR",
       });
-      console.log("Result : ", result);
-      //options for payment
+
       const options = {
-        key: key,
-        amount: result.data.amount,
-        currency: result.data.currency,
+        key: formState.key,
+        amount: result.amount,
+        currency: result.currency,
         name: "Chennai Trail Club",
         description: "Test Transaction",
-        order_id: result.data.id,
-        // callbackUrl: `${API_URL}/payment/success`,
-        handler: async function (response) {
+        order_id: result.id,
+        handler: async (response) => {
           try {
-            // console.log("Payment success:", response);
-            const data = {
-              orderCreationId: result.data.id,
+            const verifyData = {
+              orderCreationId: result.id,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpayOrderId: response.razorpay_order_id,
               razorpaySignature: response.razorpay_signature,
             };
-            const verify = await axios.post(`${API_URL}/payment/success`, data);
-
-            if (verify.data.msg === "Payment verified successfully") {
-              toast.success("Payment Successful", toastStyle);
-            } else {
-              toast.error("Payment Unsuccessful", toastStyle);
-            }
+            const { data: verifyResult } = await axios.post(
+              `${API_URL}/payment/success`,
+              verifyData
+            );
+            toast[
+              verifyResult.msg === "Payment verified successfully"
+                ? "success"
+                : "error"
+            ](
+              `Payment ${
+                verifyResult.msg === "Payment verified successfully"
+                  ? "Successful"
+                  : "Unsuccessful"
+              }`,
+              toastStyle
+            );
           } catch (error) {
-            throw error;
+            setFormState((prev) => ({ ...prev, error: error.message }));
           }
         },
         prefill: {
-          name: data.name,
-          email: data.email,
-          contact: data.mobile,
+          name: formState.data?.name,
+          email: formState.data?.email,
+          contact: formState.data?.mobile,
         },
-        theme: {
-          color: "#61dafb",
-        },
+        theme: { color: "#61dafb" },
       };
 
-      // console.log("Razorpay options:", options);
-
       const paymentObject = new window.Razorpay(options);
-      paymentObject.on("payment.failed", function (response) {
+      paymentObject.on("payment.failed", (response) => {
         console.error("Payment failed:", response.error);
-        alert(`Payment failed: ${response.error.description}`);
+        setFormState((prev) => ({
+          ...prev,
+          error: `Payment failed: ${response.error.description}`,
+        }));
       });
 
       paymentObject.open();
     } catch (error) {
-      console.error("Error details:", error);
-      if (error.response) {
-        alert(
-          `Server error: ${error.response.data.message || "Unknown error"}`
-        );
-      } else if (error.request) {
-        alert("Network error. Please check your connection.");
-      } else {
-        alert(`Error: ${error.message}`);
-      }
+      const errorMessage = error.response?.data?.message || error.message;
+      setFormState((prev) => ({
+        ...prev,
+        error: error.response
+          ? `Server error: ${errorMessage}`
+          : error.request
+          ? "Network error. Please check your connection."
+          : `Error: ${errorMessage}`,
+      }));
     }
-  }
+  }, [formState.key, formState.price, formState.data, loadScript, toastStyle]);
 
-  async function handleFormSubmission(values) {
-    try {
-      const response = await axios.post(
-        `${API_URL}/users/register/${eventId}`,
-        values
-      );
-      if (response.status !== 200) {
-        toast.error(data.message, toastStyle);
-      } else {
+  const handleFormSubmission = useCallback(
+    async (values) => {
+      try {
+        const { data } = await axios.post(
+          `${API_URL}/users/register/${eventId}`,
+          values
+        );
+
+        if (data.status !== 200) {
+          toast.error(data.message, toastStyle);
+          return;
+        }
+
         toast.success("Registration successful!", toastStyle);
-        await displayRazorpay();
+        if (values.joinClub) {
+          toast.success(
+            "Thank You for becoming a member of our club",
+            toastStyle
+          );
+        }
+
+        await handleRazorpayDisplay();
+      } catch (error) {
+        setFormState((prev) => ({ ...prev, error: error.message }));
+        toast.error(error.response?.data?.message, toastStyle);
       }
-      if (data.joinClub) {
-        toast.success(
-          "Thank You for becoming a memeber of our club",
-          toastStyle
-        );
+    },
+    [eventId, handleRazorpayDisplay, toastStyle]
+  );
+
+  const renderField = useCallback(
+    ({ field, form: { setFieldValue, values } }) => {
+      const fieldConfig = registerContent[
+        formState.currentStep - 1
+      ].fields.find((f) => f.name === field.name);
+
+      if (!fieldConfig) return null;
+
+      const commonInputProps = {
+        ...field,
+        className: "mt-2 w-full border border-solid p-2 rounded-md",
+      };
+
+      switch (fieldConfig.type) {
+        case "select":
+          return (
+            <select
+              {...commonInputProps}
+              onChange={(e) => {
+                setFieldValue(field.name, e.target.value);
+                if (field.name === "runningCategory") {
+                  const price =
+                    e.target.value
+                      .split("(")[1]
+                      ?.split(")")[0]
+                      ?.split(" ")[1] || "0";
+                  setFormState((prev) => ({
+                    ...prev,
+                    selectedCategory: e.target.value,
+                    price,
+                  }));
+                }
+              }}
+            >
+              <option value="">---please choose an option---</option>
+              {fieldConfig.options.map((option, idx) => (
+                <option key={idx} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          );
+
+        case "radio":
+          return (
+            <div className="flex items-center space-x-4 text-[#070802]">
+              {fieldConfig.options.map((option, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="radio"
+                    {...field}
+                    id={`${field.name}-${idx}`}
+                    value={option}
+                    checked={values[field.name] === option}
+                    onChange={() => setFieldValue(field.name, option)}
+                    className="mb-0"
+                  />
+                  <label htmlFor={`${field.name}-${idx}`}>{option}</label>
+                </div>
+              ))}
+            </div>
+          );
+
+        case "termsandconditions":
+          return <TermsAndConditions values={values} />;
+
+        case "para":
+          return null;
+
+        default:
+          return <input type={fieldConfig.type} {...commonInputProps} />;
       }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+    },
+    [formState.currentStep]
+  );
 
-  const validationSchemas = [
-    Yup.object({
-      runningCategory: Yup.string().required("This field is required"),
-      firstName: Yup.string()
-        .required("This field is required")
-        .min(3, "Name should not be less than 3 characters"),
-      lastName: Yup.string()
-        .required("This field is required")
-        .min(2, "Name should not be less than 2 characters"),
-      mobile: Yup.string()
-        .required("This field is required")
-        .matches(/^[6-9]\d{9}$/, "Please provide a Valid mobile number"),
-      email: Yup.string()
-        .email("Invalid email")
-        .required("This field is required"),
-      gender: Yup.string().required("This field is required"),
-      dateOfBirth: Yup.date().required("This field is required"),
-      tShirtSize: Yup.string().required("This field is required"),
-      city: Yup.string().required("This field is required"),
-      state: Yup.string().required("This field is required"),
-    }),
-    Yup.object({
-      bloodGroup: Yup.string().required("This field is required"),
-      bibName: Yup.string().required("This field is required"),
-      runningClub: Yup.string().required("This field is required"),
-      emergencyContactName: Yup.string().required("This field is required"),
-      emergencyContactRelation: Yup.string().required("This field is required"),
-      emergencyContactNumber: Yup.string()
-        .required("This field is required")
-        .matches(/^[6-9]\d{9}$/, "Please provide a Valid mobile number"),
-    }),
-    Yup.object({
-      cardiovascularDisease: Yup.string().required("This field is required"),
-      medicalSupervision: Yup.string().required("This field is required"),
-      pregnancyRisk: Yup.string().required("This field is required"),
-      asthma: Yup.string().required("This field is required"),
-      dizziness: Yup.string().required("This field is required"),
-      chestPain: Yup.string().required("This field is required"),
-      chronicIllness: Yup.string().required("This field is required"),
-      otherMedicalConditions: Yup.string(),
-    }),
-    Yup.object({
-      timingCertificates: Yup.string()
-        .url("Must be a valid URL")
-        .required("This field is required"),
-      waiverAcknowledgement: Yup.boolean().oneOf(
-        [true],
-        "You must acknowledge the waiver form"
-      ),
-      joinClub: Yup.boolean(),
-    }),
-  ];
-  const initialValues = {
-    runningCategory: "",
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    email: "",
-    gender: "",
-    dateOfBirth: "",
-    tShirtSize: "",
-    city: "",
-    state: "",
-    bloodGroup: "",
-    bibName: "",
-    runningClub: "",
-    emergencyContactName: "",
-    emergencyContactRelation: "",
-    emergencyContactNumber: "",
-    cardiovascularDisease: "",
-    medicalSupervision: "",
-    pregnancyRisk: "",
-    asthma: "",
-    dizziness: "",
-    chestPain: "",
-    chronicIllness: "",
-    otherMedicalConditions: "",
-    timingCertificates: "",
-    waiverAcknowledgement: false,
-    joinClub: false,
-  };
+  if (formState.isLoading) return <Loading />;
+  if (formState.error) return <ErrorPage error={formState.error} />;
 
-  const renderField = ({ field, form: { setFieldValue, values } }) => {
-    const fieldConfig = registerContent[currentStep - 1].fields.find(
-      (f) => f.name === field.name
-    );
+  const formattedDate = eventData
+    ? new Date(eventData.date).toLocaleDateString("en-US", dateOptions)
+    : "";
 
-    if (!fieldConfig) return null;
-    switch (fieldConfig.type) {
-      case "select":
-        return (
-          <select
-            {...field}
-            className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
-            onChange={(e) => {
-              setFieldValue(field.name, e.target.value);
-              if (field.name === "runningCategory") {
-                setSelectedCategory(e.target.value);
-                const selectedPrice =
-                  e.target.value.split("(")[1]?.split(")")[0]?.split(" ")[1] ||
-                  "0";
-                setPrice(selectedPrice);
-              }
-            }}
-          >
-            <option value="">---please choose an option---</option>
-            {fieldConfig.options.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        );
-      case "radio":
-        return (
-          <div className="flex items-center space-x-4 text-[#070802]">
-            {fieldConfig.options.map((option, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center space-x-2"
-              >
-                <input
-                  type="radio"
-                  {...field}
-                  id={`${field.name}-${index}`}
-                  value={option}
-                  checked={values[field.name] === option}
-                  onChange={() => setFieldValue(field.name, option)}
-                  className="mb-0"
-                />
-                <label htmlFor={`${field.name}-${index}`}>{option}</label>
-              </div>
-            ))}
-          </div>
-        );
-      case "checkbox":
-        return (
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              {...field}
-              checked={values[field.name]}
-              onChange={(e) => setFieldValue(field.name, e.target.checked)}
-              className="w-[12px] h-[12px] p-0 mb-0 mr-2"
-            />
-            <label htmlFor={field.name}>{fieldConfig.label}</label>
-          </div>
-        );
-      case "date":
-        return (
-          <input
-            type="date"
-            {...field}
-            min={fieldConfig.min}
-            max={fieldConfig.max}
-            className="mt-2 w-full border border-solid p-2 rounded-md"
-          />
-        );
-      case "termsandconditions":
-        return <TermsAndConditions values={values} />;
-      case "para":
-        return <div></div>;
-      default:
-        return (
-          <input
-            type={fieldConfig.type}
-            {...field}
-            className="mt-2 w-full border border-solid p-2 rounded-md"
-          />
-        );
-    }
-  };
-  const date = new Date(eventData?.date);
-  const formattedDate = date.toLocaleDateString("en-Us", {
-    weekday: "long",
-    month: "long",
-    year: "numeric",
-    day: "2-digit",
-  });
-  console.log(eventData, formattedDate);
   return (
     <div className="w-full flex flex-col items-center overflow-clip">
       <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
-        <div>
-          <ToastContainer />
-          <ToastContainer />
+        <ToastContainer />
+        {eventData?.eventBannerTwo && (
           <img
-            src={eventData?.eventBannerOne}
-            alt="JHU-2024-Banner"
+            src={eventData.eventBannerTwo}
+            alt={`${eventData.name} - banner`}
             width={1300}
             height={500}
           />
-        </div>
+        )}
         <div className="flex flex-col md:mt-10 xs:mt-2 pt-6">
-          <Timeline currentStep={currentStep} totalSteps={totalSteps} />
+          <Timeline
+            currentStep={formState.currentStep}
+            totalSteps={totalSteps}
+          />
           <div className="text-[#50514C] text-[16px] flex lg:flex-row md:flex-col xs:flex-col items-center justify-between">
             <div className="xl:1/2 lg:w-3/5 md:w-full xs:w-full">
               <Formik
                 initialValues={initialValues}
-                validationSchema={validationSchemas[currentStep - 1]}
+                validationSchema={validationSchemas[formState.currentStep - 1]}
                 validateOnMount={false}
                 validateOnChange={true}
                 validateOnBlur={true}
                 onSubmit={async (values, { setSubmitting, setTouched }) => {
-                  setData(values);
                   try {
-                    if (currentStep < totalSteps) {
-                      // Reset touched states when moving to next step
-                      setTouched({});
-                      setCurrentStep((preState) => preState + 1);
+                    if (formState.currentStep < totalSteps) {
+                      setFormState((prev) => ({
+                        ...prev,
+                        currentStep: prev.currentStep + 1,
+                      }));
+                      setTimeout(() => setTouched({}, false), 0);
                     } else {
-                      setTouched({});
-
                       await handleFormSubmission(values);
                     }
-                  } catch (error) {
-                    console.error("Form submission error:", error);
                   } finally {
                     setSubmitting(false);
                   }
                 }}
               >
-                {({ isSubmitting, touched, errors, setTouched }) => (
+                {({
+                  isSubmitting,
+                  touched,
+                  errors,
+                  setTouched,
+                  validateForm,
+                }) => (
                   <Form className="space-y-4 text-sm">
                     <h1 className="text-2xl text-[#070802] font-bold mb-6">
-                      {registerContent[currentStep - 1].title}
+                      {registerContent[formState.currentStep - 1].title}
                     </h1>
-                    {registerContent[currentStep - 1].fields.map(
+                    {registerContent[formState.currentStep - 1].fields.map(
                       (fieldConfig, index) => (
                         <div key={index}>
                           <label className="block mb-1">
@@ -420,12 +349,15 @@ const EventRegistration = () => {
                       )
                     )}
                     <div className="w-full flex items-center justify-between mt-8">
-                      {currentStep > 1 && (
+                      {formState.currentStep > 1 && (
                         <button
                           type="button"
                           onClick={() => {
-                            setTouched({}); // Reset touched states when going back
-                            setCurrentStep((prevState) => prevState - 1);
+                            setTouched({}, false);
+                            setFormState((prev) => ({
+                              ...prev,
+                              currentStep: prev.currentStep - 1,
+                            }));
                           }}
                           className="text-sm border border-solid border-[#121212] text-[#121212] rounded-3xl p-2 w-24 font-bold"
                         >
@@ -433,29 +365,44 @@ const EventRegistration = () => {
                         </button>
                       )}
                       <button
-                        type={currentStep < totalSteps ? "button" : "submit"}
+                        type="button"
                         disabled={isSubmitting}
                         className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
-                        onClick={() => {
-                          // Mark all fields as touched when clicking Next
-                          const touchedFields = {};
-                          registerContent[currentStep - 1].fields.forEach(
-                            (field) => {
-                              touchedFields[field.name] = true;
-                            }
+                        onClick={async () => {
+                          const currentFields =
+                            registerContent[formState.currentStep - 1].fields;
+                          const touchedFields = Object.fromEntries(
+                            currentFields.map((field) => [field.name, true])
                           );
                           setTouched(touchedFields);
 
-                          // this will trigger validation
-                          document.forms[0].dispatchEvent(
-                            new Event("submit", {
-                              cancelable: true,
-                              bubbles: true,
-                            })
-                          );
+                          if (formState.currentStep < totalSteps) {
+                            const errors = await validateForm();
+                            const currentFieldNames = currentFields.map(
+                              (field) => field.name
+                            );
+                            const currentStepErrors = Object.keys(
+                              errors
+                            ).filter((key) => currentFieldNames.includes(key));
+
+                            if (currentStepErrors.length === 0) {
+                              setFormState((prev) => ({
+                                ...prev,
+                                currentStep: prev.currentStep + 1,
+                              }));
+                              setTimeout(() => setTouched({}, false), 0);
+                            }
+                          } else {
+                            document.forms[0].dispatchEvent(
+                              new Event("submit", {
+                                cancelable: true,
+                                bubbles: true,
+                              })
+                            );
+                          }
                         }}
                       >
-                        {currentStep < totalSteps
+                        {formState.currentStep < totalSteps
                           ? "Next"
                           : "Proceed for Payment"}
                       </button>
@@ -466,12 +413,12 @@ const EventRegistration = () => {
             </div>
             <RegisterCard
               name={eventData?.name}
-              imageUrl={eventData?.eventBannerOne}
+              imageUrl={eventData?.eventBannerTwo}
               date={formattedDate}
               location={eventData?.location}
               locationUrl={eventData?.locationUrl}
-              price={price}
-              category={selectedCategory}
+              price={formState.price}
+              category={formState.selectedCategory}
             />
           </div>
         </div>

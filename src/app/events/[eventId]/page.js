@@ -6,54 +6,48 @@ import RegisterButton from "@/components/registerButton";
 import MaintainigCleaniless from "@/components/maintainigCleaniless";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { API_URL } from "@/utils/constants";
+import { API_URL, dateOptions } from "@/utils/constants";
 import axios from "axios";
+import Loading from "@/components/loading";
+import ErrorPage from "@/app/error/page";
 const DynamicEvent = () => {
   const params = useParams();
   const eventId = params.eventId;
-  useEffect(() => {
-    console.log("Page mounted");
-    console.log("Current params:", params);
-  }, [params]);
-  const [eventData, setEventData] = useState();
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, setState] = useState({
+    eventData: [],
+    isLoading: false,
+    error: "",
+  });
   useEffect(() => {
     async function fetchEventData() {
       try {
-        setIsLoading(true);
+        setState((prev) => ({ ...prev, isLoading: true }));
         const res = await axios.get(`${API_URL}/events/event/${eventId}`);
         if (res.status === 200) {
-          setEventData(res.data);
+          setState((prev) => ({ ...prev, eventData: res.data }));
         } else {
-          setError("failed to fetch Event data");
+          setState((prev) => ({
+            ...prev,
+            error: "failed to fetch Event data",
+          }));
         }
       } catch (error) {
-        setError(error.message);
+        setState((prev) => ({ ...prev, error: error.message }));
       } finally {
-        setIsLoading(false);
+        setState((prev) => ({ ...prev, isLoading: false }));
       }
     }
     fetchEventData();
   }, [eventId]);
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
-      </div>
-    );
+  if (state.isLoading) {
+    return <Loading />;
   }
 
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">Error Loading Event</h1>
-        <p className="text-gray-600">{error}</p>
-      </div>
-    );
+  if (state.error !== "") {
+    return <ErrorPage error={state.error} />;
   }
 
-  if (!eventData) {
+  if (!state.eventData) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-2xl font-bold mb-4">Event Not Found</h1>
@@ -63,12 +57,14 @@ const DynamicEvent = () => {
       </div>
     );
   }
+
   const {
+    id,
     name,
     shortName,
     description,
     location,
-    eventBannerTwo,
+    eventBannerThree,
     locationUrl,
     middleImageUrl,
     heading,
@@ -77,26 +73,22 @@ const DynamicEvent = () => {
     bottomHeading,
     bottomText,
     warning,
-  } = eventData;
-  const date = new Date(eventData?.date);
-  const formattedDate = date.toLocaleDateString("en-Us", {
-    weekday: "long",
-    month: "long",
-    year: "numeric",
-    day: "2-digit",
-  });
-  console.log("here");
+    resultLink,
+  } = state.eventData;
+  const date = new Date(state.eventData?.date);
+  const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
 
   return (
     <div className="py-16 text-[#50514C]">
       <EventDetailsHero
         name={name}
         shortName={shortName}
-        eventBannerTwo={eventBannerTwo}
+        eventBannerTwo={eventBannerThree}
         description={description}
         date={formattedDate}
         location={location}
         locationUrl={locationUrl}
+        resultLink={resultLink}
       />
 
       <div className="flex  flex-col justify-center items-center md:py-8 md:px-4  w-full">
@@ -107,7 +99,7 @@ const DynamicEvent = () => {
           <EventInfo />
         </div>
 
-        <RegisterButton />
+        <RegisterButton id={id} name={name} resultLink={resultLink} />
         <AboutRaceLocation
           heading={heading}
           middleImageUrl={middleImageUrl}

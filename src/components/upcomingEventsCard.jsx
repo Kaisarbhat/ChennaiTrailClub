@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Button } from ".";
 
 function UpcomingEventsCard({
@@ -10,9 +9,9 @@ function UpcomingEventsCard({
   location,
 }) {
   return (
-    <div className="overflow-clip flex md:flex-row xs:flex-col md:justify-between xs:justify-center  md:w-1/2 sm:w-full xs:w-full  md:px-0 xs:px-4">
+    <div className="overflow-clip flex md:flex-row xs:flex-col md:justify-between xs:justify-center  md:w-1/2 sm:w-full xs:w-full  md:px-0 xs:px-4 min-w-96">
       <div className="border border-solid hover:shadow-mine hover:border-[#7328f6]  rounded-xl  flex sm:flex-row  lg:flex-col  xs:flex-col md:justify-between p-3 md:space-x-3  xs:space-x-0 my-6 min-h-52 sm:space-y-0 xs:space-y-3 ">
-        <Image
+        <img
           src={eventBannerTwo}
           width={200}
           height={400}
@@ -25,10 +24,10 @@ function UpcomingEventsCard({
           </h1>
 
           <a className="text-[16px] underline text-[#50514c]" href="">
-            <i class="bi bi-geo-alt-fill text-[#D0F700] "></i> {location}
+            <i className="bi bi-geo-alt-fill text-[#D0F700] "></i> {location}
           </a>
           <div className="text-[16px]  text-[#50514c]">
-            <i class="bi bi-calendar3 text-[#D0F700]"></i> {date}
+            <i className="bi bi-calendar3 text-[#D0F700]"></i> {date}
           </div>
           <Button
             title={"Register"}

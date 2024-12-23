@@ -424,7 +424,8 @@ export const eventContent = [
         </ul>
         <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-[#50514c] p-4 space-y-4 mt-6">
           <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i class="bi bi-exclamation-circle-fill text-[#ffb24d]"></i> Note
+            <i className="bi bi-exclamation-circle-fill text-[#ffb24d]"></i>{" "}
+            Note
           </h2>
           <ul className="list-disc space-y-2 px-16 xs:px-8 flex flex-col justify-between xs:text-sm">
             <li>
@@ -533,7 +534,7 @@ export const eventContent = [
         <div className="flex flex-col space-y-4">
           <div>
             <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i class="bi bi-calendar2-event mr-3"></i>
+              <i className="bi bi-calendar2-event mr-3"></i>
               Pre-Race Dinner (November 08, 2024)
             </h2>
             <p className="md:p-3 xs:px-8 md:text-[16px] xs:text-[13px] xs:leading-loose">
@@ -545,7 +546,7 @@ export const eventContent = [
           </div>
           <div>
             <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i class="bi bi-calendar2-event mr-3"></i>
+              <i className="bi bi-calendar2-event mr-3"></i>
               Pre-Race Breakfast (November 09, 2024)
             </h2>
             <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
@@ -556,8 +557,8 @@ export const eventContent = [
           </div>
           <div>
             <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i class="bi bi-calendar2-event mr-3"></i>Post-Race Meal (November
-              09, 2024)
+              <i className="bi bi-calendar2-event mr-3"></i>Post-Race Meal
+              (November 09, 2024)
             </h2>
             <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
               Lunch will be served for 30KM runners. 60KM runners will get light
@@ -703,7 +704,7 @@ export const eventContent = [
         </h1>
         <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6 mb-4">
           <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i class="bi bi-exclamation-circle-fill text-[#f1a847]"></i>{" "}
+            <i className="bi bi-exclamation-circle-fill text-[#f1a847]"></i>{" "}
             Important
           </h2>
           <ul className="list-disc space-y-3 md:px-16 xs:px-8 md:text-[16px] xs:text-sm">
@@ -832,7 +833,7 @@ export const eventContent = [
         <div className="w-full  space-y-2 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
           <div className="md:w-1/3 xs:w-full p-2">
             <div>
-              <i class="bi bi-flag text-[56px]  text-[#D0F700]"></i>
+              <i className="bi bi-flag text-[56px]  text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
               The terrain is not same:
@@ -845,7 +846,7 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i class="bi bi-search text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-search text-[56px] text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
               Find your rhythm:
@@ -857,8 +858,8 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3  p-2 xs:w-full">
             <div>
-              <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
-              <i class="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
               Run with a buddy:
@@ -870,7 +871,7 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i class="bi bi-emoji-heart-eyes text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-emoji-heart-eyes text-[56px] text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
               Keep your eyes on the trail:
@@ -883,7 +884,7 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i class="bi bi-shop text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-shop text-[56px] text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
               Sport with your Trail shoes:
@@ -895,7 +896,7 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3  p-2 xs:w-full">
             <div>
-              <i class="bi bi-eyeglasses text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-eyeglasses text-[56px] text-[#D0F700]"></i>
             </div>
             <h2 className="md:text-[20px] xs-text-[16] lg:font-semibold  md:font-medium leading-5 text-[#070802]">
               Accessorise:
@@ -1370,3 +1371,9 @@ export const recentActivitiesData = [
   },
 ];
 export const API_URL = "http://localhost:3001";
+export const dateOptions = {
+  weekday: "long",
+  month: "long",
+  year: "numeric",
+  day: "2-digit",
+};

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-
+import Button from "./button";
 function EventDetailsHero({
   name,
   shortName,
@@ -9,10 +9,11 @@ function EventDetailsHero({
   date,
   location,
   locationUrl,
+  resultLink,
 }) {
   return (
     <div className="bg-[#070802] w-full 2xl:px-64 md:px-4 md:py-14 xs:py-4 xs:px-4  xs:pt-16 flex md:flex-row-reverse  xs:flex-col items-center  xs:justify-center md:justify-between overflow-hidden">
-      <div className="2xl:w-1/3 md:w-1/2 xs:w-full xs:px-10 md:px-0">
+      <div className="2xl:w-1/3 md:w-1/2 xs:w-full xs:px-10 md:px-4 2xl:px-0">
         <img
           src={eventBannerTwo}
           width="450px"
@@ -38,9 +39,21 @@ function EventDetailsHero({
         >
           {description}
         </motion.p>
+        {resultLink && (
+          <div className="my-4">
+            <Button
+              title={"Result"}
+              link={resultLink}
+              icon={true}
+              classname={
+                "bg-[#D0F700] text-black py-3 px-8 text-lg font-bold rounded-3xl"
+              }
+            />
+          </div>
+        )}
         <div className="xs:text-[14px]">Trail Day</div>
         <div className="md:text-2xl xs:text-[20px] text-[#d0f700] font-bold">
-          <i class="bi bi-calendar3 mr-2"></i>
+          <i className="bi bi-calendar3 mr-2"></i>
           {date}
         </div>
         <motion.div
@@ -50,7 +63,7 @@ function EventDetailsHero({
           className="text-[#FFFFFFA6] underline"
         >
           <span className="text-[#d0f700] mr-2">
-            <i class="bi bi-geo-alt-fill"></i>
+            <i className="bi bi-geo-alt-fill"></i>
           </span>
           <a
             className="text-[#FFFFFFA6] xs:text-[14px] hover:text-[#d0f700]"
@@ -58,7 +71,7 @@ function EventDetailsHero({
           >
             {location}
           </a>{" "}
-          <i class="bi bi-arrow-up-right"></i>
+          <i className="bi bi-arrow-up-right"></i>
         </motion.div>
       </div>
     </div>

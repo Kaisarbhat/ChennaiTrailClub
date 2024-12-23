@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from ".";
-function RegisterButton() {
+function RegisterButton({ id, name, resultLink }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
@@ -14,8 +14,8 @@ function RegisterButton() {
       className="flex items-center justify-center py-8"
     >
       <Button
-        title={"Register for Jawadhu Hill Ultra (JHU-24)"}
-        link={"/register"}
+        title={resultLink ? `Result of ${name}` : `Register for ${name}`}
+        link={resultLink ? `${resultLink}` : `/events/register/${id}`}
         classname={
           "bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
         }

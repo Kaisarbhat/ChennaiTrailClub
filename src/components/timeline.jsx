@@ -1,12 +1,18 @@
 import React from "react";
 
-const Timeline = ({ currentStep, totalSteps  }) => {
-  const steps = ["Personal Details" , "Other Details" , "Medical Questions" , "Qualification and Waiver Form"]
+const Timeline = ({ currentStep, totalSteps }) => {
+  const steps = [
+    "Personal Details",
+    "Other Details",
+    "Medical Questions",
+    "Qualification and Waiver Form",
+  ];
+
   return (
-    <div className="flex items-center justify-between mb-8">
+    <div className="flex items-center mb-8 w-full">
       {[...Array(totalSteps)].map((_, index) => (
         <React.Fragment key={index}>
-          <div className="flex flex-col items-center">
+          <div className="flex items-center min-w-fit">
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center ${
                 index + 1 <= currentStep
@@ -16,14 +22,18 @@ const Timeline = ({ currentStep, totalSteps  }) => {
             >
               {index + 1}
             </div>
-              {/* <span className="2xl:block xs:hidden font-bold">{steps[index]}</span> */}
+            <span className="xs:hidden lg:flex ml-2 text-sm font-medium whitespace-nowrap">
+              {steps[index]}
+            </span>
           </div>
           {index < totalSteps - 1 && (
-            <div
-              className={`flex-1 h-[2px] ${
-                index + 1 < currentStep ? "bg-[#50514c]" : "bg-[#E4E4E4]"
-              }`}
-            />
+            <div className="flex-1 mx-4">
+              <div
+                className={`h-[2px] w-full ${
+                  index + 1 < currentStep ? "bg-[#50514c]" : "bg-[#E4E4E4]"
+                }`}
+              />
+            </div>
           )}
         </React.Fragment>
       ))}

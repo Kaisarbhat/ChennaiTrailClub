@@ -190,13 +190,13 @@ const RecentActivities = () => {
               className="px-3 py-2 text-gray-500 hover:text-black text-5xl "
               onClick={moveBackward}
             >
-              <i class="bi bi-arrow-left-circle"></i>
+              <i className="bi bi-arrow-left-circle"></i>
             </button>
             <button
               className=" py-2  text-gray-500 hover:text-black text-5xl  rounded-full"
               onClick={moveForward}
             >
-              <i class="bi bi-arrow-right-circle"></i>
+              <i className="bi bi-arrow-right-circle"></i>
             </button>
           </div>
         </div>

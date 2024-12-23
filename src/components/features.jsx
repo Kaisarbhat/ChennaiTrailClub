@@ -1,12 +1,13 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { API_URL, featuresData } from "@/utils/constants";
+import { API_URL } from "@/utils/constants";
+import ErrorPage from "@/app/error/page";
 function Features() {
   const ref = useRef();
   const isInView = useInView(ref, { once: true });
   const [data, setData] = useState([]);
+  const [error, setError] = useState("");
   useEffect(() => {
     async function fetchData() {
       try {
@@ -15,11 +16,14 @@ function Features() {
         const data = await res.json();
         setData(data);
       } catch (error) {
-        throw error;
+        setError(error);
       }
     }
     fetchData();
   }, []);
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
   return (
     <div className="w-full flex justify-center">
       <div className="xl:max-w-[1340px] lg:w-full md:w-full xs:w-full flex justify-center items-center lg:m-4 xs:m-0">
@@ -54,8 +58,8 @@ function Features() {
                       src={item.imageUrl}
                       alt="event image"
                       width="500px"
-                      height="400px"
-                      className="w-full rounded-lg "
+                      height="240px"
+                      className="max-h-60 w-full rounded-lg "
                     />
                     <h1 className="md:text-xl xs:text-lg font-bold mt-4 mb-4">
                       {item.title}

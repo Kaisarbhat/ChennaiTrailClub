@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import JoinUs from "./joinUs";
@@ -71,7 +70,7 @@ function Navbar() {
     >
       <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center 2xl:w-[1340px] ">
         <a href="/home" className="flex left">
-          <Image
+          <img
             src="/logo.png"
             alt="logo"
             width={70}

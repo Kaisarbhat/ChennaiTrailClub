@@ -23,22 +23,22 @@ const FooterLarge = () => {
                   <ul className="flex space-x-2 text-3xl text-[#D0F700]">
                     <li className=" cursor-pointer hover:text-purple-900">
                       <a href="https://www.facebook.com/groups/901820050881838/?ref=share&mibextid=NSMWBT&_rdr">
-                        <i class="bi bi-facebook"></i>
+                        <i className="bi bi-facebook"></i>
                       </a>
                     </li>
                     <li className=" cursor-pointer hover:text-purple-900">
                       <a href="https://www.instagram.com/chennaitrailclub/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D">
-                        <i class="bi bi-instagram"></i>
+                        <i className="bi bi-instagram"></i>
                       </a>
                     </li>
                     <li className="cursor-pointer hover:text-purple-900">
                       <a>
-                        <i class="bi bi-youtube"></i>
+                        <i className="bi bi-youtube"></i>
                       </a>
                     </li>
                     <li className="cursor-pointer hover:text-purple-900">
                       <a href="https://www.strava.com/athletes/118722869">
-                        <i class="bi bi-strava"></i>
+                        <i className="bi bi-strava"></i>
                       </a>
                     </li>
                   </ul>
@@ -203,22 +203,22 @@ const FooterLarge = () => {
                   <ul className="flex space-x-2 text-3xl text-[#D0F700]">
                     <li className=" cursor-pointer hover:text-purple-900">
                       <a href="https://www.facebook.com/groups/901820050881838/?ref=share&mibextid=NSMWBT&_rdr">
-                        <i class="bi bi-facebook"></i>
+                        <i className="bi bi-facebook"></i>
                       </a>
                     </li>
                     <li className=" cursor-pointer hover:text-purple-900">
                       <a href="https://www.instagram.com/chennaitrailclub/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D">
-                        <i class="bi bi-instagram"></i>
+                        <i className="bi bi-instagram"></i>
                       </a>
                     </li>
                     <li className="cursor-pointer hover:text-purple-900">
                       <a>
-                        <i class="bi bi-youtube"></i>
+                        <i className="bi bi-youtube"></i>
                       </a>
                     </li>
                     <li className="cursor-pointer hover:text-purple-900">
                       <a href="https://www.strava.com/athletes/118722869">
-                        <i class="bi bi-strava"></i>
+                        <i className="bi bi-strava"></i>
                       </a>
                     </li>
                   </ul>

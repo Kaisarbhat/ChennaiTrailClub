@@ -48,13 +48,13 @@ const Carousel = ({ carouselImages }) => {
         onClick={prevImage}
         className="xs:hidden lg:flex absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
-        <i class="bi bi-arrow-left-circle-fill"></i>
+        <i className="bi bi-arrow-left-circle-fill"></i>
       </button>
       <button
         onClick={nextImage}
         className="xs:hidden lg:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
       >
-        <i class="bi bi-arrow-right-circle-fill"></i>
+        <i className="bi bi-arrow-right-circle-fill"></i>
       </button>
       <div className="flex justify-center mt-4 space-x-2">
         {carouselImages.map((_, index) => (

@@ -1,114 +1,96 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import PastEventsCard from "@/components/pastEventsCard";
-import { Button } from "@/components";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { API_URL } from "@/utils/constants";
+import Loading from "@/components/loading";
+import ErrorPage from "@/app/error/page";
+import EventsList from "@/components/eventsList";
+import YearSelector from "@/components/yearSelector";
+import Heading from "@/components/heading";
 const PastEvents = () => {
-  const [pastEvents, setPastEvents] = useState([]);
-  const [selectedYear, setSelectedYear] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/events/pastevents`);
-        if (res.status === 200) {
-          setPastEvents(res.data);
-          // Set the default selected year to the first year in the list
-          const years = res.data
-            .map((event) => new Date(event?.date).getFullYear().toString())
-            .filter((year, index, self) => self.indexOf(year) === index)
-            .sort((a, b) => a - b);
-          setSelectedYear(years[0] || "2023");
-        } else {
-          console.log("failed to fetch data");
-        }
-      } catch (error) {
-        console.log("Error : ", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const getUniqueYears = () => {
-    const years = pastEvents
-      .map((event) => new Date(event?.date).getFullYear().toString())
-      .filter((year) => year);
-    return Array.from(new Set(years)).sort((a, b) => a - b);
-  };
-
-  const filteredEvents = pastEvents.filter((event) => {
-    const eventYear = new Date(event?.date).getFullYear().toString();
-    return eventYear === selectedYear;
+  const [state, setState] = useState({
+    pastEvents: [],
+    selectedYear: "",
+    isLoading: false,
+    error: "",
   });
 
-  const handleClick = (year) => {
-    setSelectedYear(year);
-  };
+  const { pastEvents, selectedYear, isLoading, error } = state;
+
+  // Fetch data using useCallback to prevent unnecessary re-renders
+  const fetchData = useCallback(async () => {
+    setState((prev) => ({ ...prev, isLoading: true }));
+    try {
+      const res = await axios.get(`${API_URL}/events/pastevents`);
+      if (res.status === 200) {
+        const events = res.data;
+        const years = events
+          .map((event) => new Date(event?.date).getFullYear().toString())
+          .filter((year, index, self) => self.indexOf(year) === index)
+          .sort((a, b) => b - a);
+
+        setState((prev) => ({
+          ...prev,
+          pastEvents: events,
+          selectedYear: years[0] || new Date().getFullYear().toString(),
+          isLoading: false,
+        }));
+      }
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        error: error.message,
+        isLoading: false,
+      }));
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  // Memoize unique years calculation
+  const uniqueYears = useMemo(() => {
+    const years = pastEvents
+      .map((event) => new Date(event?.date).getFullYear().toString())
+      .filter(Boolean);
+    return Array.from(new Set(years)).sort((a, b) => b - a);
+  }, [pastEvents]);
+
+  // Memoize filtered events
+  const filteredEvents = useMemo(
+    () =>
+      pastEvents.filter(
+        (event) =>
+          new Date(event?.date).getFullYear().toString() === selectedYear
+      ),
+    [pastEvents, selectedYear]
+  );
+
+  // Memoize click handler
+  const handleYearClick = useCallback((year) => {
+    setState((prev) => ({ ...prev, selectedYear: year }));
+  }, []);
+
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorPage error={error} />;
 
   return (
     <div className="pt-[100px] w-full overflow-clip flex flex-col items-center px-4">
-      <div className="text-[#070802] h-36 bg-[#DDF94A] p-6 m-6 rounded-xl flex flex-col items-center justify-center 2xl:w-[1340px] xs:w-full">
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <h2 className="xs:text-sm lg:text-[32px]  font-semibold text-center">
-            Chennai Trail Club Past Events
-          </h2>
-          <p className="xs : text-sm lg:text-[20px] text-[#50514C] text-center">
-            Below are events organised by our club in recent past
-          </p>
-        </div>
-      </div>
-
-      <div className="px-5 2xl:w-[1340px] xs:w-full ">
-        <div className="flex space-x-4">
-          {getUniqueYears().map((year) => (
-            <Button
-              key={year}
-              title={year}
-              onClick={() => handleClick(year)}
-              classname={`text-[16px] border rounded-3xl p-2 w-32 font-bold transition-colors duration-200 ${
-                selectedYear === year
-                  ? "bg-black text-[#D0F700]"
-                  : "bg-white text-black hover:bg-gray-100"
-              }`}
-            />
-          ))}
-        </div>
-        <div className="flex md:flex-row xs:flex-col justify-between mt-4 md:space-x-8 xs:space-x-0 mb-auto">
-          {filteredEvents.map((event, index) => {
-            const {
-              id,
-              name,
-              shortName,
-              location,
-              eventBannerThree,
-              resultLink,
-            } = event || {};
-
-            const date = new Date(event?.date);
-            const formattedDate = date.toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "long",
-              year: "numeric",
-              day: "2-digit",
-            });
-            return (
-              <PastEventsCard
-                key={index}
-                id={id}
-                name={name}
-                shortName={shortName}
-                location={location}
-                banner={eventBannerThree}
-                date={formattedDate}
-                resultLink={resultLink}
-              />
-            );
-          })}
-        </div>
+      <Heading
+        title="Chennai Trail Club Past Events"
+        subTitle="Below are events organised by our club in recent past"
+      />
+      <div className="px-5 2xl:w-[1340px] xs:w-full mx-5">
+        <YearSelector
+          years={uniqueYears}
+          selectedYear={selectedYear}
+          onYearClick={handleYearClick}
+        />
+        <EventsList events={filteredEvents} />
       </div>
     </div>
   );
 };
 
-export default PastEvents;
+export default React.memo(PastEvents);

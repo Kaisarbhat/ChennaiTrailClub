@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { raceDate } from "@/utils/constants";
 function AboutRaceLocation({ heading, middleImageUrl, text }) {
   const ref = useRef();
   const isInView = useInView(ref, { once: true });

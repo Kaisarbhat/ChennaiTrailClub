@@ -1,53 +1,64 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { Button } from "./index";
 import { motion } from "framer-motion";
 import HeroText from "./heroText";
-import { API_URL } from "@/utils/constants";
+import { API_URL, dateOptions } from "@/utils/constants";
 import axios from "axios";
+import Loading from "./loading";
+import ErrorPage from "@/app/error/page";
 function Hero() {
-  const [data, setData] = useState({ recentEvent: {}, heroImage: null });
+  const [state, setState] = useState({
+    recentEvent: {},
+    heroImage: null,
+    isLoading: false,
+    error: "",
+  });
   useEffect(() => {
     async function fetchData() {
+      setState((prev) => ({ ...prev, isLoading: true }));
       try {
         const [recentEvent, heroImage] = await Promise.all([
           axios.get(`${API_URL}/events/recentevent`),
           axios.get(`${API_URL}/adminservices/heroimage`),
         ]);
-        if (!recentEvent || !heroImage) throw new Error("Failed to fetch data");
-
-        setData({ recentEvent: recentEvent.data, heroImage: heroImage.data });
+        if (!recentEvent || !heroImage) {
+          setState((prev) => ({ ...prev, error: "Failed to fetch data" }));
+        } else {
+          setState((prev) => ({
+            ...prev,
+            recentEvent: recentEvent.data,
+            heroImage: heroImage.data,
+          }));
+        }
       } catch (error) {
-        throw error;
+        setState((prev) => ({ ...prev, error: error.message }));
+      } finally {
+        setState((prev) => ({ ...prev, isLoading: false }));
       }
     }
     fetchData();
-  }, []);
+  }, [state.error]);
 
   //destructuring from state
-  const { recentEvent, heroImage } = data || {};
-  const { imageUrl } = heroImage || {};
+  const { recentEvent, heroImage } = state;
   const date = new Date(recentEvent?.date);
-  const formattedDate = date.toLocaleDateString("en-Us", {
-    weekday: "long",
-    month: "long",
-    year: "numeric",
-    day: "2-digit",
-  });
+  const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
+
+  if (state.isLoading) {
+    return <Loading />;
+  }
+  if (state.error !== "") return <ErrorPage error={state.error} />;
   return (
     <>
       {recentEvent && (
         <div
-          // ${imageUrl} ||
           style={{
-            backgroundImage: `url(
-              https://c0.wallpaperflare.com/preview/894/641/116/asphalt-dark-dawn-environment.jpg
-            )`,
+            backgroundImage: `url(${heroImage?.imageUrl})`,
           }}
-          className="h-screen w-full flex md:flex-row sm:flex-col xs:flex-col  items-center justify-center  bg-black text-white bg-cover bg-fixed xs:text-center sm:text-start overflow-hidden "
+          className="h-screen w-full flex md:flex-row sm:flex-col xs:flex-col  items-center justify-center  bg-black text-white bg-cover bg-fixed xs:text-center sm:text-start overflow-hidden md:pt-0 "
         >
-          <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-20 sm:pt-24 md:pt-0 items-center justify-center  space-x-4">
+          <div className="2xl:max-w-[1340px] 2xl:space-x-20 h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-12 sm:pt-14 md:pt-10 items-center justify-center  space-x-4">
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -62,16 +73,16 @@ function Hero() {
                 className="xs:pt-14 ms:pt-0 xs:mb-14 md:mb-0"
               />
             </motion.div>
-            <div className="flex flex-col flex-1 space-y-10 md:w-1/2 xs:w-full xs:text-center  md:text-start">
+            <div className="flex flex-col flex-1 md:w-1/2 xs:w-full xs:text-center  md:text-start">
               <motion.h1
                 initial={{ opacity: 0, x: "-100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="sm:text-5xl xs:text-[26px] font-bold sm:mb-8 xs:mb-1 xs:mt-8 md:mt-12 xs:px-10 sm:px-0"
+                className="sm:text-5xl xs:text-[26px] font-bold sm:mb-4 xs:mb-1 xs:mt-4 md:mt-12 xs:px-10 sm:px-0"
               >
                 {recentEvent.name}{" "}
                 <br className="md:block lg:hidden 2xl:block xs:hidden" />
-                {recentEvent.shortName}
+                {`(${recentEvent.shortName})`}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, scale: 0 }}
@@ -98,7 +109,7 @@ function Hero() {
               >
                 <Button
                   title={recentEvent.shortName}
-                  link="/jhu"
+                  link={`/events/${recentEvent.id}`}
                   classname={
                     "bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
                   }

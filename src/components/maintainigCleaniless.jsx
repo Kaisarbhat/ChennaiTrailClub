@@ -32,7 +32,7 @@ function MaintainigCleaniless({
           {bottomText}
         </motion.p>
         <div className="bg-[#FFF1F1] my-4 xs:w-full md:w-auto xs:text-center md:text-start p-2 rounded-lg md:text-[16px] xs:text-sm">
-          <i class="bi bi-exclamation-triangle-fill text-[#f86b6b] mr-2"></i>{" "}
+          <i className="bi bi-exclamation-triangle-fill text-[#f86b6b] mr-2"></i>{" "}
           {warning}
         </div>
       </div>

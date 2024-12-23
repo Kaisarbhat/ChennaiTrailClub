@@ -4,15 +4,20 @@ import { motion } from "framer-motion";
 import { Carousel, AboutUsText1, AboutUsText2 } from "../../components/index";
 import axios from "axios";
 import { API_URL } from "@/utils/constants";
+import Loading from "@/components/loading";
+import ErrorPage from "../error/page";
 
 const AboutUs = () => {
-  const [images, setImages] = useState({
+  const [state, setState] = useState({
     abousUsHeroImg: null,
     carouselImages: [],
+    isLoading: false,
+    error: "",
   });
 
   useEffect(() => {
     async function fetchImage() {
+      setState((prev) => ({ ...prev, isLoading: true }));
       try {
         const [abousUsHeroImgResponse, carouselImagesResponse] =
           await Promise.all([
@@ -22,31 +27,35 @@ const AboutUs = () => {
 
         // Check if the data is valid
         if (!abousUsHeroImgResponse.data || !carouselImagesResponse.data) {
-          console.log("Failed to fetch image");
+          setState((prev) => ({ ...prev, error: "failed to fetch data" }));
         } else {
-          // Set the state with the fetched data
-          setImages({
+          setState((prev) => ({
+            ...prev,
             abousUsHeroImg: abousUsHeroImgResponse.data,
             carouselImages: carouselImagesResponse.data,
-          });
+          }));
         }
       } catch (error) {
-        console.log("Error fetching images:", error);
+        setState((prev) => ({ ...prev, error: error.message }));
+      } finally {
+        setState((prev) => ({ ...prev, isLoading: false }));
       }
     }
 
     fetchImage();
   }, []);
 
+  if (state.isLoading) return <Loading />;
+  if (state.error !== "") return <ErrorPage error={state.error} />;
+
   return (
     <>
       <div className="w-screen px-4 pt-20 flex  flex-col items-center ">
-        {/* bg-[url('https://c1.wallpaperflare.com/preview/23/342/352/run-jog-sport-leisure.jpg')] */}
         <div className="mt-10 ">
           <div
             style={{
               background: `url(${
-                images.abousUsHeroImg?.imageUrl ||
+                state?.abousUsHeroImg?.imageUrl ||
                 "https://c1.wallpaperflare.com/preview/23/342/352/run-jog-sport-leisure.jpg"
               })`,
             }}
@@ -73,7 +82,7 @@ const AboutUs = () => {
         </div>
         <AboutUsText1 />
         <div className="flex items-center justify-center xs:px-4 2xl:max-w-[1840px]">
-          <Carousel carouselImages={images.carouselImages} />
+          <Carousel carouselImages={state?.carouselImages} />
         </div>
         <AboutUsText2 />
       </div>
