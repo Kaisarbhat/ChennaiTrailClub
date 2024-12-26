@@ -4,7 +4,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "chennaitrailclub1.s3.amazonaws.com",
+        hostname: "chennaitrailclub-media.s3.ap-south-1.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "chennaitrailclub-media.s3.amazonaws.com",
         port: "",
         pathname: "/**",
       },

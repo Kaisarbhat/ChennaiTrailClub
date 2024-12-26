@@ -1,19 +1,15 @@
-"use client";
-
 import {
-  Hero,
-  Features,
-  RecentActivities,
+  FeaturesServer,
+  HeroServer,
+  RecentActivitiesServer,
 } from "@/components";
 
-
-export default function Home() {
-  
+export default async function Home() {
   return (
     <>
-     <Hero/>
-     <Features/>
-     <RecentActivities/> 
+      <HeroServer />
+      <FeaturesServer />
+      <RecentActivitiesServer />
     </>
   );
 }

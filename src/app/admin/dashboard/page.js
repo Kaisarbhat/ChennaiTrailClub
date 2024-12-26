@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Calendar, Edit, Trash2, Plus, MapPin, Upload } from "lucide-react";
 import EventForm from "@/components/eventForm";
 import UserCard from "@/components/userCard";
-const API_URL = "http://localhost:3001";
 
 const AdminDashboard = () => {
   const [events, setEvents] = useState([]);
@@ -49,7 +48,9 @@ const AdminDashboard = () => {
 
   async function fetchUsers() {
     try {
-      const res = await fetch(`${API_URL}/adminServices/allusers`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/adminServices/allusers`
+      );
       // if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
       setUsers(data);
@@ -62,7 +63,9 @@ const AdminDashboard = () => {
   users;
   const fetchEvents = async () => {
     try {
-      const response = await fetch(`${API_URL}/events/allEvents`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/events/allEvents`
+      );
       // if (!response.ok) throw new Error("Failed to fetch events");
       const data = await response.json();
       setEvents(data);
@@ -82,10 +85,13 @@ const AdminDashboard = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${API_URL}/upload`, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) throw new Error("Upload failed");
       const { url } = await response.json();
@@ -113,8 +119,8 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const url = editingEvent
-        ? `${API_URL}/events/update/${editingEvent.id}`
-        : `${API_URL}/events/createEventWithData`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/events/update/${editingEvent.id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/events/createEventWithData`;
 
       const response = await fetch(url, {
         method: editingEvent ? "PUT" : "POST",
@@ -134,9 +140,12 @@ const AdminDashboard = () => {
   };
 
   const handleDelete = async (id) => {
-    const res = await fetch(`${API_URL}/events/delete/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/events/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     console.log(res);
     if (!res.ok) {
       throw new Error("Failed to delete Event");

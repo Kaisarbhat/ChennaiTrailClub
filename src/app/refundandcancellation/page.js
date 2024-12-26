@@ -1,9 +1,23 @@
 import React from "react";
-import { refundData } from "@/utils/constants";
-import Heading from "@/components/heading";
+import { refundData } from "@/utils/refundUtils";
+import { Heading } from "@/components";
+export const metadata = {
+  title: `Refund And Cancellation Policy | Chennai Trail Club`,
+  description: "Chennai Trail Club Refund And Cancellation Policy Page",
+  openGraph: {
+    title: `Refund And Cancellation Policy | Chennai Trail Club`,
+    description: "Chennai Trail Club Refund And Cancellation Policy Page",
+    type: "website",
+  },
+};
+
 const RefundAndCancellation = () => {
   return (
-    <div className="flex justify-center px-4">
+    <div
+      className="flex justify-center px-4"
+      role="page"
+      aria-label="refund and cancellation policy"
+    >
       <div className="2xl:max-w-[1340px] w-full flex justify-center">
         <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
           <Heading
@@ -21,4 +35,4 @@ const RefundAndCancellation = () => {
   );
 };
 
-export default RefundAndCancellation;
+export default React.memo(RefundAndCancellation);

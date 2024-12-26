@@ -1,15 +1,22 @@
-"use client";
-import React from "react";
-import { Features, Hero, RecentActivities } from "../../components/index";
+import {
+  FeaturesServer,
+  HeroServer,
+  RecentActivitiesServer,
+} from "@/components";
 
-const Home = () => {
+export async function generateMetadata() {
+  return {
+    title: `Home - Chennai Trail Club`,
+    description: "Chennai Trail Club Home Page",
+  };
+}
+
+export default async function Home() {
   return (
     <>
-      <Hero />
-      <Features />
-      <RecentActivities />
+      <HeroServer />
+      <FeaturesServer />
+      <RecentActivitiesServer />
     </>
   );
-};
-
-export default Home;
+}

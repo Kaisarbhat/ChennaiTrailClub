@@ -1,9 +1,24 @@
 import React from "react";
-import { privacyData } from "@/utils/constants";
-import Heading from "@/components/heading";
+import { privacyData } from "@/utils/privacyUtils";
+import { Heading } from "@/components";
+
+export const metadata = {
+  title: `Privacy Policy | Chennai Trail Club`,
+  description: "Chennai Trail Club Privacy Policy  Page",
+  openGraph: {
+    title: `Privacy Policy | Chennai Trail Club`,
+    description: "Chennai Trail Club Privacy Policy  Page",
+    type: "website",
+  },
+};
+
 const PrivacyPolicy = () => {
   return (
-    <div className="flex justify-center px-4 ">
+    <div
+      className="flex justify-center px-4 "
+      role="page"
+      aria-label="privacy policy"
+    >
       <div className="2xl:max-w-[1340px] w-full flex justify-center">
         <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
           <Heading title="Privacy Policy" subTitle=" Effective Mar 18, 2023" />
@@ -28,4 +43,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default React.memo(PrivacyPolicy);
