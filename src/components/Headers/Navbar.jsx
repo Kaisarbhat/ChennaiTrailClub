@@ -41,6 +41,7 @@ function Navbar() {
       target.remove();
     };
   }, []);
+
   const transparentPaths = [
     "/aboutus",
     "/privacypolicy",
@@ -51,12 +52,11 @@ function Navbar() {
   return (
     <header
       className={`w-full h-[84px] flex items-center justify-center sm:px-4 xs:px-0 z-10  fixed top-0 left-0
-      transition-all duration-300 ease-in-out
-      
+      transition-all duration-300 ease-in-out  
    ${
      pathname === "/events/pastevents"
        ? "bg-black text-white shadow-lg"
-       : (pathname === "/" || pathname === "/home") && !isScrolled
+       : pathname === "/" && !isScrolled
        ? "bg-transparent text-white"
        : isScrolled
        ? "bg-black text-white shadow-lg"
@@ -64,13 +64,12 @@ function Navbar() {
        ? "bg-transparent text-black"
        : "bg-black text-white shadow-lg"
    }
-  
-      z-50 p-4 backdrop-blur-sm text-[#fcfdf899]`}
+   p-4 backdrop-blur-sm text-[#fcfdf899]`}
       role="region"
       aria-labelledby="navigation bar"
     >
-      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center 2xl:w-[1340px] ">
-        <a href="/home" className="flex left">
+      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center 2xl:max-w-[1340px] sxl:px-10 2xl:px-0 ">
+        <a href="/" className="flex left">
           <img
             src="/logo.png"
             alt="logo"
@@ -82,20 +81,20 @@ function Navbar() {
         <nav className="w-full  flex flex-row justify-end items-center font-sans text-[18px] ">
           <ul className="sxl:flex  list-none space-x-10   nav-links md:hidden xs:hidden ">
             <li className=" hover:text-purple-900 cursor-pointer">
-              <Link href="/home"> Home </Link>{" "}
+              <Link href="/"> Home </Link>{" "}
             </li>
             <li className=" hover:text-purple-900 cursor-pointer">
               <Link href="/aboutus"> About Us </Link>{" "}
             </li>
             <li
-              className=" hover:text-purple-900 cursor-pointer"
+              className=" hover:text-purple-900 cursor-pointer relative"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               {" "}
               Events
               {isHovered && (
-                <ul className="absolute right-24 2xl:right-[360px] bg-white text-black rounded shadow-lg py-2 z-10">
+                <ul className="min-w-44 absolute right-1 bg-white text-black rounded shadow-lg py-2 z-10">
                   <li className="hover:bg-gray-300">
                     <Link
                       href="/events/upcomingevents"

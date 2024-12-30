@@ -10,11 +10,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      keyframes: {
-        shimmer: {
-          "100%": { transform: "translateX(100%)" },
-        },
-      },
       screens: {
         xs: "340px",
         sm: "600px",
@@ -38,6 +33,18 @@ module.exports = {
       },
       width: {
         45: "48%",
+      },
+      animation: {
+        shimmer: "shimmer 1.5s infinite",
+      },
+      keyframes: {
+        shimmer: {
+          "0%": { left: "-100%" },
+          "100%": { left: "100%" },
+        },
+      },
+      colors: {
+        shimmerGray: "#e0e0e0",
       },
     },
   },

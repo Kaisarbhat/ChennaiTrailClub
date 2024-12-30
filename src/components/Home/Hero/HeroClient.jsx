@@ -1,7 +1,11 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
-import { HeroText, Button } from "@/components";
+import { Button } from "@/components";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const HeroText = dynamic(() => import("./HeroText"));
 
 function HeroClient({ recentEvent, heroImage, formattedDate }) {
   return (
@@ -22,7 +26,7 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
             className="md:w-1/2 xs:w-full xs:px-4 md:px-0 mx-4 flex  justify-center 2xl:w-2/5"
           >
             <Image
-              src={recentEvent.eventBannerOne}
+              src={recentEvent?.eventBannerOne}
               alt="event logo"
               width={480}
               height={220}
@@ -37,9 +41,9 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
               transition={{ duration: 0.5 }}
               className="sm:text-5xl xs:text-[26px] font-bold sm:mb-4 xs:mb-1 xs:mt-4 md:mt-12 xs:px-10 sm:px-0"
             >
-              {recentEvent.name}{" "}
-              <br className="md:block lg:hidden 2xl:block xs:hidden" />
-              {`(${recentEvent.shortName})`}
+              {recentEvent?.name}{" "}
+              <br className="md:block lg:hidden xl:block xs:hidden" />
+              {`(${recentEvent?.shortName})`}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, scale: 0 }}
@@ -47,7 +51,7 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
               transition={{ duration: 0.5 }}
               className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-man 2xl:font-extralight tracking-wide  2xl:w-4/5"
             >
-              {recentEvent.description}
+              {recentEvent?.description}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
@@ -62,10 +66,10 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="md:w-2/3  xs:w-full flex md:justify-start xs:justify-center sm:mt-10 xs:mt-0 md:mt-0"
+              className="md:w-2/3  xs:w-full flex md:justify-start xs:justify-center sm:mt-10 xs:mt-auto xs:mb-2 md:mb-0 md:mt-0"
             >
               <Button
-                title={recentEvent.shortName}
+                title={recentEvent?.shortName}
                 link={`/events/${recentEvent.id}`}
                 classname={
                   "bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
@@ -83,4 +87,4 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
   );
 }
 
-export default HeroClient;
+export default React.memo(HeroClient);

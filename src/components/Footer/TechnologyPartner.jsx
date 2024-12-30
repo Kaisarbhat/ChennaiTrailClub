@@ -11,7 +11,7 @@ const TechnologyPartner = memo(({ isInView, reff }) => (
     <motion.div
       ref={reff}
       initial={{ opacity: 0, scale: 0 }}
-      animate={!isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       className="flex justify-center mt-6"
     >

@@ -28,7 +28,7 @@ const Carousel = ({ carouselImages }) => {
     );
   };
   return (
-    <div className="relative w-full  lg:p-20 xs:p-0" aria-labelledby="Images ">
+    <div className="relative w-full  lg:px-16 xs:p-0" aria-labelledby="Images">
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"

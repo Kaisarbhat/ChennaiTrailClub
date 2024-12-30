@@ -1,11 +1,11 @@
-import {
-  EventInfo,
-  EventDetailsHero,
-  AboutRaceLocation,
-  RegisterButton,
-  MaintainigCleaniless,
-} from "..";
+import dynamic from "next/dynamic";
+import { EventInfo, EventDetailsHero } from "..";
 import { dateOptions } from "@/utils/constants";
+
+const RegisterButton = dynamic(() => import("../Register/RegisterButton"));
+const AboutRaceLocation = dynamic(() => import("./AboutRaceLocation"));
+const MaintainigCleaniless = dynamic(() => import("./MaintainigCleaniless"));
+
 const EventClient = ({ eventData }) => {
   if (!eventData) {
     return (

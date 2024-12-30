@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "..";
 import Image from "next/image";
 function UpcomingEventsCard({
@@ -64,4 +65,4 @@ function UpcomingEventsCard({
   );
 }
 
-export default UpcomingEventsCard;
+export default memo(UpcomingEventsCard);

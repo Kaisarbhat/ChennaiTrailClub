@@ -8,7 +8,7 @@ const PastEvents = ({ pastEvents, years }) => {
     years[0] || new Date().getFullYear().toString()
   );
 
-  // Memoize unique years calculation
+  // Memoized unique years calculation
   const uniqueYears = useMemo(() => {
     const years = pastEvents
       .map((event) => new Date(event?.date).getFullYear().toString())
@@ -16,7 +16,7 @@ const PastEvents = ({ pastEvents, years }) => {
     return Array.from(new Set(years)).sort((a, b) => b - a);
   }, [pastEvents]);
 
-  // Memoize filtered events
+  // Memoized filtered events
   const filteredEvents = useMemo(
     () =>
       pastEvents.filter(
@@ -26,7 +26,6 @@ const PastEvents = ({ pastEvents, years }) => {
     [pastEvents, selectedYear]
   );
 
-  // Memoize click handler
   const handleYearClick = useCallback((year) => {
     setSelectedYear(year);
   }, []);
@@ -40,7 +39,7 @@ const PastEvents = ({ pastEvents, years }) => {
         title="Chennai Trail Club Past Events"
         subTitle="Below are events organised by our club in recent past"
       />
-      <div className="px-5 2xl:w-[1340px] xs:w-full">
+      <div className="px-5 2xl:w-[1340px] xs:w-full ">
         <YearSelector
           years={uniqueYears}
           selectedYear={selectedYear}

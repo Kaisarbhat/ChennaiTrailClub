@@ -1,4 +1,5 @@
 "use client";
+import { memo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "..";
@@ -99,4 +100,4 @@ function UpcomingEventsHero({ data }) {
   );
 }
 
-export default UpcomingEventsHero;
+export default memo(UpcomingEventsHero);

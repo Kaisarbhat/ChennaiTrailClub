@@ -1,7 +1,7 @@
 import { policyLinksData } from "@/utils/footerutils";
 import Link from "next/link";
 const PolicyLinks = () => (
-  <ul className="flex list-none space-x-10">
+  <ul className="flex list-none xs:space-x-2 md:space-x-10">
     {policyLinksData.map(({ href, text }) => (
       <li key={href} className="hover:text-purple-900 cursor-pointer">
         <Link href={href}>{text}</Link>
