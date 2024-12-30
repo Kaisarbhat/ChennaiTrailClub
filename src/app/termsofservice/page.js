@@ -1,6 +1,6 @@
 import React from "react";
-import { termsData } from "@/utils/constants";
-import Heading from "@/components/heading";
+import { termsAndConditions } from "@/utils/termsAndConditionsUtils";
+import { Heading } from "@/components";
 
 export const metadata = {
   title: `Terms Of Service - Chennai Trail Club`,
@@ -23,7 +23,7 @@ const TermsOfService = () => {
         <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
           <Heading title="TERMS OF SERVICE" subTitle="Effective Mar 18, 2023" />
           <div className="space-y-4 mt-8  sm:tracking-normal xs:tracking-tighter leading-loose font-man">
-            {termsData.map((item) => (
+            {termsAndConditions.map((item) => (
               <di key={item.key}>
                 <h3 className="md:text-[32px] xs:text-lg text-[#070802] font-bold font-serif mb-4 mt-8">
                   {" "}

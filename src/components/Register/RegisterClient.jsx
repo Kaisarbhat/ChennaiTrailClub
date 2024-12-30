@@ -2,7 +2,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-import ErrorPage from "@/app/error/page";
 import "react-toastify/dist/ReactToastify.css";
 import { RegisterCard, RegistrationForm, EventBanner, Timeline } from "..";
 import { dateOptions } from "@/utils/constants";
@@ -132,7 +131,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         toast.success("Registration successful!", toastStyle);
         await displayRazorpay(values);
 
-        if (values?.joinClub) {
+        if (values.joinClub) {
           toast.success(
             "Thank You for becoming a member of our club",
             toastStyle
@@ -140,13 +139,14 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         }
       }
     } catch (error) {
-      setError(error.message);
-      console.log(error);
-      toast.error(error, toastStyle);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "User has already registered for this event";
+      setError(errorMessage);
+      toast.error(errorMessage, toastStyle);
     }
   };
-
-  if (error) return <ErrorPage error={error} />;
 
   const date = new Date(eventData?.date);
   const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
@@ -157,7 +157,6 @@ const RegisterClient = ({ key, eventData, eventId }) => {
       aria-label="registration page"
     >
       <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
-        <ToastContainer />
         <ToastContainer />
         <EventBanner eventData={eventData} />
         <div className="flex flex-col md:mt-10 xs:mt-2 pt-6">
@@ -188,7 +187,6 @@ const RegisterClient = ({ key, eventData, eventId }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

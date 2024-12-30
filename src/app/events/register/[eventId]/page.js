@@ -29,7 +29,6 @@ async function fetchData(eventId) {
     }
     return {};
   } catch (error) {
-    console.log("Error : ", error);
     notFound();
   }
 }
