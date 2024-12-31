@@ -159,7 +159,7 @@ const RecentActivities = ({ images, mobileImages }) => {
   };
 
   return (
-    <div className="w-screen xl:h-screen md:h-auto xs:h-auto md:px-4 xs:px-4 lg:py-10 xs:py-8 md:mt-32 xs:mt-24 flex flex-col xs:justify-start md:justify-center lg:items-center bg-[#F6FFC7]">
+    <div className="w-screen h-[70vh] md:h-auto xs:h-auto md:px-4 xs:px-4 lg:py-10 xs:py-8 md:mt-32 xs:mt-24 flex flex-col xs:justify-start md:justify-center lg:items-center bg-[#F6FFC7]">
       <div className="xl:max-w-[1340px] xs:w-full">
         <div className="flex justify-between">
           <div className="lg:w-1/2 md:w-full xs:w-full xs:py-10 lg:py-0">

@@ -1,12 +1,11 @@
 import dynamic from "next/dynamic";
 import { EventInfo, EventDetailsHero } from "..";
 import { dateOptions } from "@/utils/constants";
-import Sponsors from "./Sponsors";
 
 const RegisterButton = dynamic(() => import("../Register/RegisterButton"));
 const AboutRaceLocation = dynamic(() => import("./AboutRaceLocation"));
 const MaintainigCleaniless = dynamic(() => import("./MaintainigCleaniless"));
-
+const Sponsors = dynamic(() => import("./Sponsors"));
 const EventClient = ({ eventData }) => {
   if (!eventData) {
     return (
@@ -22,7 +21,10 @@ const EventClient = ({ eventData }) => {
   const date = new Date(eventData?.date);
   const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
   return (
-    <div className="py-16 text-[#50514C]" aria-labelledby="Event details">
+    <div
+      className="md:py-16 xs:py-7 text-[#50514C]"
+      aria-labelledby="Event details"
+    >
       <EventDetailsHero
         name={eventData.name}
         shortName={eventData.shortName}
@@ -59,7 +61,7 @@ const EventClient = ({ eventData }) => {
           warning={eventData.warning}
         />
       </div>
-      {eventData.sponsors && (
+      {eventData?.sponsors.length > 0 && (
         <div className="w-full flex flex-col justify-center items-center h-52 p-2 xs:px-2 md:px-10">
           <h3 className="text-[#070802] xs:text-sm md:text-lg font-serif mb-3">
             OUR LEADING SPONSORS

@@ -23,6 +23,7 @@ function AboutRaceLocation({ heading, middleImageUrl, text }) {
             }
             transition={{ duration: 0.5 }}
             src={middleImageUrl}
+            alt={middleImageUrl}
             width={520}
             height={510}
             className="md:w-45 xs:w-full"

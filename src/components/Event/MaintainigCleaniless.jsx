@@ -47,7 +47,7 @@ function MaintainigCleaniless({
           transition={{ duration: 0.5 }}
           src={bottomImageUrl}
           alt="clean-place-img"
-          className="md:w-full xs:w-full"
+          className="md:w-full xs:w-full p-3"
           height={350}
           width={484}
         />

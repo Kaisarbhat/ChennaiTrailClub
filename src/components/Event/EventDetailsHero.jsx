@@ -27,6 +27,7 @@ function EventDetailsHero({
         <Image
           src={eventBannerTwo}
           width={450}
+          alt="Event Banner"
           height={300}
           className="w-full  rounded-xl"
           loading="lazy"
