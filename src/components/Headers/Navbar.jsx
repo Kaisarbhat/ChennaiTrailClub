@@ -15,6 +15,11 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
   };
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,34 +53,39 @@ function Navbar() {
     "/termsofservice",
     "/refundandcancellation",
   ];
+  const desktopBgColor =
+    pathname === "/events/pastevents"
+      ? "bg-black text-white shadow-lg"
+      : pathname === "/" && !isScrolled
+      ? "bg-transparent text-white"
+      : isScrolled
+      ? "bg-black text-white shadow-lg"
+      : transparentPaths.includes(pathname)
+      ? "bg-transparent text-black"
+      : "bg-black text-white shadow-lg";
 
   return (
     <header
-      className={`w-full h-[84px] flex items-center justify-center sm:px-4 xs:px-0 z-10  fixed top-0 left-0
+      className={`w-full h-[90px] flex items-center justify-center sm:px-4 xs:px-0 z-20  fixed top-0 left-0
       transition-all duration-300 ease-in-out  
-   ${
-     pathname === "/events/pastevents"
-       ? "bg-black text-white shadow-lg"
-       : pathname === "/" && !isScrolled
-       ? "bg-transparent text-white"
-       : isScrolled
-       ? "bg-black text-white shadow-lg"
-       : transparentPaths.includes(pathname)
-       ? "bg-transparent text-black"
-       : "bg-black text-white shadow-lg"
-   }
+        ${!isOpen ? desktopBgColor : "bg-black text-white"}
+  
    p-4 backdrop-blur-sm text-[#fcfdf899]`}
       role="region"
       aria-labelledby="navigation bar"
     >
-      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center 2xl:max-w-[1340px] sxl:px-10 2xl:px-0 ">
+      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center 2xl:max-w-[1340px] sxl:px-10 2xl:px-0 z-20">
         <a href="/" className="flex left">
           <img
-            src="/logo.png"
+            src={
+              transparentPaths.includes(pathname) && !isScrolled && !isOpen
+                ? "/logo.svg"
+                : "/whitelogo.svg"
+            }
             alt="logo"
-            width={70}
-            height={70}
-            className="rounded-full"
+            width={80}
+            height={80}
+            className="rounded-full w-20 h-20"
           />
         </a>
         <nav className="w-full  flex flex-row justify-end items-center font-sans text-[18px] ">
@@ -124,7 +134,6 @@ function Navbar() {
           >
             {isOpen ? <X size={40} /> : <Menu size={40} />}
           </button>
-          {/* Mobile menu */}
 
           {isJoinUsOpen && (
             <JoinUs isOpen={isJoinUsOpen} onClose={toggleJoinUs} />
@@ -132,7 +141,7 @@ function Navbar() {
           <ul
             className={`list-none space-y-10 ${
               isOpen ? "flex" : "hidden"
-            } flex-col items-start h-screen overflow-clip bg-black text-white w-screen z-10 fixed top-16 left-0 p-6 text-[20px]`}
+            } flex-col items-start h-screen overflow-clip bg-black text-white w-screen z-10  mt-4 fixed top-16 left-0 p-6 text-[20px]`}
           >
             <li className=" hover:text-purple-900 cursor-pointer">
               <Link onClick={toggleMenu} href="/">

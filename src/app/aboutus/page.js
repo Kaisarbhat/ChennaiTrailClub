@@ -21,7 +21,7 @@ async function getData() {
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminservices/aboutus`),
       ],
       {
-        next: { revalidate: 3600, tags: ["aboutus"] },
+        next: { revalidate: 3600 },
       }
     );
 
@@ -43,6 +43,7 @@ async function getData() {
 
 export default async function AboutUs() {
   const { aboutUsImg, carouselImages } = await getData();
+
   return (
     <main>
       <AboutUsClient

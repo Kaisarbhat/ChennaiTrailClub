@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { EventInfo, EventDetailsHero } from "..";
 import { dateOptions } from "@/utils/constants";
+import Sponsors from "./Sponsors";
 
 const RegisterButton = dynamic(() => import("../Register/RegisterButton"));
 const AboutRaceLocation = dynamic(() => import("./AboutRaceLocation"));
@@ -58,6 +59,14 @@ const EventClient = ({ eventData }) => {
           warning={eventData.warning}
         />
       </div>
+      {eventData.sponsors && (
+        <div className="w-full flex flex-col justify-center items-center h-52 p-2 xs:px-2 md:px-10">
+          <h3 className="text-[#070802] xs:text-sm md:text-lg font-serif mb-3">
+            OUR LEADING SPONSORS
+          </h3>
+          <Sponsors sponsors={eventData?.sponsors} />
+        </div>
+      )}
     </div>
   );
 };
