@@ -15,7 +15,7 @@ async function fetchEventData(eventId) {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/events/event/${eventId}`,
       {
-        next: { revalidate: 1, tags: ["event"] },
+        next: { revalidate: 3600, tags: ["event"] },
       }
     );
     if (res.ok) {
