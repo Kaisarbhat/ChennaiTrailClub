@@ -1,11 +1,9 @@
-import { NEXT_PUBLIC_API_URL } from "@/utils/constants";
 import React, { useState } from "react";
 import ChangePassword from "./changePassword";
 
 const Form = ({ type, isLogin, isSignup }) => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const togglePopUp = () => {
-    console.log("hello");
     setIsPopUpOpen(!isPopUpOpen);
   };
   const [formData, setFormData] = useState({
@@ -101,7 +99,6 @@ const Form = ({ type, isLogin, isSignup }) => {
         }
 
         const data = await response.json();
-        console.log(`${type} successful:`, data);
 
         setFormData({ username: "", password: "" });
         // Handle successful login here (e.g., store token, redirect)

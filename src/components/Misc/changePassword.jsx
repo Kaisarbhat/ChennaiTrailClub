@@ -96,7 +96,6 @@ const ChangePassword = ({ isOpen, onClose }) => {
       const req = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/update/${admin}`
       );
-      console.log(req);
       if (!req.ok) throw new Error("failed to update admin");
       else {
         window.href("/admin");

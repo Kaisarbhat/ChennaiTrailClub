@@ -14,7 +14,6 @@ const Users = () => {
     );
     if (!res.ok) throw new Error("Failed to fetch users");
     const users = await res.json();
-    console.log(users);
     setUsers(users);
   }
   return (

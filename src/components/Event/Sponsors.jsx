@@ -22,7 +22,7 @@ const Sponsors = React.memo(({ sponsors }) => {
     );
   }
 
-  const duplicatedSponsors = [...sponsors, ...sponsors];
+  const duplicatedSponsors = [...sponsors, ...sponsors, ...sponsors];
 
   return (
     <div className="relative w-full overflow-hidden">
