@@ -10,7 +10,7 @@ const Sponsors = React.memo(({ sponsors }) => {
           <div key={index} className="flex-shrink-0">
             <Image
               src={sponsor.imageUrl}
-              alt={sponsor.name}
+              alt={"sponsor images"}
               width={80}
               height={50}
               className="object-contain"
@@ -31,7 +31,7 @@ const Sponsors = React.memo(({ sponsors }) => {
           <div key={index} className="flex-shrink-0 mx-10">
             <Image
               src={sponsor.imageUrl}
-              alt={sponsor.name}
+              alt={"sponsor images"}
               width={80}
               height={50}
               className="object-contain"

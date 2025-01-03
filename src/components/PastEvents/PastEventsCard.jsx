@@ -21,7 +21,7 @@ const PastEventsCard = ({
         <div className="lg:w-1/3 sm:w-1/4">
           <Image
             src={banner}
-            alt={name}
+            alt={"Banner"}
             width={100}
             height={100}
             className="h-48 w-full object-cover lg:h-full"

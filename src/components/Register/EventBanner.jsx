@@ -4,7 +4,7 @@ const EventBanner = ({ eventData }) => (
   <div>
     <Image
       src={eventData?.eventBannerTwo}
-      alt={`${eventData?.name} - banner`}
+      alt={`banner`}
       width={1300}
       height={500}
       loading="lazy"

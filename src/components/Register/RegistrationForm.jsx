@@ -1,6 +1,8 @@
 "use client";
 import { Formik, Form, Field } from "formik";
 import { NavigationButtons, TermsAndConditions } from "..";
+import { useState } from "react";
+
 const RegistrationForm = ({
   currentStep,
   totalSteps,
@@ -12,6 +14,9 @@ const RegistrationForm = ({
   registerInitialValues,
   registerValidationSchemas,
 }) => {
+  const [showOtherClubInput, setShowOtherClubInput] = useState(false);
+  const [otherClubName, setOtherClubName] = useState("");
+
   const renderField = (
     { field, form: { setFieldValue, values } },
     fieldConfig
@@ -19,27 +24,53 @@ const RegistrationForm = ({
     switch (fieldConfig.type) {
       case "select":
         return (
-          <select
-            {...field}
-            className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
-            onChange={(e) => {
-              setFieldValue(field.name, e.target.value);
-              if (field.name === "runningCategory") {
-                setSelectedCategory(e.target.value);
-                const selectedPrice =
-                  e.target.value.split("(")[1]?.split(")")[0]?.split(" ")[1] ||
-                  "0";
-                setPrice(selectedPrice);
-              }
-            }}
-          >
-            <option value="">---please choose an option---</option>
-            {fieldConfig.options.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+          <div>
+            <select
+              {...field}
+              className="border border-inherit bg-transparent rounded-md w-full p-2 mt-2"
+              onChange={(e) => {
+                setFieldValue(field.name, e.target.value);
+                if (field.name === "runningCategory") {
+                  setSelectedCategory(e.target.value);
+                  const selectedPrice =
+                    e.target.value
+                      .split("(")[1]
+                      ?.split(")")[0]
+                      ?.split(" ")[1] || "0";
+                  setPrice(selectedPrice);
+                }
+                if (field.name === "runningClub") {
+                  const selectedValue = e.target.value;
+                  if (selectedValue === "Others") {
+                    setShowOtherClubInput(true);
+                  } else {
+                    setShowOtherClubInput(false);
+                    setFieldValue(field.name, selectedValue);
+                  }
+                }
+              }}
+            >
+              <option value="">---please choose an option---</option>
+              {fieldConfig.options.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            {showOtherClubInput && field.name === "runningClub" && (
+              <input
+                type="text"
+                value={otherClubName}
+                onChange={(e) => {
+                  const newValue = e.target.value;
+                  setOtherClubName(newValue);
+                  setFieldValue(field.name, newValue);
+                }}
+                placeholder="Enter the name of your club"
+                className="mt-2 w-full border border-solid p-2 rounded-md"
+              />
+            )}
+          </div>
         );
 
       case "radio":

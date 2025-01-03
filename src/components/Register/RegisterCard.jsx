@@ -23,7 +23,7 @@ const RegisterCard = ({
           width={400}
           height={300}
           loading="lazy"
-          alt={imageUrl}
+          alt={"Banner"}
         />
         <h1 className="relative top-[-30px] text-white font-bold px-2">
           {name}

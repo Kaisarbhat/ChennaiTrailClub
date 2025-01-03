@@ -9,7 +9,12 @@ const ContactInfo = React.memo(() => (
       </div>
       <div className="mt-4">
         <h4>email:</h4>
-        <h6 className="text-[#FCFDF8]mt-1">info@chennaitrailclub.in</h6>
+        <a
+          className="text-[#FCFDF8]mt-1"
+          href="mailto:info@chennaitrailclub.in"
+        >
+          info@chennaitrailclub.in
+        </a>
       </div>
     </address>
   </div>
