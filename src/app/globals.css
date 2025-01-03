@@ -3,6 +3,18 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 input {
   border: 2px solid #50514c;
   border-radius: 6px;
@@ -11,21 +23,22 @@ input {
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
-  margin-bottom: 1.5rem;
   height: 2.5rem;
 }
-/* input[type = 'checkbox']{
-    width: 25px;
-    margin-right: 1rem;
-    margin-bottom: 0;
-    cursor: pointer;
-} */
-/* input[type='submit'], input[type='reset']{ 
-    margin: 0;
-    border-radius: 24px;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    -ms-border-radius: 24px;
-    -o-border-radius: 24px;
-    cursor: pointer;
-} */
+input:hover {
+  border: 2px solid rgb(70, 160, 70);
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
