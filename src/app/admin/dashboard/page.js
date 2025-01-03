@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Calendar, Edit, Trash2, Plus, MapPin, Upload } from "lucide-react";
-import EventForm from "@/components/eventForm";
-import UserCard from "@/components/userCard";
-
+import UserCard from "@/components/Misc/userCard";
+import EventForm from "@/components/Misc/eventForm";
 const AdminDashboard = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -1,5 +1,5 @@
 "use client";
-import Form from "@/components/Form";
+import Form from "@/components/Misc/Form";
 import React, { useEffect, useState } from "react";
 import AdminDashboard from "./dashboard/page";
 const AdminPanel = () => {
