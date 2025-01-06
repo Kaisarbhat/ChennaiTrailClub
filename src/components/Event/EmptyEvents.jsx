@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const EmptyEvents = () => {
@@ -11,7 +12,7 @@ const EmptyEvents = () => {
         <h1 className="text-start text-3xl font-semibold">Upcoming Events</h1>
         <div className=" flex flex-col flex-wrap items-center justify-center">
           <div className="h-1/2 mb-10">
-            <img src="/empty.svg" alt="svg" />
+            <Image src="/empty.svg" alt="svg" height={400} width={500} />
           </div>
           <div className="flex flex-col text-center flex-wrap">
             <h2 className="text-[32px] text-[#070802] font-bold ">

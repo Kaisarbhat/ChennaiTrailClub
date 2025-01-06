@@ -1,6 +1,7 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
+// eslint-disable-next-line react/display-name
 const Sponsors = React.memo(({ sponsors }) => {
   const isAnimated = sponsors.length > 6;
   if (!isAnimated) {

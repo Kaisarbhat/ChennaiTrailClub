@@ -1,14 +1,11 @@
+import Image from "next/image";
 import { memo } from "react";
 import { Button } from "..";
-import Image from "next/image";
-function UpcomingEventsCard({
-  id,
-  name,
-  shortName,
-  eventBannerTwo,
-  date,
-  location,
-}) {
+import Link from "next/link";
+
+function UpcomingEventsCard({ event }) {
+  const { id, name, shortName, eventBannerTwo, date, location, locationUrl } =
+    event;
   return (
     <article
       className="w-full lg:w-1/2 px-4"
@@ -33,9 +30,9 @@ function UpcomingEventsCard({
           </h3>
 
           <div className="space-y-3 mt-3">
-            <a
+            <Link
               className="text-[16px] underline text-[#50514c] block"
-              href="#"
+              href={locationUrl}
               aria-label={`Event location: ${location}`}
             >
               <i
@@ -43,7 +40,7 @@ function UpcomingEventsCard({
                 aria-hidden="true"
               ></i>
               {location}
-            </a>
+            </Link>
 
             <time className="text-[16px] text-[#50514c] block" dateTime={date}>
               <i

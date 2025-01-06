@@ -1,9 +1,11 @@
-import React, { Suspense } from "react";
-import { UpcomingEventsHero } from "..";
-import { dateOptions } from "@/utils/constants";
-import dynamic from "next/dynamic";
-const UpcomingEventsCard = dynamic(() => import("./UpcomingEventsCard"));
-const EmptyEvents = dynamic(() => import("../Event/EmptyEvents"));
+import { withErrorHandling } from '@/app/Error/page';
+import { dateOptions } from '@/utils/constants';
+import dynamic from 'next/dynamic';
+import React from 'react';
+import { UpcomingEventsHero } from '..';
+const UpcomingEventsCard = dynamic(() => import('./UpcomingEventsCard'));
+const EmptyEvents = dynamic(() => import('../Event/EmptyEvents'));
+
 const UpcomingEvents = ({ upcomingEvents }) => {
   return (
     <div
@@ -11,7 +13,7 @@ const UpcomingEvents = ({ upcomingEvents }) => {
       role="region"
       aria-label="Upcoming Events Section"
     >
-      {upcomingEvents?.length > 0 ? (
+      {upcomingEvents.length ? (
         <>
           <section className="mb-4 leading-loose">
             <UpcomingEventsHero data={upcomingEvents} />
@@ -33,12 +35,12 @@ const UpcomingEvents = ({ upcomingEvents }) => {
                 {upcomingEvents.map((event, index) => {
                   const formattedDate = new Date(
                     event?.date
-                  ).toLocaleDateString("en-US", dateOptions);
+                  ).toLocaleDateString('en-US', dateOptions);
 
                   return (
                     <UpcomingEventsCard
-                      key={event.id}
-                      {...event}
+                      key={index}
+                      event={event}
                       date={formattedDate}
                     />
                   );
@@ -54,4 +56,4 @@ const UpcomingEvents = ({ upcomingEvents }) => {
   );
 };
 
-export default React.memo(UpcomingEvents);
+export default withErrorHandling(React.memo(UpcomingEvents));

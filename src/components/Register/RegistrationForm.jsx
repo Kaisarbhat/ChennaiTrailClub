@@ -1,7 +1,7 @@
 "use client";
-import { Formik, Form, Field } from "formik";
-import { NavigationButtons, TermsAndConditions } from "..";
+import { Field, Form, Formik } from "formik";
 import { useState } from "react";
+import { NavigationButtons, TermsAndConditions } from "..";
 
 const RegistrationForm = ({
   currentStep,

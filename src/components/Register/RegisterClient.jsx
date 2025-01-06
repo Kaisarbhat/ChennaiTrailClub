@@ -1,55 +1,37 @@
-"use client";
-import axios from "axios";
-import React, { useState } from "react";
-import { ToastContainer, toast, Bounce } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { RegisterCard, RegistrationForm, EventBanner, Timeline } from "..";
-import { dateOptions } from "@/utils/constants";
-import { registerContent } from "@/utils/registerutils";
+'use client';
+import { withErrorHandling } from '@/app/Error/page';
 import {
   registerInitialValues,
   registerValidationSchemas,
-} from "@/schema/registrationSchema";
-import { useRouter } from "next/navigation";
+} from '@/schema/registrationSchema';
+import { dateOptions } from '@/utils/constants';
+import { registerContent } from '@/utils/registerutils';
+import { showError, showSuccess } from '@/utils/toastUtils';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { memo, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { EventBanner, RegisterCard, RegistrationForm, Timeline } from '..';
 
 const RegisterClient = ({ key, eventData, eventId }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [price, setPrice] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();
-
-  const toastStyle = {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Bounce,
-  };
-
-  const showError = (message) => {
-    toast.error(message, toastStyle);
-  };
-
-  const showSuccess = (message) => {
-    toast.success(message, toastStyle);
-  };
 
   const loadScript = async (src) => {
     try {
       return new Promise((resolve) => {
-        const script = document.createElement("script");
+        const script = document.createElement('script');
         script.src = src;
         script.onload = () => resolve(true);
         script.onerror = () => resolve(false);
         document.body.appendChild(script);
       });
     } catch (error) {
-      showError("Failed to load payment gateway");
+      showError('Failed to load payment gateway');
       return false;
     }
   };
@@ -61,8 +43,8 @@ const RegisterClient = ({ key, eventData, eventId }) => {
       );
       return response.data.exists;
     } catch (error) {
-      throw new Error(
-        error.response?.data?.message || "Failed to check registration status"
+      showError(
+        error.response?.data?.message || 'Failed to check registration status'
       );
     }
   };
@@ -73,12 +55,12 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/payment/checkout`,
         {
           amount: Number(price),
-          currency: "INR",
+          currency: 'INR',
         }
       );
     } catch (error) {
-      throw new Error(
-        error.response?.data?.message || "Failed to initialize payment"
+      showError(
+        error.response?.data?.message || 'Failed to initialize payment'
       );
     }
   };
@@ -92,7 +74,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         values.email
       );
       if (hasExistingRegistration) {
-        showError("You have already registered for this event");
+        showError('You have already registered for this event');
         return false;
       }
 
@@ -115,31 +97,30 @@ const RegisterClient = ({ key, eventData, eventId }) => {
 
       if (
         verificationResult.data.msg ===
-        "Payment verified and registration completed successfully"
+        'Payment verified and registration completed successfully'
       ) {
-        showSuccess("Registration completed successfully!");
+        showSuccess('Registration completed successfully!');
         if (verificationData.registrationData.joinClub) {
-          showSuccess("Thank you for becoming a member of our club");
+          showSuccess('Thank you for becoming a member of our club');
         }
-        setTimeout(() => router.push("/"), 3000);
+        setTimeout(() => router.push('/'), 6000);
       }
     } catch (error) {
       const errorMessage =
-        error.response?.data?.message || "Payment verification failed";
+        error.response?.data?.message || 'Payment verification failed';
       showError(errorMessage);
-      throw new Error(errorMessage);
     }
   };
 
   const displayRazorpay = async (values) => {
     try {
       const scriptLoaded = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
+        'https://checkout.razorpay.com/v1/checkout.js'
       );
 
       if (!scriptLoaded) {
         showError(
-          "Payment gateway failed to load. Please check your internet connection."
+          'Payment gateway failed to load. Please check your internet connection.'
         );
         return;
       }
@@ -153,15 +134,15 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         key,
         amount: result.data.amount,
         currency: result.data.currency,
-        name: "Chennai Trail Club",
-        description: "Chennai Trail Club Event Registration Transactions",
+        name: 'Chennai Trail Club',
+        description: 'Chennai Trail Club Event Registration Transactions',
         order_id: result.data.id,
         prefill: {
           name: `${formValues.firstName} ${formValues.lastName}`,
           email: formValues.email,
           contact: formValues.mobile,
         },
-        theme: { color: "#61dafb" },
+        theme: { color: '#61dafb' },
         handler: async (response) => {
           const verificationData = {
             orderCreationId: result.data.id,
@@ -175,19 +156,19 @@ const RegisterClient = ({ key, eventData, eventId }) => {
           try {
             await verifyPayment(verificationData);
           } catch (error) {
-            console.error("Payment verification failed:", error);
+            showError(`Payment verification failed : ${error}`);
           }
         },
       };
 
       const paymentObject = new window.Razorpay(options);
-      paymentObject.on("payment.failed", function (response) {
+      paymentObject.on('payment.failed', function (response) {
         showError(`Payment failed: ${response.error.description}`);
       });
 
       paymentObject.open();
     } catch (error) {
-      showError(error.message || "Failed to process payment");
+      showError(error.message || 'Failed to process payment');
     }
   };
 
@@ -197,7 +178,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
   };
 
   const date = new Date(eventData?.date);
-  const formattedDate = date.toLocaleDateString("en-US", dateOptions);
+  const formattedDate = date.toLocaleDateString('en-US', dateOptions);
 
   return (
     <div
@@ -207,7 +188,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
     >
       <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
         <ToastContainer />
-        <EventBanner eventData={eventData} />
+        <EventBanner eventBanner={eventData?.eventBannerTwo} />
         <div className="flex flex-col md:mt-10 xs:mt-2 pt-6">
           <Timeline currentStep={currentStep} totalSteps={4} />
           <div className="text-[#50514C] text-[16px] flex lg:flex-row md:flex-col xs:flex-col items-center justify-between">
@@ -241,4 +222,4 @@ const RegisterClient = ({ key, eventData, eventId }) => {
   );
 };
 
-export default RegisterClient;
+export default withErrorHandling(memo(RegisterClient));

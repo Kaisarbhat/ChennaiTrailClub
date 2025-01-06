@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 const RegisterCard = ({
   imageUrl,
   name,
@@ -14,7 +14,7 @@ const RegisterCard = ({
     <div
       role="region"
       aria-label="registration card"
-      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4  lg:mt-0 lg:ml-2 xs:ml-0"
+      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4 lg:mt-0 lg:ml-2 xs:ml-0"
     >
       <div className="w-full h-1/2 ">
         <Image

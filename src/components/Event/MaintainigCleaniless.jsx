@@ -1,14 +1,9 @@
 "use client";
-import React from "react";
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import React, { useRef } from "react";
 
-function MaintainigCleaniless({
-  bottomHeading,
-  bottomImageUrl,
-  bottomText,
-  warning,
-}) {
+function MaintainigCleaniless({ eventData }) {
+  const { bottomHeading, bottomImageUrl, bottomText, warning } = eventData;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (

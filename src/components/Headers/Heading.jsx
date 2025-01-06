@@ -1,4 +1,5 @@
 import React from "react";
+
 const Heading = React.memo(({ title, subTitle }) => (
   <div
     className="text-[#070802] h-36 bg-[#DDF94A] p-6 rounded-xl flex flex-col items-center justify-center 2xl:w-[1340px] xs:w-full"

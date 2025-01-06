@@ -1,6 +1,7 @@
 "use client";
 import { riskFactors, tandcData } from "@/utils/termsAndConditionsUtils";
 import { useFormikContext } from "formik";
+
 const TermsAndConditions = ({ values }) => {
   const { setFieldValue } = useFormikContext();
   return (
@@ -11,8 +12,7 @@ const TermsAndConditions = ({ values }) => {
         aria-label="Terms and Conditions Page"
       >
         <p>
-          {" "}
-          I have read and understood the information provided about the{" "}
+          I have read and understood the information provided about the
           <b className="underline">Jawadhu Hills Ultra 2024 </b>("this event")
           and I agree to participate in this event at my own risk. I know that
           participating in this event is a potentially hazardous activity, which
@@ -35,7 +35,6 @@ const TermsAndConditions = ({ values }) => {
 
         <ol className="list-decimal space-y-4">
           <li>
-            {" "}
             <b>Renal shutdown:</b>
             <ol className="list-alpha">
               <li>
@@ -49,7 +48,6 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <li>
-            {" "}
             <b>Heat stroke/hyperthermia:</b>
             <ol className="list-alpha">
               <li>
@@ -74,7 +72,6 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <li>
-            {" "}
             <b>Risks associated with low sodium and chloride counts:</b>
             <ol className="list-alpha">
               <li>
@@ -143,7 +140,6 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <li>
-            {" "}
             <b>Injuries from falling:</b>
             <ol className="list-alpha">
               <li>
@@ -167,7 +163,6 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <li>
-            {" "}
             <b>Overuse injuries:</b>
             <ol className="list-alpha">
               <li>
@@ -192,7 +187,6 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <li>
-            {" "}
             <b>Getting lost:</b>
             <ol className="list-alpha">
               <li>
@@ -224,11 +218,9 @@ const TermsAndConditions = ({ values }) => {
             </ol>
           </li>
           <h3 className="text-center underline">
-            {" "}
             <b>IMPORTANT</b>
           </h3>
           <li>
-            {" "}
             <b>If you do become injured, exhausted, or ill:</b>
             <ol className="list-alpha">
               <li>

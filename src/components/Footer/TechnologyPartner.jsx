@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { memo } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { memo } from "react";
+
 const TechnologyPartner = memo(({ isInView, reff }) => (
   <div>
     <p className="font-bold text-[#FCFDF8] text-[12px]">
@@ -33,5 +34,4 @@ const TechnologyPartner = memo(({ isInView, reff }) => (
   </div>
 ));
 
-TechnologyPartner.displayName = "TechnologyPartner";
 export default TechnologyPartner;

@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
 import { eventContent } from "@/utils/eventUtils";
+import { useState } from "react";
+
 const EventInfo = () => {
   const [selectedKey, setSelectedKey] = useState(eventContent[0]?.key);
   const [selectedButton, setSelectedButton] = useState(eventContent[0]?.key);
+
   const handleButtonClick = (key) => {
     setSelectedKey(key);
     setSelectedButton(key);
@@ -19,7 +21,7 @@ const EventInfo = () => {
       aria-label="Event Information Menu"
     >
       <div className="xs:hidden md:flex">
-        <aside className=" text-black p-6 flex flex-col border items-start  border-gray-200 rounded-lg space-y-2 max-h-[618px]">
+        <aside className=" text-black p-6 flex flex-col border items-start border-gray-200 rounded-lg space-y-2 max-h-[618px]">
           {eventContent.map((item) => (
             <button
               key={item.key}
@@ -54,7 +56,7 @@ const EventInfo = () => {
           ))}
         </select>
       </div>
-      <div className="md:w-full lg:w-full lg:px-6 xs:px-4 rounded-lg   shadow-xl">
+      <div className="md:w-full lg:w-full lg:px-6 xs:px-4 rounded-lg shadow-xl">
         {selectedComponent()}
       </div>
     </div>

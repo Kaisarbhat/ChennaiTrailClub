@@ -1,18 +1,18 @@
-"use client";
+'use client';
+import dynamic from 'next/dynamic';
+import React, { Suspense } from 'react';
+import AboutUsHeroSection from './AboutUsHeroSection';
+import { withErrorHandling } from '@/app/Error/page';
 
-import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
-import AboutUsHeroSection from "./AboutUsHeroSection";
-
-const AboutUsText1 = dynamic(() => import("../AboutUs/AboutUsText1"), {
+const AboutUsTextUpper = dynamic(() => import('../AboutUs/AboutUsTextUpper'), {
   ssr: false,
 });
 
-const AboutUsText2 = dynamic(() => import("../AboutUs/AboutUsText2"), {
+const AboutUsTextLower = dynamic(() => import('../AboutUs/AboutUsTextLower'), {
   ssr: false,
 });
 
-const Carousel = dynamic(() => import("../AboutUs/Carousel"), {
+const Carousel = dynamic(() => import('../AboutUs/Carousel'), {
   ssr: false,
 });
 
@@ -27,7 +27,7 @@ const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
       </div>
 
       <Suspense>
-        <AboutUsText1 />
+        <AboutUsTextUpper />
       </Suspense>
 
       <Suspense>
@@ -37,10 +37,10 @@ const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
       </Suspense>
 
       <Suspense>
-        <AboutUsText2 />
+        <AboutUsTextLower />
       </Suspense>
     </div>
   );
 };
 
-export default React.memo(AboutUsClient);
+export default withErrorHandling(React.memo(AboutUsClient));

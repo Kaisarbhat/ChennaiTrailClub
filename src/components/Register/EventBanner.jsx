@@ -1,9 +1,10 @@
-import Image from "next/image";
-import React from "react";
-const EventBanner = ({ eventData }) => (
+import Image from 'next/image';
+import React from 'react';
+
+const EventBanner = ({ eventBanner }) => (
   <div>
     <Image
-      src={eventData?.eventBannerTwo}
+      src={eventBanner}
       alt={`banner`}
       width={1300}
       height={500}

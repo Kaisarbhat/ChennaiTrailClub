@@ -12,7 +12,7 @@ const EventsList = React.memo(({ events }) => (
         eventBannerThree,
         resultLink,
         date,
-      } = event || {};
+      } = event;
 
       const formattedDate = new Date(date).toLocaleDateString(
         "en-US",
@@ -21,7 +21,7 @@ const EventsList = React.memo(({ events }) => (
 
       return (
         <PastEventsCard
-          key={id || index}
+          key={index}
           id={id}
           name={name}
           shortName={shortName}

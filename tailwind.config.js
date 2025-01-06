@@ -24,24 +24,12 @@ module.exports = {
         decimal: "decimal",
         "decimal-leading-zero": "decimal-leading-zero",
       },
-      fontFamily: {
-        serif: ["Urbanist", "sans-serif"],
-        man: ["Manrope", "sans-serif"],
-      },
+
       boxShadow: {
         mine: "10px 10px 0 0 rgba(115, 40, 246, 1)",
       },
       width: {
         45: "48%",
-      },
-      animation: {
-        shimmer: "shimmer 1.5s infinite",
-      },
-      keyframes: {
-        shimmer: {
-          "0%": { left: "-100%" },
-          "100%": { left: "100%" },
-        },
       },
       colors: {
         shimmerGray: "#e0e0e0",

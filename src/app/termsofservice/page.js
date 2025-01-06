@@ -1,14 +1,14 @@
-import React from "react";
-import { termsAndConditions } from "@/utils/termsAndConditionsUtils";
-import { Heading } from "@/components";
+import { Heading } from '@/components';
+import { termsAndConditions } from '@/utils/termsAndConditionsUtils';
+import React from 'react';
 
 export const metadata = {
-  title: `Terms Of Service - Chennai Trail Club`,
-  description: "Chennai Trail Club Terms Of Service Page",
+  title: 'Terms Of Service - Chennai Trail Club',
+  description: 'Chennai Trail Club Terms Of Service Page',
   openGraph: {
-    title: `Terms Of Service - Chennai Trail Club`,
-    description: "Chennai Trail Club Terms Of Service Page",
-    type: "website",
+    title: 'Terms Of Service - Chennai Trail Club',
+    description: 'Chennai Trail Club Terms Of Service Page',
+    type: 'website',
   },
 };
 
@@ -23,14 +23,15 @@ const TermsOfService = () => {
         <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
           <Heading title="TERMS OF SERVICE" subTitle="Effective Mar 18, 2023" />
           <div className="space-y-4 mt-8  sm:tracking-normal xs:tracking-tighter leading-loose font-man">
-            {termsAndConditions.map((item) => (
-              <di key={item.key}>
-                <h3 className="md:text-[32px] xs:text-lg text-[#070802] font-bold font-serif mb-4 mt-8">
-                  {" "}
+            {termsAndConditions.map((item, index) => (
+              <di key={index}>
+                <h3 className="md:text-[32px] xs:text-lg text-[#070802] font-bold font-urbanist mb-4 mt-8">
                   {item.heading}
                 </h3>
-                {item.text.map((para) => (
-                  <p className="mb-[10px] text-sm">{para}</p>
+                {item.text.map((para, index) => (
+                  <p key={index} className="mb-[10px] text-sm">
+                    {para}
+                  </p>
                 ))}
               </di>
             ))}

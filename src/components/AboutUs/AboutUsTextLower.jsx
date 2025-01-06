@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
 
-function AboutUsText2() {
+function AboutUsTextLower() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
@@ -44,15 +44,15 @@ function AboutUsText2() {
           transition={{ duration: 0.5 }}
           className="md:text-xl xs:text-sm text-[#50514c]"
         >
-          So, if you’re ready to break free from the confines of everyday life
-          and embark on incredible nature trails, we invite you to join the
-          Chennai Trail Club. Together, let’s discover the beauty of nature,
-          challenge ourselves, and create memories that will last a lifetime.
-          Welcome to the club!
+          So, if you&apos;re ready to break free from the confines of everyday
+          life and embark on incredible nature trails, we invite you to join the
+          Chennai Trail Club. Together, let&apos;s discover the beauty of
+          nature, challenge ourselves, and create memories that will last a
+          lifetime. Welcome to the club!
         </motion.p>
       </div>
     </div>
   );
 }
 
-export default React.memo(AboutUsText2);
+export default React.memo(AboutUsTextLower);

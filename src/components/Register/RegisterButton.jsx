@@ -1,8 +1,10 @@
 "use client";
-import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "..";
-function RegisterButton({ id, name, resultLink }) {
+
+function RegisterButton({ eventData }) {
+  const { id, name, resultLink } = eventData;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (

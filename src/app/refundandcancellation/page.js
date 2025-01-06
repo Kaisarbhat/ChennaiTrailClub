@@ -1,13 +1,14 @@
-import React from "react";
-import { refundData } from "@/utils/refundUtils";
-import { Heading } from "@/components";
+import { Heading } from '@/components';
+import { refundData } from '@/utils/refundUtils';
+import React from 'react';
+
 export const metadata = {
-  title: `Refund And Cancellation Policy | Chennai Trail Club`,
-  description: "Chennai Trail Club Refund And Cancellation Policy Page",
+  title: 'Refund And Cancellation Policy - Chennai Trail Club',
+  description: 'Chennai Trail Club Refund And Cancellation Policy Page',
   openGraph: {
-    title: `Refund And Cancellation Policy | Chennai Trail Club`,
-    description: "Chennai Trail Club Refund And Cancellation Policy Page",
-    type: "website",
+    title: 'Refund And Cancellation Policy - Chennai Trail Club',
+    description: 'Chennai Trail Club Refund And Cancellation Policy Page',
+    type: 'website',
   },
 };
 
