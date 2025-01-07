@@ -15,7 +15,7 @@ export const metadata = {
 const PrivacyPolicy = () => {
   return (
     <div
-      className="flex justify-center px-4 "
+      className="flex justify-center px-4"
       role="page"
       aria-label="privacy policy"
     >
@@ -29,7 +29,10 @@ const PrivacyPolicy = () => {
                   {item.heading}
                 </h3>
                 {item.text.map((para, index) => (
-                  <p key={index} className="mt-[10px] text-sm font-man">
+                  <p
+                    key={index}
+                    className="mt-[10px] text-sm font-man font-manrope tracking-wide"
+                  >
                     {para}
                   </p>
                 ))}

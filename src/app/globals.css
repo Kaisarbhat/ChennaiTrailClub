@@ -54,3 +54,15 @@ input:hover {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0);
+  }
+  100% {
+    transform: rotate(180deg) scale(1);
+  }
+}
+.animate-rotate {
+  animation: rotate 500ms linear 1 forwards;
+}

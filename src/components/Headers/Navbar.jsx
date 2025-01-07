@@ -24,6 +24,7 @@ function Navbar() {
   const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,14 +63,20 @@ function Navbar() {
   const toggleJoinUs = () => {
     setIsJoinUsOpen(!isJoinUsOpen);
   };
-
+  const handleRotate = () => {
+    setIsRotating(false);
+    requestAnimationFrame(() => {
+      setIsRotating(true);
+    });
+  };
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
+    handleRotate();
   };
 
   return (
     <header
-      className={`w-full h-[90px] flex items-center justify-center sm:px-4 xs:px-0 z-20  fixed top-0 left-0
+      className={`w-full h-[80px] flex items-center justify-center sm:px-4 xs:px-0 z-20  fixed top-0 left-0
       transition-all duration-300 ease-in-out  
         ${!isOpen ? desktopBgColor : 'bg-black text-[#fcfdf899]'}
   
@@ -131,7 +138,7 @@ function Navbar() {
             </li>
           </ul>
           <button
-            className={`sxl:hidden xs:flex text-4xl cursor-pointer z-10 ${!isOpen && !isScrolled ? 'text-black' : 'text-white'}`}
+            className={`sxl:hidden xs:flex text-4xl cursor-pointer z-10 ${!isOpen && !isScrolled && transparentPaths.includes(pathname) ? 'text-black' : 'text-white'} ${isRotating ? 'animate-rotate' : ''}`}
             onClick={toggleMenu}
           >
             {isOpen ? <X size={40} /> : <Menu size={40} />}

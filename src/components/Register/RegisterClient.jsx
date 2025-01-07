@@ -182,7 +182,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
 
   return (
     <div
-      className="w-full flex flex-col items-center overflow-clip"
+      className="w-full flex flex-col items-center font-manrope"
       role="region"
       aria-label="registration page"
     >

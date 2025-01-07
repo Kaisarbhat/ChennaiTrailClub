@@ -40,7 +40,7 @@ const FooterSmall = ({ reff, isInView }) => {
           >
             <PolicyLinks />
           </nav>
-          <p className="xs:mt-3 md:mt-0">
+          <p className="xs:mt-3 md:mt-0 text-[15px] ">
             Chennaitrailclub © {new Date().getFullYear()}, All Rights Reserved
           </p>
         </div>

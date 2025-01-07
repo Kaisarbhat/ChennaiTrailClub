@@ -25,7 +25,7 @@ const RefundAndCancellation = () => {
             title="Refund and Cancellation Policy"
             subTitle=" Effective Mar 18, 2023"
           />
-          <div className="space-y-4 mt-8 sm:tracking-normal xs:tracking-tighter leading-loose font-man">
+          <div className="space-y-4 mt-8 sm:tracking-normal xs:tracking-tighter leading-loose font-manrope tracking-wide">
             {refundData.map((item, index) => (
               <p key={index}>{item}</p>
             ))}
