@@ -1,4 +1,6 @@
-import { Features } from "@/components";
+import { Features } from '@/components';
+import ErrorPage from '@/components/Error/Error';
+import { notFound } from 'next/navigation';
 
 async function getData() {
   try {
@@ -9,16 +11,19 @@ async function getData() {
       }
     );
     if (!res.ok) {
-      console.error("Failed to fetch features");
+      console.error('Failed to fetch features');
       return;
     }
     return await res.json();
   } catch (error) {
-    console.error(error);
+    notFound();
   }
 }
 
 export default async function FeaturesServer() {
   const features = await getData();
+  if (!features) {
+    return <ErrorPage />;
+  }
   return <Features features={features} />;
 }

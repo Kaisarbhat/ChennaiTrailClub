@@ -1,4 +1,5 @@
 import { UpcomingEvents } from '@/components';
+import ErrorPage from '@/components/Error/Error';
 import { notFound } from 'next/navigation';
 
 export const metadata = {
@@ -24,7 +25,7 @@ async function fetchData() {
     );
 
     if (!res.ok) {
-      throw error(`Failed to fetch events: ${res.status}`);
+      return [];
     }
 
     const upcomingEvents = await res.json();
@@ -36,6 +37,9 @@ async function fetchData() {
 
 export default async function UpcomingEventsServer() {
   const upcomingEvents = await fetchData();
+  if (!upcomingEvents) {
+    return <ErrorPage />;
+  }
 
   return (
     <main>

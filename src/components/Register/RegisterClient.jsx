@@ -11,13 +11,7 @@ import { useRouter } from 'next/navigation';
 import { memo, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  EventBanner,
-  RegisterCard,
-  RegistrationForm,
-  Timeline,
-  WithErrorHandling,
-} from '..';
+import { EventBanner, RegisterCard, RegistrationForm, Timeline } from '..';
 
 const RegisterClient = ({ key, eventData, eventId }) => {
   const [currentStep, setCurrentStep] = useState(1);

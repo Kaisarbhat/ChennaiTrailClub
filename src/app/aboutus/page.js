@@ -1,4 +1,5 @@
 import { AboutUsClient } from '@/components';
+import ErrorPage from '@/components/Error/Error';
 import { notFound } from 'next/navigation';
 
 export const metadata = {
@@ -43,7 +44,9 @@ async function getData() {
 
 export default async function AboutUs() {
   const { aboutUsImg, carouselImages } = await getData();
-
+  if (!aboutUsImg || !carouselImages) {
+    return <ErrorPage />;
+  }
   return (
     <main>
       <AboutUsClient

@@ -1,5 +1,7 @@
-import { dateOptions } from "@/utils/constants";
-import { HeroClient } from "@/components";
+import { dateOptions } from '@/utils/constants';
+import { HeroClient } from '@/components';
+import { notFound } from 'next/navigation';
+import ErrorPage from '@/components/Error/Error';
 async function getData() {
   try {
     const [recentEventRes, heroImageRes] = await Promise.all(
@@ -24,15 +26,17 @@ async function getData() {
     }
     return {};
   } catch (error) {
-    console.error("Server error Failed to fetch data : ", error);
-    return {};
+    notFound();
   }
 }
 
 export default async function HeroServer() {
   const { recentEvent, heroImage } = await getData();
+  if (!recentEvent || !heroImage) {
+    return <ErrorPage />;
+  }
   const date = new Date(recentEvent?.date);
-  const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
+  const formattedDate = date.toLocaleDateString('en-Us', dateOptions);
   return (
     <HeroClient
       recentEvent={recentEvent}

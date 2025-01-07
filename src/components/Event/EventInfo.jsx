@@ -1,6 +1,6 @@
-"use client";
-import { eventContent } from "@/utils/eventUtils";
-import { useState } from "react";
+'use client';
+import { eventContent } from '@/utils/eventUtils';
+import { useState } from 'react';
 
 const EventInfo = () => {
   const [selectedKey, setSelectedKey] = useState(eventContent[0]?.key);
@@ -17,11 +17,11 @@ const EventInfo = () => {
 
   return (
     <div
-      className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-[#50514C] text-[16px]"
+      className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-[#50514C] text-[16px] font-manrope"
       aria-label="Event Information Menu"
     >
       <div className="xs:hidden md:flex">
-        <aside className=" text-black p-6 flex flex-col border items-start border-gray-200 rounded-lg space-y-2 max-h-[618px]">
+        <aside className=" text-black p-6 flex flex-col border items-start border-gray-200 rounded-lg space-y-2 max-h-[618px">
           {eventContent.map((item) => (
             <button
               key={item.key}
@@ -29,8 +29,8 @@ const EventInfo = () => {
               onClick={() => handleButtonClick(item.key)}
               className={`text-start rounded-lg w-full hover:bg-[#070802] hover:text-[#D0F700] p-3 ${
                 selectedKey === item.key
-                  ? "text-[#D0F700] bg-[#070802]"
-                  : "bg-white text-black"
+                  ? 'text-[#D0F700] bg-[#070802]'
+                  : 'bg-white text-black'
               } `}
             >
               {item.key}
@@ -38,7 +38,6 @@ const EventInfo = () => {
           ))}
         </aside>
       </div>
-      {/* "Only on small devices" */}
       <div className="md:hidden xs:flex w-full xs:px-4 ">
         <select
           value={selectedKey}

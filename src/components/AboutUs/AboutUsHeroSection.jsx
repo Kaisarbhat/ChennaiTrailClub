@@ -1,14 +1,10 @@
 'use Client';
-import { showError } from '@/utils/toastUtils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
 const AboutUsHeroSection = React.memo(({ imageUrl }) => {
-  if (!imageUrl) {
-    showError('Failed to load image');
-  }
   return (
     <div className="relative  flex rounded-lg overflow-clip xs:h-[350px] lg:h-[600px] lg:w-[1024px] sxl:w-[1200px] xl:[w-1340px] 2xl:w-[1340px] ">
       <Image

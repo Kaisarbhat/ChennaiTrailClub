@@ -1,4 +1,5 @@
 import { RegisterClient } from '@/components';
+import ErrorPage from '@/components/Error/Error';
 import axios from 'axios';
 import { notFound } from 'next/navigation';
 
@@ -36,6 +37,9 @@ async function fetchData(eventId) {
 export default async function EventRegistrationServer({ params }) {
   const eventId = params.eventId;
   const { key, eventData } = await fetchData(eventId);
+  if (!key || !eventData) {
+    return <ErrorPage />;
+  }
   return (
     <main>
       <RegisterClient key={key} eventData={eventData} eventId={eventId} />

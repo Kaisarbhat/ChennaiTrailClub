@@ -1,6 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
-import React, { Suspense } from 'react';
+import React from 'react';
 import AboutUsHeroSection from './AboutUsHeroSection';
 
 const AboutUsTextUpper = dynamic(() => import('../AboutUs/AboutUsTextUpper'), {
@@ -25,19 +25,13 @@ const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
         <AboutUsHeroSection imageUrl={abousUsHeroImg?.imageUrl} />
       </div>
 
-      <Suspense>
-        <AboutUsTextUpper />
-      </Suspense>
+      <AboutUsTextUpper />
 
-      <Suspense>
-        <div className="flex items-center justify-center xs:px-4 2xl:max-w-[1500px]">
-          <Carousel carouselImages={carouselImages} />
-        </div>
-      </Suspense>
+      <div className="flex items-center justify-center xs:px-4 2xl:max-w-[1500px]">
+        <Carousel carouselImages={carouselImages} />
+      </div>
 
-      <Suspense>
-        <AboutUsTextLower />
-      </Suspense>
+      <AboutUsTextLower />
     </div>
   );
 };
