@@ -1,5 +1,4 @@
 'use client';
-import { withErrorHandling } from '@/app/Error/page';
 import {
   registerInitialValues,
   registerValidationSchemas,
@@ -12,7 +11,13 @@ import { useRouter } from 'next/navigation';
 import { memo, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { EventBanner, RegisterCard, RegistrationForm, Timeline } from '..';
+import {
+  EventBanner,
+  RegisterCard,
+  RegistrationForm,
+  Timeline,
+  WithErrorHandling,
+} from '..';
 
 const RegisterClient = ({ key, eventData, eventId }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -222,4 +227,4 @@ const RegisterClient = ({ key, eventData, eventId }) => {
   );
 };
 
-export default withErrorHandling(memo(RegisterClient));
+export default memo(RegisterClient);

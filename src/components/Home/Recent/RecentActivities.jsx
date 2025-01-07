@@ -120,7 +120,7 @@ const RecentActivities = ({ images = [], mobileImages = [] }) => {
 
   return (
     <section className="w-full min-h-[70vh] md:min-h-0 bg-[#F6FFC7] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+      <div className="max-w-[1340px] mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
           <div className="lg:w-1/2">
             <motion.h1

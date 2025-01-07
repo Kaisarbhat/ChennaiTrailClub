@@ -30,9 +30,6 @@ module.exports = {
       width: {
         45: '48%',
       },
-      colors: {
-        shimmerGray: '#e0e0e0',
-      },
     },
   },
   plugins: [],

@@ -1,8 +1,8 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { memo } from "react";
+'use client';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { memo } from 'react';
 
 const TechnologyPartner = memo(({ isInView, reff }) => (
   <div>
