@@ -17,7 +17,7 @@ async function fetchData() {
       `${process.env.NEXT_PUBLIC_API_URL}/events/upcomingevents`,
       {
         next: {
-          revalidate: 1,
+          revalidate: 3600,
           tags: ['upcomingevents'],
         },
       }
