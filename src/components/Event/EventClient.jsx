@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { EventDetailsHero, EventInfo, WithErrorHandling } from '..';
+import { EventDetailsHero, EventInfo } from '..';
 import React from 'react';
 
 const RegisterButton = dynamic(() => import('../Register/RegisterButton'));

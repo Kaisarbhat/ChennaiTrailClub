@@ -1,4 +1,5 @@
 import { EventClient } from '@/components';
+import ErrorPage from '@/components/Error/Error';
 import { notFound } from 'next/navigation';
 
 export const metadata = {
@@ -33,6 +34,9 @@ async function fetchEventData(eventId) {
 export default async function DynamicEvent({ params }) {
   const eventId = params.eventId;
   const { eventData } = await fetchEventData(eventId);
+  if (!eventData) {
+    return <ErrorPage />;
+  }
 
   return (
     <main>

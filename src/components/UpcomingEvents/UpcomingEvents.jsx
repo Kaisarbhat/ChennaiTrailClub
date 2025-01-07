@@ -1,7 +1,7 @@
 import { dateOptions } from '@/utils/constants';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import { UpcomingEventsHero, WithErrorHandling } from '..';
+import { UpcomingEventsHero } from '..';
 const UpcomingEventsCard = dynamic(() => import('./UpcomingEventsCard'));
 const EmptyEvents = dynamic(() => import('../Event/EmptyEvents'));
 

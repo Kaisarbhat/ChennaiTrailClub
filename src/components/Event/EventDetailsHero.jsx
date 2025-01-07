@@ -1,14 +1,15 @@
-"use client";
-import { dateOptions } from "@/utils/constants";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { Button } from "..";
+'use client';
+import { dateOptions } from '@/utils/constants';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { Button } from '..';
 
 function EventDetailsHero({ eventData }) {
+  const date_today = new Date();
   const date = new Date(eventData.date);
-  const formattedDate = date.toLocaleDateString("en-Us", dateOptions);
+  const formattedDate = date.toLocaleDateString('en-Us', dateOptions);
 
   return (
     <div className="bg-[#070802] w-full flex items-center justify-center">
@@ -33,7 +34,7 @@ function EventDetailsHero({ eventData }) {
         </motion.div>
         <div className=" md:w-1/2 xs:w-full xs:mt-12 md:mt-0 flex flex-col xs:items-center md:items-start justify-between text-lg space-y-4 xs:text-center md:text-start">
           <motion.h2
-            initial={{ opacity: 0, y: "-100%" }}
+            initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="md:text-[38px] xs:text-[26px] text-white md:font-bold leading-snug xs:w-2/3 md:w-full"
@@ -42,22 +43,26 @@ function EventDetailsHero({ eventData }) {
             <br className="xs:block md:hidden" /> {`(${eventData.shortName})`}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, x: "-100%" }}
+            initial={{ opacity: 0, x: '-100%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="text-[#FFFFFFBF] xs:text-[15px] md:text-xl xs:px-2 md:px-0"
           >
             {eventData.description}
           </motion.p>
-
+          {date_today > date && (
+            <div className="font-bold md:mb-6 xs:mb-0">
+              Registration for this event is closed
+            </div>
+          )}
           {eventData?.resultLink && (
             <div className="my-4">
               <Button
-                title={"Result"}
+                title={'Result'}
                 link={eventData?.resultLink}
                 icon={true}
                 classname={
-                  "bg-[#D0F700] text-black py-3 px-8 text-lg font-bold rounded-3xl"
+                  'bg-[#D0F700] text-black py-3 px-8 text-lg font-bold rounded-3xl'
                 }
               />
             </div>
@@ -68,7 +73,7 @@ function EventDetailsHero({ eventData }) {
             {formattedDate}
           </div>
           <motion.div
-            initial={{ opacity: 0, y: "100%" }}
+            initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-[#FFFFFFA6] underline"

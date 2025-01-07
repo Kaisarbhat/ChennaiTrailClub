@@ -1,6 +1,6 @@
 'use client';
 import React, { useCallback, useMemo, useState } from 'react';
-import { EventsList, Heading, WithErrorHandling, YearSelector } from '..';
+import { EventsList, Heading, YearSelector } from '..';
 
 const PastEvents = ({ pastEvents, years }) => {
   const [selectedYear, setSelectedYear] = useState(
