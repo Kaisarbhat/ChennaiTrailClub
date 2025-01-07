@@ -1,20 +1,21 @@
-import { notFound } from "next/navigation";
-import { PastEventsClient } from "@/components";
+import { PastEventsClient } from '@/components';
+
 export const metadata = {
-  title: "Past Events | Chennai Trail Club",
-  description: "Check our Past Events ",
+  title: 'Past Events - Chennai Trail Club',
+  description: 'Check our Past Events ',
   openGraph: {
-    title: "Upcoming Events | Chennai Trail Club ",
-    description: "Check our Past Events ",
-    type: "website",
+    title: 'Upcoming Events - Chennai Trail Club ',
+    description: 'Check our Past Events ',
+    type: 'website',
   },
 };
+
 async function fetchData() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/events/pastevents`,
       {
-        next: { revalidate: 3600, tags: ["pastevents"] },
+        next: { revalidate: 3600, tags: ['pastevents'] },
       }
     );
     if (res.ok) {
@@ -30,7 +31,7 @@ async function fetchData() {
     }
     return {};
   } catch (error) {
-    notFound();
+    throw error;
   }
 }
 export default async function PastEvents() {

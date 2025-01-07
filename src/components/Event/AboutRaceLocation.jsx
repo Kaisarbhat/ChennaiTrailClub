@@ -1,7 +1,9 @@
 "use client";
-import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-function AboutRaceLocation({ heading, middleImageUrl, text }) {
+import React, { useRef } from "react";
+
+function AboutRaceLocation({ eventData }) {
+  const { heading, middleImageUrl, text } = eventData;
   const ref = useRef();
   const isInView = useInView(ref, { once: true });
 
@@ -29,7 +31,7 @@ function AboutRaceLocation({ heading, middleImageUrl, text }) {
             className="md:w-45 xs:w-full"
           />
           <div className="text-[#50514C] text-[16px] lg:space-y-6 md:space-y-3 flex flex-col xs:mt-4 md:mt-0  md:text-start xs:text-center">
-            {text && text.length > 0 ? (
+            {text && text.length ? (
               text.map((item, index) => <p key={index}>{item}</p>)
             ) : (
               <div>No Text</div>

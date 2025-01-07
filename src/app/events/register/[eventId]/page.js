@@ -1,14 +1,13 @@
-import { notFound } from "next/navigation";
-import axios from "axios";
-import { RegisterClient } from "@/components";
+import { RegisterClient } from '@/components';
+import axios from 'axios';
 
 export const metadata = {
-  title: "Registration for Events | Chennai Trail Club",
-  description: "Regsiter for upcoming events ",
+  title: 'Registration for Events - Chennai Trail Club',
+  description: 'Regsiter for upcoming events ',
   openGraph: {
-    title: "Registration for Events | Chennai Trail Club",
-    description: "Regsiter for upcoming events ",
-    type: "website",
+    title: 'Registration for Events - Chennai Trail Club',
+    description: 'Regsiter for upcoming events ',
+    type: 'website',
   },
 };
 
@@ -19,7 +18,7 @@ async function fetchData(eventId) {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/payment`),
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/events/event/${eventId}`),
       ],
-      { next: { revalidate: 3600, tags: ["registration-cache"] } }
+      { next: { revalidate: 3600, tags: ['registration-cache'] } }
     );
     if (keyRes.status === 200 && eventDataRes.status === 200) {
       return {
@@ -29,7 +28,7 @@ async function fetchData(eventId) {
     }
     return {};
   } catch (error) {
-    notFound();
+    throw error;
   }
 }
 

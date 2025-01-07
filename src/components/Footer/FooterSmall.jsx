@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
+  ContactInfo,
+  PolicyLinks,
   QuickLinks,
   SocialLinks,
-  ContactInfo,
   TechnologyPartner,
-  PolicyLinks,
-} from "..";
+} from '..';
+
 const FooterSmall = ({ reff, isInView }) => {
   return (
     <div className="sm:bg-[#070802] xs:bg-[#070802] md:bg-inherit">
       <div className="w-full flex justify-center mt-8 mb-4">
-        <div className="w-full flex flex-col text-[#FCFDF8] bg-[#070802] px-4 mb-0 text-[14px] items-start justify-between md:py-16 xs:py-8 font-serif">
+        <div className="w-full flex flex-col text-[#FCFDF8] bg-[#070802] px-4 mb-0 text-[14px] items-start justify-between md:py-16 xs:py-8 font-urbanist">
           <div className="flex flex-col w-[350px]">
             <h2 className="text-2xl mt-3 font-bold">Chennai Trail Club</h2>
             <p className="text-[#B6B6B3] mt-3 text-[16px]">
@@ -39,7 +40,7 @@ const FooterSmall = ({ reff, isInView }) => {
           >
             <PolicyLinks />
           </nav>
-          <p className="xs:mt-3 md:mt-0">
+          <p className="xs:mt-3 md:mt-0 text-[15px] ">
             Chennaitrailclub © {new Date().getFullYear()}, All Rights Reserved
           </p>
         </div>

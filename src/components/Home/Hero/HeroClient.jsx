@@ -15,7 +15,7 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${heroImage?.imageUrl})`,
+            backgroundImage: `url(${heroImage.imageUrl})`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
           }}
@@ -23,7 +23,6 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
         <div className="absolute inset-0 bg-black opacity-50" />
         <Hero recentEvent={recentEvent} formattedDate={formattedDate} />
       </div>
-
       <div className="flex justify-center 2xl:m-w-[1340px]">
         <HeroText />
       </div>

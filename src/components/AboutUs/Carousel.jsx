@@ -1,9 +1,11 @@
-"use client";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
+'use client';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const Carousel = ({ carouselImages }) => {
+  const totalSlides = carouselImages?.length;
   const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     //automatically change the images after 5 seconds
     const interval = setInterval(() => {
@@ -11,13 +13,12 @@ const Carousel = ({ carouselImages }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [carouselImages.length]);
-
-  const totalSlides = carouselImages.length;
+  }, [totalSlides]);
 
   const updateCarousel = (index) => {
     setCurrentIndex((index + totalSlides) % totalSlides);
   };
+
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
@@ -27,14 +28,15 @@ const Carousel = ({ carouselImages }) => {
       prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
     );
   };
+
   return (
-    <div className="relative w-full  lg:px-16 xs:p-0" aria-labelledby="Images">
+    <div className="relative w-full lg:px-16 xs:p-0" aria-labelledby="Images">
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {carouselImages?.map((item, index) => (
+          {carouselImages.map((item, index) => (
             <div key={index} className="min-w-full min-h-full">
               <Image
                 src={item.imageUrl}
@@ -65,7 +67,7 @@ const Carousel = ({ carouselImages }) => {
           <button
             key={index}
             className={`dot md:w-3 md:h-3 xs:w-2 xs:h-2 rounded-full focus:outline-none ${
-              currentIndex === index ? "bg-[#BCD700]" : "bg-gray-400"
+              currentIndex === index ? 'bg-[#BCD700]' : 'bg-gray-400'
             }`}
             onClick={() => updateCarousel(index)}
           ></button>

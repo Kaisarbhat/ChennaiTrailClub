@@ -1,7 +1,7 @@
 import AboutRaceLocation from "./Event/AboutRaceLocation";
 import AboutUsClient from "./AboutUs/AboutUsClient";
-import AboutUsText1 from "./AboutUs/AboutUsText1";
-import AboutUsText2 from "./AboutUs/AboutUsText2";
+import AboutUsTextUpper from "./AboutUs/AboutUsTextUpper";
+import AboutUsTextLower from "./AboutUs/AboutUsTextLower";
 import Carousel from "./AboutUs/Carousel";
 import Button from "./Button/Button";
 import EmptyEvents from "./Event/EmptyEvents";
@@ -46,8 +46,8 @@ import SocialLinks from "./Footer/SocialLinks";
 export {
   AboutRaceLocation,
   AboutUsClient,
-  AboutUsText1,
-  AboutUsText2,
+  AboutUsTextUpper,
+  AboutUsTextLower,
   Carousel,
   Button,
   TechnologyPartner,

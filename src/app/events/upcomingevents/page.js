@@ -1,13 +1,12 @@
-import { notFound } from "next/navigation";
-import { UpcomingEvents } from "@/components";
+import { UpcomingEvents } from '@/components';
 
 export const metadata = {
-  title: "Upcoming Events | Chennai Trail Club",
-  description: "Browse and register for our upcoming events",
+  title: 'Upcoming Events - Chennai Trail Club',
+  description: 'Browse and register for our upcoming events',
   openGraph: {
-    title: "Upcoming Events | Chennai Trail Club",
-    description: "Browse and register for our upcoming events",
-    type: "website",
+    title: 'Upcoming Events - Chennai Trail Club',
+    description: 'Browse and register for our upcoming events',
+    type: 'website',
   },
 };
 
@@ -18,19 +17,19 @@ async function fetchData() {
       {
         next: {
           revalidate: 1,
-          tags: ["upcomingevents"],
+          tags: ['upcomingevents'],
         },
       }
     );
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch events: ${res.status}`);
+      throw error(`Failed to fetch events: ${res.status}`);
     }
 
     const upcomingEvents = await res.json();
     return upcomingEvents;
   } catch (error) {
-    notFound();
+    throw error;
   }
 }
 

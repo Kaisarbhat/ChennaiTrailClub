@@ -7,7 +7,6 @@ export const eventContent = [
           General Information
         </h1>
         <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
-          {" "}
           Following are general information that you have to know before
           registering,
         </h5>
@@ -147,13 +146,11 @@ export const eventContent = [
           Rules & Criteria
         </h1>
         <p className="xs:text-[13px] md:text-[16px]">
-          {" "}
           Considering all challenges through the course and other
           considerations, the participants must meet the following criteria:
         </p>
         <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
           <li>
-            {" "}
             For registering for 60K, Registrants must have completed
             <ul className="list-disc space-y-3 md:px-16 xs:px-8">
               <li>
@@ -403,23 +400,19 @@ export const eventContent = [
           </h2>
           <ul className="list-disc space-y-3 md:px-16 xs:px-8 md:text-[16px] xs:text-sm">
             <li>
-              {" "}
               Medals will be awarded to all runners who finish within the
               cut-off.
             </li>
             <li>
-              {" "}
               Certificates will also be made available online to all 30K & 60K
               finishers.
             </li>
             <li> Results will be uploaded to website after 2-3 days. </li>
             <li>
-              {" "}
               There is no prize money or awards for podium finishers as we
               believe that all participants are winners.{" "}
             </li>
             <li>
-              {" "}
               There is no chip on the bib. Timing will be noted manually at
               timing points along the route{" "}
             </li>
@@ -428,49 +421,41 @@ export const eventContent = [
         <div>
           <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px] ">
             <li>
-              {" "}
               All participants must accept complete responsibility for any
               injury, physical or otherwise, that may be caused to them during
               the event, or while on the premises of the event.
             </li>
             <li>
-              {" "}
               Runners are required to check-in and collect their bibs/race-kits
               personally during the pre-race dinner/briefing on Saturday
               08-Nov-2024. Runners cannot authorise a third party to collect the
               bib/race-kit on their behalf.
             </li>
             <li>
-              {" "}
               Runners must wear the official bib provided by the organisers
               throughout the event. If one takes the bib off for any reason
               whatsoever, they will be noted as DNF (did-not-finish).
             </li>
             <li>
-              {" "}
               Only finishers within the cut-off time will be entitled to receive
               their official timing and finisher medal.
             </li>
             <li>
-              {" "}
               The organiser reserves the right to cancel, postpone or delay the
               event due to any unforeseen circumstances beyond their control and
               at their discretion.
             </li>
             <li>
-              {" "}
               The organiser shall not be liable in respect to any entry fees,
               costs and expenses that a participant may incur as a result of
               such cancellation or postponement.
             </li>
             <li>
-              {" "}
               A registered runner consent to the free use of one's name, voice,
               picture or video in any broadcast, telecast, advertising,
               promotion or other account of this event.
             </li>
             <li>
-              {" "}
               Registered Runners must ensure that they provide correct details
               during the registration process and inform the organiser well in
               advance of the race, of any changes. If one's contact information
@@ -479,35 +464,29 @@ export const eventContent = [
               advance of the event.
             </li>
             <li>
-              {" "}
               The course of the Jawadhu Hill Ultra takes the runner through
               areas under the control of the Forests Department. Please be
               sensitive to the environment and do not disturb the surrounding
               flora and fauna in any manner.
             </li>
             <li>
-              {" "}
               Runners are required to run along the marked track only. The area
               and the course are also a habitat for a variety of snakes. Please
               do take due care and exercise caution.
             </li>
             <li>
-              {" "}
               Runners are requested to cooperate with race officials, volunteers
               and other personnel during the event.
             </li>
             <li>
-              {" "}
               The organiser reserves the right to refuse an entrant's attendance
               at, or participation in, the race.
             </li>
             <li>
-              {" "}
               Any participant who is found putting themselves or anyone else at
               risk will be immediately evicted from the course and event venue.
             </li>
             <li>
-              {" "}
               The organiser shall reserve the right to remove, ban or exclude
               any participant who is found in breach of these terms and
               conditions.

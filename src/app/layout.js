@@ -1,29 +1,23 @@
-import localFont from "next/font/local";
-import "./globals.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { Footer, Navbar } from "@/components";
+import { Footer, Navbar } from '@/components';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { manrope, urbanist } from './fonts/font';
+import './globals.css';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 export const metadata = {
-  title: `Home - Chennai Trail Club`,
-  description: "Chennai Trail Club Home Page",
+  title: 'Home - Chennai Trail Club',
+  description: 'Chennai Trail Club Home Page',
+  openGraph: {
+    title: 'Home - Chennai Trail Club',
+    description: 'Chennai Trail Club Home Page',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-serif`}
-      >
+      <body className={`${urbanist.variable} ${manrope.variable} antialiased `}>
         <Navbar />
         {children}
         <Footer />

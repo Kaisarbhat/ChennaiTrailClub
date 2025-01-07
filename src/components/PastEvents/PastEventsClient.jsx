@@ -1,7 +1,7 @@
-"use client";
-import React, { useCallback, useMemo, useState } from "react";
-
-import { EventsList, YearSelector, Heading } from "..";
+'use client';
+import { withErrorHandling } from '@/app/Error/page';
+import React, { useCallback, useMemo, useState } from 'react';
+import { EventsList, Heading, YearSelector } from '..';
 
 const PastEvents = ({ pastEvents, years }) => {
   const [selectedYear, setSelectedYear] = useState(
@@ -51,4 +51,4 @@ const PastEvents = ({ pastEvents, years }) => {
   );
 };
 
-export default React.memo(PastEvents);
+export default withErrorHandling(React.memo(PastEvents));
