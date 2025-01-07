@@ -1,4 +1,5 @@
 import { AboutUsClient } from '@/components';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'AboutUs - Chennai Trail Club',
@@ -36,7 +37,7 @@ async function getData() {
     }
     return {};
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 

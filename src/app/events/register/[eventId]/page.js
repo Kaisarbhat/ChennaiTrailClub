@@ -1,5 +1,6 @@
 import { RegisterClient } from '@/components';
 import axios from 'axios';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Registration for Events - Chennai Trail Club',
@@ -28,7 +29,7 @@ async function fetchData(eventId) {
     }
     return {};
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 
