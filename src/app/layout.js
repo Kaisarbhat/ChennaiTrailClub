@@ -1,6 +1,5 @@
 import { Footer, Navbar } from '@/components';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { manrope, urbanist } from './fonts/font';
 import './globals.css';
 

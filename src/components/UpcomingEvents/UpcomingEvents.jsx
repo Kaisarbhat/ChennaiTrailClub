@@ -1,8 +1,7 @@
-import { withErrorHandling } from '@/app/Error/page';
 import { dateOptions } from '@/utils/constants';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import { UpcomingEventsHero } from '..';
+import { UpcomingEventsHero, WithErrorHandling } from '..';
 const UpcomingEventsCard = dynamic(() => import('./UpcomingEventsCard'));
 const EmptyEvents = dynamic(() => import('../Event/EmptyEvents'));
 
@@ -56,4 +55,4 @@ const UpcomingEvents = ({ upcomingEvents }) => {
   );
 };
 
-export default withErrorHandling(React.memo(UpcomingEvents));
+export default React.memo(UpcomingEvents);

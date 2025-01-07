@@ -2,7 +2,6 @@
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
 import AboutUsHeroSection from './AboutUsHeroSection';
-import { withErrorHandling } from '@/app/Error/page';
 
 const AboutUsTextUpper = dynamic(() => import('../AboutUs/AboutUsTextUpper'), {
   ssr: false,
@@ -43,4 +42,4 @@ const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
   );
 };
 
-export default withErrorHandling(React.memo(AboutUsClient));
+export default React.memo(AboutUsClient);

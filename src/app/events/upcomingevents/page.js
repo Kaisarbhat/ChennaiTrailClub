@@ -1,4 +1,5 @@
 import { UpcomingEvents } from '@/components';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Upcoming Events - Chennai Trail Club',
@@ -29,7 +30,7 @@ async function fetchData() {
     const upcomingEvents = await res.json();
     return upcomingEvents;
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 

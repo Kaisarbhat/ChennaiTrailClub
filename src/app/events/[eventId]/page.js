@@ -1,4 +1,5 @@
 import { EventClient } from '@/components';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Events - Chennai Trail Club',
@@ -26,7 +27,7 @@ async function fetchEventData(eventId) {
     }
     return {};
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 export default async function DynamicEvent({ params }) {

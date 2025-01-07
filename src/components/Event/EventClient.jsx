@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import { EventDetailsHero, EventInfo } from '..';
+import { EventDetailsHero, EventInfo, WithErrorHandling } from '..';
 import React from 'react';
-import { withErrorHandling } from '@/app/Error/page';
+
 const RegisterButton = dynamic(() => import('../Register/RegisterButton'));
 const AboutRaceLocation = dynamic(() => import('./AboutRaceLocation'));
 const MaintainigCleaniless = dynamic(() => import('./MaintainigCleaniless'));
@@ -49,4 +49,4 @@ const EventClient = ({ eventData }) => {
   );
 };
 
-export default withErrorHandling(React.memo(EventClient));
+export default React.memo(EventClient);

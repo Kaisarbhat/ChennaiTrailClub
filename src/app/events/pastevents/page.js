@@ -1,4 +1,5 @@
 import { PastEventsClient } from '@/components';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Past Events - Chennai Trail Club',
@@ -31,7 +32,7 @@ async function fetchData() {
     }
     return {};
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 export default async function PastEvents() {

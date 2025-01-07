@@ -1,10 +1,11 @@
-"use client";
-import { Button } from "@/components";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import React from "react";
+'use client';
+import { Button } from '@/components';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React from 'react';
 
 const Hero = ({ recentEvent, formattedDate }) => {
+  const date = new Date();
   return (
     <div className="relative z-10 2xl:max-w-[1320px] h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-12 sm:pt-14 md:pt-10 items-center justify-center space-x-4">
       <motion.div
@@ -24,12 +25,12 @@ const Hero = ({ recentEvent, formattedDate }) => {
       </motion.div>
       <div className="flex flex-col flex-1 md:w-1/2 xs:w-full xs:text-center md:text-start lg:space-y-6">
         <motion.h1
-          initial={{ opacity: 0, x: "-100%" }}
+          initial={{ opacity: 0, x: '-100%' }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="sm:text-5xl lg:text-[56px] xs:text-[26px] font-extrabold sm:mb-4 xs:mb-1 xs:mt-4 md:mt-12 xs:px-10 sm:px-0"
         >
-          {recentEvent?.name}{" "}
+          {recentEvent?.name}{' '}
           <br className="md:block lg:hidden xl:block xs:hidden" />
           {`(${recentEvent?.shortName})`}
         </motion.h1>
@@ -47,7 +48,7 @@ const Hero = ({ recentEvent, formattedDate }) => {
           transition={{ duration: 0.5 }}
           className="font-bold md:mb-6 xs:mb-0"
         >
-          Event date:{" "}
+          Event date:{' '}
           <span className="font-normal text-lg">{formattedDate}</span>
         </motion.div>
         <motion.div
@@ -56,6 +57,11 @@ const Hero = ({ recentEvent, formattedDate }) => {
           transition={{ duration: 0.5 }}
           className="md:w-2/3 xs:w-full flex md:justify-start xs:justify-center sm:mt-10 xs:mt-auto xs:mb-2 md:mb-0 md:mt-0"
         >
+          {date > recentEvent.date && (
+            <div className="font-bold md:mb-6 xs:mb-0">
+              Registration for this event is closed
+            </div>
+          )}
           <Button
             title={recentEvent?.shortName}
             link={`/events/${recentEvent?.id}`}

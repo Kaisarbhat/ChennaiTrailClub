@@ -1,10 +1,11 @@
 import { AboutUsClient } from '@/components';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
-  title: `AboutUs - Chennai Trail Club`,
+  title: 'AboutUs - Chennai Trail Club',
   description: 'Chennai Trail Club About Us Page',
   openGraph: {
-    title: `AboutUs - Chennai Trail Club`,
+    title: 'AboutUs - Chennai Trail Club',
     description: 'Chennai Trail Club About Us Page',
     type: 'website',
   },
@@ -36,7 +37,7 @@ async function getData() {
     }
     return {};
   } catch (error) {
-    throw error;
+    notFound();
   }
 }
 
