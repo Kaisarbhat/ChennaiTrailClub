@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 const RegisterCard = ({
   imageUrl,
   name,
@@ -14,16 +14,16 @@ const RegisterCard = ({
     <div
       role="region"
       aria-label="registration card"
-      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full lg:h-1/3 md:h-full s xs:h-full xs:mt-4 lg:mt-0 lg:ml-2 xs:ml-0"
+      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full  md:h-full s xs:h-full xs:mt-4 lg:mt-0 lg:ml-2 xs:ml-0 lg:sticky lg:top-32 lg:self-start lg:h-auto"
     >
       <div className="w-full h-1/2 ">
         <Image
-          src={imageUrl}
+          src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl}`}
           className="rounded-md md:h-32 lg:h-full w-full xs:h-full"
           width={400}
           height={300}
           loading="lazy"
-          alt={"Banner"}
+          alt={'Banner'}
         />
         <h1 className="relative top-[-30px] text-white font-bold px-2">
           {name}
@@ -44,12 +44,12 @@ const RegisterCard = ({
         </div>
         <div className="flex justify-between">
           <div>Running Category</div>
-          <div className="text-[#070802]">{category || "Select KM"}</div>
+          <div className="text-[#070802]">{category || 'Select KM'}</div>
         </div>
         <div className="flex justify-between ">
           <div className="text-[#070802] font-semibold">Registration Fee</div>
           <div className="text-[#070802] font-semibold text-[22px]">
-            {price ? `₹${price}` : "Select KM"}
+            {price ? `₹${price}` : 'Select KM'}
           </div>
         </div>
       </div>

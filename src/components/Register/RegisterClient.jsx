@@ -190,7 +190,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
         <EventBanner eventBanner={eventData?.eventBannerTwo} />
         <div className="flex flex-col md:mt-10 xs:mt-2 pt-6">
           <Timeline currentStep={currentStep} totalSteps={4} />
-          <div className="text-[#50514C] text-[16px] flex lg:flex-row md:flex-col xs:flex-col items-center justify-between">
+          <div className="text-[#50514C] text-[16px] flex lg:flex-row md:flex-col xs:flex-col items-center justify-between relative">
             <div className="xl:1/2 lg:w-3/5 md:w-full xs:w-full">
               <RegistrationForm
                 currentStep={currentStep}

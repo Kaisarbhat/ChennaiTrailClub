@@ -26,6 +26,7 @@ async function getData() {
     }
     return {};
   } catch (error) {
+    console.error('Error : ', error);
     notFound();
   }
 }

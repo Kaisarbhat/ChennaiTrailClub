@@ -4,7 +4,7 @@ import React from 'react';
 const EventBanner = ({ eventBanner }) => (
   <div>
     <Image
-      src={eventBanner}
+      src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${eventBanner}`}
       alt={`banner`}
       width={1300}
       height={500}

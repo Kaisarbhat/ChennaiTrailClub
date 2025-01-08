@@ -9,7 +9,7 @@ const SocialLinks = memo(({ className }) => (
         key={index}
         className="w-9 h-9 bg-[#21221c] p-1 mr-2 flex justify-center items-center rounded-[4px]"
       >
-        <li key={index} className="cursor-pointer hover:text-[#7328F6]">
+        <li className="cursor-pointer hover:text-[#7328F6]">
           <Link
             href={href}
             target="_blank"

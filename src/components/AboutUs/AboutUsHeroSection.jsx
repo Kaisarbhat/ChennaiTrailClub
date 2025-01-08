@@ -8,7 +8,7 @@ const AboutUsHeroSection = React.memo(({ imageUrl }) => {
   return (
     <div className="relative  flex rounded-lg overflow-clip xs:h-[350px] lg:h-[600px] lg:w-[1024px] sxl:w-[1200px] xl:[w-1340px] 2xl:w-[1340px] ">
       <Image
-        src={imageUrl}
+        src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl}`}
         alt="About hero"
         layout="fill"
         objectFit="cover"

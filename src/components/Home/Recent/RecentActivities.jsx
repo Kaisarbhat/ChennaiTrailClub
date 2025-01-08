@@ -3,7 +3,16 @@ import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-const RecentActivities = ({ images = [], mobileImages = [] }) => {
+const RecentActivities = ({ webImages = [], smallImages = [] }) => {
+  const processImages = (images) => {
+    return images.map((image) => {
+      return {
+        imageUrl: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${image.imageUrl}`,
+      };
+    });
+  };
+  const images = processImages(webImages);
+  const mobileImages = processImages(smallImages);
   const recentActivitiesData = [
     { key: '1', layout: 'single', content: [images[0]] },
     { key: '2', layout: 'complex', content: [images[1], images[2], images[3]] },

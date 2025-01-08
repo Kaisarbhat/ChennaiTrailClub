@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { memo } from "react";
-import { Button } from "..";
-import Link from "next/link";
+import Image from 'next/image';
+import { memo } from 'react';
+import { Button } from '..';
+import Link from 'next/link';
 
 function UpcomingEventsCard({ event }) {
   const { id, name, shortName, eventBannerTwo, date, location, locationUrl } =
@@ -14,7 +14,7 @@ function UpcomingEventsCard({ event }) {
       <div className="border border-solid hover:shadow-mine hover:border-[#7328f6] rounded-xl flex flex-col sm:flex-row lg:flex-col p-3 w-full">
         <div className="sm:w-1/3 lg:w-full">
           <Image
-            src={eventBannerTwo}
+            src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${eventBannerTwo}`}
             alt={`${name} event banner`}
             width={200}
             height={400}

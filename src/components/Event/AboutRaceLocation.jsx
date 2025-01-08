@@ -1,6 +1,6 @@
-"use client";
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+'use client';
+import { motion, useInView } from 'framer-motion';
+import React, { useRef } from 'react';
 
 function AboutRaceLocation({ eventData }) {
   const { heading, middleImageUrl, text } = eventData;
@@ -24,7 +24,7 @@ function AboutRaceLocation({ eventData }) {
               isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
             }
             transition={{ duration: 0.5 }}
-            src={middleImageUrl}
+            src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${middleImageUrl}`}
             alt={middleImageUrl}
             width={520}
             height={510}

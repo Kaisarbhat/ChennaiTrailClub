@@ -17,7 +17,7 @@ async function getData() {
       }
     );
     if (!imagesRes.ok || !mobileImagesRes.ok) {
-      console.error('Server Error : failed to fetch data');
+      return {};
     } else {
       const [images, mobileImages] = await Promise.all([
         imagesRes.json(),
@@ -39,7 +39,7 @@ export default async function RecentActivitiesServer() {
   }
   return (
     <main>
-      <RecentActivities images={images} mobileImages={mobileImages} />
+      <RecentActivities webImages={images} smallImages={mobileImages} />
     </main>
   );
 }

@@ -24,7 +24,7 @@ function EventDetailsHero({ eventData }) {
           transition={{ duration: 0.5 }}
         >
           <Image
-            src={eventData.eventBannerThree}
+            src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${eventData.eventBannerThree}`}
             width={450}
             alt="Event Banner"
             height={300}
