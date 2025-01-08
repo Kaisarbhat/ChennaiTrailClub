@@ -11,8 +11,7 @@ async function getData() {
       }
     );
     if (!res.ok) {
-      console.error('Failed to fetch features');
-      return;
+      return [];
     }
     return await res.json();
   } catch (error) {

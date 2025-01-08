@@ -7,7 +7,7 @@ import {
   TechnologyPartner,
 } from '..';
 
-const FooterSmall = ({ reff, isInView }) => {
+const FooterSmall = () => {
   return (
     <div className="sm:bg-[#070802] xs:bg-[#070802] md:bg-inherit">
       <div className="w-full flex justify-center mt-8 mb-4">
@@ -28,7 +28,7 @@ const FooterSmall = ({ reff, isInView }) => {
               </p>
               <SocialLinks />
             </div>
-            <TechnologyPartner isInView={isInView} reff={reff} />
+            <TechnologyPartner />
           </div>
         </div>
       </div>

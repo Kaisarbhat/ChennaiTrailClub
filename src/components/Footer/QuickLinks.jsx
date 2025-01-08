@@ -1,5 +1,5 @@
-import { quickLinksData } from "@/utils/footerutils";
-import Link from "next/link";
+import { quickLinksData } from '@/utils/footerutils';
+import Link from 'next/link';
 
 const QuickLinks = () => (
   <div className="flex flex-col">

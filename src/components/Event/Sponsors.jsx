@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 // eslint-disable-next-line react/display-name
 const Sponsors = React.memo(({ sponsors }) => {
@@ -10,8 +10,8 @@ const Sponsors = React.memo(({ sponsors }) => {
         {sponsors.map((sponsor, index) => (
           <div key={index} className="flex-shrink-0">
             <Image
-              src={sponsor.imageUrl}
-              alt={"sponsor images"}
+              src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${sponsor.imageUrl}`}
+              alt={'sponsor images'}
               width={80}
               height={50}
               className="object-contain"
@@ -31,8 +31,8 @@ const Sponsors = React.memo(({ sponsors }) => {
         {duplicatedSponsors.map((sponsor, index) => (
           <div key={index} className="flex-shrink-0 mx-10">
             <Image
-              src={sponsor.imageUrl}
-              alt={"sponsor images"}
+              src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${sponsor.imageUrl}`}
+              alt={'sponsor images'}
               width={80}
               height={50}
               className="object-contain"

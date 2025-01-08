@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "..";
-import Image from "next/image";
+import React from 'react';
+import { Button } from '..';
+import Image from 'next/image';
 
 const PastEventsCard = ({
   id,
@@ -20,8 +20,8 @@ const PastEventsCard = ({
       <div className="sm:flex">
         <div className="lg:w-1/3 sm:w-1/4">
           <Image
-            src={banner}
-            alt={"Banner"}
+            src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${banner}`}
+            alt={'Banner'}
             width={100}
             height={100}
             className="h-48 w-full object-cover lg:h-full"
@@ -42,17 +42,17 @@ const PastEventsCard = ({
           {resultLink && (
             <div className="flex justify-evenly sm:space-x-2 xs:space-x-0">
               <Button
-                title={"View Details"}
+                title={'View Details'}
                 link={`/events/${id}`}
                 classname={
-                  "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+                  'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'
                 }
               />
               <Button
-                title={"Results"}
-                link={resultLink ?? "/"}
+                title={'Results'}
+                link={resultLink ?? '/'}
                 classname={
-                  "text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black"
+                  'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'
                 }
               />
             </div>

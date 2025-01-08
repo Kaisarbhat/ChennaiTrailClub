@@ -7,7 +7,7 @@ import {
   TechnologyPartner,
 } from '..';
 
-const FooterLarge = ({ reff, isInView }) => {
+const FooterLarge = () => {
   return (
     <div className="xl:max-w-[1340px] lg:w-full lg:px-2 2xl:px-0">
       <div className="w-full flex justify-center mt-8">
@@ -23,7 +23,7 @@ const FooterLarge = ({ reff, isInView }) => {
           <div className="flex justify-between mt-8 w-3/4 text-[12px] ml-52">
             <QuickLinks />
             <ContactInfo />
-            <TechnologyPartner isInView={isInView} reff={reff} />
+            <TechnologyPartner />
           </div>
         </div>
       </div>

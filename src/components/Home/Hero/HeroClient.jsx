@@ -1,8 +1,8 @@
-import React from "react";
-import dynamic from "next/dynamic";
-import Hero from "./Hero";
+import React from 'react';
+import dynamic from 'next/dynamic';
+import Hero from './Hero';
 
-const HeroText = dynamic(() => import("./HeroText"));
+const HeroText = dynamic(() => import('./HeroText'));
 
 function HeroClient({ recentEvent, heroImage, formattedDate }) {
   return (
@@ -15,9 +15,9 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${heroImage.imageUrl})`,
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
+            backgroundImage: `url(${process.env.NEXT_PUBLIC_S3_BUCKET}/${heroImage.imageUrl})`,
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
           }}
         />
         <div className="absolute inset-0 bg-black opacity-50" />

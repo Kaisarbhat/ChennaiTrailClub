@@ -39,7 +39,7 @@ const Carousel = ({ carouselImages }) => {
           {carouselImages.map((item, index) => (
             <div key={index} className="min-w-full min-h-full">
               <Image
-                src={item.imageUrl}
+                src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${item.imageUrl}`}
                 alt={`Image ${index + 1}`}
                 width={1000}
                 height={1000}

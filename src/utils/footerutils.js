@@ -23,7 +23,7 @@ export const socialLinksData = [
 
 export const policyLinksData = [
   { href: '/privacypolicy', text: 'Privacy Policy' },
-  { href: '/termsofservice', text: 'Terms of Service' },
+  { href: '/termsofservice', text: 'Terms of Services' },
   {
     href: '/refundandcancellation',
     text: 'Refund and Cancellation Policy',

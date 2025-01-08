@@ -18,7 +18,7 @@ const Carousel = dynamic(() => import('../AboutUs/Carousel'), {
 const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
   return (
     <div
-      className="w-screen px-4 pt-20 flex flex-col items-center"
+      className="w-full px-4 pt-20 flex flex-col items-center"
       aria-labelledby="About Page"
     >
       <div className="mt-10">

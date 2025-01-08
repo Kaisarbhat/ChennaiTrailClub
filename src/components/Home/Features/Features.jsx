@@ -40,8 +40,8 @@ function Features({ features }) {
                     className="md:w-45 xs:w-full bg-[#1B1C16] p-5 md:my-5 xs:my-1 flex flex-col justify-start rounded-xl hover:bg-[#7328F6] grayscale hover:grayscale-0"
                   >
                     <Image
-                      src={item.imageUrl}
-                      alt="event image"
+                      src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${item.imageUrl}`}
+                      alt="featured events image"
                       width={500}
                       height={240}
                       className="max-h-60 w-full rounded-lg "

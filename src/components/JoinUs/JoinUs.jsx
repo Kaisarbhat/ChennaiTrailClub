@@ -1,13 +1,13 @@
-"use client";
-import { joinUsValidationSchema } from "@/schema/registrationSchema";
-import { Dialog } from "@headlessui/react";
-import axios from "axios";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { X } from "lucide-react";
-import { useState } from "react";
+'use client';
+import { joinUsValidationSchema } from '@/schema/registrationSchema';
+import { Dialog } from '@headlessui/react';
+import axios from 'axios';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { X } from 'lucide-react';
+import { useState } from 'react';
 
 const JoinUs = ({ isOpen, onClose }) => {
-  const [submitError, setSubmitError] = useState("");
+  const [submitError, setSubmitError] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   async function handleFormSubmission(values) {
@@ -27,7 +27,7 @@ const JoinUs = ({ isOpen, onClose }) => {
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
-        "Failed to submit form. Please try again.";
+        'Failed to submit form. Please try again.';
       setSubmitError(
         Array.isArray(errorMessage) ? errorMessage[0] : errorMessage
       );
@@ -38,7 +38,7 @@ const JoinUs = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <div className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
+      <div className="fixed inset-0 w-full h-screen flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
         <div className="relative w-11/12 lg:w-3/5 bg-[#FCFDF8] max-h-[90vh] flex border border-solid border-black rounded-2xl xs:p-4 md:p-6 md:space-x-6 xs:space-x-0 text-black md:min-h-[550px] xs:min-h-[450px]">
           <button
             onClick={onClose}
@@ -47,9 +47,9 @@ const JoinUs = ({ isOpen, onClose }) => {
             <X size={20} />
           </button>
           <div className="xs:hidden md:hidden xs:w-0 lg:w-1/2 lg:flex bg-[url('/join-us-img.png')] min-h-[600px] bg-cover flex-col justify-end items-center lg:px-10 xs:px-3 py-10">
-            <div className="bg-slate-300 rounded-xl w-full p-2">
-              <h2 className="text-lg font-bold">Join Us</h2>
-              <p className="text-sm text-[#50514C]">
+            <div className="bg-[#FFFFFFD8] rounded-xl w-full p-6 space-y-2 h-36 text-[#070802]">
+              <h2 className="text-lg font-bold font-urbanist">Join Us</h2>
+              <p className="text-sm font-manrope">
                 Embrace our community and become part of an exciting community
                 of runners and fitness enthusiasts
               </p>
@@ -73,15 +73,15 @@ const JoinUs = ({ isOpen, onClose }) => {
             )}
             <Formik
               initialValues={{
-                name: "",
-                email: "",
-                phoneNumber: "",
-                bloodGroup: "",
+                name: '',
+                email: '',
+                phoneNumber: '',
+                bloodGroup: '',
                 terms: false,
               }}
               validationSchema={joinUsValidationSchema}
               onSubmit={async (values, { setSubmitting }) => {
-                setSubmitError("");
+                setSubmitError('');
                 try {
                   await handleFormSubmission(values);
                 } catch (error) {
@@ -165,11 +165,6 @@ const JoinUs = ({ isOpen, onClose }) => {
                       className="w-5 h-5 mr-2 mb-0"
                     />
                     <label htmlFor="terms">Accept Terms and Conditions</label>
-                    <ErrorMessage
-                      name="terms"
-                      component="div"
-                      className="text-red-600 text-sm ml-2"
-                    />
                   </div>
                   <div className="flex space-x-6 justify-end text-lg font-bold">
                     <button
@@ -184,7 +179,7 @@ const JoinUs = ({ isOpen, onClose }) => {
                       className="text-[#D0F700] bg-[#070802] h-12 w-[150px] rounded-3xl disabled:opacity-50"
                       disabled={isSubmitting || !isValid || !dirty}
                     >
-                      {isSubmitting ? "Submitting..." : "Submit"}
+                      {isSubmitting ? 'Submitting...' : 'Submit'}
                     </button>
                   </div>
                 </Form>
