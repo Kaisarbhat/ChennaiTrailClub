@@ -21,7 +21,7 @@ const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
       className="w-full px-4 pt-20 flex flex-col items-center"
       aria-labelledby="About Page"
     >
-      <div className="mt-10">
+      <div className="mt-10 rounded-xl">
         <AboutUsHeroSection imageUrl={abousUsHeroImg?.imageUrl} />
       </div>
 

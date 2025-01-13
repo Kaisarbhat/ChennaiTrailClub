@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 
 const Button = ({ title, link, classname, icon = false, onClick }) => {
   const router = useRouter();
