@@ -6,15 +6,16 @@ import { ToastContainer } from 'react-toastify';
 
 const AboutUsHeroSection = React.memo(({ imageUrl }) => {
   return (
-    <div className="relative  flex rounded-lg overflow-clip xs:h-[350px] lg:h-[600px] lg:w-[1024px] sxl:w-[1200px] xl:[w-1340px] 2xl:w-[1340px] ">
+    <div className="relative flex rounded-xl xs:h-[350px] lg:h-[600px] lg:w-[1024px] sxl:w-[1200px] xl:[w-1340px] 2xl:w-[1340px] overflow-hidden">
       <Image
         src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl}`}
         alt="About hero"
         layout="fill"
         objectFit="cover"
         priority={true}
-        className="w-full"
+        className="w-full rounded-xl"
       />
+      <div className="absolute inset-0 bg-black opacity-40 rounded-xl"></div>
       <motion.div
         initial={{ x: '-100%' }}
         animate={{ opacity: 1, x: 0 }}

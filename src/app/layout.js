@@ -2,6 +2,7 @@ import { Footer, Navbar } from '@/components';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { manrope, urbanist } from './fonts/font';
 import './globals.css';
+import GlobalSpeculationRules from '@/components/Speculation/GlobalSpeculationRules';
 
 export const metadata = {
   title: 'Home - Chennai Trail Club',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${urbanist.variable} ${manrope.variable} antialiased `}>
         <Navbar />
+        <GlobalSpeculationRules />
         {children}
         <Footer />
       </body>
