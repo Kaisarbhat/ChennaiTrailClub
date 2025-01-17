@@ -1,10 +1,10 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const EmptyEvents = () => {
   return (
     <div
-      className="w-full pt-24  flex items-center justify-center"
+      className="w-full pt-24 flex items-center justify-center"
       role="region"
       aria-label="No Upcoming Events"
     >
@@ -15,12 +15,12 @@ const EmptyEvents = () => {
             <Image src="/empty.svg" alt="svg" height={400} width={500} />
           </div>
           <div className="flex flex-col text-center flex-wrap">
-            <h2 className="text-[32px] text-[#070802] font-bold ">
+            <h2 className="text-[32px] text-black font-bold">
               There are no events at this time
             </h2>
-            <h6 className="mt-3 text-[#5d5d5d] text-[20px]">
-              There are currently no upcoming events.to{" "}
-              <button className="text-[#7328f6]">Join Our Club </button> to get
+            <h6 className="mt-3 text-blackExtraLight text-[20px]">
+              There are currently no upcoming events.to{' '}
+              <button className="text-secondary">Join Our Club </button> to get
               latest updates.
             </h6>
           </div>

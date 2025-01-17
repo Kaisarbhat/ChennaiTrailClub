@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+
 const RegisterCard = ({
   imageUrl,
   name,
@@ -32,23 +33,23 @@ const RegisterCard = ({
       <div className="flex flex-col lg:space-y-4 md:space-y-2 xs:space-y-2">
         <div className="flex justify-between">
           <div>Trail Date</div>
-          <div className="text-[#070802]">{date}</div>
+          <div className="text-black">{date}</div>
         </div>
         <div className="flex justify-between">
           <div>Trail Location</div>
           <div className="w-2/3 text-right">
-            <Link href={`${locationUrl}`} className="text-[#070802] underline">
+            <Link href={`${locationUrl}`} className="text-black underline">
               {location}
             </Link>
           </div>
         </div>
         <div className="flex justify-between">
           <div>Running Category</div>
-          <div className="text-[#070802]">{category || 'Select KM'}</div>
+          <div className="text-black">{category || 'Select KM'}</div>
         </div>
         <div className="flex justify-between ">
-          <div className="text-[#070802] font-semibold">Registration Fee</div>
-          <div className="text-[#070802] font-semibold text-[22px]">
+          <div className="text-black font-semibold">Registration Fee</div>
+          <div className="text-black font-semibold text-[22px]">
             {price ? `₹${price}` : 'Select KM'}
           </div>
         </div>

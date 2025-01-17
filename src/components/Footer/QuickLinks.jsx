@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 const QuickLinks = () => (
   <div className="flex flex-col">
-    <p className="font-bold mb-3 text-[#FCFDF8] text-[12px]">QUICK LINKS</p>
+    <p className="font-bold mb-3 text-white text-[12px]">QUICK LINKS</p>
     <ul className="flex flex-col list-none space-y-2 ">
       {quickLinksData.map(({ href, text, index }) => (
         <li
           key={index}
-          className="hover:text-[#7328F6] cursor-pointer text-sm text-[#B6B6B3]"
+          className="hover:text-secondary cursor-pointer text-sm text-whiteDark"
         >
           <Link href={href}>{text}</Link>
         </li>

@@ -10,19 +10,19 @@ const Hero = ({ recentEvent, formattedDate }) => {
   const date_today = new Date();
   return (
     <ErrorBoundary>
-      <div className="relative z-10 2xl:max-w-[1320px] h-screen w-full flex md:flex-row sm:flex-col xs:flex-col xs:pt-14 sm:pt-14 md:pt-10 items-center justify-center lg:space-x-4">
+      <div className="relative z-10 2xl:max-w-[1320px] h-screen w-screen flex md:flex-row xs:flex-col xs:pt-14 md:pt-10 items-center justify-center lg:space-x-4">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="md:w-1/2 xs:w-full xs:px-4 lg:px-0 lg:ml-16 lg:mr-4 flex justify-center 2xl:w-2/5"
+          className="md:w-1/2 xs:w-screen xs:px-4 lg:px-0 lg:ml-16 lg:mr-4 flex justify-center 2xl:w-2/5"
         >
           <Image
             src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${recentEvent.eventBannerOne}`}
             alt="event logo"
             width={480}
             height={220}
-            className="xs:pt-10 md:pt-0 xs:mb-10 md:mb-0"
+            className="xs:pt-10 md:pt-0 xs:mb-10 md:mb-0 w-full h-full"
             loading="lazy"
           />
         </motion.div>
@@ -40,7 +40,7 @@ const Hero = ({ recentEvent, formattedDate }) => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-manrope text-[#FCFDF8] tracking-wide 2xl:w-4/5 "
+            className="text-wrap md:mb-6 xs:mb-0 sm:leading-loose 2xl:text-lg font-manrope text-white tracking-wide 2xl:w-4/5"
           >
             {recentEvent?.description}
           </motion.p>
@@ -48,15 +48,13 @@ const Hero = ({ recentEvent, formattedDate }) => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="font-bold md:mb-6 xs:mb-0 text-lg font-manrope"
+            className="font-bold md:mb-6 xs:mb-0 text-lg font-manrope xs:text-[16px]"
           >
             Event date:
-            <span className="font-normal text-lg font-manrope">
-              {formattedDate}
-            </span>
+            <span className="font-normal">{formattedDate}</span>
           </motion.div>
           {date_today > date && (
-            <div className="font-bold md:mb-6 xs:mb-0 text-[#FCFDF8] my-3">
+            <div className="font-bold md:mb-6 xs:mb-0 text-white my-3">
               Registration for this event is closed
             </div>
           )}
@@ -69,7 +67,7 @@ const Hero = ({ recentEvent, formattedDate }) => {
             <Button
               title={recentEvent?.shortName}
               link={`/events/${recentEvent?.id}`}
-              classname="bg-[#D0F700] text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mb-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
+              classname="bg-primary text-black md:text-lg xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mb-4 hover:bg-black hover:text-primary max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
               icon={true}
             />
           </motion.div>

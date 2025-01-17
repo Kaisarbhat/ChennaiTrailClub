@@ -2,9 +2,9 @@
 import { dateOptions } from '@/utils/constants';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { memo } from 'react';
 import { Button } from '..';
-import Link from 'next/link';
 
 function UpcomingEventsHero({ data }) {
   const [eventData] = data;
@@ -14,7 +14,7 @@ function UpcomingEventsHero({ data }) {
   );
   return (
     <section
-      className="bg-[#070802] xs:min-h-[100vh] sm:min-h-[71vh] md:min-h-[100vh] text-white box-border flex flex-col pt-12 md:px-4 font-urbanist items-center justify-between"
+      className="bg-black xs:min-h-[100vh] sm:min-h-[71vh] md:min-h-[100vh] text-white box-border flex flex-col pt-12 md:px-4 font-urbanist items-center justify-between"
       aria-labelledby="hero-title"
     >
       <div className="flex md:flex-row xs:flex-col md:space-x-8 xs:space-x-0 xs:text-center md:text-start max-w-[1340px] xs:mt-14">
@@ -33,7 +33,7 @@ function UpcomingEventsHero({ data }) {
             initial={{ opacity: 0, x: '-100%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="md:text-lg xs:text-[16px] text-[#ffffffbf] leading-normal mt-4 font-manrope"
+            className="md:text-lg xs:text-[16px] text-greyLight leading-normal mt-4 font-manrope"
           >
             {eventData.description}
           </motion.p>
@@ -41,11 +41,11 @@ function UpcomingEventsHero({ data }) {
 
         <div className="flex flex-col xs:items-center md:items-start mb-10 md:mt-0 xs:mt-8 md:space-y-3 xs:space-y-0">
           <time
-            className="md:text-lg xs:text-[14px] text-[#ffffffbf]"
+            className="md:text-lg xs:text-[14px] text-greyLight"
             dateTime={eventData.date}
           >
             <i
-              className="bi bi-calendar3 text-[#D0F700] mr-1"
+              className="bi bi-calendar3 text-primary mr-1"
               aria-hidden="true"
             ></i>
             {formattedDate}
@@ -57,14 +57,14 @@ function UpcomingEventsHero({ data }) {
             transition={{ duration: 0.5 }}
           >
             <Link
-              className="md:text-[18px] xs:text-[16px] text-[#ffffffa6] underline mt-8 hover:text-[#D0F700]"
+              className="md:text-[18px] xs:text-[16px] text-shade underline mt-8 hover:text-primary"
               href={eventData.locationUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View location: ${eventData.location}`}
             >
               <i
-                className="bi bi-geo-alt-fill text-[#D0F700] mr-1"
+                className="bi bi-geo-alt-fill text-primary mr-1"
                 aria-hidden="true"
               ></i>
               {eventData.location}
@@ -75,7 +75,7 @@ function UpcomingEventsHero({ data }) {
           <Button
             title="View Details"
             link={`/events/${eventData?.id}`}
-            classname="md:text-xl xs:text-sm border border-solid mt-3 text-[#ffffffbf] rounded-3xl p-2 w-[150px] font-bold hover:text-white"
+            classname="md:text-xl xs:text-sm border border-solid mt-3 text-greyLight rounded-3xl p-2 w-[150px] font-bold hover:text-white"
           />
         </div>
       </div>

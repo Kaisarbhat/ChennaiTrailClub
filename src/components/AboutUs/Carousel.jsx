@@ -30,7 +30,10 @@ const Carousel = ({ carouselImages }) => {
   };
 
   return (
-    <div className="relative w-full lg:px-16 xs:p-0" aria-labelledby="Images">
+    <div
+      className="relative w-full lg:px-16 xs:p-0 box-border"
+      aria-labelledby="Images"
+    >
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"
@@ -67,7 +70,7 @@ const Carousel = ({ carouselImages }) => {
           <button
             key={index}
             className={`dot md:w-3 md:h-3 xs:w-2 xs:h-2 rounded-full focus:outline-none ${
-              currentIndex === index ? 'bg-[#BCD700]' : 'bg-gray-400'
+              currentIndex === index ? `bg-primaryLight` : 'bg-gray-400'
             }`}
             onClick={() => updateCarousel(index)}
           ></button>

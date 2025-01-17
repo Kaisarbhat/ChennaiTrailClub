@@ -1,6 +1,6 @@
-"use client";
-import { riskFactors, tandcData } from "@/utils/termsAndConditionsUtils";
-import { useFormikContext } from "formik";
+'use client';
+import { riskFactors, tandcData } from '@/utils/termsAndConditionsUtils';
+import { useFormikContext } from 'formik';
 
 const TermsAndConditions = ({ values }) => {
   const { setFieldValue } = useFormikContext();
@@ -256,13 +256,13 @@ const TermsAndConditions = ({ values }) => {
             checked={values.waiverAcknowledgement}
             className="w-[12px] h-[12px] p-0 mb-0 mr-2"
             onChange={(e) => {
-              setFieldValue("waiverAcknowledgement", e.target.checked);
+              setFieldValue('waiverAcknowledgement', e.target.checked);
             }}
           />
           <label htmlFor="acknowledgement">I acknowledge the waiver form</label>
         </div>
       </div>
-      <div className="bg-[#fcf6e4] border border-solid border-red-300 my-4 px-8 py-3 rounded-lg">
+      <div className="bg-roseLight border border-solid border-red-300 my-4 px-8 py-3 rounded-lg">
         <b className="text-[13px]">
           Embrace the extraordinary; in our club, we shape dreams into
           realities, and together, we thrive.
@@ -275,7 +275,7 @@ const TermsAndConditions = ({ values }) => {
             checked={values.joinClub}
             className="w-[10px] h-[10px] p-0 mb-0 mr-1"
             onChange={(e) => {
-              setFieldValue("joinClub", e.target.checked);
+              setFieldValue('joinClub', e.target.checked);
             }}
           />
           <label htmlFor="joinClub" className="text-[12px]">

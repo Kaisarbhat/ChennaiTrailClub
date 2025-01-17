@@ -44,16 +44,12 @@ const PastEventsCard = ({
               <Button
                 title={'View Details'}
                 link={`/events/${id}`}
-                classname={
-                  'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'
-                }
+                classname="text-[14px] border bg-black border-solid  text-primary rounded-3xl p-2 w-32 hover:bg-primary font-bold hover:text-black"
               />
               <Button
                 title={'Results'}
                 link={resultLink ?? '/'}
-                classname={
-                  'text-[14px] border  bg-black border-solid  text-[#D0F700] rounded-3xl p-2 w-32 hover:bg-[#D0F700] font-bold hover:text-black'
-                }
+                classname="text-[14px] border bg-black border-solid  text-primary rounded-3xl p-2 w-32 hover:bg-primary font-bold hover:text-black"
               />
             </div>
           )}

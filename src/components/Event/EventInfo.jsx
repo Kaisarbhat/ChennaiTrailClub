@@ -17,7 +17,7 @@ const EventInfo = () => {
 
   return (
     <div
-      className=" w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-[#50514C] text-[16px] font-manrope"
+      className="w-full flex xs:flex-col md:flex-row lg:space-x-20 md:space-x-0 text-blackLight text-[16px] font-manrope"
       aria-label="Event Information Menu"
     >
       <div className="xs:hidden md:flex">
@@ -27,9 +27,9 @@ const EventInfo = () => {
               key={item.key}
               value={selectedButton}
               onClick={() => handleButtonClick(item.key)}
-              className={`text-start rounded-lg w-full hover:bg-[#070802] hover:text-[#D0F700] p-3 ${
+              className={`text-start rounded-lg w-full hover:bg-black hover:text-primary p-3 ${
                 selectedKey === item.key
-                  ? 'text-[#D0F700] bg-[#070802]'
+                  ? `text-primary bg-black`
                   : 'bg-white text-black'
               } `}
             >
@@ -42,7 +42,7 @@ const EventInfo = () => {
         <select
           value={selectedKey}
           onChange={(e) => setSelectedKey(e.target.value)}
-          className="bg-[#070802] p-3  w-full rounded-md text-[#D0F700] sticky"
+          className="bg-black p-3  w-full rounded-md text-primary sticky"
         >
           {eventContent.map((item) => (
             <option

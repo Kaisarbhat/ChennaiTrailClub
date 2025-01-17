@@ -9,9 +9,7 @@ const TechnologyPartner = memo(() => {
   const isInView = useInView(ref, { once: true });
   return (
     <div>
-      <p className="font-bold text-[#FCFDF8] text-[12px]">
-        OUR TECHNOLOGY PARTNER
-      </p>
+      <p className="font-bold text-white text-[12px]">OUR TECHNOLOGY PARTNER</p>
       <motion.div
         ref={ref}
         initial={{ opacity: 0, scale: 0 }}

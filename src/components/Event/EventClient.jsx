@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
-import { EventDetailsHero, EventInfo } from '..';
 import React from 'react';
+import { EventDetailsHero, EventInfo } from '..';
 
 const RegisterButton = dynamic(() => import('../Register/RegisterButton'));
 const AboutRaceLocation = dynamic(() => import('./AboutRaceLocation'));
@@ -20,7 +20,7 @@ const EventClient = ({ eventData }) => {
   }
   return (
     <div
-      className="md:py-16 xs:py-7 text-[#50514C]"
+      className="md:py-16 xs:py-7 text-blackLight"
       aria-labelledby="Event details"
     >
       <EventDetailsHero eventData={eventData} />
@@ -39,7 +39,7 @@ const EventClient = ({ eventData }) => {
       </div>
       {eventData?.sponsors.length > 0 && (
         <div className="w-full flex flex-col justify-center items-center h-52 p-2 xs:px-2 md:px-10">
-          <h3 className="text-[#070802] xs:text-sm md:text-lg font-urbanist mb-3">
+          <h3 className="text-black xs:text-sm md:text-lg font-urbanist mb-3">
             OUR LEADING SPONSORS
           </h3>
           <Sponsors sponsors={eventData?.sponsors} />

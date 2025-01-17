@@ -10,7 +10,7 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
       <div
         role="region"
         aria-label="Home Page"
-        className="min-h-screen w-full flex md:flex-row sm:flex-col xs:flex-col items-center justify-center bg-black text-white xs:text-center sm:text-start overflow-hidden md:pt-0 relative"
+        className="h-screen w-screen flex md:flex-row sm:flex-col xs:flex-col items-center justify-center bg-black text-white xs:text-center sm:text-start relative"
       >
         <div
           className="absolute inset-0"
@@ -23,7 +23,7 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
         <div className="absolute inset-0 bg-black opacity-50" />
         <Hero recentEvent={recentEvent} formattedDate={formattedDate} />
       </div>
-      <div className="flex justify-center 2xl:m-w-[1340px]">
+      <div className="flex justify-center w-screen 2xl:max-w-[1340px]">
         <HeroText />
       </div>
     </>

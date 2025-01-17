@@ -7,7 +7,7 @@ const HeroText = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
-    <div className="flex flex-col items-center py-[100px] px-4 max-w-4xl   ">
+    <div className="flex flex-col items-center py-[100px] px-4 max-w-4xl">
       <motion.h1
         ref={ref}
         initial={{ opacity: 0, y: -50 }}
@@ -31,7 +31,7 @@ const HeroText = () => {
         initial={{ opacity: 0, x: '-100%' }}
         animate={isInView ? { opacity: 1, x: 1 } : { opacity: 0, x: '-100%' }}
         transition={{ duration: 0.5 }}
-        className="mt-8 md:text-xl xs:text-[16px] text-center font-manrope text-[#50514C]"
+        className="mt-8 md:text-xl xs:text-[16px] text-center font-manrope text-blackLight"
       >
         At Chennai Trail Club, we believe in the transformative power of
         individuals who are embracing nature constantly. We are a passionate
@@ -48,9 +48,7 @@ const HeroText = () => {
         <Button
           title={'About Us '}
           link={'/aboutus'}
-          classname={
-            'bg-[#D0F700] text-black md:text-xl xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-[#D0F700] max-h-[60px] md:max-w-[600px] xs:max-w-[320px]'
-          }
+          classname="bg-primary text-black md:text-xl xs:text-sm font-bold rounded-3xl md:px-6 xs:px-3 py-3 mt-4 hover:bg-black hover:text-primary max-h-[60px] md:max-w-[600px] xs:max-w-[320px]"
           icon={true}
         />
       </motion.div>

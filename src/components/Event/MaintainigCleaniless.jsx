@@ -8,7 +8,7 @@ function MaintainigCleaniless({ eventData }) {
   const isInView = useInView(ref, { once: true });
   return (
     <div className="xl:w-[1340px] py-20 flex md:flex-row xs:flex-col-reverse items-center justify-center md:space-x-20 xs:space-x-0">
-      <div className="text-[#070802] text-[16px] md:w-1/2  xs:w-full xs:flex xs:flex-col xs:items-center xs:px-1 md:px-0">
+      <div className="text-black text-[16px] md:w-1/2  xs:w-full xs:flex xs:flex-col xs:items-center xs:px-1 md:px-0">
         <motion.h1
           ref={ref}
           initial={{ opacity: 0, y: '-100%' }}
@@ -27,8 +27,8 @@ function MaintainigCleaniless({ eventData }) {
         >
           {bottomText}
         </motion.p>
-        <div className="bg-[#FFF1F1] my-4 xs:w-full md:w-auto xs:text-center md:text-start p-2 rounded-lg md:text-[16px] xs:text-sm">
-          <i className="bi bi-exclamation-triangle-fill text-[#f86b6b] mr-2"></i>{' '}
+        <div className="bg-roseLighter my-4 xs:w-full md:w-auto xs:text-center md:text-start p-2 rounded-lg md:text-[16px] xs:text-sm">
+          <i className="bi bi-exclamation-triangle-fill text-rose mr-2"></i>{' '}
           {warning}
         </div>
       </div>

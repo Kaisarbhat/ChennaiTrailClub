@@ -28,6 +28,7 @@ function Navbar() {
       href: '/events/pastevents',
     },
   ];
+
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
@@ -48,7 +49,7 @@ function Navbar() {
     target.style.top = '0';
     target.style.height = '1px';
     target.style.width = '100%';
-    document.body.prepend(target);
+    document.body.appendChild(target);
 
     observer.observe(target);
 
@@ -56,18 +57,18 @@ function Navbar() {
       observer.unobserve(target);
       target.remove();
     };
-  });
+  }, [isScrolled]);
 
   const desktopBgColor =
     pathname === '/events/pastevents'
-      ? 'bg-black text-[#fcfdf8] shadow-lg'
+      ? `bg-black text-white shadow-lg`
       : pathname === '/' && !isScrolled
-        ? 'bg-transparent text-[#fcfdf8]'
+        ? `bg-transparent text-white`
         : isScrolled
-          ? 'bg-black text-[#fcfdf8] shadow-lg'
+          ? `bg-black text-white shadow-lg`
           : transparentPaths.includes(pathname)
             ? 'bg-transparent text-black'
-            : 'bg-black text-[#fcfdf8] shadow-lg';
+            : `bg-black text-white shadow-lg`;
 
   const toggleJoinUs = () => {
     setIsJoinUsOpen(!isJoinUsOpen);
@@ -90,7 +91,9 @@ function Navbar() {
     if (pathname.startsWith('/events')) return 'text-white';
     if (pathname === '/' && !isScrolled) return 'text-white';
     if (isScrolled) return 'text-white';
-    return 'text-black hover:bg-black/5 rounded-full p-1';
+    if (transparentPaths.includes(pathname))
+      return 'text-black hover:bg-black/5 rounded-full p-1';
+    return 'text-white';
   };
 
   const isActivePage = (path) => pathname === path;
@@ -98,21 +101,15 @@ function Navbar() {
 
   return (
     <header
-      className={`w-full h-[80px] flex items-center justify-center sm:px-4 xs:px-0 z-20  fixed top-0 left-0 
-        ${!isOpen ? desktopBgColor : 'bg-black text-[#fcfdf8]'}
-  
-   p-4 backdrop-blur-sm `}
+      className={`w-screen h-[80px] flex items-center justify-center sm:px-4 xs:px-0 fixed top-0 left-0 
+        ${!isOpen ? desktopBgColor : `bg-black text-white`} p-4 backdrop-blur-sm z-20 box-border`}
       role="region"
       aria-labelledby="navigation bar"
     >
-      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center lg:max-w-[1320px] z-20">
+      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center lg:max-w-[1320px]">
         <Link href="/" className="flex left">
           <Image
-            src={
-              transparentPaths.includes(pathname) && !isScrolled && !isOpen
-                ? '/logo.svg'
-                : '/whitelogo.svg'
-            }
+            src="/newLogo.svg"
             alt="logo"
             width={70}
             height={70}
@@ -120,25 +117,25 @@ function Navbar() {
           />
         </Link>
         <nav className="w-full  flex flex-row justify-end items-center font-manrope font-medium text-[16px]">
-          <ul className="sxl:flex  list-none space-x-10 nav-links md:hidden xs:hidden ">
+          <ul className="sxl:flex  list-none sxl:space-x-10 xs:space-x-0 nav-links xs:hidden ">
             <li
-              className={`${isActivePage('/') ? 'text-[#7328F6]' : 'hover:text-[#7328F6]'} cursor-pointer`}
+              className={`${isActivePage('/') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
             >
               <Link href="/"> Home </Link>
             </li>
             <li
-              className={`${isActivePage('/aboutus') ? 'text-[#7328F6]' : 'hover:text-[#7328F6]'} cursor-pointer`}
+              className={`${isActivePage('/aboutus') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
             >
               <Link href="/aboutus"> About Us </Link>
             </li>
             <li
-              className={`${isEventsPage ? 'text-[#7328F6]' : 'hover:text-[#7328F6]'} cursor-pointer relative`}
+              className={`${isEventsPage ? `text-secondary` : `hover:text-secondary`} cursor-pointer relative`}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               Events
               {isHovered && (
-                <ul className="min-w-48 absolute right-1 bg-white text-black rounded shadow-lg py-2 z-10 font-normal">
+                <ul className="min-w-48 absolute right-1 bg-white text-black rounded shadow-lg py-2 z-50 font-normal">
                   <li className="hover:bg-gray-300 mx-2 rounded-md">
                     <Link
                       href="/events/upcomingevents"
@@ -156,14 +153,14 @@ function Navbar() {
               )}
             </li>
             <li
-              className={`${isActivePage('/joinus') ? 'text-[#7328F6]' : 'hover:text-[#7328F6]'} cursor-pointer`}
+              className={`${isActivePage('/joinus') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
               onClick={toggleJoinUs}
             >
               Join Us
             </li>
           </ul>
           <button
-            className={`sxl:hidden xs:flex text-4xl cursor-pointer z-10 ${getMenuButtonColor()} ${isRotating ? 'animate-rotate' : ''}`}
+            className={`sxl:hidden xs:flex text-4xl cursor-pointer z-50 ${getMenuButtonColor()} ${isRotating ? 'animate-rotate' : ''}`}
             onClick={toggleMenu}
           >
             {isOpen ? <X size={40} /> : <Menu size={40} />}
@@ -174,10 +171,10 @@ function Navbar() {
           <ul
             className={`list-none space-y-10 ${
               isOpen ? 'flex' : 'hidden'
-            } flex-col items-start h-screen overflow-clip bg-black text-white w-full z-10  mt-4 fixed top-16 left-0 p-6 text-[20px]`}
+            } flex-col items-start h-screen bg-black text-white w-full z-50  mt-4 fixed top-16 left-0 p-6 text-[20px]`}
           >
             {mobileNav.map((item, index) => (
-              <li key={index} className="hover:text-[#7328F6] cursor-pointer">
+              <li key={index} className="hover:text-secondary cursor-pointer">
                 <Link href={item.href} onClick={toggleMenu}>
                   {item.name}
                 </Link>
@@ -185,7 +182,7 @@ function Navbar() {
             ))}
             <li
               onClick={toggleJoinUs}
-              className="hover:text-[#7328F6] cursor-pointer"
+              className="hover:text-secondary cursor-pointer"
             >
               Join Us
             </li>

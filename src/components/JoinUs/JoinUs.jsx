@@ -39,7 +39,7 @@ const JoinUs = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onClose={onClose}>
       <div className="fixed inset-0 w-full h-screen flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
-        <div className="relative w-11/12 lg:w-3/5 bg-[#FCFDF8] max-h-[90vh] flex border border-solid border-black rounded-2xl xs:p-4 md:p-6 md:space-x-6 xs:space-x-0 text-black md:min-h-[550px] xs:min-h-[450px]">
+        <div className="relative w-11/12 lg:w-3/5 bg-white max-h-[90vh] flex border border-solid border-black rounded-2xl xs:p-4 md:p-6 md:space-x-6 xs:space-x-0 text-black md:min-h-[550px] xs:min-h-[450px]">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-2xl font-bold"
@@ -47,7 +47,7 @@ const JoinUs = ({ isOpen, onClose }) => {
             <X size={20} />
           </button>
           <div className="xs:hidden md:hidden xs:w-0 lg:w-1/2 lg:flex bg-[url('/join-us-img.png')] min-h-[600px] bg-cover flex-col justify-end items-center lg:px-10 xs:px-3 py-10">
-            <div className="bg-[#FFFFFFD8] rounded-xl w-full p-6 space-y-2 h-36 text-[#070802]">
+            <div className="bg-shadeLighter rounded-xl w-full p-6 space-y-2 h-36 text-black">
               <h2 className="text-lg font-bold font-urbanist">Join Us</h2>
               <p className="text-sm font-manrope">
                 Embrace our community and become part of an exciting community
@@ -57,7 +57,7 @@ const JoinUs = ({ isOpen, onClose }) => {
           </div>
           <div className="flex flex-col text-[14px] lg:space-y-6 md:space-y-2 xs:space-y-0 xs:w-full lg:w-1/2">
             <h3 className="md:text-2xl xs:text-[22px] font-bold">Join Us</h3>
-            <p className="text-[#50514C] md:text-[16px] xs:text-[13px]">
+            <p className="text-blackLight md:text-[16px] xs:text-[13px]">
               For any queries mail us at <br /> info@chennaitrailclub.in
             </p>
             {submitSuccess && (
@@ -170,13 +170,13 @@ const JoinUs = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       onClick={onClose}
-                      className="text-[#50514C] h-12 w-[150px] rounded-3xl border border-[#50514C]"
+                      className="text-blackLight h-12 w-[150px] rounded-3xl border border-blackLight"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="text-[#D0F700] bg-[#070802] h-12 w-[150px] rounded-3xl disabled:opacity-50"
+                      className="text-primary bg-black h-12 w-[150px] rounded-3xl disabled:opacity-50"
                       disabled={isSubmitting || !isValid || !dirty}
                     >
                       {isSubmitting ? 'Submitting...' : 'Submit'}

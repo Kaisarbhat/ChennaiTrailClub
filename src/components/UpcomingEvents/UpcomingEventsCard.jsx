@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { memo } from 'react';
 import { Button } from '..';
-import Link from 'next/link';
 
 function UpcomingEventsCard({ event }) {
   const { id, name, shortName, eventBannerTwo, date, location, locationUrl } =
@@ -11,7 +11,7 @@ function UpcomingEventsCard({ event }) {
       className="w-full lg:w-1/2 px-4"
       aria-labelledby="event registration card"
     >
-      <div className="border border-solid hover:shadow-mine hover:border-[#7328f6] rounded-xl flex flex-col sm:flex-row lg:flex-col p-3 w-full">
+      <div className="border border-solid hover:shadow-mine hover:border-secondary rounded-xl flex flex-col sm:flex-row lg:flex-col p-3 w-full">
         <div className="sm:w-1/3 lg:w-full">
           <Image
             src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${eventBannerTwo}`}
@@ -31,20 +31,20 @@ function UpcomingEventsCard({ event }) {
 
           <div className="space-y-3 mt-3">
             <Link
-              className="text-[16px] underline text-[#50514c] block"
+              className="text-[16px] underline text-blackLight block"
               href={locationUrl}
               aria-label={`Event location: ${location}`}
             >
               <i
-                className="bi bi-geo-alt-fill text-[#D0F700]"
+                className="bi bi-geo-alt-fill text-primary"
                 aria-hidden="true"
               ></i>
               {location}
             </Link>
 
-            <time className="text-[16px] text-[#50514c] block" dateTime={date}>
+            <time className="text-[16px] text-blackLight block" dateTime={date}>
               <i
-                className="bi bi-calendar3 text-[#D0F700]"
+                className="bi bi-calendar3 text-primary"
                 aria-hidden="true"
               ></i>
               {date}
@@ -53,7 +53,7 @@ function UpcomingEventsCard({ event }) {
             <Button
               title="Register"
               link={`/events/register/${id}`}
-              classname="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl p-2 w-[170px] hover:bg-[#D0F700] font-bold hover:text-black"
+              classname="text-[14px] border bg-black border-solid text-primary rounded-3xl p-2 w-[170px] hover:bg-primary font-bold hover:text-black"
             />
           </div>
         </div>
