@@ -8,7 +8,7 @@ function Features({ features }) {
   const isInView = useInView(ref, { once: true });
   return (
     <div
-      className="w-screen flex justify-center"
+      className="w-full flex justify-center"
       role="region"
       aria-labelledby="our features"
     >

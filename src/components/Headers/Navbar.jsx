@@ -41,7 +41,7 @@ function Navbar() {
       ([entry]) => {
         setIsScrolled(!entry.isIntersecting);
       },
-      { threshold: 0 }
+      { root: null, rootMargin: '0px', threshold: 0 }
     );
 
     const target = document.createElement('div');
@@ -49,7 +49,7 @@ function Navbar() {
     target.style.top = '0';
     target.style.height = '1px';
     target.style.width = '100%';
-    document.body.appendChild(target);
+    document.body.prepend(target);
 
     observer.observe(target);
 
@@ -92,7 +92,7 @@ function Navbar() {
     if (pathname === '/' && !isScrolled) return 'text-white';
     if (isScrolled) return 'text-white';
     if (transparentPaths.includes(pathname))
-      return 'text-black hover:bg-black/5 rounded-full p-1';
+      return 'text-black  rounded-full p-1';
     return 'text-white';
   };
 
@@ -101,19 +101,20 @@ function Navbar() {
 
   return (
     <header
-      className={`w-screen h-[80px] flex items-center justify-center sm:px-4 xs:px-0 fixed top-0 left-0 
+      className={`w-full h-[80px] flex items-center justify-center sm:px-4 xs:px-0 fixed top-0
         ${!isOpen ? desktopBgColor : `bg-black text-white`} p-4 backdrop-blur-sm z-20 box-border`}
       role="region"
       aria-labelledby="navigation bar"
     >
-      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between  items-center lg:max-w-[1320px]">
+      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between items-center lg:max-w-[1320px]">
         <Link href="/" className="flex left">
           <Image
             src="/newLogo.svg"
             alt="logo"
             width={70}
             height={70}
-            className="rounded-full w-[70px] h-[70px]"
+            priority={true}
+            className="rounded-full cursor-pointer"
           />
         </Link>
         <nav className="w-full  flex flex-row justify-end items-center font-manrope font-medium text-[16px]">
@@ -169,7 +170,7 @@ function Navbar() {
             <JoinUs isOpen={isJoinUsOpen} onClose={toggleJoinUs} />
           )}
           <ul
-            className={`list-none space-y-10 ${
+            className={`list-none lg:space-y-0 xs:space-y-10  ${
               isOpen ? 'flex' : 'hidden'
             } flex-col items-start h-screen bg-black text-white w-full z-50  mt-4 fixed top-16 left-0 p-6 text-[20px]`}
           >

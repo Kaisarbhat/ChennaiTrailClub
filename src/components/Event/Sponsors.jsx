@@ -29,13 +29,13 @@ const Sponsors = React.memo(({ sponsors }) => {
     <div className="relative w-full overflow-hidden">
       <div className="flex items-center animate-scroll">
         {duplicatedSponsors.map((sponsor, index) => (
-          <div key={index} className="flex-shrink-0 mx-10">
+          <div key={index} className="flex-shrink-0 lg:mx-10 sm:mx-2">
             <Image
               src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${sponsor.imageUrl}`}
               alt={'sponsor images'}
               width={80}
               height={50}
-              className="object-contain"
+              className="object-contain lg:w-[80px] xs:w-[50px] lg:h-[50px] xs:h-[30px]"
               loading="lazy"
             />
           </div>

@@ -129,7 +129,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
   };
 
   return (
-    <section className="w-full min-h-[70vh] bg-primaryExtraLight py-16 md:py-24">
+    <section className="w-full min-h-[70vh] bg-primaryExtraLight py-16 md:py-24 flex justify-center items-center">
       <div className="2xl:max-w-[1340px] px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
           <div className="lg:w-1/2">
