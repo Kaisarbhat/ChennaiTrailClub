@@ -15,15 +15,15 @@ const NavigationButtons = ({
           setTouched({});
           setCurrentStep((prevState) => prevState - 1);
         }}
-        className="text-sm border border-solid border-[#121212] text-[#121212] rounded-3xl p-2 w-24 font-bold"
+        className="text-sm border border-solid border-shadeDarker text-shadeDarker rounded-3xl p-2 w-24 font-bold"
       >
         Previous
       </button>
     )}
     <button
-      type={currentStep < totalSteps ? "button" : "submit"}
+      type={currentStep < totalSteps ? 'button' : 'submit'}
       disabled={isSubmitting}
-      className="text-[14px] border bg-black border-solid text-[#D0F700] rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
+      className="text-[14px] border bg-black border-solid text-primary rounded-3xl px-4 py-2 min-w-24 w-auto font-bold"
       onClick={async () => {
         const currentFields = registerContent[currentStep - 1].fields;
         const touchedFields = Object.fromEntries(
@@ -44,12 +44,12 @@ const NavigationButtons = ({
           }
         } else {
           document.forms[0].dispatchEvent(
-            new Event("submit", { cancelable: true, bubbles: true })
+            new Event('submit', { cancelable: true, bubbles: true })
           );
         }
       }}
     >
-      {currentStep < totalSteps ? "Next" : "Proceed for Payment"}
+      {currentStep < totalSteps ? 'Next' : 'Proceed for Payment'}
     </button>
   </div>
 );

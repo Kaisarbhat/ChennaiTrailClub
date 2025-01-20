@@ -12,7 +12,7 @@ function EventDetailsHero({ eventData }) {
   const formattedDate = date.toLocaleDateString('en-Us', dateOptions);
 
   return (
-    <div className="bg-[#070802] w-full flex items-center justify-center">
+    <div className="bg-black w-full flex items-center justify-center">
       <div
         className="w-full 2xl:max-w-[1340px] md:px-4 md:py-14 xs:py-4 xs:px-4  xs:pt-16 flex md:flex-row-reverse  xs:flex-col items-center  xs:justify-center md:justify-between"
         aria-labelledby="Event Details"
@@ -46,7 +46,7 @@ function EventDetailsHero({ eventData }) {
             initial={{ opacity: 0, x: '-100%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-[#FFFFFFBF] xs:text-[15px] md:text-xl xs:px-2 md:px-0"
+            className="text-greyLight xs:text-[15px] md:text-xl xs:px-2 md:px-0"
           >
             {eventData.description}
           </motion.p>
@@ -61,14 +61,12 @@ function EventDetailsHero({ eventData }) {
                 title={'Result'}
                 link={eventData?.resultLink}
                 icon={true}
-                classname={
-                  'bg-[#D0F700] text-black py-3 px-8 text-lg font-bold rounded-3xl'
-                }
+                classname="bg-primary text-black py-3 px-8 text-lg font-bold rounded-3xl"
               />
             </div>
           )}
           <div className="xs:text-[14px]">Trail Day</div>
-          <div className="md:text-2xl xs:text-[20px] text-[#d0f700] font-bold">
+          <div className="md:text-2xl xs:text-[20px] text-primary font-bold">
             <i className="bi bi-calendar3 mr-2"></i>
             {formattedDate}
           </div>
@@ -76,13 +74,13 @@ function EventDetailsHero({ eventData }) {
             initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-[#FFFFFFA6] underline"
+            className="text-shade underline"
           >
-            <span className="text-[#d0f700] mr-2">
+            <span className="text-primary mr-2">
               <i className="bi bi-geo-alt-fill"></i>
             </span>
             <Link
-              className="text-[#FFFFFFA6] xs:text-[14px] hover:text-[#d0f700]"
+              className="text-shade xs:text-[14px] hover:text-primary"
               href={eventData.locationUrl}
             >
               {eventData.location}

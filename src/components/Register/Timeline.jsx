@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const Timeline = ({ currentStep, totalSteps }) => {
   const steps = [
-    "Personal Details",
-    "Other Details",
-    "Medical Questions",
-    "Qualification and Waiver Form",
+    'Personal Details',
+    'Other Details',
+    'Medical Questions',
+    'Qualification and Waiver Form',
   ];
 
   return (
@@ -20,8 +20,8 @@ const Timeline = ({ currentStep, totalSteps }) => {
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center ${
                 index + 1 <= currentStep
-                  ? "bg-[#50514c] text-[#FCFDF8]"
-                  : "bg-[#E4E4E4] text-[#B6B6B3]"
+                  ? 'bg-blackLight text-white'
+                  : 'bg-shadeLight text-whiteDark'
               }`}
             >
               {index + 1}
@@ -34,7 +34,7 @@ const Timeline = ({ currentStep, totalSteps }) => {
             <div className="flex-1 mx-4">
               <div
                 className={`h-[2px] w-full ${
-                  index + 1 < currentStep ? "bg-[#50514c]" : "bg-[#E4E4E4]"
+                  index + 1 < currentStep ? 'bg-blackLight' : 'bg-shadeLight'
                 }`}
               />
             </div>

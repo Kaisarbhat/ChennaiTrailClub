@@ -1,19 +1,7 @@
 'use client';
-import dynamic from 'next/dynamic';
 import React from 'react';
+import { AboutUsTextLower, AboutUsTextUpper, Carousel } from '..';
 import AboutUsHeroSection from './AboutUsHeroSection';
-
-const AboutUsTextUpper = dynamic(() => import('../AboutUs/AboutUsTextUpper'), {
-  ssr: false,
-});
-
-const AboutUsTextLower = dynamic(() => import('../AboutUs/AboutUsTextLower'), {
-  ssr: false,
-});
-
-const Carousel = dynamic(() => import('../AboutUs/Carousel'), {
-  ssr: false,
-});
 
 const AboutUsClient = ({ abousUsHeroImg, carouselImages }) => {
   return (

@@ -20,7 +20,7 @@ const RefundAndCancellation = () => {
       aria-label="refund and cancellation policy"
     >
       <div className="2xl:max-w-[1340px] w-full flex justify-center">
-        <div className="w-full  mt-32 mb-16 text-[14px] text-[#50514C]">
+        <div className="w-full  mt-32 mb-16 text-[14px] text-blackLight">
           <Heading
             title="Refund and Cancellation Policy"
             subTitle=" Effective Mar 18, 2023"

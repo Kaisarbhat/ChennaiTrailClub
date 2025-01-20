@@ -1,24 +1,19 @@
-import { HeroServer } from "@/components";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { HeroServer } from '@/components';
+import dynamic from 'next/dynamic';
 
-const Features = dynamic(() =>
-  import("../components/Home/Features/FeaturesServer")
+const Features = dynamic(
+  () => import('../components/Home/Features/FeaturesServer')
 );
-const RecentActivities = dynamic(() =>
-  import("../components/Home/Recent/RecentActivitiesServer")
+const RecentActivities = dynamic(
+  () => import('../components/Home/Recent/RecentActivitiesServer')
 );
 
 export default async function Home() {
   return (
     <>
       <HeroServer />
-      <Suspense>
-        <Features />
-      </Suspense>
-      <Suspense>
-        <RecentActivities />
-      </Suspense>
+      <Features />
+      <RecentActivities />
     </>
   );
 }

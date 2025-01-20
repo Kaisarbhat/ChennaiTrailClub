@@ -11,6 +11,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
       };
     });
   };
+
   const images = processImages(webImages);
   const mobileImages = processImages(smallImages);
   const recentActivitiesData = [
@@ -128,8 +129,8 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
   };
 
   return (
-    <section className="w-full min-h-[70vh] md:min-h-0 bg-[#F6FFC7] py-16 md:py-24">
-      <div className="max-w-[1340px] mx-auto px-4 lg:px-8">
+    <section className="w-full min-h-[70vh] bg-primaryExtraLight py-16 md:py-24 flex justify-center items-center">
+      <div className="2xl:max-w-[1340px] px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
           <div className="lg:w-1/2">
             <motion.h1
@@ -138,7 +139,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
               animate={isInView ? 'visible' : 'hidden'}
               variants={slideVariants}
               transition={{ duration: 0.5 }}
-              className="text-5xl  md:text-5xl text-[#070802] lg:text-[56px] font-bold mb-6 text-center lg:text-left"
+              className="xs:text-[26px] md:text-5xl text-black lg:text-[56px] font-bold mb-6 text-center lg:text-left"
             >
               Recent Activities
             </motion.h1>
@@ -147,7 +148,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
               animate={isInView ? 'visible' : 'hidden'}
               variants={fadeVariants}
               transition={{ duration: 0.5 }}
-              className="text-[#50514C] text-lg font-manrope text-center lg:text-left"
+              className="text-blackLight text-lg font-manrope text-center lg:text-left"
             >
               We&apos;re thrilled to present a recap of the fantastic array of
               recent activities that we&apos;ve had the pleasure of organizing
@@ -200,7 +201,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
             <div className="flex justify-center">
               <button
                 onClick={() => setIsShowingMore(true)}
-                className="px-8 py-2 border border-[#070802] rounded-full text-sm font-bold hover:bg-[#070802] hover:text-white transition-colors"
+                className="px-8 py-2 border border-black rounded-full text-sm font-bold hover:bg-black hover:text-white transition-colors"
               >
                 Show more
               </button>

@@ -17,10 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} ${manrope.variable} antialiased `}>
+      <body className={`${urbanist.variable} ${manrope.variable} antialiased`}>
         <Navbar />
         <GlobalSpeculationRules />
-        {children}
+        <div className="w-full overflow-x-hidden">{children}</div>
         <Footer />
       </body>
     </html>

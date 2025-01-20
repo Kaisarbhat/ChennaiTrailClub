@@ -9,12 +9,12 @@ import {
 
 const FooterSmall = () => {
   return (
-    <div className="sm:bg-[#070802] xs:bg-[#070802] md:bg-inherit">
+    <div className="sm:bg-black xs:bg-black md:bg-inherit box-border">
       <div className="w-full flex justify-center mt-8 mb-4">
-        <div className="w-full flex flex-col text-[#FCFDF8] bg-[#070802] px-4 mb-0 text-[14px] items-start justify-between md:py-16 xs:py-8 font-urbanist">
+        <div className="w-full flex flex-col text-white bg-black px-4 mb-0 text-[14px] items-start justify-between md:py-16 xs:py-8 font-urbanist">
           <div className="flex flex-col w-[350px]">
             <h2 className="text-2xl mt-3 font-bold">Chennai Trail Club</h2>
-            <p className="text-[#B6B6B3] mt-3 text-[16px]">
+            <p className="text-whiteDark mt-3 text-[16px]">
               Join us for epic outdoor adventures and bond with fellow nature
               enthusiasts
             </p>
@@ -23,7 +23,7 @@ const FooterSmall = () => {
             <QuickLinks />
             <ContactInfo />
             <div>
-              <p className="font-bold mb-3 text-[#FCFDF8] text-[12px]">
+              <p className="font-bold mb-3 text-white text-[12px]">
                 JOIN WITH US
               </p>
               <SocialLinks />
@@ -32,7 +32,7 @@ const FooterSmall = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex md:justify-center xs:justify-start xs:px-4 text-[#50514C] text-[14px]">
+      <div className="w-full flex md:justify-center xs:justify-start xs:px-4 text-blackLight text-[14px]">
         <div className="flex md:flex-row xs:flex-col lg:w-4/5 md:w-full lg:px-4 md:justify-between sm:justify-start mb-4">
           <nav
             aria-label="Footer links"

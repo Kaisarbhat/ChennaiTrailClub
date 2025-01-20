@@ -1,9 +1,9 @@
 export const eventContent = [
   {
-    key: "General Info",
+    key: 'General Info',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 md:mt-0 xs:mb-8 mb-4 xs:font-medium text-[#070802] xs:text-center md:text-start xs:text-lg">
+        <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 md:mt-0 xs:mb-8 mb-4 xs:font-medium text-black xs:text-center md:text-start xs:text-lg">
           General Information
         </h1>
         <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
@@ -12,7 +12,7 @@ export const eventContent = [
         </h5>
         <ul className="list-disc space-y-3 px-8 xs:text-sm md:text-[16px]">
           <li>
-            Registration charges for <b>30KM (INR.1800)</b> and{" "}
+            Registration charges for <b>30KM (INR.1800)</b> and{' '}
             <b>60KM (INR.2200)</b> including payment gateway charges.
           </li>
           <li>
@@ -55,10 +55,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Categories",
+    key: 'Categories',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 md:mt-0  xs:mb-8   mb-4 text-[#070802] xs:text-lg xs:text-center md:text-start ">
+        <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 md:mt-0  xs:mb-8   mb-4 text-black xs:text-lg xs:text-center md:text-start">
           Categories
         </h1>
         <p className="xs:text-sm md:text-lg">
@@ -75,7 +75,7 @@ export const eventContent = [
             trail running. The fun will last approximately 30 Kilometers.
           </li>
           <li>
-            The event will start at 06:00 AM from{" "}
+            The event will start at 06:00 AM from{' '}
             <span>St.Joseph Higher Secondary School, Jamunamarathur.</span> and
             will finish at same place.
           </li>
@@ -96,7 +96,7 @@ export const eventContent = [
             different terrains.
           </li>
           <li>
-            The event will start at 05:00 AM from{" "}
+            The event will start at 05:00 AM from{' '}
             <span>St.Joseph Higher Secondary School, Jamunamarathur.</span>
           </li>
           <li>Runners are required to report at start point by 04:30 AM.</li>
@@ -115,9 +115,9 @@ export const eventContent = [
             any body pains.
           </li>
         </ul>
-        <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-[#50514c] p-4 space-y-4 mt-6">
+        <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-blackLight p-4 space-y-4 mt-6">
           <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i className="bi bi-exclamation-circle-fill text-[#ffb24d]"></i>{" "}
+            <i className="bi bi-exclamation-circle-fill text-[#ffb24d]"></i>{' '}
             Note
           </h2>
           <ul className="list-disc space-y-2 px-16 xs:px-8 flex flex-col justify-between xs:text-sm">
@@ -139,10 +139,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Rules & Criteria",
+    key: 'Rules & Criteria',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold  mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold  mb-4 text-black">
           Rules & Criteria
         </h1>
         <p className="xs:text-[13px] md:text-[16px]">
@@ -178,7 +178,7 @@ export const eventContent = [
           </li>
           <li>
             A registration of one runner cannot be swapped with anyone else or
-            carried over to future editions. We will issue a refund <b>upto</b>{" "}
+            carried over to future editions. We will issue a refund <b>upto</b>{' '}
             ₹1350/- for 30K, <b>upto</b> ₹1650/- for 60K for all such voluntary
             cancellations received until 10-Oct-2024 and also subject to race
             entries for that category being filled as of the race day. The
@@ -216,10 +216,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Food",
+    key: 'Food',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start xs:font-medium font-bold  mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start xs:font-medium font-bold  mb-4 text-black">
           Food
         </h1>
         <div className="flex flex-col space-y-4">
@@ -261,10 +261,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Medical / Baggage",
+    key: 'Medical / Baggage',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  xs:font-medium md:text-start  font-bold  mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  xs:font-medium md:text-start  font-bold  mb-4 text-black">
           Medical Assistance and Baggage Counter
         </h1>
         <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
@@ -304,10 +304,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Aid Station / Hydration",
+    key: 'Aid Station / Hydration',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold   mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold   mb-4 text-black">
           Aid Station and Hydration
         </h1>
         <ul className="list-disc space-y-3 px-8 md:text-[16px] xs:text-sm">
@@ -338,10 +338,10 @@ export const eventContent = [
     ),
   },
   {
-    key: "Accommodation / Transport",
+    key: 'Accommodation / Transport',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start xs:font-medium font-bold  mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start xs:font-medium font-bold  mb-4 text-black">
           Accommodation and Transport
         </h1>
         <div>
@@ -387,15 +387,15 @@ export const eventContent = [
     ),
   },
   {
-    key: "Medals, Certificates & Results",
+    key: 'Medals, Certificates & Results',
     component: () => (
       <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium font-bold  mb-4 text-[#070802]">
+        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium font-bold  mb-4 text-black">
           Medals, Certificates & Results
         </h1>
         <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6 mb-4">
           <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i className="bi bi-exclamation-circle-fill text-[#f1a847]"></i>{" "}
+            <i className="bi bi-exclamation-circle-fill text-[#f1a847]"></i>
             Important
           </h2>
           <ul className="list-disc space-y-3 md:px-16 xs:px-8 md:text-[16px] xs:text-sm">
@@ -410,16 +410,16 @@ export const eventContent = [
             <li> Results will be uploaded to website after 2-3 days. </li>
             <li>
               There is no prize money or awards for podium finishers as we
-              believe that all participants are winners.{" "}
+              believe that all participants are winners.
             </li>
             <li>
               There is no chip on the bib. Timing will be noted manually at
-              timing points along the route{" "}
+              timing points along the route
             </li>
           </ul>
         </div>
         <div>
-          <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px] ">
+          <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
             <li>
               All participants must accept complete responsibility for any
               injury, physical or otherwise, that may be caused to them during
@@ -497,18 +497,18 @@ export const eventContent = [
     ),
   },
   {
-    key: "Running Tips",
+    key: 'Running Tips',
     component: () => (
       <div className="leading-normal">
-        <h1 className="md:text-[32px] md:font-bold  xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium   mb-4 text-[#070802] ">
+        <h1 className="md:text-[32px] md:font-bold  xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium   mb-4 text-black">
           Tips to be followed
         </h1>
         <div className="w-full  space-y-2 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
           <div className="md:w-1/3 xs:w-full p-2">
             <div>
-              <i className="bi bi-flag text-[56px]  text-[#D0F700]"></i>
+              <i className="bi bi-flag text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
               The terrain is not same:
             </h2>
             <p className="xs:text-[13px] md:text-[16px]">
@@ -519,22 +519,22 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i className="bi bi-search text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-search text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
               Find your rhythm:
             </h2>
             <p className="xs-text-[13] md:text-[16px]">
               exhausting, focus on finding the rhythm until you sense being one
-              with the terrain{" "}
+              with the terrain
             </p>
           </div>
           <div className="md:w-1/3  p-2 xs:w-full">
             <div>
-              <i className="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
-              <i className="bi bi-person-walking text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-person-walking text-[56px] text-primary"></i>
+              <i className="bi bi-person-walking text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
               Run with a buddy:
             </h2>
             <p className="xs-text-[13] md:text-[16px]">
@@ -544,9 +544,9 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i className="bi bi-emoji-heart-eyes text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-emoji-heart-eyes text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
               Keep your eyes on the trail:
             </h2>
             <p className="xs-text-[13] md:text-[16px]">
@@ -557,9 +557,9 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3 p-2 xs:w-full">
             <div>
-              <i className="bi bi-shop text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-shop text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-[#070802] lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
               Sport with your Trail shoes:
             </h2>
             <p className="xs-text-[13] md:text-[16px]">
@@ -569,9 +569,9 @@ export const eventContent = [
           </div>
           <div className="md:w-1/3  p-2 xs:w-full">
             <div>
-              <i className="bi bi-eyeglasses text-[56px] text-[#D0F700]"></i>
+              <i className="bi bi-eyeglasses text-[56px] text-primary"></i>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] lg:font-semibold  md:font-medium leading-5 text-[#070802]">
+            <h2 className="md:text-[20px] xs-text-[16] lg:font-semibold  md:font-medium leading-5 text-black">
               Accessorise:
             </h2>
             <p className="xs-text-[13] md:text-[16px]">
