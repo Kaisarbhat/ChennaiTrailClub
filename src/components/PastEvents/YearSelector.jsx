@@ -4,7 +4,7 @@ import { Button } from '..';
 
 const YearSelector = React.memo(({ years, selectedYear, onYearClick }) => (
   <div
-    className="flex space-x-4 md:py-5 xs:py-2"
+    className="flex space-x-4 md:py-5 py-2 flex-wrap "
     role="button"
     aria-label="Button"
   >

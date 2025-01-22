@@ -7,7 +7,7 @@ function AboutUsTextLower() {
   const isInView = useInView(ref, { once: true });
   return (
     <div
-      className="w-full flex md:flex-row xs:flex-col xs:items-center md:items-start md:justify-between xs:px-4 xs:py-12 md:py-[100px] md:px-4 lg:space-x-14 xs:space-x-0 xs:text-center md:text-start 2xl:max-w-[1340px] box-border"
+      className="w-full flex md:flex-row xs:flex-col xs:items-center md:items-start md:justify-between xs:px-4 xs:py-12 md:py-[100px] md:px-4 lg:space-x-14 xs:space-x-0 xs:text-center md:text-start xl:max-w-[1340px] box-border overflow-x-hidden"
       aria-labelledby="Abous us Text"
     >
       <motion.div
@@ -17,7 +17,8 @@ function AboutUsTextLower() {
         transition={{ duration: 0.5 }}
         className="md:text-[56px] sm:text-3xl xs:text-[22px] lg:w-1/2 md:w-full h-full md:leading-tight font-bold xs:mb-5 md:mb-0"
       >
-        Built on shared passions
+        Built on shared
+        <br className="lg:flex xs:hidden" /> passions
       </motion.div>
       <div className="flex flex-col lg:w-1/2 md:w-4/5 xs:w-full space-y-4">
         <div className="md:font-bold xs:font-semibold md:text-[22px] xs:text-[15px]">

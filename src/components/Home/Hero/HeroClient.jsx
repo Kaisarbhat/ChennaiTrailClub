@@ -11,14 +11,14 @@ function HeroClient({ recentEvent, heroImage, formattedDate }) {
       <div
         role="region"
         aria-label="Home Page"
-        className="relative flex md:flex-row xs:flex-col items-center justify-center bg-black text-white xs:text-center sm:text-start h-screen"
+        className="relative flex md:flex-row xs:flex-col items-center justify-center bg-black text-white xs:text-center sm:text-start min-h-screen"
       >
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `url(${process.env.NEXT_PUBLIC_S3_BUCKET}/${heroImage.imageUrl})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'right',
             backgroundAttachment: 'fixed',
           }}
         />

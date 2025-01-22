@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${urbanist.variable} ${manrope.variable} antialiased`}>
         <Navbar />
         <GlobalSpeculationRules />
-        <div className="w-full overflow-x-hidden">{children}</div>
+        {children}
         <Footer />
       </body>
     </html>

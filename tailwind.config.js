@@ -11,9 +11,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: '340px',
+        xs: '240px',
         sm: '600px',
-        md: '820px',
+        md: '821px',
         lg: '1024px',
         sxl: '1200px',
         xl: '1340px',
@@ -29,6 +29,7 @@ module.exports = {
       },
       width: {
         45: '48%',
+        maxWidth: '1320px',
       },
       colors: {
         primary: '#D0F700',

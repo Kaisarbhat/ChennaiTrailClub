@@ -15,7 +15,7 @@ const Button = ({ title, link, classname, icon = false, onClick }) => {
 
   return (
     <button className={classname} onClick={handleClick}>
-      {title} {icon && <i className="bi bi-arrow-up-right"></i>}
+      {title} {icon && <i className="bi bi-arrow-up-right ml-[10px]"></i>}
     </button>
   );
 };
