@@ -17,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} ${manrope.variable} antialiased`}>
+      <body
+        className={`${urbanist.variable} ${manrope.variable} antialiased bg-white`}
+      >
         <Navbar />
         <GlobalSpeculationRules />
         {children}

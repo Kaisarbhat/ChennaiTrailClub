@@ -8,7 +8,7 @@ function Features({ features }) {
   const isInView = useInView(ref, { once: true });
   return (
     <div
-      className="w-full flex justify-center overflow-x-hidden"
+      className="w-full flex justify-center overflow-x-hidden lg:mx-4"
       role="region"
       aria-labelledby="our features"
     >

@@ -1,23 +1,23 @@
 'use client';
-import { dateOptions } from '@/utils/constants';
+import { dateFormatter } from '@/utils/constants';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 import { Button } from '..';
+import { MdOutlineCalendarMonth } from 'react-icons/md';
+import { CiLocationOn } from 'react-icons/ci';
 
 function UpcomingEventsHero({ data }) {
   const [eventData] = data;
-  const formattedDate = new Date(eventData?.date).toLocaleDateString(
-    'en-US',
-    dateOptions
-  );
+  const date = new Date(eventData.date);
+  const formattedDate = dateFormatter(date);
   return (
     <section
       className="bg-black xs:min-h-[100vh] sm:min-h-[71vh] md:min-h-[100vh] text-white box-border flex flex-col pt-12 md:px-4 font-urbanist items-center justify-between"
       aria-labelledby="hero-title"
     >
-      <div className="flex md:flex-row xs:flex-col md:space-x-8 xs:space-x-0 xs:text-center md:text-start max-w-[1340px] xs:mt-14">
+      <div className="flex md:flex-row xs:flex-col md:space-x-8 xs:space-x-0 xs:text-center md:text-start xl:w-maxWidth xs:mt-14">
         <div className="flex flex-col text-wrap md:w-3/5 xs:w-full">
           <motion.h1
             id="hero-title"
@@ -44,10 +44,9 @@ function UpcomingEventsHero({ data }) {
             className="md:text-lg xs:text-[14px] text-greyLight"
             dateTime={eventData.date}
           >
-            <i
-              className="bi bi-calendar3 text-primary mr-1"
-              aria-hidden="true"
-            ></i>
+            <span className="text-primary mr-1">
+              <MdOutlineCalendarMonth />
+            </span>
             {formattedDate}
           </time>
 
@@ -63,10 +62,9 @@ function UpcomingEventsHero({ data }) {
               rel="noopener noreferrer"
               aria-label={`View location: ${eventData.location}`}
             >
-              <i
-                className="bi bi-geo-alt-fill text-primary mr-1"
-                aria-hidden="true"
-              ></i>
+              <span className="text-primary mr-1">
+                <CiLocationOn />
+              </span>
               {eventData.location}
               <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
             </Link>

@@ -38,11 +38,11 @@ const EventInfo = () => {
           ))}
         </aside>
       </div>
-      <div className="md:hidden xs:flex w-full xs:px-4 ">
+      <div className="md:hidden xs:flex w-full xs:px-4 xs:py-5">
         <select
           value={selectedKey}
           onChange={(e) => setSelectedKey(e.target.value)}
-          className="bg-black p-3  w-full rounded-md text-primary sticky"
+          className="bg-black p-3 font-semibold text-lg w-full rounded-md text-primary sticky"
         >
           {eventContent.map((item) => (
             <option

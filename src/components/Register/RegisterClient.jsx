@@ -3,7 +3,7 @@ import {
   registerInitialValues,
   registerValidationSchemas,
 } from '@/schema/registrationSchema';
-import { dateOptions } from '@/utils/constants';
+import { dateFormatter } from '@/utils/constants';
 import { registerContent } from '@/utils/registerutils';
 import { showError, showSuccess } from '@/utils/toastUtils';
 import axios from 'axios';
@@ -177,7 +177,7 @@ const RegisterClient = ({ key, eventData, eventId }) => {
   };
 
   const date = new Date(eventData?.date);
-  const formattedDate = date.toLocaleDateString('en-US', dateOptions);
+  const formattedDate = dateFormatter(date);
 
   return (
     <div

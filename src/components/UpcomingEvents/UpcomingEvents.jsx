@@ -1,4 +1,4 @@
-import { dateOptions } from '@/utils/constants';
+import { dateFormatter } from '@/utils/constants';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { UpcomingEventsHero } from '..';
@@ -30,12 +30,10 @@ const UpcomingEvents = ({ upcomingEvents }) => {
                 Upcoming Events
               </h2>
 
-              <div className="py-6 2xl:max-w-[1340px] w-full flex flex-col lg:flex-row items-center justify-center lg:space-x-10 space-y-6 lg:space-y-0">
+              <div className="py-6 xl:w-maxWidth w-full flex flex-col lg:flex-row items-center justify-center lg:space-x-10 space-y-6 lg:space-y-0">
                 {upcomingEvents.map((event, index) => {
-                  const formattedDate = new Date(
-                    event?.date
-                  ).toLocaleDateString('en-US', dateOptions);
-
+                  const date = new Date(event.date);
+                  const formattedDate = dateFormatter(date);
                   return (
                     <UpcomingEventsCard
                       key={index}

@@ -108,7 +108,7 @@ function Navbar() {
       <div
         className={`${transparentPaths.includes(pathname) ? '' : 'absolute inset-0 bg-black/40'}`}
       />
-      <div className="xs:px-3 py-4 lg:px-5 w-full flex xs:justify-between items-center xl:w-maxWidth">
+      <div className="xs:px-3 lg:px-2 py-4 xs:w-full flex justify-center items-center xl:w-maxWidth">
         <Link href="/">
           <Image
             src="/newLogo.png"
@@ -116,11 +116,11 @@ function Navbar() {
             width={60}
             height={60}
             priority={true}
-            className="rounded-full cursor-pointer xs:w-14 xs:h-14 md:w-[60px] md:h-[60px] object-contain"
+            className="rounded-full cursor-pointer xs:w-14 xs:h-14 md:w-[65px] md:h-[65px] object-contain"
           />
         </Link>
         <nav className="w-full flex flex-row justify-end items-center font-manrope font-medium h-14 text-[16px] z-20">
-          <ul className="sxl:flex list-none sxl:space-x-12 xs:space-x-0 nav-links xs:hidden h-full items-center justify-between">
+          <ul className="sxl:flex list-none sxl:space-x-10 xs:space-x-0 nav-links xs:hidden h-full items-center justify-between max-w-[350px]">
             <li className="cursor-pointer h-full flex justify-center items-center hover:text-secondary">
               <Link href="/"> Home </Link>
             </li>

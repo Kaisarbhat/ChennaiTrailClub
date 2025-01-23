@@ -4,7 +4,7 @@ import { Button } from '..';
 
 const YearSelector = React.memo(({ years, selectedYear, onYearClick }) => (
   <div
-    className="flex space-x-4 md:py-5 py-2 flex-wrap "
+    className="flex space-x-3 xs:mt-4 lg:mt-0 flex-wrap "
     role="button"
     aria-label="Button"
   >
@@ -13,7 +13,7 @@ const YearSelector = React.memo(({ years, selectedYear, onYearClick }) => (
         key={year}
         title={year}
         onClick={() => onYearClick(year)}
-        classname={`xs:text-sm md:text-xl border rounded-3xl xs:p-1 md:p-2 xs:w-16 md:w-32 font-bold transition-colors duration-200 ${
+        classname={`xs:text-[16px] border border-black rounded-3xl xs:px-6 xs:py-2 font-bold transition-colors duration-200 ${
           selectedYear === year
             ? `bg-black text-primary`
             : `bg-white text-black hover:bg-gray-100`

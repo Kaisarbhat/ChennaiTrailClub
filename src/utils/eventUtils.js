@@ -2,15 +2,15 @@ export const eventContent = [
   {
     key: 'General Info',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 md:mt-0 xs:mb-8 mb-4 xs:font-medium text-black xs:text-center md:text-start xs:text-lg">
+      <div className="leading-loose py-5">
+        <h1 className="md:text-[32px] md:font-bold font-bold xs:mb-8 xs:font-medium text-black xs:text-center md:text-start xs:text-lg">
           General Information
         </h1>
-        <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
+        <h5 className="md:text-[20px] xs:text-[16px] mb-2 xs:leading-[22px] font-semibold">
           Following are general information that you have to know before
           registering,
         </h5>
-        <ul className="list-disc space-y-3 px-8 xs:text-sm md:text-[16px]">
+        <ul className="list-disc  xs:mt-4 space-y-3 pl-10 xs:leading-[22px] font-normal xs:text-sm md:text-[16px]">
           <li>
             Registration charges for <b>30KM (INR.1800)</b> and{' '}
             <b>60KM (INR.2200)</b> including payment gateway charges.
@@ -57,17 +57,17 @@ export const eventContent = [
   {
     key: 'Categories',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 md:mt-0  xs:mb-8   mb-4 text-black xs:text-lg xs:text-center md:text-start">
+      <div className="leading-loose py-5">
+        <h1 className="md:text-[32px] md:font-bold font-bold xs:mb-8  mb-4 text-black xs:text-lg xs:text-center md:text-start">
           Categories
         </h1>
-        <p className="xs:text-sm md:text-lg">
+        <p className="xs:text-[13px] xs:mb-3 md:text-lg">
           Jawadhu Hill Ultra (JHU-24) offers two categories in the 2024 edition
         </p>
-        <h3 className="text-[20px] xs:text-[16px] font-semibold mb-2">
+        <h3 className="text-[20px] xs:text-[16px] font-bold mb-2">
           30K with approximately 900m of elevation gain.
         </h3>
-        <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
+        <ul className="list-disc space-y-3 xs:my-4 xs:pl-10 xs:text-sm md:text-[16px] xs:leading-[22px] font-normal">
           <li>
             primarily for those who wants to run their first trail race. Trail
             route takes runners through farms, slush & single path trails.
