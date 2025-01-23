@@ -6,21 +6,21 @@ const AboutUsTextUpper = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
-    <div className="w-full flex justify-center items-center box-border">
+    <div className="w-full flex justify-center items-center box-border xs:px-4 md:px-0 lg:px-10 xs:py-12 sxl:py-[100px]">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, x: '-100%' }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: '-100%' }}
         transition={{ duration: 1 }}
-        className="flex xs:flex-col md:flex-row justify-between items-center md:py-[100px] xs:px-4 md:px-0 xs:py-12 xl:max-w-[1340px] xs:text-center md:text-start"
+        className="flex xs:flex-col md:flex-row justify-between items-center xl:w-maxWidth xs:text-center md:text-start"
       >
-        <h1 className="md:text-[56px] xs:text[22px] font-bold lg:leading-tight text-wrap xs:leading-loose md:leading-none">
+        <h1 className=" xs:text-[22px] md:text-[56px] font-bold lg:leading-[61px] text-wrap xs:leading-6 md:leading-none md:w-1/2">
           We believe in
-          <br className="xl:block xs:hidden " /> transformative power of
-          <br className="xs:hidden 2xl:block" />
+          <br className="xl:block xs:hidden " /> transformative power of{' '}
+          <br className="xs:hidden lg:block sxl:hidden" />
           individuals
         </h1>
-        <p className="xs:text-center md:text-start  md:text-xl xs:text-sm leading-normal text-blackLight xl:w-2/5 2xl:w-1/3 2xl:leading-loose">
+        <p className="xs:text-center md:text-start md:text-xl xs:text-sm xs:leading-[22px] text-blackLight xs:w-full sm:w-[440px] xl:w-2/5 2xl:w-1/3 lg:leading-[34px]  xs:mt-5 lg:mt-0 xs:px-4 sm:px-0">
           We are a passionate community of outdoor enthusiasts who share a
           common love for trail running, hiking, swimming and exploration.
         </p>

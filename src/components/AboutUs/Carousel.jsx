@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { IoArrowForwardCircleOutline } from 'react-icons/io5';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 const Carousel = ({ carouselImages }) => {
   const totalSlides = carouselImages?.length;
@@ -30,10 +32,7 @@ const Carousel = ({ carouselImages }) => {
   };
 
   return (
-    <div
-      className="relative w-full lg:px-16 xs:p-0 box-border"
-      aria-labelledby="Images"
-    >
+    <div className="relative w-full lg:px-[115px]" aria-labelledby="Images">
       <div className="overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500"
@@ -55,15 +54,15 @@ const Carousel = ({ carouselImages }) => {
       </div>
       <button
         onClick={prevImage}
-        className="xs:hidden lg:flex absolute left-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden lg:flex absolute left-2 top-1/2  text-blackLight text-4xl p-2 rounded-full"
       >
-        <i className="bi bi-arrow-left-circle-fill"></i>
+        <IoArrowBackCircleOutline />
       </button>
       <button
         onClick={nextImage}
-        className="xs:hidden lg:flex  absolute right-2 top-1/2  text-gray-500 text-3xl p-2 rounded-full"
+        className="xs:hidden lg:flex  absolute right-2 top-1/2  text-blackLight text-4xl p-2 rounded-full"
       >
-        <i className="bi bi-arrow-right-circle-fill"></i>
+        <IoArrowForwardCircleOutline />
       </button>
       <div className="flex justify-center mt-4 space-x-2">
         {carouselImages.map((_, index) => (
