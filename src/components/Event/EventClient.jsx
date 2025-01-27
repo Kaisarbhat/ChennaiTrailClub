@@ -19,11 +19,14 @@ const EventClient = ({ eventData }) => {
     );
   }
   return (
-    <div className="pt-[72px] text-blackLight" aria-labelledby="Event details">
+    <div
+      className="pt-[72px] text-blackLight overflow-x-hidden"
+      aria-labelledby="Event details"
+    >
       <EventDetailsHero eventData={eventData} />
 
-      <div className="flex  flex-col justify-center items-center md:py-8 md:px-4  w-full">
-        <div className="xl:w-maxWidth">
+      <div className="flex flex-col justify-center items-center md:py-8 w-full">
+        <div className="xl:w-maxWidth px-4">
           <h2 className="text-[22px] text-black font-bold p-4 md:hidden">
             Things to know
           </h2>

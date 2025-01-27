@@ -15,7 +15,7 @@ function EventDetailsHero({ eventData }) {
   const formattedDate = dateFormatter(date);
 
   return (
-    <div className="bg-black w-full flex items-center justify-center">
+    <div className="bg-black w-full flex items-center justify-center overflow-x-hidden">
       <div
         className="w-full xl:w-maxWidth md:px-4 md:pt-6 md:pb-10 xs:py-10 xs:px-4 xl:px-2 flex md:flex-row-reverse xs:flex-col items-center xs:justify-center md:justify-between"
         aria-labelledby="Event Details"

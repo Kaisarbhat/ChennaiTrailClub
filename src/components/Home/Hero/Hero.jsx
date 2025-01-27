@@ -67,7 +67,7 @@ const Hero = ({ recentEvent, formattedDate }) => {
             <Button
               title={recentEvent?.shortName}
               link={`/events/${recentEvent?.id}`}
-              classname="bg-primary text-black md:text-[20px] xs:text-sm font-bold rounded-[30px] md:px-6 xs:px-3 lg:py-4 lg:px-7 hover:bg-white hover:text-black max-h-[60px] xs:w-36 xs:h-12 md:w-44"
+              classname="bg-primary text-black md:text-[20px] xs:text-sm font-bold rounded-[34px] md:px-6 xs:px-3 lg:py-4 lg:px-7 hover:bg-white hover:text-black max-h-[60px] xs:w-36 xs:h-12 md:w-[180px]"
               icon={true}
             />
           </motion.div>
