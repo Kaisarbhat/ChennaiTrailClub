@@ -3,6 +3,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { manrope, urbanist } from './fonts/font';
 import './globals.css';
 import GlobalSpeculationRules from '@/components/Speculation/GlobalSpeculationRules';
+import { JoinUsProvider } from '@/context/JoinUsContext';
 
 export const metadata = {
   title: 'Home - Chennai Trail Club',
@@ -20,10 +21,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${urbanist.variable} ${manrope.variable} antialiased bg-white`}
       >
-        <Navbar />
-        <GlobalSpeculationRules />
-        {children}
-        <Footer />
+        <JoinUsProvider>
+          <Navbar />
+          <GlobalSpeculationRules />
+          {children}
+          <Footer />
+        </JoinUsProvider>
       </body>
     </html>
   );

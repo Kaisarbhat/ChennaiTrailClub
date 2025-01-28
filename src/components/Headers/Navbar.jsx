@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { JoinUs } from '..';
+import { useJoinUs } from '@/context/JoinUsContext';
 
 function Navbar() {
   const transparentPaths = [
@@ -31,10 +32,11 @@ function Navbar() {
 
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
-  const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
+
+  const { isJoinUsOpen, toggleJoinUs } = useJoinUs();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,10 +71,6 @@ function Navbar() {
           : transparentPaths.includes(pathname)
             ? 'bg-transparent text-black'
             : `bg-black text-white shadow-lg`;
-
-  const toggleJoinUs = () => {
-    setIsJoinUsOpen(!isJoinUsOpen);
-  };
 
   const handleRotate = () => {
     setIsRotating(false);

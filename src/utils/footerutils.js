@@ -40,5 +40,4 @@ export const quickLinksData = [
   { href: '/aboutus', text: 'About Us' },
   { href: '/events/upcomingevents', text: 'Upcoming Events' },
   { href: '/events/pastevents', text: 'Past Events' },
-  { href: '/joinus', text: 'Join Us' },
 ];

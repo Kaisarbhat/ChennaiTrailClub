@@ -167,17 +167,17 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
               accomplishments and experiences with you.
             </motion.p>
           </div>
-          <div className="hidden lg:flex items-end">
+          <div className="hidden lg:flex items-end text-[58px]">
             <button
               onClick={() => moveCarousel('backward')}
-              className="text-blackLight hover:text-black transition-colors text-6xl ml-4"
+              className="text-blackLight hover:text-black transition-colors ml-4"
               aria-label="Previous activities"
             >
               <IoChevronBackCircleOutline />
             </button>
             <button
               onClick={() => moveCarousel('forward')}
-              className="text-blackLight hover:text-black transition-colors text-6xl ml-4"
+              className="text-blackLight hover:text-black transition-colors ml-4"
               aria-label="Next activities"
             >
               <IoChevronForwardCircleOutline />
