@@ -1,18 +1,17 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from 'react-icons/io5';
+
 const RecentActivities = ({ webImages = [], smallImages = [] }) => {
   const processImages = (images) => {
-    return images.map((image) => {
-      return {
-        imageUrl: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${image.imageUrl}`,
-      };
-    });
+    return images.map((image) => ({
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${image.imageUrl}`,
+    }));
   };
 
   const images = processImages(webImages);
@@ -186,14 +185,27 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
         </div>
 
         {/* Desktop Gallery */}
-        <div className="hidden md:block md:h-[344px] sxl:h-[442px]">
-          <div className="grid grid-cols-3 gap-4 h-full">
-            {visibleComponents.map((item) => (
-              <div key={item.key} className="h-full">
-                {renderLayoutContent(item)}
-              </div>
-            ))}
-          </div>
+        <div className="hidden md:block md:h-[344px] sxl:h-[442px] overflow-hidden">
+          <AnimatePresence mode="popLayout">
+            <div className="grid grid-cols-3 gap-4 h-full relative">
+              {visibleComponents.map((item, index) => (
+                <motion.div
+                  key={`${item.key}-${startIndex}`}
+                  initial={{ opacity: 1, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="h-full"
+                  style={{
+                    gridColumn: 'span 1',
+                    minWidth: '100%',
+                  }}
+                >
+                  {renderLayoutContent(item)}
+                </motion.div>
+              ))}
+            </div>
+          </AnimatePresence>
         </div>
 
         {/* Mobile Gallery */}
@@ -201,7 +213,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
           {mobileImages.slice(0, isShowingMore ? 4 : 3).map((item, index) => (
             <div
               key={index}
-              className="relative w-full  xs:h-[180px] sm:h-[378px]"
+              className="relative w-full xs:h-[180px] sm:h-[378px]"
             >
               <Image
                 src={item.imageUrl}

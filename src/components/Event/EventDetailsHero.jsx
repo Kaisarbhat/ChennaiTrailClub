@@ -59,13 +59,14 @@ function EventDetailsHero({ eventData }) {
           >
             {eventData.description}
           </motion.p>
-          {date_today > date && (
+          {date_today > date && eventData.name.startsWith('Jawadhu') && (
             <div className="font-bold xs:text-[15px] md:text-[18px] md:mb-6 xs:mb-0 text-greyLight font-manrope">
               Registration for this event is closed
             </div>
           )}
-          {eventData?.resultLink && (
-            <div className="my-4 xs:hidden">
+          {eventData.resultLink &&
+          eventData.name.startsWith('Chennai Trail Ultra') ? (
+            <div className="my-4 xs:hidden md:flex">
               <Button
                 title={'Result'}
                 link={eventData?.resultLink}
@@ -73,7 +74,10 @@ function EventDetailsHero({ eventData }) {
                 classname="bg-primary text-black py-3 px-8 text-lg font-bold rounded-3xl"
               />
             </div>
+          ) : (
+            <></>
           )}
+
           <div className="xs:text-sm sm:text-lg text-shade">Trail Day</div>
           <div className="md:text-2xl xs:text-[20px] text-primary font-bold flex items-center justify-center">
             <span className="mr-2 text-primary text-2xl">

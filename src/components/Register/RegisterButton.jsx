@@ -22,7 +22,7 @@ function RegisterButton({ eventData }) {
             : `Register for ${name} (${shortName})`
         }
         link={resultLink ? `${resultLink}` : `/events/register/${id}`}
-        classname="bg-primary text-black md:text-[20px] xs:text-sm font-bold rounded-[42px] xs:px-6 xs:py-3 md:py-4 md:px-7 mt-4 hover:bg-black hover:text-primary xs:h-11 md:h-[60px] md:w-[445px] xs:w-[315px]"
+        classname={`${resultLink && name.startsWith('Jawadhu') ? 'flex items-center justify-center' : 'hidden'} bg-primary text-black md:text-[20px] xs:text-sm font-bold rounded-[42px] xs:px-6 xs:py-3 md:py-4 md:px-7 mt-4 hover:bg-black hover:text-primary xs:h-11 md:h-[60px] md:w-[445px] xs:w-[315px]`}
         icon={true}
       />
     </motion.div>

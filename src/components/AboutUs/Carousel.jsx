@@ -39,7 +39,7 @@ const Carousel = ({ carouselImages }) => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselImages.map((item, index) => (
-            <div key={index} className="min-w-full min-h-full max-h-[75vh]">
+            <div key={index} className="min-w-full min-h-full max-h-[80vh]">
               <Image
                 src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${item.imageUrl}`}
                 alt={`Image ${index + 1}`}
