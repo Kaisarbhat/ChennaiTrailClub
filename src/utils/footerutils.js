@@ -1,22 +1,27 @@
+import { FaFacebookF } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
+import { FaStrava } from 'react-icons/fa';
+
 export const socialLinksData = [
   {
     href: 'https://www.facebook.com/groups/901820050881838/?ref=share&mibextid=NSMWBT&_rdr',
-    icon: 'bi-facebook',
+    icon: <FaFacebookF />,
     label: 'Facebook',
   },
   {
     href: 'https://www.instagram.com/chennaitrailclub/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D',
-    icon: 'bi-instagram',
+    icon: <FaInstagram />,
     label: 'Instagram',
   },
   {
     href: 'https://www.youtube.com',
-    icon: 'bi-youtube',
+    icon: <FaYoutube />,
     label: 'YouTube',
   },
   {
     href: 'https://www.strava.com/athletes/118722869',
-    icon: 'bi-strava',
+    icon: <FaStrava />,
     label: 'Strava',
   },
 ];

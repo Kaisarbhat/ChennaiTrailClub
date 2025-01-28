@@ -1,36 +1,34 @@
-'use Client';
+'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
 
 const AboutUsHeroSection = React.memo(({ imageUrl }) => {
   return (
-    <div className="relative flex rounded-xl xs:h-[350px] lg:h-[600px] lg:w-[1024px] sxl:w-[1200px] xl:w-[1340px] box-border">
-      <Image
-        src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl}`}
-        alt="About hero"
-        layout="fill"
-        objectFit="cover"
-        priority={true}
-        className="w-full rounded-xl"
+    <div
+      className="relative flex flex-col w-full xs:rounded lg:rounded-[14px] xs:h-[350px] sm:h-[750px] md:h-[790px] lg:h-[450px] sxl:h-[578px] sxl:w-[1200px] xl:w-maxWidth box-border overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl})`,
+      }}
+    >
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-y-0 left-0 xs:w-1/4 lg:w-4/5 bg-gradient-to-r from-black to-transparent xs:rounded lg:rounded-[14px]"
+        aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-black opacity-30 rounded-xl"></div>
       <motion.div
         initial={{ x: '-100%' }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative flex flex-col md:justify-end xs:justify-end xs:w-full text-white xs:mb-4 sm:mb-10 md:ml-6 xs:ml-0 lg:ml-0 px-14"
+        className="relative flex flex-col justify-end h-full w-full text-white xs:p-8 sm:p-20"
       >
-        <h1 className="sm:text-[40px] xs:text-[26px] lg:text-[56px] font-urbanist font-bold lg:mb-7 sm:mb-0 xs:mb-3">
+        <h1 className="sm:text-[40px] xs:text-[26px] lg:text-[56px] font-urbanist font-bold">
           About Us
         </h1>
-        <p className="sm:font-medium xs:font-medium sm:text-[26px] lg:text-xl font-manrope lg:font-semibold xs:text-[15px] md:leading-loose sm:leading-relaxed xs:leading-5 mb-4 sm:w-full md:w-4/5 lg:w-1/2 xl:w-1/3 ">
+        <p className="xs:font-medium sm:text-[26px] lg:text-xl xs:mt-3 lg:mt-4 font-manrope lg:font-normal xs:text-[15px] md:leading-loose lg:leading-[34px] sm:leading-[41px] xs:leading-5 sm:w-full md:w-4/5 lg:w-4/5 xl:w-1/3">
           We are a passionate community of outdoor running, hiking, swimming and
           exploration.
         </p>
       </motion.div>
-      <ToastContainer />
     </div>
   );
 });

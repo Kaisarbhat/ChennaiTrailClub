@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: '340px',
+        xs: '240px',
         sm: '600px',
         md: '820px',
         lg: '1024px',
@@ -25,10 +25,11 @@ module.exports = {
         'decimal-leading-zero': 'decimal-leading-zero',
       },
       boxShadow: {
-        mine: '10px 10px 0 0 rgba(115, 40, 246, 1)',
+        mine: '7px 8px 2px 0px rgb(115, 40, 246,1)',
       },
       width: {
         45: '48%',
+        maxWidth: '1320px',
       },
       colors: {
         primary: '#D0F700',
@@ -52,6 +53,7 @@ module.exports = {
         rose: '#f86b6b',
         roseLight: '#fcf6e4',
         roseLighter: '#FFF1F1',
+        backgroundColor: '#F4F4F4',
       },
     },
   },

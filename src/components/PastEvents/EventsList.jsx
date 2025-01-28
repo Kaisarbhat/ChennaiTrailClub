@@ -1,9 +1,10 @@
-import React from "react";
-import { dateOptions } from "@/utils/constants";
-import { PastEventsCard } from "..";
+import React from 'react';
+import { dateFormatter } from '@/utils/constants';
+import { PastEventsCard } from '..';
+
 const EventsList = React.memo(({ events }) => (
-  <div className="flex md:flex-row xs:flex-col justify-between mt-4 lg:space-x-8 xs:space-x-0 mb-auto w-full">
-    {events.map((event, index) => {
+  <div className="grid md:grid-cols-2 xs:grid-cols-1 gap-6 w-full mt-6">
+    {events.map((event) => {
       const {
         id,
         name,
@@ -13,15 +14,12 @@ const EventsList = React.memo(({ events }) => (
         resultLink,
         date,
       } = event;
-
-      const formattedDate = new Date(date).toLocaleDateString(
-        "en-US",
-        dateOptions
-      );
+      const localDate = new Date(date);
+      const formattedDate = dateFormatter(localDate);
 
       return (
         <PastEventsCard
-          key={index}
+          key={id}
           id={id}
           name={name}
           shortName={shortName}
@@ -34,4 +32,5 @@ const EventsList = React.memo(({ events }) => (
     })}
   </div>
 ));
+
 export default React.memo(EventsList);

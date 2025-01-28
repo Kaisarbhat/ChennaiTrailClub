@@ -14,7 +14,7 @@ const Sponsors = React.memo(({ sponsors }) => {
               alt={'sponsor images'}
               width={80}
               height={50}
-              className="object-contain"
+              className="object-contain lg:w-[160px] xs:w-[60px] xs:h-[50px]"
               loading="lazy"
             />
           </div>
@@ -27,7 +27,7 @@ const Sponsors = React.memo(({ sponsors }) => {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex items-center animate-scroll">
+      <div className="flex items-center animate-scroll xs:gap-6 md:gap-0">
         {duplicatedSponsors.map((sponsor, index) => (
           <div key={index} className="flex-shrink-0 lg:mx-10 sm:mx-2">
             <Image
@@ -35,7 +35,7 @@ const Sponsors = React.memo(({ sponsors }) => {
               alt={'sponsor images'}
               width={80}
               height={50}
-              className="object-contain lg:w-[80px] xs:w-[50px] lg:h-[50px] xs:h-[30px]"
+              className="object-contain lg:w-[160px] xs:w-[60px] xs:h-[50px]"
               loading="lazy"
             />
           </div>

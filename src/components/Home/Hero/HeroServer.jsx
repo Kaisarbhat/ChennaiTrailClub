@@ -1,4 +1,4 @@
-import { dateOptions } from '@/utils/constants';
+import { dateFormatter } from '@/utils/constants';
 import { HeroClient } from '@/components';
 import { notFound } from 'next/navigation';
 import ErrorPage from '@/components/Error/Error';
@@ -37,7 +37,7 @@ export default async function HeroServer() {
     return <ErrorPage />;
   }
   const date = new Date(recentEvent?.date);
-  const formattedDate = date.toLocaleDateString('en-Us', dateOptions);
+  const formattedDate = dateFormatter(date);
   return (
     <HeroClient
       recentEvent={recentEvent}

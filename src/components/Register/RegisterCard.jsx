@@ -15,12 +15,12 @@ const RegisterCard = ({
     <div
       role="region"
       aria-label="registration card"
-      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xl:w-1/3 lg:w-2/5 md:w-full xs:w-full  md:h-full s xs:h-full xs:mt-4 lg:mt-0 lg:ml-2 xs:ml-0 lg:sticky lg:top-32 lg:self-start lg:h-auto"
+      className="border border-solid border-gray-600 rounded-xl shadow-lg p-4 flex flex-col xs:mt-4 lg:mt-0 lg:ml-2 xs:ml-0 bg-white"
     >
-      <div className="w-full h-1/2 ">
+      <div className="w-full">
         <Image
           src={`${process.env.NEXT_PUBLIC_S3_BUCKET}/${imageUrl}`}
-          className="rounded-md md:h-32 lg:h-full w-full xs:h-full"
+          className="rounded-md md:h-32 lg:h-48 w-full object-cover"
           width={400}
           height={300}
           loading="lazy"
@@ -47,7 +47,7 @@ const RegisterCard = ({
           <div>Running Category</div>
           <div className="text-black">{category || 'Select KM'}</div>
         </div>
-        <div className="flex justify-between ">
+        <div className="flex justify-between">
           <div className="text-black font-semibold">Registration Fee</div>
           <div className="text-black font-semibold text-[22px]">
             {price ? `₹${price}` : 'Select KM'}

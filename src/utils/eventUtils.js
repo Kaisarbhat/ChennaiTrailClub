@@ -1,16 +1,20 @@
+import Image from 'next/image';
+import { LuCalendarDays } from 'react-icons/lu';
+import { motion } from 'framer-motion';
+
 export const eventContent = [
   {
     key: 'General Info',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold  xs:mt-4 md:mt-0 xs:mb-8 mb-4 xs:font-medium text-black xs:text-center md:text-start xs:text-lg">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:font-semibold xs:mb-8 text-black xs:text-center md:text-start xs:text-lg font-urbanist">
           General Information
         </h1>
-        <h5 className="md:text-[20px] xs:text-[16px] mb-2 font-semibold">
+        <h5 className="md:text-[20px] xs:text-[16px] mb-2 xs:leading-[22px] md:leading-[27px] font-semibold">
           Following are general information that you have to know before
           registering,
         </h5>
-        <ul className="list-disc space-y-3 px-8 xs:text-sm md:text-[16px]">
+        <ul className="list-disc  xs:mt-4 space-y-3 pl-10 xs:leading-[22px] md:leading-[27px] font-normal xs:text-sm md:text-[16px]">
           <li>
             Registration charges for <b>30KM (INR.1800)</b> and{' '}
             <b>60KM (INR.2200)</b> including payment gateway charges.
@@ -47,8 +51,9 @@ export const eventContent = [
             refunded.
           </li>
           <li>
-            Total slots available are 30KM (250 persons) & 60KM (150 persons).
-            Once these 400 slots are filled, registrations will close.
+            Total slots available are <strong>30KM (250 persons)</strong> &{' '}
+            <strong>60KM (150 persons)</strong>. Once these 400 slots are
+            filled, registrations will close.
           </li>
         </ul>
       </div>
@@ -57,17 +62,17 @@ export const eventContent = [
   {
     key: 'Categories',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold font-bold xs:mt-4 md:mt-0  xs:mb-8   mb-4 text-black xs:text-lg xs:text-center md:text-start">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:font-semibold xs:mb-8 mb-4 text-black xs:text-lg xs:text-center md:text-start font-urbanist">
           Categories
         </h1>
-        <p className="xs:text-sm md:text-lg">
+        <p className="xs:text-[13px] md:text-[16px] xs:mb-3">
           Jawadhu Hill Ultra (JHU-24) offers two categories in the 2024 edition
         </p>
-        <h3 className="text-[20px] xs:text-[16px] font-semibold mb-2">
+        <h3 className="md:text-[20px] xs:text-[16px] font-bold mb-2 font-urbanist">
           30K with approximately 900m of elevation gain.
         </h3>
-        <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
+        <ul className="list-disc space-y-3 xs:my-4 xs:pl-10 xs:text-sm md:text-[16px] xs:leading-[22px] md:leading-[27px] font-normal">
           <li>
             primarily for those who wants to run their first trail race. Trail
             route takes runners through farms, slush & single path trails.
@@ -76,8 +81,13 @@ export const eventContent = [
           </li>
           <li>
             The event will start at 06:00 AM from{' '}
-            <span>St.Joseph Higher Secondary School, Jamunamarathur.</span> and
-            will finish at same place.
+            <a
+              href="https://maps.app.goo.gl/e7HcyKWJHY3KCrcDA"
+              className="text-[#0000EE]"
+            >
+              St.Joseph Higher Secondary School, Jamunamarathur.
+            </a>
+            and will finish at same place.
           </li>
           <li>Runners are required to report at start point by 05:30 AM.</li>
           <li>
@@ -85,10 +95,10 @@ export const eventContent = [
             reach the finish line by 02:00 PM.
           </li>
         </ul>
-        <h3 className="md:text-[20px] xs:text-[16px] font-semibold mb-2">
+        <h3 className="md:text-[20px] xs:text-[16px] font-bold mb-2 font-urbanist">
           60K with approximately 1600m of elevation gain.
         </h3>
-        <ul className="list-disc space-y-2 px-16 xs:px-8  xs:text-sm md:text-[16px] ">
+        <ul className="list-disc space-y-3 xs:my-4 xs:pl-10 xs:text-sm md:text-[16px] xs:leading-[22px] md:leading-[27px] font-normal">
           <li>
             It's also a point-to-point course taking runners through the most
             beautiful locales in Jawadhu while still posing enough challenges
@@ -96,8 +106,13 @@ export const eventContent = [
             different terrains.
           </li>
           <li>
-            The event will start at 05:00 AM from{' '}
-            <span>St.Joseph Higher Secondary School, Jamunamarathur.</span>
+            The event will start at 05:00 AM from
+            <a
+              href="https://maps.app.goo.gl/e7HcyKWJHY3KCrcDA"
+              className="text-[#0000EE]"
+            >
+              St.Joseph Higher Secondary School, Jamunamarathur.
+            </a>
           </li>
           <li>Runners are required to report at start point by 04:30 AM.</li>
           <li>All 60K runners must carry their own head lamps / torches</li>
@@ -115,25 +130,27 @@ export const eventContent = [
             any body pains.
           </li>
         </ul>
-        <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-blackLight p-4 space-y-4 mt-6">
-          <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i className="bi bi-exclamation-circle-fill text-[#ffb24d]"></i>{' '}
-            Note
-          </h2>
-          <ul className="list-disc space-y-2 px-16 xs:px-8 flex flex-col justify-between xs:text-sm">
-            <li>
-              All time and distance mentioned here are tentative and subject to
-              very minor changes, which will be confirmed a week before the
-              race.
-            </li>
-            <li>
-              Runners still on the course after the cut-off time (both stage and
-              overall cut-offs) will be picked up by the sweep vehicles and will
-              not be permitted to continue the race. There will be no exception
-              as the cut-off times are implemented to ensure local government
-              body guidelines.
-            </li>
-          </ul>
+        <div className="border boder-solid border-[#f7a30033] rounded-md bg-[#FCF6EA] text-blackLight p-4 mt-3 flex items-baseline">
+          <i className="bi bi-exclamation-circle-fill text-[#ffb24d] text-[20px]"></i>
+          <div className="xs:pl-4">
+            <h2 className="md:text-[20px] xs:text-[16px] font-bold font-urbanist">
+              Note
+            </h2>
+            <ul className="list-disc space-y-3 xs:pl-10 xs:my-4 md:text-[16px] xs:leading-[22px] md:leading-[27px] font-normal flex flex-col justify-between xs:text-sm">
+              <li>
+                All time and distance mentioned here are tentative and subject
+                to very minor changes, which will be confirmed a week before the
+                race.
+              </li>
+              <li>
+                Runners still on the course after the cut-off time (both stage
+                and overall cut-offs) will be picked up by the sweep vehicles
+                and will not be permitted to continue the race. There will be no
+                exception as the cut-off times are implemented to ensure local
+                government body guidelines.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     ),
@@ -141,20 +158,20 @@ export const eventContent = [
   {
     key: 'Rules & Criteria',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold  mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:font-semibold xs:mb-8 xs:text-lg xs:text-center md:text-start font-bold  mb-4 text-black font-urbanist">
           Rules & Criteria
         </h1>
-        <p className="xs:text-[13px] md:text-[16px]">
+        <p className="xs:text-[13px] md:text-[16px] xs:mb-3 xs:leading-[27px]">
           Considering all challenges through the course and other
           considerations, the participants must meet the following criteria:
         </p>
-        <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
+        <ul className="list-disc space-y-3 xs:pl-10 xs:text-sm md:text-[16px] xs:leading-[22px] md:leading-[27px]">
           <li>
             For registering for 60K, Registrants must have completed
-            <ul className="list-disc space-y-3 md:px-16 xs:px-8">
+            <ul className="list-disc space-y-3 md:px-16 xs:pl-10">
               <li>
-                a Full Marathon in 06:00Hrs,<b> OR </b>
+                a Full Marathon in 06:00Hrs,<b className="md:bold"> OR </b>
               </li>
               <li>
                 any Ultra Marathon (any distance over 42.2Kms) within the
@@ -194,18 +211,24 @@ export const eventContent = [
           <li>
             Runners (in 30K & 60K categories) must submit the hyperlinkany of
             the following during the registration,
-            <ul className="list-disc space-y-3 md:px-16 xs:px-8">
+            <ul className="list-disc space-y-3 md:px-16 xs:pl-10 xs:leading-[22px] md:leading-[27px]">
               <li>
                 shareable result link of a qualifier race <br />
-                <b>or</b>
+                <div>or</div>
               </li>
               <li>matching run in their STRAVA profile</li>
             </ul>
           </li>
           <li>
             If anyone has any questions about their qualification criteria,
-            please eMail us @ <span>chennaitrailclub@gmail.com</span> and get
-            questions answered before registering.
+            please email us @{' '}
+            <a
+              href="mailto:chennaitrailclub@gmail.com"
+              className="text-[#0000EE]"
+            >
+              chennaitrailclub@gmail.com
+            </a>{' '}
+            and get questions answered before registering.
           </li>
           <li>
             Anyone who registers without submitting or fulfilling the criteria
@@ -218,43 +241,55 @@ export const eventContent = [
   {
     key: 'Food',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start xs:font-medium font-bold  mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] md:mt-0 xs:mb-8 xs:text-lg xs:text-center md:text-start xs:font-semibold text-black font-urbanist">
           Food
         </h1>
-        <div className="flex flex-col space-y-4">
-          <div>
-            <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i className="bi bi-calendar2-event mr-3"></i>
-              Pre-Race Dinner (November 08, 2024)
-            </h2>
-            <p className="md:p-3 xs:px-8 md:text-[16px] xs:text-[13px] xs:leading-loose">
-              For runners, accompanying friends and relatives, planning to stay
-              overnight at the venue (Dinner will be served between 7:00 - 9:00
-              pm). Food coupons must be purchased for all who opt for pre-race
-              dinner at nominal cost fixed by organising team.
-            </p>
+        <div className="flex flex-col space-y-[30px] xs:text-[13px]">
+          <div className="flex">
+            <div className="xs:text-2xl xs:mt-2 md:mt-1 xs:mr-4">
+              <LuCalendarDays />
+            </div>
+            <div className="xs:pr-8 xs:mr-4">
+              <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold mb-2 font-urbanist">
+                Pre-Race Dinner (November 08, 2024)
+              </h2>
+              <p className="md:text-[16px] xs:text-[13px] xs:leading-[27px] xs:mb-3">
+                For runners, accompanying friends and relatives, planning to
+                stay overnight at the venue (Dinner will be served between 7:00
+                - 9:00 pm). Food coupons must be purchased for all who opt for
+                pre-race dinner at nominal cost fixed by organising team.
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i className="bi bi-calendar2-event mr-3"></i>
-              Pre-Race Breakfast (November 09, 2024)
-            </h2>
-            <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
-              Some snacks will be provided for quick bite at the start point
-              prior to the commencement of the race. (Note: This won’t be a
-              regular breakfast. Its only Bread-Butter-Jam, tea/coffee & etc.)
-            </p>
+          <div className="flex">
+            <div className="xs:text-2xl xs:mt-2 md:mt-1 xs:mr-4">
+              <LuCalendarDays />
+            </div>
+            <div className="xs:pr-8">
+              <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold font-bold mb-2 font-urbanist">
+                Pre-Race Breakfast (November 09, 2024)
+              </h2>
+              <p className="md:text-[16px] xs:leading-[27px] xs:mb-3">
+                Some snacks will be provided for quick bite at the start point
+                prior to the commencement of the race. (Note: This won’t be a
+                regular breakfast. Its only Bread-Butter-Jam, tea/coffee & etc.)
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
-              <i className="bi bi-calendar2-event mr-3"></i>Post-Race Meal
-              (November 09, 2024)
-            </h2>
-            <p className="md:p-3 xs:px-8 md:text-[16px] xs:leading-loose">
-              Lunch will be served for 30KM runners. 60KM runners will get light
-              lunch at one of the aid stations, around noon time.
-            </p>
+          <div className="flex justify-start">
+            <div className="xs:text-2xl xs:mt-2 md:mt-1 xs:mr-4">
+              <LuCalendarDays />
+            </div>
+            <div className="xs:pr-8">
+              <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold font-bold mb-2 font-urbanist">
+                Post-Race Meal (November 09, 2024)
+              </h2>
+              <p className="md:text-[16px] xs:leading-[27px] xs:mb-3">
+                Lunch will be served for 30KM runners. 60KM runners will get
+                light lunch at one of the aid stations, around noon time.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -263,14 +298,14 @@ export const eventContent = [
   {
     key: 'Medical / Baggage',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  xs:font-medium md:text-start  font-bold  mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:mb-8 xs:text-lg xs:text-center xs:font-semibold md:text-start font-urbanist text-black ">
           Medical Assistance and Baggage Counter
         </h1>
-        <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+        <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold font-urbanist">
           Medical assistance
         </h2>
-        <ul className="list-disc space-y-2 px-8 md:text-[16px] xs:text-sm">
+        <ul className="list-disc space-y-3 xs:pl-10 xs:my-4 xs:leading-[22px] md:leading-[27px] md:text-[16px] xs:text-sm">
           <li>
             There will be a dedicated medical team at the start/finish points.
           </li>
@@ -287,10 +322,10 @@ export const eventContent = [
             volunteers.
           </li>
         </ul>
-        <h2 className="md:text-[20px] xs:text-[16px]  font-bold mb-2">
+        <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold font-bold font-urbanist">
           Baggage Counter
         </h2>
-        <ul className="list-disc space-y-3 md:text-[16px]  px-8 xs:text-sm">
+        <ul className="list-disc space-y-3 xs:pl-10 xs:my-4 xs:leading-[22px] md:leading-[27px] md:text-[16px] xs:text-sm">
           <li>
             Baggage counter will be available at the start-line of all
             categories
@@ -306,11 +341,11 @@ export const eventContent = [
   {
     key: 'Aid Station / Hydration',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start  xs:font-medium font-bold   mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:mb-8 xs:text-lg xs:text-center xs:font-semibold md:text-start font-bold font-urbanist text-black ">
           Aid Station and Hydration
         </h1>
-        <ul className="list-disc space-y-3 px-8 md:text-[16px] xs:text-sm">
+        <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-sm xs:leading-[22px] md:leading-[27px] xs:my-4 font-normal">
           <li>
             Aid stations will be well-stocked with water, energy drinks, fruits
             etc. during the race.
@@ -340,26 +375,61 @@ export const eventContent = [
   {
     key: 'Accommodation / Transport',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center md:text-start xs:font-medium font-bold  mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:mb-8 xs:text-lg xs:text-center xs:font-semibold md:text-start font-bold font-urbanist text-black ">
           Accommodation and Transport
         </h1>
         <div>
-          <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+          <h2 className="md:text-[20px] xs:text-[16px] xs:font-semibold mb-2 font-urbanist">
             Accommodation
           </h2>
-          <ul className="list-disc space-y-3  px-8  md:text-[16px] xs:text-sm">
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-[13px] xs:leading-[27px] xs:my-4">
             <li>
               Camping / staying in the school (
-              <span className="text-blue-600">
-                St.Joseph Higher Secondary School, Jamunamarathur
-              </span>
+              <a
+                href="https://maps.app.goo.gl/e7HcyKWJHY3KCrcDA"
+                className="text-[#0000EE]"
+              >
+                St.Joseph Higher Secondary School, Jamunamarathur.
+              </a>
               ) is free of cost for all.
             </li>
           </ul>
         </div>
+        <div>
+          <h2 className="md:text-[16px] xs:text-[13px] xs:font-semibold mb-2">
+            ALake View Guest House - Jamunamarathur
+          </h2>
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-[13px] xs:leading-[27px] xs:my-4">
+            <li>Contact - Sengottuvan - 9786337033</li>
+            <li>
+              Available - 6 Rooms (4 persons/Room) - 2000 INR (2500 INR for AC)
+            </li>
+            <li>Dormitory - 2 Pack (Each 10 people) - 4500 INR (10 people)</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="md:text-[16px] xs:text-[13px] xs:font-semibold mb-2">
+            Rooms in Jamunamarathur Bus Stand
+          </h2>
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-[13px] xs:leading-[27px] xs:my-4">
+            <li>Contact - Santhosh - 9655095806</li>
+            <li>Available - 8 Rooms (1200 INR Max)</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="md:text-[16px] xs:text-[13px] xs:font-semibold mb-2">
+            Munna Complex
+          </h2>
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-[13px] xs:leading-[27px] xs:my-4">
+            <li>Mansoor - 9786111774, 9159923066</li>
+            <li>Single room - 4 Rooms - 700 INR</li>
+            <li>Double room - 8 Rooms - 1300 INR</li>
+          </ul>
+        </div>
+
         <div className="md:text-[16px] xs:text-sm space-y-3">
-          <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2">
+          <h2 className="md:text-[20px] xs:text-[16px] font-bold mb-2 font-urbanist">
             Transport
           </h2>
           <p className="">
@@ -367,7 +437,7 @@ export const eventContent = [
             Jamunamarathur, on Polur-Alangayam Road.
           </p>
           <p>Approximate distances to Jamunamaruthur</p>
-          <ul className="list-disc space-y-3 px-8">
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px]  xs:my-4">
             <li> Polur - 40km </li>
             <li> Alangayam - 25km </li>
             <li> Tirupattur - 50km (via Alangayam) </li>
@@ -377,7 +447,7 @@ export const eventContent = [
             <li> Arcot - 95km (via Polur) </li>
             <li> Vandavasi - 100km (via Polur) </li>
           </ul>
-          <p>
+          <p className="xs:text-[13px] md:text-[16px] xs:leading-[27px] pb-3">
             Public Transport buses between Alangayam and Polur passes through
             Jamunamaruthur. Frequency will be approximately 45 minutes. Last bus
             in each direction will be around 7:30PM.
@@ -389,16 +459,16 @@ export const eventContent = [
   {
     key: 'Medals, Certificates & Results',
     component: () => (
-      <div className="leading-loose">
-        <h1 className="md:text-[32px] md:font-bold xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium font-bold  mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:mb-8 xs:text-lg xs:text-center xs:font-semibold md:text-start font-bold font-urbanist text-black ">
           Medals, Certificates & Results
         </h1>
-        <div className="border boder-solid border-[#f1a847] rounded-xl bg-[#FCF6EA] text-black p-4 space-y-4 mt-6 mb-4">
-          <h2 className="md:text-[20px] xs:text-[16px] font-semibold">
-            <i className="bi bi-exclamation-circle-fill text-[#f1a847]"></i>
+        <div className="border boder-solid border-[#f7a30033] rounded-md bg-[#FCF6EA] text-blackLight xs:p-4">
+          <h2 className="md:text-[20px] xs:text-[16px] font-semibold font-urbanist flex items-center">
+            <i className="bi bi-exclamation-circle-fill text-[#f1a847] xs:mr-2"></i>
             Important
           </h2>
-          <ul className="list-disc space-y-3 md:px-16 xs:px-8 md:text-[16px] xs:text-sm">
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-sm xs:leading-[22px] md:leading-[27px] xs:my-4">
             <li>
               Medals will be awarded to all runners who finish within the
               cut-off.
@@ -419,7 +489,7 @@ export const eventContent = [
           </ul>
         </div>
         <div>
-          <ul className="list-disc space-y-3 px-16 xs:px-8 xs:text-sm md:text-[16px]">
+          <ul className="list-disc space-y-3 xs:pl-10 md:text-[16px] xs:text-sm xs:leading-[22px] md:leading-[27px] xs:my-4">
             <li>
               All participants must accept complete responsibility for any
               injury, physical or otherwise, that may be caused to them during
@@ -499,86 +569,127 @@ export const eventContent = [
   {
     key: 'Running Tips',
     component: () => (
-      <div className="leading-normal">
-        <h1 className="md:text-[32px] md:font-bold  xs:mt-4 md:mt-0  xs:mb-8 xs:text-lg xs:text-center  md:text-start  xs:font-medium   mb-4 text-black">
+      <div className="xs:py-5 md:py-0">
+        <h1 className="md:text-[32px] xs:mb-8 xs:text-lg xs:text-center xs:font-semibold md:text-start font-bold font-urbanist text-black ">
           Tips to be followed
         </h1>
-        <div className="w-full  space-y-2 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
+        <div className="w-full  xs:space-y-2 md:space-y-0 flex xs:flex-col md:flex-row xs:text-center md:text-start  md:flex-wrap">
           <div className="md:w-1/3 xs:w-full p-2">
-            <div>
-              <i className="bi bi-flag text-[56px] text-primary"></i>
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/mountFlag.png" alt="flag" />
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               The terrain is not same:
             </h2>
-            <p className="xs:text-[13px] md:text-[16px]">
-              We call it a multi-terrain marvel. Therefore, running in the trail
-              has its own unique challenges and being watchful and alert while
-              running on the trail.
-            </p>
-          </div>
-          <div className="md:w-1/3 p-2 xs:w-full">
-            <div>
-              <i className="bi bi-search text-[56px] text-primary"></i>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                We call it a multi-terrain marvel. Therefore, running in the
+                trail has its own unique challenges and being watchful and alert
+                while running on the trail.
+              </motion.p>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
+          </div>
+          <div className="md:w-1/3 xs:w-full p-2">
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/search.png" alt="flag" />
+            </div>
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               Find your rhythm:
             </h2>
-            <p className="xs-text-[13] md:text-[16px]">
-              exhausting, focus on finding the rhythm until you sense being one
-              with the terrain
-            </p>
-          </div>
-          <div className="md:w-1/3  p-2 xs:w-full">
-            <div>
-              <i className="bi bi-person-walking text-[56px] text-primary"></i>
-              <i className="bi bi-person-walking text-[56px] text-primary"></i>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                Running off road can be exhausting, focus on finding the rhythm
+                until you sense being one with the terrain.
+              </motion.p>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
+          </div>
+          <div className="md:w-1/3 xs:w-full p-2">
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/runners.png" alt="flag" />
+            </div>
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               Run with a buddy:
             </h2>
-            <p className="xs-text-[13] md:text-[16px]">
-              If you are not aiming at a podium finish or personal best, run
-              with a buddy so that you can be safe inside the trails.
-            </p>
-          </div>
-          <div className="md:w-1/3 p-2 xs:w-full">
-            <div>
-              <i className="bi bi-emoji-heart-eyes text-[56px] text-primary"></i>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                If you are not aiming at a podium finish or personal best, run
+                with a buddy so that you can be safe inside the trails.
+              </motion.p>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
+          </div>
+          <div className="md:w-1/3 xs:w-full p-2">
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/eyes.png" alt="flag" />
+            </div>
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               Keep your eyes on the trail:
             </h2>
-            <p className="xs-text-[13] md:text-[16px]">
-              It can be tempting to look at the nature around you, but doing so
-              can quickly lead to tripping and falling. It is advisable to keep
-              your eyes on the trail.
-            </p>
-          </div>
-          <div className="md:w-1/3 p-2 xs:w-full">
-            <div>
-              <i className="bi bi-shop text-[56px] text-primary"></i>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                It can be tempting to look at the nature around you, but doing
+                so can quickly lead to tripping and falling. It is advisable to
+                keep your eyes on the trail.
+              </motion.p>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] text-black lg:font-semibold  md:font-medium leading-5">
+          </div>
+          <div className="md:w-1/3 xs:w-full p-2">
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/shoe.png" alt="flag" />
+            </div>
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               Sport with your Trail shoes:
             </h2>
-            <p className="xs-text-[13] md:text-[16px]">
-              If you have a pair of trail running shoes, sport with them. They
-              reduce the chance of ankle rolls with a high heel.
-            </p>
-          </div>
-          <div className="md:w-1/3  p-2 xs:w-full">
-            <div>
-              <i className="bi bi-eyeglasses text-[56px] text-primary"></i>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                If you have a pair of trail running shoes, sport with them. They
+                reduce the chance of ankle rolls with a high heel.
+              </motion.p>
             </div>
-            <h2 className="md:text-[20px] xs-text-[16] lg:font-semibold  md:font-medium leading-5 text-black">
+          </div>
+          <div className="md:w-1/3 xs:w-full p-2">
+            <div className="flex xs:items-center xs:justify-center md:justify-start xs:mb-4">
+              <Image width={50} height={50} src="/goggles.png" alt="flag" />
+            </div>
+            <h2 className="md:text-[20px] xs-text-[16px] xs:mt-6 font-urbanist xs:font-semibold text-black lg:font-semibold  md:font-medium leading-5">
               Accessorise:
             </h2>
-            <p className="xs-text-[13] md:text-[16px]">
-              It is advisable to apply sunscreen, wear your sunglasses, cap/hat
-              or carry a piece of white cotton cloth to cover yourself when the
-              sun is pretty hard after 8 a.m.
-            </p>
+            <div className="xs:flex justify-center items-center">
+              <motion.p
+                initial={{ opacity: 0, y: '100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="xs:text-[13px] md:text-[16px] xs:my-2 sm:w-[400px]"
+              >
+                It is advisable to apply sunscreen, wear your sunglasses,
+                cap/hat or carry a piece of white cotton cloth to cover yourself
+                when the sun is pretty hard after 8 a.m.
+              </motion.p>
+            </div>
           </div>
         </div>
       </div>

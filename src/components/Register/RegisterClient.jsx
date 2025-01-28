@@ -3,7 +3,7 @@ import {
   registerInitialValues,
   registerValidationSchemas,
 } from '@/schema/registrationSchema';
-import { dateOptions } from '@/utils/constants';
+import { dateFormatter } from '@/utils/constants';
 import { registerContent } from '@/utils/registerutils';
 import { showError, showSuccess } from '@/utils/toastUtils';
 import axios from 'axios';
@@ -177,21 +177,21 @@ const RegisterClient = ({ key, eventData, eventId }) => {
   };
 
   const date = new Date(eventData?.date);
-  const formattedDate = date.toLocaleDateString('en-US', dateOptions);
+  const formattedDate = dateFormatter(date);
 
   return (
     <div
-      className="w-full flex flex-col items-center font-manrope"
+      className="w-full min-h-screen flex flex-col items-center font-manrope"
       role="region"
       aria-label="registration page"
     >
-      <div className="2xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24">
+      <div className="xl:w-[1340px] lg:w-full md:px-4 xs:px-4 md:pt-32 xs:pt-24 ">
         <ToastContainer />
         <EventBanner eventBanner={eventData?.eventBannerTwo} />
         <div className="flex flex-col md:mt-10 xs:mt-2 pt-6">
           <Timeline currentStep={currentStep} totalSteps={4} />
-          <div className="text-blackLight text-[16px] flex lg:flex-row md:flex-col xs:flex-col items-center justify-between relative">
-            <div className="xl:1/2 lg:w-3/5 md:w-full xs:w-full">
+          <div className="text-blackLight text-[16px] flex lg:flex-row xs:flex-col items-start justify-between xl:gap-5 relative">
+            <div className="xl:w-1/2 lg:w-3/5 xs:w-full flex-grow">
               <RegistrationForm
                 currentStep={currentStep}
                 totalSteps={4}
@@ -205,15 +205,17 @@ const RegisterClient = ({ key, eventData, eventId }) => {
                 disabled={isProcessing}
               />
             </div>
-            <RegisterCard
-              name={eventData?.name}
-              imageUrl={eventData?.eventBannerTwo}
-              date={formattedDate}
-              location={eventData?.location}
-              locationUrl={eventData?.locationUrl}
-              price={price}
-              category={selectedCategory}
-            />
+            <div className="xl:w-1/3 lg:w-2/5 xs:w-full lg:sticky lg:top-24">
+              <RegisterCard
+                name={eventData?.name}
+                imageUrl={eventData?.eventBannerTwo}
+                date={formattedDate}
+                location={eventData?.location}
+                locationUrl={eventData?.locationUrl}
+                price={price}
+                category={selectedCategory}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,15 +1,17 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  IoChevronBackCircleOutline,
+  IoChevronForwardCircleOutline,
+} from 'react-icons/io5';
 
 const RecentActivities = ({ webImages = [], smallImages = [] }) => {
   const processImages = (images) => {
-    return images.map((image) => {
-      return {
-        imageUrl: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${image.imageUrl}`,
-      };
-    });
+    return images.map((image) => ({
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${image.imageUrl}`,
+    }));
   };
 
   const images = processImages(webImages);
@@ -129,9 +131,17 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
   };
 
   return (
-    <section className="w-full min-h-[70vh] bg-primaryExtraLight py-16 md:py-24 flex justify-center items-center">
-      <div className="2xl:max-w-[1340px] px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
+    <section className="w-full min-h-[60vh] bg-primaryExtraLight flex justify-center md:justify-start lg:justify-center items-center mt-[100px] mb-8">
+      <div
+        className="xl:w-maxWidth w-full xs:py-10 px-4 lg:py-[100px]"
+        style={{
+          backgroundImage: `url('https://chennaitrailclub.s3.ap-south-1.amazonaws.com/media-uploads/2023/09/08181417/curved-lines-bg.png')`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'scroll',
+        }}
+      >
+        <div className="flex flex-col lg:flex-row justify-between gap-8 mb-10">
           <div className="lg:w-1/2">
             <motion.h1
               ref={ref}
@@ -139,7 +149,7 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
               animate={isInView ? 'visible' : 'hidden'}
               variants={slideVariants}
               transition={{ duration: 0.5 }}
-              className="xs:text-[26px] md:text-5xl text-black lg:text-[56px] font-bold mb-6 text-center lg:text-left"
+              className="xs:text-[26px] sm:text-[56px] text-black font-bold text-center md:text-start"
             >
               Recent Activities
             </motion.h1>
@@ -148,52 +158,69 @@ const RecentActivities = ({ webImages = [], smallImages = [] }) => {
               animate={isInView ? 'visible' : 'hidden'}
               variants={fadeVariants}
               transition={{ duration: 0.5 }}
-              className="text-blackLight text-lg font-manrope text-center lg:text-left"
+              className="text-blackLight xs:text-[16px] xs:mt-[10px] sm:text-lg xs:leading-6 font-manrope text-center md:text-start md:w-[700px]"
             >
               We&apos;re thrilled to present a recap of the fantastic array of
               recent activities that we&apos;ve had the pleasure of organizing
-              and participating in.
+              and participating in. We&apos;re excited to share our
+              accomplishments and experiences with you.
             </motion.p>
           </div>
-          <div className="hidden lg:flex items-end gap-4">
+          <div className="hidden lg:flex items-end text-[58px]">
             <button
               onClick={() => moveCarousel('backward')}
-              className="text-gray-500 hover:text-black transition-colors px-3 py-2  text-5xl"
+              className="text-blackLight hover:text-black transition-colors ml-4"
               aria-label="Previous activities"
             >
-              <i className="bi bi-arrow-left-circle"></i>
+              <IoChevronBackCircleOutline />
             </button>
             <button
               onClick={() => moveCarousel('forward')}
-              className="text-gray-500 hover:text-black transition-colors px-3 py-2  text-5xl "
+              className="text-blackLight hover:text-black transition-colors ml-4"
               aria-label="Next activities"
             >
-              <i className="bi bi-arrow-right-circle"></i>
+              <IoChevronForwardCircleOutline />
             </button>
           </div>
         </div>
 
         {/* Desktop Gallery */}
-        <div className="hidden md:block h-[500px]">
-          <div className="grid grid-cols-3 gap-4 h-full">
-            {visibleComponents.map((item) => (
-              <div key={item.key} className="h-full">
-                {renderLayoutContent(item)}
-              </div>
-            ))}
-          </div>
+        <div className="hidden md:block md:h-[344px] sxl:h-[442px] overflow-hidden">
+          <AnimatePresence mode="popLayout">
+            <div className="grid grid-cols-3 gap-4 h-full relative">
+              {visibleComponents.map((item, index) => (
+                <motion.div
+                  key={`${item.key}-${startIndex}`}
+                  initial={{ opacity: 1, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="h-full"
+                  style={{
+                    gridColumn: 'span 1',
+                    minWidth: '100%',
+                  }}
+                >
+                  {renderLayoutContent(item)}
+                </motion.div>
+              ))}
+            </div>
+          </AnimatePresence>
         </div>
 
         {/* Mobile Gallery */}
-        <div className="md:hidden space-y-4">
+        <div className="md:hidden xs:mt-[26] space-y-4">
           {mobileImages.slice(0, isShowingMore ? 4 : 3).map((item, index) => (
-            <div key={index} className="relative w-full h-[240px]">
+            <div
+              key={index}
+              className="relative w-full xs:h-[180px] sm:h-[378px]"
+            >
               <Image
                 src={item.imageUrl}
-                alt={item.alt || `Mobile activity image ${index + 1}`}
+                alt={`Mobile activity image ${index + 1}`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                className="object-cover rounded-lg"
+                className="object-cover rounded-xl"
               />
             </div>
           ))}

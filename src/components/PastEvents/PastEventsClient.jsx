@@ -31,14 +31,14 @@ const PastEvents = ({ pastEvents, years }) => {
 
   return (
     <div
-      className="pt-[100px] w-full overflow-clip flex flex-col items-center px-4"
+      className="w-full flex flex-col items-center px-4"
       aria-labelledby="Past Events"
     >
       <Heading
         title="Chennai Trail Club Past Events"
         subTitle="Below are events organised by our club in recent past"
       />
-      <div className="px-5 2xl:w-[1340px] xs:w-full ">
+      <div className="xl:w-maxWidth xs:w-full sticky top-0">
         <YearSelector
           years={uniqueYears}
           selectedYear={selectedYear}

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { memo } from 'react';
 
 const SocialLinks = memo(({ className }) => (
-  <ul className={`flex text-2xl text-primary ${className}`}>
+  <ul className={`flex text-2xl xs:mt-4 text-primary ${className}`}>
     {socialLinksData.map(({ href, icon, label, index }) => (
       <div
         key={index}
-        className="w-9 h-9 bg-shadeDark p-1 mr-2 flex justify-center items-center rounded-[4px]"
+        className="w-9 h-9 bg-shadeDark p-1 mr-[10px] flex justify-center items-center rounded-[4px]"
       >
         <li className="cursor-pointer hover:text-secondary">
           <Link
@@ -16,7 +16,7 @@ const SocialLinks = memo(({ className }) => (
             rel="noopener noreferrer"
             aria-label={label}
           >
-            <i className={`bi ${icon}`}></i>
+            {icon}
           </Link>
         </li>
       </div>

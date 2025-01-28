@@ -1,6 +1,7 @@
-export const dateOptions = {
-  weekday: "long",
-  month: "long",
-  year: "numeric",
-  day: "2-digit",
+export const dateFormatter = (date) => {
+  return `${date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })} (${date.toLocaleDateString('en-US', { weekday: 'long' })})`;
 };

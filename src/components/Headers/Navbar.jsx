@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { JoinUs } from '..';
+import { useJoinUs } from '@/context/JoinUsContext';
 
 function Navbar() {
   const transparentPaths = [
@@ -31,10 +32,11 @@ function Navbar() {
 
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
-  const [isJoinUsOpen, setIsJoinUsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
+
+  const { isJoinUsOpen, toggleJoinUs } = useJoinUs();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,10 +72,6 @@ function Navbar() {
             ? 'bg-transparent text-black'
             : `bg-black text-white shadow-lg`;
 
-  const toggleJoinUs = () => {
-    setIsJoinUsOpen(!isJoinUsOpen);
-  };
-
   const handleRotate = () => {
     setIsRotating(false);
     requestAnimationFrame(() => {
@@ -97,56 +95,56 @@ function Navbar() {
   };
 
   const isActivePage = (path) => pathname === path;
-  const isEventsPage = pathname.startsWith('/events');
 
   return (
     <header
-      className={`w-full h-[80px] flex items-center justify-center sm:px-4 xs:px-0 fixed top-0
-        ${!isOpen ? desktopBgColor : `bg-black text-white`} p-4 backdrop-blur-sm z-20 box-border`}
+      className={`w-screen lg:h-[84px] xs:h-[72px] flex items-center justify-center fixed top-0
+        ${!isOpen ? desktopBgColor : `bg-black text-white`} backdrop-blur-sm z-20 box-border`}
       role="region"
       aria-labelledby="navigation bar"
     >
-      <div className="xs:px-2 md:px-0 w-full flex xs:justify-between items-center lg:max-w-[1320px]">
-        <Link href="/" className="flex left">
+      <div
+        className={`${transparentPaths.includes(pathname) ? '' : 'absolute inset-0 bg-black/40'}`}
+      />
+      <div className="xs:px-3 lg:px-2 py-4 xs:w-full flex justify-center items-center xl:w-maxWidth">
+        <Link href="/">
           <Image
-            src="/newLogo.svg"
+            src="/newLogo.png"
             alt="logo"
-            width={70}
-            height={70}
+            width={60}
+            height={60}
             priority={true}
-            className="rounded-full cursor-pointer"
+            className="rounded-full cursor-pointer xs:w-14 xs:h-14 md:w-[65px] md:h-[65px] object-contain"
           />
         </Link>
-        <nav className="w-full  flex flex-row justify-end items-center font-manrope font-medium text-[16px]">
-          <ul className="sxl:flex  list-none sxl:space-x-10 xs:space-x-0 nav-links xs:hidden ">
-            <li
-              className={`${isActivePage('/') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
-            >
+        <nav className="w-full flex flex-row justify-end items-center font-manrope font-medium h-14 text-[16px] z-20">
+          <ul className="sxl:flex list-none sxl:space-x-10 xs:space-x-0 nav-links xs:hidden h-full items-center justify-between max-w-[350px]">
+            <li className="cursor-pointer h-full flex justify-center items-center hover:text-secondary">
               <Link href="/"> Home </Link>
             </li>
             <li
-              className={`${isActivePage('/aboutus') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
+              className={`${isActivePage('/aboutus') ? `text-secondary` : `hover:text-secondary`} cursor-pointer h-full flex justify-center items-center`}
             >
               <Link href="/aboutus"> About Us </Link>
             </li>
             <li
-              className={`${isEventsPage ? `text-secondary` : `hover:text-secondary`} cursor-pointer relative`}
+              className={`hover:text-secondary cursor-pointer relative h-full flex justify-center items-center`}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               Events
               {isHovered && (
-                <ul className="min-w-48 absolute right-1 bg-white text-black rounded shadow-lg py-2 z-50 font-normal">
+                <ul className="min-w-40 absolute left-0 top-12 bg-white text-black rounded-md shadow-lg py-2 text-sm z-50 font-normal">
                   <li className="hover:bg-gray-300 mx-2 rounded-md">
                     <Link
                       href="/events/upcomingevents"
-                      className="block px-4 py-2"
+                      className="block px-2 py-2"
                     >
                       Upcoming Events
                     </Link>
                   </li>
                   <li className="hover:bg-gray-300 mx-2 rounded-md">
-                    <Link href="/events/pastevents" className="block px-4 py-2">
+                    <Link href="/events/pastevents" className="block px-2 py-2">
                       Past Events
                     </Link>
                   </li>
@@ -154,7 +152,7 @@ function Navbar() {
               )}
             </li>
             <li
-              className={`${isActivePage('/joinus') ? `text-secondary` : `hover:text-secondary`} cursor-pointer`}
+              className="hover:text-secondary cursor-pointer h-full flex justify-center items-center"
               onClick={toggleJoinUs}
             >
               Join Us
@@ -170,9 +168,9 @@ function Navbar() {
             <JoinUs isOpen={isJoinUsOpen} onClose={toggleJoinUs} />
           )}
           <ul
-            className={`list-none lg:space-y-0 xs:space-y-10  ${
+            className={`list-none space-y-10  ${
               isOpen ? 'flex' : 'hidden'
-            } flex-col items-start h-screen bg-black text-white w-full z-50  mt-4 fixed top-16 left-0 p-6 text-[20px]`}
+            } flex-col items-start h-screen bg-black text-white w-full z-50 fixed top-16 left-0 p-6 text-[20px]`}
           >
             {mobileNav.map((item, index) => (
               <li key={index} className="hover:text-secondary cursor-pointer">

@@ -9,17 +9,14 @@ function AboutRaceLocation({ eventData }) {
 
   return (
     <div
-      className="bg-primaryExtraLight my-10"
+      className="bg-primaryExtraLight w-full flex justify-center items-center "
       aria-labelledby="Race Location Details"
     >
-      <div className="2xl:w-[1340px]  md:py-4 lg:py-8 xs:py-8">
-        <h1 className="md:text-5xl xs:text-[22px] text-black font-bold text-center mb-6">
+      <div className="xl:w-maxWidth xs:px-4 xs:py-12 md:py-5">
+        <h1 className="md:text-5xl xs:text-[22px] text-black font-extrabold text-center pb-8">
           {heading}
         </h1>
-        <div
-          className="flex md:flex-row xs:flex-col justify-between 
-      xs:items-center 2xl:items-center md:items-start 2xl:space-x-10 md:space-x-4 xs:space-x-0 p-3 w-full"
-        >
+        <div className="flex md:flex-row xs:flex-col justify-center xs:items-center 2xl:items-center md:items-start w-full md:gap-10 lg:gap-20">
           <motion.img
             ref={ref}
             initial={{ opacity: 0, scale: 0 }}
@@ -31,11 +28,18 @@ function AboutRaceLocation({ eventData }) {
             alt={middleImageUrl}
             width={520}
             height={510}
-            className="md:w-45 xs:w-full"
+            className="md:w-45 xs:w-full xs:my-4 md:my-0 max-w-[520px] max-h-[508px]"
           />
-          <div className="text-blackLight text-[16px] lg:space-y-6 md:space-y-3 flex flex-col xs:mt-4 md:mt-0  md:text-start xs:text-center">
+          <div className="text-blackLight text-[16px] font-manrope md:space-y-4 flex flex-col xs:mt-4 md:mt-0 md:text-start xs:text-center xs:leading-[27px] max-w-[644px]">
             {text && text.length ? (
-              text.map((item, index) => <p key={index}>{item}</p>)
+              text.map((item, index) => (
+                <p
+                  className="xs:mt-4 md:mt-0 font-normal  max-w-[540px]"
+                  key={index}
+                >
+                  {item}
+                </p>
+              ))
             ) : (
               <div>No Text</div>
             )}
